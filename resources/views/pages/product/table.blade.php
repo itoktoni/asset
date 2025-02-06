@@ -44,10 +44,33 @@
                                             <x-crud :model="$table" />
                                         </td>
                                         
-										<td >{{ $table->category_id }}</td>
-										<td >{{ $table->category_name }}</td>
-										<td >{{ $table->category_description }}</td>
-										<td >{{ $table->category_active }}</td>
+										<td >{{ $table->product_id }}</td>
+										<td >{{ $table->product_name }}</td>
+										<td >{{ $table->product_serial_number }}</td>
+										<td >{{ $table->product_internal_number }}</td>
+										<td >{{ $table->product_image }}</td>
+										<td >{{ $table->product_category_id }}</td>
+										<td >{{ $table->product_type_id }}</td>
+										<td >{{ $table->product_brand_id }}</td>
+										<td >{{ $table->product_unit_code }}</td>
+										<td >{{ $table->product_location_id }}</td>
+										<td >{{ $table->product_department_id }}</td>
+										<td >{{ $table->product_supplier_id }}</td>
+										<td >{{ $table->product_price }}</td>
+										<td >{{ $table->product_is_asset }}</td>
+										<td >{{ $table->product_description }}</td>
+										<td >{{ $table->product_acqu_year }}</td>
+										<td >{{ $table->product_prod_year }}</td>
+										<td >{{ $table->product_buy_date }}</td>
+										<td >{{ $table->product_created_at }}</td>
+										<td >{{ $table->product_updated_at }}</td>
+										<td >{{ $table->product_deleted_at }}</td>
+										<td >{{ $table->product_deleted_by }}</td>
+										<td >{{ $table->product_updated_by }}</td>
+										<td >{{ $table->product_created_by }}</td>
+										<td >{{ $table->product_vendor_id }}</td>
+										<td >{{ $table->product_teknisi_data }}</td>
+										<td >{{ $table->product_model_id }}</td>
 
                                     </tr>
                                 @empty

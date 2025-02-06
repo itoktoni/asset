@@ -3,7 +3,7 @@
 namespace App\Http\Function;
 
 use App\Http\Requests\Core\GeneralRequest;
-use App\Http\Services\Master\UpdateService;
+use App\Services\Master\UpdateService;
 use Plugins\Response;
 
 trait UpdateFunction

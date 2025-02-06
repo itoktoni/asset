@@ -6,10 +6,9 @@
             <div class="row">
                 @bind($model)
                     
-                <x-form-input col="6" name="category_id" />
-                <x-form-input col="6" name="category_name" />
-                <x-form-input col="6" name="category_description" />
-                <x-form-input col="6" name="category_active" />
+                <x-form-input col="6" name="type_id" />
+                <x-form-input col="6" name="type_name" />
+                <x-form-input col="6" name="type_description" />
 
                 @endbind
             </div>

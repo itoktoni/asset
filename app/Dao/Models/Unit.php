@@ -6,32 +6,31 @@ use App\Dao\Models\Core\SystemModel;
 
 
 /**
- * Class Brand
+ * Class Unit
  *
- * @property $brand_id
- * @property $brand_name
- * @property $brand_description
+ * @property $unit_code
+ * @property $unit_name
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 
-class Brand extends SystemModel
+class Unit extends SystemModel
 {
     protected $perPage = 20;
-    protected $table = 'brand';
-    protected $primaryKey = 'brand_id';
+    protected $table = 'unit';
+    protected $primaryKey = 'unit_id';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = ['brand_id', 'brand_name', 'brand_description'];
+    protected $fillable = ['unit_code', 'unit_name'];
 
     public static function field_name()
     {
-        return 'brand_name';
+        return 'unit_name';
     }
 
     public function getFieldNameAttribute()

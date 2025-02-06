@@ -3,7 +3,7 @@
 namespace App\Http\Function;
 
 use App\Http\Requests\Core\GeneralRequest;
-use App\Http\Services\Master\CreateService;
+use App\Services\Master\CreateService;
 use Plugins\Response;
 
 trait CreateFunction

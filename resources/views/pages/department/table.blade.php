@@ -44,10 +44,11 @@
                                             <x-crud :model="$table" />
                                         </td>
                                         
-										<td >{{ $table->category_id }}</td>
-										<td >{{ $table->category_name }}</td>
-										<td >{{ $table->category_description }}</td>
-										<td >{{ $table->category_active }}</td>
+										<td >{{ $table->department_id }}</td>
+										<td >{{ $table->department_user_id }}</td>
+										<td >{{ $table->department_name }}</td>
+										<td >{{ $table->department_pic }}</td>
+										<td >{{ $table->department_description }}</td>
 
                                     </tr>
                                 @empty

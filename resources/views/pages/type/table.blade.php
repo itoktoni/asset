@@ -44,10 +44,9 @@
                                             <x-crud :model="$table" />
                                         </td>
                                         
-										<td >{{ $table->category_id }}</td>
-										<td >{{ $table->category_name }}</td>
-										<td >{{ $table->category_description }}</td>
-										<td >{{ $table->category_active }}</td>
+										<td >{{ $table->type_id }}</td>
+										<td >{{ $table->type_name }}</td>
+										<td >{{ $table->type_description }}</td>
 
                                     </tr>
                                 @empty
