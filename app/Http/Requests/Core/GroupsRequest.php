@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Core;
 
 use App\Dao\Traits\ValidationTrait;
-use App\Facades\Model\GroupModel;
+use App\Facades\Model\GroupsModel;
 use Illuminate\Support\Str;
 
 class GroupsRequest extends GeneralRequest
@@ -13,7 +13,7 @@ class GroupsRequest extends GeneralRequest
     public function prepareForValidation()
     {
         $this->merge([
-            GroupModel::field_primary() => Str::snake($this->system_group_name),
+            GroupsModel::field_primary() => Str::snake($this->system_group_name),
         ]);
     }
 

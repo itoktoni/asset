@@ -10,7 +10,8 @@ trait CrudRepository
     public function dataRepository()
     {
         $query = $this
-            ->select($this->getSelectedField())
+            // ->select($this->getSelectedField())
+            ->select('*')
             ->sortable()
             ->filter();
 

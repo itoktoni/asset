@@ -3,11 +3,11 @@
         <x-card>
             <x-action form="form" />
 
-            <div class="row">
+            <div class="">
                 @bind($model)
-                    
-                <x-form-input col="6" name="unit_code" />
-                <x-form-input col="6" name="unit_name" />
+
+                <x-form-input col="6" name="satuan_code" />
+                <x-form-input col="6" name="satuan_nama" />
 
                 @endbind
             </div>

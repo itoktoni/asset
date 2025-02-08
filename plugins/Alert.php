@@ -27,6 +27,11 @@ class Alert
         session()->put(self::success, $data ?? 'Data berhasil di '.self::create.' !');
     }
 
+    public static function info($data = null)
+    {
+        session()->put($data);
+    }
+
     public static function update($data = null)
     {
         session()->put(self::success, $data ?? 'Data berhasil di '.self::update.' !');

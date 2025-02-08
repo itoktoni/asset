@@ -22,15 +22,12 @@
                                         <input class="btn-check-d" type="checkbox">
                                     </th>
                                     <th class="text-center column-action">{{ __('Action') }}</th>
-                                    @foreach ($fields as $value)
-                                        <th {{ Template::extractColumn($value) }}>
-                                            @if ($value->sort)
-                                                @sortablelink($value->code, __($value->name))
-                                            @else
-                                                {{ __($value->name) }}
-                                            @endif
-                                        </th>
-                                    @endforeach
+                                    <th>Gambar</th>
+                                    <th>@sortablelink('asset_nama', __('Nama Asset'))</th>
+                                    <th>Serial Number</th>
+                                    <th>Departemen</th>
+                                    <th>Ruangan</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,10 +40,15 @@
                                         <td class="col-md-2 text-center column-action">
                                             <x-crud :model="$table" />
                                         </td>
-                                        
-										<td >{{ $table->type_id }}</td>
-										<td >{{ $table->type_name }}</td>
-										<td >{{ $table->type_description }}</td>
+                                        <td class="column-action">
+                                            <div>
+                                                <img class="img-thumbnail img-fluid" src="{{ imageUrl($table->field_image, 'asset') }}">
+                                            </div>
+                                        </td>
+										<td >{{ $table->asset_nama }}</td>
+										<td >{{ $table->asset_serial_number }}</td>
+										<td >{{ $table->department_nama }}</td>
+										<td >{{ $table->location_nama }}</td>
 
                                     </tr>
                                 @empty

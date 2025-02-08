@@ -18,19 +18,13 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th width="9" class="center">
+                                    <th width="1" style="width: 1%" class="center">
                                         <input class="btn-check-d" type="checkbox">
                                     </th>
                                     <th class="text-center column-action">{{ __('Action') }}</th>
-                                    @foreach ($fields as $value)
-                                        <th {{ Template::extractColumn($value) }}>
-                                            @if ($value->sort)
-                                                @sortablelink($value->code, __($value->name))
-                                            @else
-                                                {{ __($value->name) }}
-                                            @endif
-                                        </th>
-                                    @endforeach
+                                    <th>Gambar</th>
+                                    <th>Kategori</th>
+                                    <th>@sortablelink('penamaan_gabungan', __('Penamaan Asset'))</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,13 +34,16 @@
                                             <input type="checkbox" class="checkbox" name="code[]"
                                                 value="{{ $table->field_primary }}">
                                         </td>
-                                        <td class="col-md-2 text-center column-action">
+                                        <td class="text-center column-action">
                                             <x-crud :model="$table" />
                                         </td>
-                                        
-										<td >{{ $table->unit_code }}</td>
-										<td >{{ $table->unit_name }}</td>
-
+                                        <td class="column-action">
+                                            <div>
+                                                <img class="img-thumbnail img-fluid" src="{{ imageUrl($table->field_image, 'penamaan') }}">
+                                            </div>
+                                        </td>
+										<td>{{ $table->category_nama }}</td>
+										<td>{{ $table->field_naming }}</td>
                                     </tr>
                                 @empty
                                 @endforelse

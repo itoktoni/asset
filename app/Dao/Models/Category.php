@@ -2,7 +2,9 @@
 
 namespace App\Dao\Models;
 
+use App\Dao\Entities\Core\CategoryEntity;
 use App\Dao\Models\Core\SystemModel;
+use App\Dao\Models\Core\User;
 
 /**
  * Class Category
@@ -16,6 +18,8 @@ use App\Dao\Models\Core\SystemModel;
  */
 class Category extends SystemModel
 {
+    use CategoryEntity;
+
     protected $perPage = 20;
 
     protected $table = 'category';
@@ -27,15 +31,20 @@ class Category extends SystemModel
      *
      * @var array<int, string>
      */
-    protected $fillable = ['category_id', 'category_name'];
+    protected $fillable = ['category_id', 'category_nama', 'category_notification'];
 
     public static function field_name()
     {
-        return 'category_name';
+        return 'category_nama';
     }
 
     public function getFieldNameAttribute()
     {
         return $this->{$this->field_name()};
+    }
+
+    public function has_user()
+    {
+        return $this->belongsToMany(User::getModel(), 'responsible_category', $this->field_primary(), $this->field_user_id());
     }
 }

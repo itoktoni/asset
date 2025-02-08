@@ -31,6 +31,8 @@
                                             @endif
                                         </th>
                                     @endforeach
+									<td >Notifikasi</td>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,9 +47,8 @@
                                         </td>
 
 										<td >{{ $table->category_id }}</td>
-										<td >{{ $table->category_name }}</td>
-										<td >{{ $table->category_description }}</td>
-										<td >{{ $table->category_active }}</td>
+										<td >{{ $table->category_nama }}</td>
+										<td >{{ YesNoType::getDescription($table->category_notification) }}</td>
 
                                     </tr>
                                 @empty

@@ -43,10 +43,9 @@
                                         <td class="col-md-2 text-center column-action">
                                             <x-crud :model="$table" />
                                         </td>
-                                        
-										<td >{{ $table->brand_id }}</td>
-										<td >{{ $table->brand_name }}</td>
-										<td >{{ $table->brand_description }}</td>
+
+										<td >{{ $table->field_primary }}</td>
+										<td >{{ $table->field_name }}</td>
 
                                     </tr>
                                 @empty

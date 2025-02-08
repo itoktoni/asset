@@ -4,7 +4,7 @@ namespace App\Facades\Model;
 
 use Illuminate\Support\Facades\Facade;
 
-class ProductModel extends \App\Dao\Models\Product
+class AssetModel extends \App\Dao\Models\Asset
 {
     protected static function getFacadeAccessor()
     {

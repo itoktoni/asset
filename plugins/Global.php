@@ -167,7 +167,7 @@ function imageUrl($value, $folder = null)
 {
     $path = $folder ? $folder : moduleCode();
 
-    return asset('public/storage/'.$path.'/'.$value);
+    return $value ? url('storage/files/' . $path.'/'.$value) : url('images/noimage.jpeg');
 }
 
 function formatDateMySql($value, $datetime = false)

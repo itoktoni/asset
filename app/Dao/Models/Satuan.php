@@ -6,32 +6,33 @@ use App\Dao\Models\Core\SystemModel;
 
 
 /**
- * Class Type
+ * Class Satuan
  *
- * @property $type_id
- * @property $type_name
- * @property $type_description
+ * @property $satuan_code
+ * @property $satuan_name
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 
-class Type extends SystemModel
+class Satuan extends SystemModel
 {
     protected $perPage = 20;
-    protected $table = 'type';
-    protected $primaryKey = 'type_id';
+    protected $table = 'satuan';
+    protected $primaryKey = 'satuan_code';
+
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = ['type_id', 'type_name', 'type_description'];
+    protected $fillable = ['satuan_code', 'satuan_nama'];
 
     public static function field_name()
     {
-        return 'type_name';
+        return 'satuan_nama';
     }
 
     public function getFieldNameAttribute()

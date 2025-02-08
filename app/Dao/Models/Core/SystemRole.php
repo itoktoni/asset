@@ -4,7 +4,7 @@ namespace App\Dao\Models\Core;
 
 use App\Dao\Builder\DataBuilder;
 use App\Dao\Entities\Core\SystemRoleEntity;
-use App\Facades\Model\GroupModel;
+use App\Facades\Model\GroupsModel;
 use App\Facades\Model\RoleModel;
 use Illuminate\Support\Str;
 
@@ -53,7 +53,7 @@ class SystemRole extends SystemModel
 
     public function has_group()
     {
-        return $this->belongsToMany(GroupModel::getModel(), 'system_group_connection_role', 'system_role_code', 'system_group_code');
+        return $this->belongsToMany(GroupsModel::getModel(), 'system_group_connection_role', 'system_role_code', 'system_group_code');
     }
 
     public static function boot()

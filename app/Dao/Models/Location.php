@@ -33,11 +33,11 @@ class Location extends SystemModel
      *
      * @var array<int, string>
      */
-    protected $fillable = ['location_id', 'location_name', 'location_description', 'location_building_id', 'location_floor_id', 'location_pic_user_id', 'location_phone', 'location_jenis_layanan', 'location_location_category_id'];
+    protected $fillable = ['location_id', 'location_nama', 'location_keterangan'];
 
     public static function field_name()
     {
-        return 'location_name';
+        return 'location_nama';
     }
 
     public function getFieldNameAttribute()

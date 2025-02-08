@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Core;
 
 use App\Dao\Enums\Core\LevelType;
-use App\Facades\Model\GroupModel;
+use App\Facades\Model\GroupsModel;
 use App\Facades\Model\RoleModel;
 use App\Http\Requests\Core\RoleRequest;
 use App\Services\Core\UpdateRoleService;
@@ -23,7 +23,7 @@ class RolesController extends MasterController
     protected function beforeForm()
     {
 
-        $group = GroupModel::getOptions();
+        $group = GroupsModel::getOptions();
         $level = LevelType::getOptions();
 
         self::$share = [

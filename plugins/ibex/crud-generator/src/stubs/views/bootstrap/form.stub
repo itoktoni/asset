@@ -3,7 +3,7 @@
         <x-card>
             <x-action form="form" />
 
-            <div class="row">
+            <div class="">
                 @bind($model)
                     {{form}}
                 @endbind

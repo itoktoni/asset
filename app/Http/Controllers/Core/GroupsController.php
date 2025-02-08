@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Core;
 
 use App\Dao\Models\Core\SystemMenu;
-use App\Facades\Model\GroupModel;
+use App\Facades\Model\GroupsModel;
 use App\Http\Requests\Core\GroupsRequest;
 use App\Services\Core\UpdateGroupService;
 use App\Services\Master\CreateService;
@@ -12,7 +12,7 @@ use Plugins\Response;
 
 class GroupsController extends MasterController
 {
-    public function __construct(GroupModel $model, SingleService $service)
+    public function __construct(GroupsModel $model, SingleService $service)
     {
         $this->model = $model::getModel();
         self::$service = self::$service ?? $service;

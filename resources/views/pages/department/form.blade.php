@@ -3,17 +3,17 @@
         <x-card>
             <x-action form="form" />
 
-            <div class="row">
                 @bind($model)
-                    
-                <x-form-input col="6" name="department_id" />
-                <x-form-input col="6" name="department_user_id" />
-                <x-form-input col="6" name="department_name" />
-                <x-form-input col="6" name="department_pic" />
-                <x-form-input col="6" name="department_description" />
+
+                <x-form-input col="6" name="department_nama" />
+                <x-form-input col="3" name="department_pic" />
+                <x-form-input col="3" name="department_phone" />
+
+                <x-form-select col="3" name="department_notification" :options="$notification" />
+                <x-form-select col="9" class="tag" multiple name="user[]" :default="$selected ?? []"
+                :options="$user" />
 
                 @endbind
-            </div>
 
         </x-card>
     </x-form>

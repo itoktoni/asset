@@ -31,6 +31,9 @@
                                             @endif
                                         </th>
                                     @endforeach
+                                    <th>Penanggung Jawab</th>
+                                    <th>Telp</th>
+                                    <th>Notifikasi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,12 +46,12 @@
                                         <td class="col-md-2 text-center column-action">
                                             <x-crud :model="$table" />
                                         </td>
-                                        
+
 										<td >{{ $table->department_id }}</td>
-										<td >{{ $table->department_user_id }}</td>
-										<td >{{ $table->department_name }}</td>
+										<td >{{ $table->department_nama }}</td>
 										<td >{{ $table->department_pic }}</td>
-										<td >{{ $table->department_description }}</td>
+										<td >{{ $table->department_phone }}</td>
+										<td >{{ YesNoType::getDescription($table->department_notification) }}</td>
 
                                     </tr>
                                 @empty

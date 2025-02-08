@@ -27,11 +27,11 @@ class Brand extends SystemModel
      *
      * @var array<int, string>
      */
-    protected $fillable = ['brand_id', 'brand_name', 'brand_description'];
+    protected $fillable = ['brand_id', 'brand_nama'];
 
     public static function field_name()
     {
-        return 'brand_name';
+        return 'brand_nama';
     }
 
     public function getFieldNameAttribute()

@@ -6,13 +6,13 @@ use App\Http\Controllers\Core\MasterController;
 use App\Http\Function\CreateFunction;
 use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
-use App\Facades\Model\ProductModel;
+use App\Facades\Model\SatuanModel;
 
-class ProductController extends MasterController
+class SatuanController extends MasterController
 {
     use CreateFunction, UpdateFunction;
 
-    public function __construct(ProductModel $model, SingleService $service)
+    public function __construct(SatuanModel $model, SingleService $service)
     {
         self::$service = self::$service ?? $service;
         $this->model = $model::getModel();

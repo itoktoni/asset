@@ -10,6 +10,7 @@ use App\Dao\Models\Core\SystemPermision;
 use App\Dao\Models\Core\SystemRole;
 use App\Dao\Models\Core\Team;
 use App\Dao\Models\Core\User;
+use App\Dao\Models\Group;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
@@ -27,7 +28,7 @@ class FacadeServiceProviders extends ServiceProvider
         $this->app->bind('MenuModel', SystemMenu::class);
         $this->app->bind('LinkModel', SystemLink::class);
         $this->app->bind('RoleModel', SystemRole::class);
-        $this->app->bind('GroupModel', SystemGroup::class);
+        $this->app->bind('GroupsModel', SystemGroup::class);
         $this->app->bind('PermisionModel', SystemPermision::class);
         $this->app->bind('FilterModel', Filters::class);
         $this->app->bind('TeamModel', Team::class);
@@ -41,7 +42,7 @@ class FacadeServiceProviders extends ServiceProvider
         $files = File::allFiles($path);
 
         foreach ($files as $file) {
-            if (! in_array($file->getFilenameWithoutExtension(), ['FilterModel', 'GroupModel', 'LinkModel', 'MenuModel', 'PermisionModel', 'RoleModel', 'TeamModel', 'UserModel'])) {
+            if (! in_array($file->getFilenameWithoutExtension(), ['FilterModel', 'GroupsModel', 'LinkModel', 'MenuModel', 'PermisionModel', 'RoleModel', 'TeamModel', 'UserModel'])) {
                 $code = $file->getFilenameWithoutExtension();
                 $mod = str_replace('Model', '', $code);
                 $fileNames[$code] = "\\App\\Dao\\Models\\{$mod}";

@@ -3,7 +3,7 @@
 namespace Plugins;
 
 use App\Facades\Model\FilterModel;
-use App\Facades\Model\GroupModel;
+use App\Facades\Model\GroupsModel;
 use App\Facades\Model\LinkModel;
 use App\Facades\Model\MenuModel;
 use App\Facades\Model\PermisionModel;
@@ -29,7 +29,7 @@ class Query
 
         $groups = [];
         try {
-            $groups = GroupModel::with([
+            $groups = GroupsModel::with([
                 'has_menu' => function ($query) {
                     $query->orderBy('system_menu_sort', 'DESC');
                 },
