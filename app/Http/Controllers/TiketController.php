@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Dao\Enums\Core\SheetType;
-use App\Dao\Enums\Core\TiketType;
+use App\Dao\Enums\TiketType;
+use App\Dao\Enums\JobStatusType;
+use App\Dao\Enums\JobType;
+use App\Dao\Models\Job;
 use App\Dao\Models\Sheet;
+use App\Dao\Models\Tiket;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\CategoryModel;
 use App\Facades\Model\LocationModel;
@@ -60,16 +64,18 @@ class TiketController extends MasterController
     public function getAmbil($code)
     {
         $model = $this->get($code);
+        $model->{Tiket::field_user()} = auth()->user()->id;
+        $model->save();
 
-        Sheet::create([
-            Sheet::field_code() => $model->tiket_code,
-            Sheet::field_status() => SheetType::Proses,
-            Sheet::field_tiket_id() => $model->field_primary,
-            Sheet::field_asset_id() => $model->field_asset_id,
-            Sheet::field_location_id() => $model->field_location_id,
-            Sheet::field_description() => $model->field_description,
-            'sheet_checked_at' => date('Y-m-d H:i:s'),
-            'sheet_checked_by' => auth()->user()->id,
+        Job::updateOrCreate([
+            Job::field_code() => $model->tiket_code,
+            Job::field_tiket_id() => $model->field_primary,
+            Job::field_asset_id() => $model->field_asset_id,
+            Job::field_location_id() => $model->field_location_id,
+            Job::field_description() => $model->field_description,
+            Job::field_type() => JobType::Korektif,
+        ], [
+            Job::field_status() => JobStatusType::Ambil,
         ]);
 
         Alert::update("Tiket berhasil di ambil !");

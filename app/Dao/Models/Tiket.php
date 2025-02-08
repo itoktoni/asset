@@ -5,6 +5,7 @@ namespace App\Dao\Models;
 use App\Dao\Entities\Core\TiketEntity;
 use App\Dao\Models\Core\SystemModel;
 use App\Facades\Model\AssetModel;
+use App\Facades\Model\JobModel;
 use App\Facades\Model\LocationModel;
 use App\Facades\Model\UserModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -61,7 +62,7 @@ class Tiket extends SystemModel
      *
      * @var array<int, string>
      */
-    protected $fillable = ['tiket_id', 'tiket_code', 'tiket_type', 'tiket_nama', 'tiket_keterangan', 'tiket_gambar', 'tiket_tanggal', 'tiket_pelapor', 'tiket_id_location', 'tiket_id_category', 'tiket_id_asset'];
+    protected $fillable = ['tiket_id', 'tiket_code', 'tiket_type', 'tiket_nama', 'tiket_keterangan', 'tiket_gambar', 'tiket_tanggal', 'tiket_pelapor', 'tiket_id_location', 'tiket_id_category', 'tiket_id_asset', 'tiket_taked_by'];
 
     public static function field_name()
     {
@@ -88,11 +89,19 @@ class Tiket extends SystemModel
         return $this->hasOne(UserModel::getModel(), UserModel::field_primary(), $this->field_user_id());
     }
 
+    public function has_job()
+    {
+        return $this->hasMany(JobModel::getModel(), JobModel::field_tiket_id(), $this->field_primary());
+    }
+
     public function dataRepository()
     {
         $query = $this
-            ->addSelect([$this->getTable().'.*', Location::field_name()])
+            ->addSelect([$this->getTable().'.*', Location::field_name(), Job::field_status(), Job::field_primary(), Job::field_analisa(), Job::field_kesimpulan()])
             ->leftJoinRelationship('has_location')
+            ->leftJoinRelationship('has_job')
+            ->groupBy($this->field_primary())
+            ->orderBy(Job::field_created_at(), 'ASC')
             ->sortable()
             ->filter();
 

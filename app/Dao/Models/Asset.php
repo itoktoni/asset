@@ -6,6 +6,7 @@ use App\Dao\Entities\Core\AssetEntity;
 use App\Dao\Models\Core\SystemModel;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\DepartmentModel;
+use App\Facades\Model\GroupModel;
 use App\Facades\Model\LocationModel;
 use App\Facades\Model\PenamaanModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -66,7 +67,7 @@ class Asset extends SystemModel
      *
      * @var array<int, string>
      */
-    protected $fillable = ['asset_id', 'asset_nama', 'asset_serial_number', 'asset_code', 'asset_status', 'asset_gambar', 'asset_id_penamaan', 'asset_id_location', 'asset_id_department', 'asset_keterangan', 'asset_created_at', 'asset_updated_at', 'asset_deleted_at', 'asset_deleted_by', 'asset_updated_by', 'asset_created_by'];
+    protected $fillable = ['asset_id', 'asset_nama', 'asset_serial_number', 'asset_code', 'asset_status', 'asset_gambar', 'asset_id_penamaan', 'asset_id_location', 'asset_id_department', 'asset_id_group', 'asset_keterangan', 'asset_created_at', 'asset_updated_at', 'asset_deleted_at', 'asset_deleted_by', 'asset_updated_by', 'asset_created_by'];
 
     public static function field_name()
     {
@@ -93,10 +94,16 @@ class Asset extends SystemModel
         return $this->hasOne(DepartmentModel::getModel(), DepartmentModel::field_primary(), $this->field_department_id());
     }
 
+    public function has_group()
+    {
+        return $this->hasOne(GroupModel::getModel(), GroupModel::field_primary(), $this->field_group_id());
+    }
+
     public function dataRepository()
     {
         $query = $this
-            ->addSelect([$this->getTable().'.*', Location::field_name(), Department::field_name()])
+            ->addSelect([$this->getTable().'.*', Location::field_name(), Department::field_name(), Group::field_name()])
+            ->leftJoinRelationship('has_group')
             ->leftJoinRelationship('has_location')
             ->leftJoinRelationship('has_department')
             ->sortable()
@@ -132,9 +139,9 @@ class Asset extends SystemModel
                 $name = $name.' '.$model->has_location->field_name;
             }
 
-            if($model->has_department)
+            if($model->asset_serial_number)
             {
-                $name = $name.' '.$model->has_department->field_name;
+                $name = $name.' - '. $model->asset_serial_number;
             }
 
 

@@ -1,7 +1,7 @@
 <?php
 
 use App\Dao\Enums\Core\MenuType;
-use App\Dao\Enums\Core\NotificationType;
+use App\Dao\Enums\NotificationType;
 use App\Events\SendBroadcast;
 use App\Http\Controllers\Core\HomeController;
 use App\Http\Controllers\PublicController;

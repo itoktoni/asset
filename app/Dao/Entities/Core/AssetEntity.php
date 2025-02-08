@@ -66,6 +66,17 @@ trait AssetEntity
         return $this->{$this->field_department_id()};
     }
 
+    public static function field_group_id()
+    {
+        return 'asset_id_group';
+    }
+
+    public function getFieldGroupIdAttribute()
+    {
+        return $this->{$this->field_group_id()};
+    }
+
+
     public static function field_location_id()
     {
         return 'asset_id_location';

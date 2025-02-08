@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Dao\Enums\Core\AssetStatusType;
+use App\Dao\Enums\AssetStatusType;
 use App\Http\Controllers\Core\MasterController;
 use App\Http\Function\CreateFunction;
 use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\DepartmentModel;
+use App\Facades\Model\GroupModel;
 use App\Facades\Model\LocationModel;
 use App\Facades\Model\PenamaanModel;
 use App\Http\Requests\AssetRequest;
@@ -29,6 +30,7 @@ class AssetController extends MasterController
     protected function beforeForm()
     {
         $department = DepartmentModel::getOptions();
+        $teknisi = GroupModel::getOptions();
         $location = LocationModel::getOptions();
         $naming = PenamaanModel::getOptions();
         $status = AssetStatusType::getOptions();
@@ -37,6 +39,7 @@ class AssetController extends MasterController
             'status' => $status,
             'naming' => $naming,
             'location' => $location,
+            'teknisi' => $teknisi,
             'department' => $department,
         ];
     }

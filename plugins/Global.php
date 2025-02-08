@@ -1,6 +1,6 @@
 <?php
 
-use App\Dao\Enums\Core\NotificationType;
+use App\Dao\Enums\NotificationType;
 use App\Events\SendBroadcast;
 use App\Facades\Model\UserModel;
 use Carbon\Carbon;

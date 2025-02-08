@@ -4,7 +4,10 @@
             <x-action form="form" />
 
                 @bind($model)
-                    {{form}}
+                    
+                <x-form-input col="6" name="saran_id" />
+                <x-form-input col="6" name="saran_nama" />
+
                 @endbind
 
         </x-card>

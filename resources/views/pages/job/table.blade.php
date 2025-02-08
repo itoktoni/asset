@@ -22,8 +22,8 @@
                                         <input class="btn-check-d" type="checkbox">
                                     </th>
                                     <th class="text-center column-action">{{ __('Action') }}</th>
-                                    <th>@sortablelink('sheet_nama', __('Keterangan Pekerjaan'))</th>
-                                    <th>@sortablelink('sheet_code', __('Nomer Pekerjaan'))</th>
+                                    <th>@sortablelink('job_nama', __('Keterangan Pekerjaan'))</th>
+                                    <th>@sortablelink('job_code', __('Nomer Pekerjaan'))</th>
                                     <th>Gambar</th>
                                 </tr>
                             </thead>
@@ -43,7 +43,9 @@
                                             <br>
                                             <br>
 
-                                            No. Tiket : <a href="{{ route('tiket.getUpdate', ['code' => $table->tiket_id]) }}"><b class="text-primary">{{ $table->tiket_code }}</b></a>
+                                            No. Tiket : <a
+                                                href="{{ route('tiket.getUpdate', ['code' => $table->tiket_id]) }}"><b
+                                                    class="text-primary">{{ $table->tiket_code }}</b></a>
                                             <br>
                                             <b>Tgl Tiket</b> : {{ formatDate($table->tiket_tanggal) }}
                                             <br>
@@ -52,22 +54,26 @@
 
                                             <b>Rusak</b> : {!! nl2br($table->field_description) !!}
                                             <br>
-                                            @if($table->location_nama)
-                                            <b>Ruangan :</b> {{ $table->location_nama }}
+                                            @if ($table->location_nama)
+                                                <b>Ruangan :</b> {{ $table->location_nama }}
                                             @endif
                                         </td>
 
                                         <td>
                                             No. Pekerjaan : <b>{{ $table->field_code }}</b>
                                             <br>
-                                            Tgl Cek : <b>{{ formatDate($table->sheet_checked_at) }}</b>
+                                            Tgl Ambil : <b>{{ formatDate($table->job_created_at) }}</b>
+                                            <br>
+                                            Tgl Cek : <b>{{ formatDate($table->job_checked_at) }}</b>
                                             <br>
                                             <b>Status</b> : {{ $table->field_status }}
                                         </td>
 
                                         <td class="column-action">
                                             <div>
-                                                <img class="img-thumbnail img-fluid" src="{{ imageUrl($table->field_image, 'tiket') }}">
+                                                <img class="popup img-thumbnail img-fluid" data-toggle="modal"
+                                                    data-target="#exampleModal"
+                                                    src="{{ imageUrl($table->field_image, 'job') }}">
                                             </div>
                                         </td>
 
@@ -76,9 +82,43 @@
                                 @endforelse
                             </tbody>
                         </table>
+
+                        <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+
+                                        <button type="button" class="text-right mb-3 btn btn-block btn-dark"
+                                            data-dismiss="modal">Tutup gambar</button>
+
+                                        <div class="img-show">
+                                            <img class="img-fluid" src="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <x-pagination :data="$data" />
+
                 </div>
+
+                @push('footer')
+                    <script>
+                        $(function() {
+                            "use strict";
+
+                            $(".popup").click(function() {
+                                var $src = $(this).attr("src");
+                                $(".show").fadeIn();
+                                $(".img-show img").attr("src", $src);
+                            });
+
+                        });
+                    </script>
+                @endpush
 
             </x-form>
 
@@ -87,4 +127,3 @@
     </x-card>
 
 </x-layout>
-

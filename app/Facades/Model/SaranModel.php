@@ -4,7 +4,7 @@ namespace App\Facades\Model;
 
 use Illuminate\Support\Facades\Facade;
 
-class SheetModel extends \App\Dao\Models\Sheet
+class SaranModel extends \App\Dao\Models\Saran
 {
     protected static function getFacadeAccessor()
     {

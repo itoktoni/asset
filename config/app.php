@@ -4,7 +4,7 @@ use Alkhachatryan\LaravelWebConsole\LaravelWebConsoleServiceProvider;
 use App\Dao\Enums\Core\BooleanType;
 use App\Dao\Enums\Core\LevelType;
 use App\Dao\Enums\Core\MenuType;
-use App\Dao\Enums\Core\YesNoType;
+use App\Dao\Enums\JobStatusType;
 use App\Dao\Models\Core\SystemGroup;
 use App\Providers\CacheableAuthUserServiceProvider;
 use App\Providers\FacadeServiceProviders;
@@ -260,6 +260,7 @@ return [
         'BooleanType' => BooleanType::class,
         'MenuType' => MenuType::class,
         'LevelType' => LevelType::class,
+        'JobStatusType' => JobStatusType::class,
         'YesNoType' => YesNoType::class,
         'SharedData' => SharedData::class,
         'Query' => Query::class,

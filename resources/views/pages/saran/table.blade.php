@@ -22,10 +22,15 @@
                                         <input class="btn-check-d" type="checkbox">
                                     </th>
                                     <th class="text-center column-action">{{ __('Action') }}</th>
-                                    <th>Gambar</th>
-                                    <th>Serial Number</th>
-                                    <th>@sortablelink('asset_nama', __('Keterangan'))</th>
-
+                                    @foreach ($fields as $value)
+                                        <th {{ Template::extractColumn($value) }}>
+                                            @if ($value->sort)
+                                                @sortablelink($value->code, __($value->name))
+                                            @else
+                                                {{ __($value->name) }}
+                                            @endif
+                                        </th>
+                                    @endforeach
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,29 +43,10 @@
                                         <td class="col-md-2 text-center column-action">
                                             <x-crud :model="$table" />
                                         </td>
-                                        <td class="column-action">
-                                            <div>
-                                                <img class="img-thumbnail img-fluid" src="{{ imageUrl($table->field_image, 'asset') }}">
-                                            </div>
-                                        </td>
-										<td>
-                                            SN : <b>{{ $table->asset_serial_number }}</b>
-                                            <br>
-                                            CODE : {{ $table->asset_code }}
-                                        </td>
+                                        
+										<td >{{ $table->saran_id }}</td>
+										<td >{{ $table->saran_nama }}</td>
 
-										<td>
-                                            <b>
-                                                <a class="text-primary" href="{{ route('penamaan.getUpdate', ['code' => $table->field_penamaan_id]) }}">{{ $table->asset_nama }}</a>
-                                            </b>
-                                            <br>
-                                            Departemen : {{ $table->department_nama }}
-
-                                            <br>
-                                            <b>Ruangan</b> : {{ $table->location_nama }}
-                                            <br>
-                                            Pemeliharaan : <b>{{ $table->group_nama }}</b>
-                                        </td>
                                     </tr>
                                 @empty
                                 @endforelse

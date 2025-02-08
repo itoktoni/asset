@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Dao\Enums\Core\TechnologyType;
+use App\Dao\Enums\TechnologyType;
 use App\Dao\Enums\Core\YesNoType;
 use App\Dao\Models\Category;
 use App\Dao\Models\Model;
@@ -16,6 +16,7 @@ use App\Services\Master\SingleService;
 use App\Facades\Model\PenamaanModel;
 use App\Facades\Model\SatuanModel;
 use App\Http\Requests\AssetRequest;
+use App\Http\Requests\PenamaanRequest;
 use App\Services\Master\CreateService;
 use App\Services\Master\UpdateService;
 use Plugins\Response;
@@ -45,5 +46,19 @@ class PenamaanController extends MasterController
             'category' => $category,
             'brand' => $brand,
         ];
+    }
+
+    public function postCreate(PenamaanRequest $request, CreateService $service)
+    {
+        $data = $service->save($this->model, $request);
+
+        return Response::redirectBack($data);
+    }
+
+    public function postUpdate($code, PenamaanRequest $request, UpdateService $service)
+    {
+        $data = $service->update($this->model, $request, $code);
+
+        return Response::redirectBack($data);
     }
 }

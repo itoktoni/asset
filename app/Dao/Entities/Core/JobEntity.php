@@ -4,11 +4,11 @@ namespace App\Dao\Entities\Core;
 
 use App\Facades\Model\UserModel;
 
-trait SheetEntity
+trait JobEntity
 {
     public static function field_code()
     {
-        return 'sheet_code';
+        return 'job_code';
     }
 
     public function getFieldCodeAttribute()
@@ -18,7 +18,7 @@ trait SheetEntity
 
     public static function field_status()
     {
-        return 'sheet_status';
+        return 'job_status';
     }
 
     public function getFieldStatusAttribute()
@@ -28,7 +28,7 @@ trait SheetEntity
 
     public static function field_analisa()
     {
-        return 'sheet_analisa';
+        return 'job_analisa';
     }
 
     public function getFieldAnalisaAttribute()
@@ -38,7 +38,7 @@ trait SheetEntity
 
     public static function field_kesimpulan()
     {
-        return 'sheet_kesimpulan';
+        return 'job_kesimpulan';
     }
 
     public function getFieldKesimpulanAttribute()
@@ -48,7 +48,7 @@ trait SheetEntity
 
     public static function field_tanggal()
     {
-        return 'sheet_tanggal';
+        return 'job_tanggal';
     }
 
     public function getFieldTanggalAttribute()
@@ -58,7 +58,7 @@ trait SheetEntity
 
     public static function field_type()
     {
-        return 'sheet_type';
+        return 'job_type';
     }
 
     public function getFieldTypeAttribute()
@@ -68,7 +68,7 @@ trait SheetEntity
 
     public static function field_pelapor()
     {
-        return 'sheet_pelapor';
+        return 'job_pelapor';
     }
 
     public function getFieldPelaporAttribute()
@@ -76,19 +76,19 @@ trait SheetEntity
         return $this->{$this->field_pelapor()};
     }
 
-    public static function field_sheet_id()
+    public static function field_job_id()
     {
-        return 'sheet_sheet_id';
+        return 'job_job_id';
     }
 
     public function getFieldNamingAttribute()
     {
-        return $this->{$this->field_sheet_id()};
+        return $this->{$this->field_job_id()};
     }
 
     public static function field_image()
     {
-        return 'sheet_gambar';
+        return 'job_gambar';
     }
 
     public function getFieldImageAttribute()
@@ -98,7 +98,7 @@ trait SheetEntity
 
     public static function field_description()
     {
-        return 'sheet_keterangan';
+        return 'job_keterangan';
     }
 
     public function getFieldDescriptionAttribute()
@@ -108,7 +108,7 @@ trait SheetEntity
 
     public static function field_asset_id()
     {
-        return 'sheet_id_asset';
+        return 'job_id_asset';
     }
 
     public function getFieldAssetIdAttribute()
@@ -118,7 +118,7 @@ trait SheetEntity
 
     public static function field_user_id()
     {
-        return 'sheet_created_by';
+        return 'job_created_by';
     }
 
     public function getFieldUserIdAttribute()
@@ -128,7 +128,7 @@ trait SheetEntity
 
     public static function field_tiket_id()
     {
-        return 'sheet_id_tiket';
+        return 'job_id_tiket';
     }
 
     public function getFieldTiketIdAttribute()
@@ -138,11 +138,51 @@ trait SheetEntity
 
     public static function field_location_id()
     {
-        return 'sheet_id_location';
+        return 'job_id_location';
     }
 
     public function getFieldLocationIdAttribute()
     {
         return $this->{$this->field_location_id()};
+    }
+
+    public static function field_created_at()
+    {
+        return 'job_created_at';
+    }
+
+    public function getFieldCreatedAtAttribute()
+    {
+        return $this->{$this->field_created_at()};
+    }
+
+    public static function field_checked_at()
+    {
+        return 'job_checked_at';
+    }
+
+    public function getFieldPickAtAttribute()
+    {
+        return $this->{$this->field_checked_at()};
+    }
+
+    public static function field_finished_at()
+    {
+        return 'job_finished_at';
+    }
+
+    public function getFieldFinishedAtAttribute()
+    {
+        return $this->{$this->field_finished_at()};
+    }
+
+    public static function field_saran_id()
+    {
+        return 'job_id_saran';
+    }
+
+    public function getFieldSaranIdAttribute()
+    {
+        return $this->{$this->field_saran_id()};
     }
 }

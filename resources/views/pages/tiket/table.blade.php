@@ -24,6 +24,7 @@
                                     <th class="text-center column-action">{{ __('Action') }}</th>
                                     <th>@sortablelink('tiket_code', __('Nomer Tiket'))</th>
                                     <th>@sortablelink('tiket_nama', __('Keterangan'))</th>
+                                    <th>Status</th>
                                     <th>Gambar</th>
 
                                 </tr>
@@ -62,10 +63,14 @@
                                             <b>Ruangan</b> : {{ $table->location_nama }}
                                             @endif
                                         </td>
+                                        <td>
+                                            <b>{{ JobStatusType::getDescription($table->job_status) }}</b>
+                                        </td>
 
                                         <td class="column-action">
                                             <div>
-                                                <img class="img-thumbnail img-fluid" src="{{ imageUrl($table->field_image, 'tiket') }}">
+                                                <img class="popup img-thumbnail img-fluid" data-toggle="modal"
+                                                data-target="#exampleModal" src="{{ imageUrl($table->field_image, 'tiket') }}">
                                             </div>
                                         </td>
 
@@ -74,9 +79,42 @@
                                 @endforelse
                             </tbody>
                         </table>
+
+                        <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+
+                                        <button type="button" class="text-right mb-3 btn btn-block btn-dark"
+                                            data-dismiss="modal">Tutup gambar</button>
+
+                                        <div class="img-show">
+                                            <img class="img-fluid" src="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <x-pagination :data="$data" />
                 </div>
+
+                @push('footer')
+                    <script>
+                        $(function() {
+                            "use strict";
+
+                            $(".popup").click(function() {
+                                var $src = $(this).attr("src");
+                                $(".show").fadeIn();
+                                $(".img-show img").attr("src", $src);
+                            });
+
+                        });
+                    </script>
+                @endpush
 
             </x-form>
 

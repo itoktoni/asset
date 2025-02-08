@@ -20,8 +20,8 @@
                         <x-form-upload col="6" id="cameraFileInput" accept="image/*" style="{!! Template::isMobile() ? 'display:none' : '' !!}" label="Upload Gambar" name="images" />
                     </div>
 
-                    <img class="img-thumbnail" style="height: {{ $model && $model->field_picture ? 'auto' : '0px' }}"
-                        src="{{ $model && $model->field_picture ? asset('files/ticket/'.$model->field_picture) : url('images/noimage.jpeg') }}"
+                    <img class="img-thumbnail" style="height: {{ $model && $model->field_image ? 'auto' : '0px' }}"
+                        src="{{ $model && $model->field_image ? imageUrl($model->field_image, 'tiket') : url('images/noimage.jpeg') }}"
                         id="pictureFromCamera" />
 
                 </div>

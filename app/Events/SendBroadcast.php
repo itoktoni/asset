@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Dao\Enums\Core\NotificationType;
+use App\Dao\Enums\NotificationType;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;

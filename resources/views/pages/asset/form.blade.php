@@ -11,7 +11,8 @@
                 <x-form-input col="3" label="Serial Number" name="asset_serial_number" />
                 <x-form-input col="3" label="Code Asset" name="asset_code" />
 
-                <x-form-select col="6" name="asset_id_location" :options="$location" />
+                <x-form-select col="3" name="asset_id_location" :options="$location" />
+                <x-form-select col="3" name="asset_id_group" label="Pemeliharaan" :options="$teknisi" />
                 <x-form-select col="6" name="asset_id_department" :options="$department" />
 
                 <x-form-select col="6" name="asset_status" :options="$status" />

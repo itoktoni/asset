@@ -125,4 +125,14 @@ trait TiketEntity
     {
         return $this->{$this->field_location_id()};
     }
+
+    public static function field_user()
+    {
+        return 'tiket_taked_by';
+    }
+
+    public function getFieldUserAttribute()
+    {
+        return $this->{$this->field_user()};
+    }
 }

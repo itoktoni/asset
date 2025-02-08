@@ -43,7 +43,7 @@ class Penamaan extends SystemModel
 
     public static function field_name()
     {
-        return 'penamaan_nama';
+        return 'penamaan_gabungan';
     }
 
     public function getFieldNameAttribute()
