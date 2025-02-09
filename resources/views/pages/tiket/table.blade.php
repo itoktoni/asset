@@ -24,7 +24,6 @@
                                     <th class="text-center column-action">{{ __('Action') }}</th>
                                     <th>@sortablelink('tiket_code', __('Nomer Tiket'))</th>
                                     <th>@sortablelink('tiket_nama', __('Keterangan'))</th>
-                                    <th>Status</th>
                                     <th>Gambar</th>
 
                                 </tr>
@@ -50,10 +49,13 @@
                                             Tgl Buat : {{ formatDate($table->field_tanggal) }}
                                             <br>
                                             Dibuat : <b>{{ $table->field_pelapor }}</b>
+                                            <br>
+                                            Status : <b>{{ JobStatusType::getDescription($table->job_status) }}</b>
                                         </td>
 
 										<td class="col-md-6">
                                             <b style="text-decoration: underline">{{ $table->field_name }}</b>
+                                            <br>
                                             <br>
                                             Tipe : <b>{{ $table->field_type }}</b>
                                             <br>
@@ -62,9 +64,6 @@
                                             <br>
                                             <b>Ruangan</b> : {{ $table->location_nama }}
                                             @endif
-                                        </td>
-                                        <td>
-                                            <b>{{ JobStatusType::getDescription($table->job_status) }}</b>
                                         </td>
 
                                         <td class="column-action">
@@ -86,7 +85,7 @@
                                     <div class="modal-body">
 
                                         <button type="button" class="text-right mb-3 btn btn-block btn-dark"
-                                            data-dismiss="modal">Tutup gambar</button>
+                                            data-dismiss="modal">Tutup Gambar</button>
 
                                         <div class="img-show">
                                             <img class="img-fluid" src="">

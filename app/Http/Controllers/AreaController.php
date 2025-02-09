@@ -6,13 +6,13 @@ use App\Http\Controllers\Core\MasterController;
 use App\Http\Function\CreateFunction;
 use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
-use App\Facades\Model\LocationModel;
+use App\Facades\Model\AreaModel;
 
-class LocationController extends MasterController
+class AreaController extends MasterController
 {
     use CreateFunction, UpdateFunction;
 
-    public function __construct(LocationModel $model, SingleService $service)
+    public function __construct(AreaModel $model, SingleService $service)
     {
         self::$service = self::$service ?? $service;
         $this->model = $model::getModel();

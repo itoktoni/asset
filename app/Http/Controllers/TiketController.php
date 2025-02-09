@@ -11,7 +11,7 @@ use App\Dao\Models\Sheet;
 use App\Dao\Models\Tiket;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\CategoryModel;
-use App\Facades\Model\LocationModel;
+use App\Facades\Model\LokasiModel;
 use App\Http\Controllers\Core\MasterController;
 use App\Http\Function\CreateFunction;
 use App\Http\Function\UpdateFunction;
@@ -36,7 +36,7 @@ class TiketController extends MasterController
 
     protected function beforeForm()
     {
-        $location = LocationModel::getOptions();
+        $location = LokasiModel::getOptions();
         $asset = AssetModel::getOptions();
         $status = TiketType::getOptions();
 

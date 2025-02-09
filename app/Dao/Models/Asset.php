@@ -7,7 +7,7 @@ use App\Dao\Models\Core\SystemModel;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\DepartmentModel;
 use App\Facades\Model\GroupModel;
-use App\Facades\Model\LocationModel;
+use App\Facades\Model\LokasiModel;
 use App\Facades\Model\PenamaanModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Wildside\Userstamps\Userstamps;
@@ -67,7 +67,31 @@ class Asset extends SystemModel
      *
      * @var array<int, string>
      */
-    protected $fillable = ['asset_id', 'asset_nama', 'asset_serial_number', 'asset_code', 'asset_status', 'asset_gambar', 'asset_id_penamaan', 'asset_id_location', 'asset_id_department', 'asset_id_group', 'asset_keterangan', 'asset_created_at', 'asset_updated_at', 'asset_deleted_at', 'asset_deleted_by', 'asset_updated_by', 'asset_created_by'];
+    protected $fillable = [
+        'asset_id',
+        'asset_nama',
+        'asset_serial_number',
+        'asset_code',
+        'asset_status',
+        'asset_gambar',
+        'asset_id_penamaan',
+        'asset_id_lokasi',
+        'asset_id_department',
+        'asset_id_group',
+        'asset_keterangan',
+        'asset_created_at',
+        'asset_updated_at',
+        'asset_deleted_at',
+        'asset_deleted_by',
+        'asset_updated_by',
+        'asset_created_by',
+        'asset_harga_perolehan',
+        'asset_tahun_pengadaan',
+        'asset_tanggal_diakui',
+        'asset_tanggal_kunjungan',
+        'asset_tanggal_kalibrasi',
+
+    ];
 
     public static function field_name()
     {
@@ -86,7 +110,7 @@ class Asset extends SystemModel
 
     public function has_location()
     {
-        return $this->hasOne(LocationModel::getModel(), LocationModel::field_primary(), $this->field_location_id());
+        return $this->hasOne(LokasiModel::getModel(), LokasiModel::field_primary(), $this->field_location_id());
     }
 
     public function has_department()
@@ -102,7 +126,7 @@ class Asset extends SystemModel
     public function dataRepository()
     {
         $query = $this
-            ->addSelect([$this->getTable().'.*', Location::field_name(), Department::field_name(), Group::field_name()])
+            ->addSelect([$this->getTable().'.*', Lokasi::field_name(), Department::field_name(), Group::field_name()])
             ->leftJoinRelationship('has_group')
             ->leftJoinRelationship('has_location')
             ->leftJoinRelationship('has_department')

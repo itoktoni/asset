@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Dao\Enums\JobStatusType;
 use App\Dao\Enums\TiketType;
 use App\Facades\Model\AssetModel;
-use App\Facades\Model\LocationModel;
+use App\Facades\Model\LokasiModel;
 use App\Http\Controllers\Core\MasterController;
 use App\Http\Function\CreateFunction;
 use App\Http\Function\UpdateFunction;
@@ -25,7 +25,7 @@ class JobController extends MasterController
 
     protected function beforeForm()
     {
-        $location = LocationModel::getOptions();
+        $location = LokasiModel::getOptions();
         $asset = AssetModel::getOptions();
         $status = JobStatusType::getOptions();
         $saran = SaranModel::getOptions();

@@ -4,7 +4,7 @@ namespace App\Facades\Model;
 
 use Illuminate\Support\Facades\Facade;
 
-class LokasiModel extends \App\Dao\Models\Location
+class LokasiModel extends \App\Dao\Models\Lokasi
 {
     protected static function getFacadeAccessor()
     {

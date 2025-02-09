@@ -6,7 +6,7 @@ use App\Dao\Entities\Core\TiketEntity;
 use App\Dao\Models\Core\SystemModel;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\JobModel;
-use App\Facades\Model\LocationModel;
+use App\Facades\Model\LokasiModel;
 use App\Facades\Model\UserModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -76,7 +76,7 @@ class Tiket extends SystemModel
 
     public function has_location()
     {
-        return $this->hasOne(LocationModel::getModel(), LocationModel::field_primary(), $this->field_location_id());
+        return $this->hasOne(LokasiModel::getModel(), LokasiModel::field_primary(), $this->field_location_id());
     }
 
     public function has_asset()
@@ -97,7 +97,7 @@ class Tiket extends SystemModel
     public function dataRepository()
     {
         $query = $this
-            ->addSelect([$this->getTable().'.*', Location::field_name(), Job::field_status(), Job::field_primary(), Job::field_analisa(), Job::field_kesimpulan()])
+            ->addSelect([$this->getTable().'.*', Lokasi::field_name(), Job::field_status(), Job::field_primary(), Job::field_analisa(), Job::field_kesimpulan()])
             ->leftJoinRelationship('has_location')
             ->leftJoinRelationship('has_job')
             ->groupBy($this->field_primary())

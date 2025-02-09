@@ -79,7 +79,7 @@ trait AssetEntity
 
     public static function field_location_id()
     {
-        return 'asset_id_location';
+        return 'asset_id_lokasi';
     }
 
     public function getFieldLocationIdAttribute()

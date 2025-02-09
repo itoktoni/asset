@@ -60,7 +60,7 @@
                                         </td>
 
                                         <td>
-                                            No. Pekerjaan : <b>{{ $table->field_code }}</b>
+                                            <b>{{ $table->field_code }}</b>
                                             <br>
                                             Tgl Ambil : <b>{{ formatDate($table->job_created_at) }}</b>
                                             <br>

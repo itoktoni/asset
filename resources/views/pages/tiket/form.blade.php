@@ -5,12 +5,11 @@
 
             @bind($model)
 
-                <x-form-select col="6" class="search" label="Nama Asset" name="tiket_id_asset" :options="$asset" />
+                <x-form-select col="12" class="search" label="Nama Asset" name="tiket_id_asset" :options="$asset" />
+                <x-form-textarea col="6" rows="5" class="h-100 mb-5" label="Keterangan Kerusakan" name="tiket_keterangan" />
                 <x-form-select col="6" name="tiket_id_location" label="Ruangan" :options="$location" />
 
-                <x-form-textarea col="6" rows="5" class="h-100 mb-5" label="Keterangan Kerusakan" name="tiket_keterangan" />
-
-                <div class="col-md-6">
+                <div class="col-md-6 mt-3">
 
                     @if($model)
                     <input type="hidden" name="file_old" value="{{ $model->field_picture ?? null }}">

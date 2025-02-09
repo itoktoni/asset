@@ -10,7 +10,7 @@ use App\Services\Master\SingleService;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\DepartmentModel;
 use App\Facades\Model\GroupModel;
-use App\Facades\Model\LocationModel;
+use App\Facades\Model\LokasiModel;
 use App\Facades\Model\PenamaanModel;
 use App\Http\Requests\AssetRequest;
 use App\Services\Master\CreateService;
@@ -31,7 +31,7 @@ class AssetController extends MasterController
     {
         $department = DepartmentModel::getOptions();
         $teknisi = GroupModel::getOptions();
-        $location = LocationModel::getOptions();
+        $location = LokasiModel::getOptions();
         $naming = PenamaanModel::getOptions();
         $status = AssetStatusType::getOptions();
 

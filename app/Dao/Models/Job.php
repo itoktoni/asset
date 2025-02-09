@@ -6,7 +6,7 @@ use App\Dao\Entities\Core\JobEntity;
 use App\Dao\Enums\JobStatusType;
 use App\Dao\Models\Core\SystemModel;
 use App\Facades\Model\AssetModel;
-use App\Facades\Model\LocationModel;
+use App\Facades\Model\LokasiModel;
 use App\Facades\Model\SaranModel;
 use App\Facades\Model\TiketModel;
 use App\Facades\Model\UserModel;
@@ -83,7 +83,7 @@ class Job extends SystemModel
 
     public function has_location()
     {
-        return $this->hasOne(LocationModel::getModel(), LocationModel::field_primary(), $this->field_location_id());
+        return $this->hasOne(LokasiModel::getModel(), LokasiModel::field_primary(), $this->field_location_id());
     }
 
     public function has_asset()
@@ -105,7 +105,7 @@ class Job extends SystemModel
     {
         $query = $this
             ->addSelect([$this->getTable().'.*',
-                Location::field_name(),
+                Lokasi::field_name(),
                 Tiket::field_primary(),
                 Tiket::field_code(),
                 Tiket::field_name(),
