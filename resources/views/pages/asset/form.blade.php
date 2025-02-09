@@ -18,6 +18,11 @@
                 <x-form-select col="6" name="asset_status" :options="$status" />
                 <x-form-textarea col="6" rows="5" class="h-100" name="asset_keterangan" />
 
+                <div class="container mt-3 mb-3">
+                    <x-form-input type="date" col="3" label="Tanggal Kunjungan" name="asset_tanggal_kunjungan" />
+                    <x-form-input type="number" col="3" label="Total" name="total" />
+                    <x-form-input type="number" col="3" label="Kerusakan" name="kerusakan" />
+                </div>
 
                 <div class="col-md-6">
                     <div class="row">

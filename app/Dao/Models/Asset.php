@@ -67,7 +67,7 @@ class Asset extends SystemModel
      *
      * @var array<int, string>
      */
-    protected $fillable = ['asset_id', 'asset_nama', 'asset_serial_number', 'asset_code', 'asset_status', 'asset_gambar', 'asset_id_penamaan', 'asset_id_location', 'asset_id_department', 'asset_id_group', 'asset_keterangan', 'asset_created_at', 'asset_updated_at', 'asset_deleted_at', 'asset_deleted_by', 'asset_updated_by', 'asset_created_by'];
+    protected $fillable = ['asset_id', 'asset_nama', 'asset_serial_number', 'asset_code', 'asset_status', 'asset_gambar', 'asset_id_penamaan', 'asset_id_location', 'asset_id_department', 'asset_id_group', 'asset_keterangan', 'asset_created_at', 'asset_updated_at', 'asset_deleted_at', 'asset_deleted_by', 'asset_updated_by', 'asset_created_by', 'asset_tanggal_diakui', 'asset_tanggal_kunjungan'];
 
     public static function field_name()
     {

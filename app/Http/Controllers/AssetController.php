@@ -15,6 +15,7 @@ use App\Facades\Model\PenamaanModel;
 use App\Http\Requests\AssetRequest;
 use App\Services\Master\CreateService;
 use App\Services\Master\UpdateService;
+use Carbon\Carbon;
 use Plugins\Response;
 
 class AssetController extends MasterController
@@ -54,7 +55,29 @@ class AssetController extends MasterController
     public function postUpdate($code, AssetRequest $request, UpdateService $service)
     {
         $data = $service->update($this->model, $request, $code);
+        $this->calculate($data['data'], $request);
 
         return Response::redirectBack($data);
+    }
+
+    private function calculate($value, $request)
+    {
+        $tanggal_kunjungan = $value->field_tanggal_kunjungan;
+
+        if($request->total >= 20)
+        {
+            $next = Carbon::createFromDate($tanggal_kunjungan)->addDay(intval(365 / 3));
+        }
+        else if($request->total > 12 and $request->total <= 15)
+        {
+            $next = Carbon::createFromDate($tanggal_kunjungan)->addDay(intval(365 / 2));
+        }
+        else
+        {
+            $next = Carbon::createFromDate($tanggal_kunjungan)->addYear(1);
+        }
+
+        $value->asset_tanggal_kunjungan = $next->format('Y-m-d');
+        $value->save();
     }
 }
