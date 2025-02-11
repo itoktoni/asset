@@ -13,6 +13,7 @@ use App\Facades\Model\LokasiModel;
 use App\Facades\Model\UserModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Plugins\Query;
 use Wildside\Userstamps\Userstamps;
@@ -167,6 +168,7 @@ class Tiket extends SystemModel
 
                     $image = Image::read($file_logo);
                     $resizedImage = $image->scale(width: 300);
+                    Log::info(Storage::path('/public/files/tiket/'.$name));
                     $resizedImage->save(Storage::path('/public/files/tiket/'.$name));
 
                     // $file_logo->storeAs('/public/files/tiket/', $name);
