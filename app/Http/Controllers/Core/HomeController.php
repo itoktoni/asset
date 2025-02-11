@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Core;
 
 use Alkhachatryan\LaravelWebConsole\LaravelWebConsole;
 use App\Charts\Dashboard;
+use App\Dao\Enums\JobStatusType;
+use App\Dao\Enums\JobType;
+use App\Dao\Models\Job;
+use App\Dao\Models\Tiket;
 use App\Dao\Traits\RedirectAuth;
 use App\Http\Controllers\Controller;
 
@@ -34,8 +38,17 @@ class HomeController extends Controller
             header('Location: '.route('public'));
         }
 
+        $total = Tiket::count();
+        $baru = Tiket::whereNull(Tiket::field_user())->count();
+        $proses = Tiket::whereNotNull(Tiket::field_user())->count();
+        $selesai = Job::where('job_status', JobStatusType::Selesai())->count();
+
         return view('core.home.dashboard', [
             'chart' => $chart->build(),
+            'total' => $total,
+            'baru' => $baru,
+            'proses' => $proses,
+            'selesai' => $selesai,
         ]);
     }
 

@@ -3,7 +3,11 @@
 namespace App\Providers;
 
 use App\Events\CountingLinen;
+use App\Events\CreateTiketEvent;
+use App\Events\FinishJobEvent;
 use App\Listeners\CountingCuci;
+use App\Listeners\CreateTiketListener;
+use App\Listeners\FinishJobListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -22,6 +26,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         CountingLinen::class => [
             CountingCuci::class,
+        ],
+        CreateTiketEvent::class => [
+            CreateTiketListener::class,
+        ],
+        FinishJobEvent::class => [
+            FinishJobListener::class,
         ],
     ];
 

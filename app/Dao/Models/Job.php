@@ -4,6 +4,7 @@ namespace App\Dao\Models;
 
 use App\Dao\Entities\Core\JobEntity;
 use App\Dao\Enums\JobStatusType;
+use App\Dao\Enums\JobType;
 use App\Dao\Models\Core\SystemModel;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\LokasiModel;
@@ -12,8 +13,11 @@ use App\Facades\Model\TiketModel;
 use App\Facades\Model\UserModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Plugins\Query;
 use Wildside\Userstamps\Userstamps;
+use Intervention\Image\Laravel\Facades\Image;
+use Illuminate\Support\Str;
 
 /**
  * Class Job
@@ -49,13 +53,14 @@ class Job extends SystemModel
     protected $primaryKey = 'job_id';
 
     public $timestamps = true;
+    public $with = ['has_user'];
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = ['job_id', 'job_code', 'job_id_tiket', 'job_id_asset', 'job_id_location', 'job_keterangan', 'job_status', 'job_created_at', 'job_updated_at', 'job_deleted_at', 'job_created_by', 'job_updated_by', 'job_deleted_by', 'job_checked_at', 'job_finished_at',  'job_analisa', 'job_kesimpulan', 'job_id_saran', 'job_gambar'];
+    protected $fillable = ['job_id', 'job_code', 'job_id_tiket', 'job_id_assign','job_id_asset', 'job_id_location', 'job_keterangan', 'job_status', 'job_created_at', 'job_updated_at', 'job_deleted_at', 'job_created_by', 'job_updated_by', 'job_deleted_by', 'job_checked_at', 'job_finished_at',  'job_analisa', 'job_kesimpulan', 'job_id_saran', 'job_gambar', 'job_type'];
 
     protected $dates = [
         SELF::CREATED_AT,
@@ -101,6 +106,11 @@ class Job extends SystemModel
         return $this->hasOne(SaranModel::getModel(), SaranModel::field_primary(), $this->field_saran_id());
     }
 
+    public function has_user()
+    {
+        return $this->hasOne(UserModel::getModel(), UserModel::field_primary(), $this->field_assign_id());
+    }
+
     public function dataRepository()
     {
         $query = $this
@@ -115,6 +125,7 @@ class Job extends SystemModel
             ->leftJoinRelationship('has_asset')
             ->leftJoinRelationship('has_location')
             ->sortable()
+            ->orderBy(self::CREATED_AT , 'DESC')
             ->filter();
 
         $query = env('PAGINATION_SIMPLE') ? $query->simplePaginate(env('PAGINATION_NUMBER')) : $query->paginate(env('PAGINATION_NUMBER'));
@@ -134,7 +145,8 @@ class Job extends SystemModel
 
             if(empty($model->{self::field_code()}))
             {
-                $model->{self::field_code()} = Query::autoNumber(Job::getTableName(), self::field_code(), 'S'.date('Ymd'));
+                // $model->{self::field_code()} = Query::autoNumber(Job::getTableName(), self::field_code(), 'S'.date('Ymd'));
+                $model->{self::field_code()} = Str::uuid()->toString();
             }
 
             /*
@@ -148,7 +160,11 @@ class Job extends SystemModel
                     $extension = $file_logo->extension();
                     $name = time().'.'.$extension;
 
-                    $file_logo->storeAs('/public/files/job/', $name);
+                    $image = Image::read($file_logo);
+                    $resizedImage = $image->scale(width: 300);
+                    $resizedImage->save(Storage::path('/public/files/job/'.$name));
+
+                    // $file_logo->storeAs('/public/files/job/', $name);
                     $model->{self::field_image()} = $name;
                 }
             }

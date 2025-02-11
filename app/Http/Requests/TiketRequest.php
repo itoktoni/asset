@@ -36,7 +36,7 @@ class TiketRequest extends GeneralRequest
 
         if($asset)
         {
-            $location_id = $asset->asset_id_location;
+            $location_id = $asset->asset_id_lokasi;
             if(empty($this->tiket_id_location) && empty($location_id))
             {
                 $location = true;

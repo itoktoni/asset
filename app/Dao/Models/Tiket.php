@@ -3,15 +3,21 @@
 namespace App\Dao\Models;
 
 use App\Dao\Entities\Core\TiketEntity;
+use App\Dao\Enums\JobType;
+use App\Dao\Enums\TiketType;
 use App\Dao\Models\Core\SystemModel;
+use App\Events\CreateTiketEvent;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\JobModel;
 use App\Facades\Model\LokasiModel;
 use App\Facades\Model\UserModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Plugins\Query;
 use Wildside\Userstamps\Userstamps;
+use Illuminate\Support\Str;
+use Intervention\Image\Laravel\Facades\Image;
 
 /**
  * Class Tiket
@@ -101,7 +107,7 @@ class Tiket extends SystemModel
             ->leftJoinRelationship('has_location')
             ->leftJoinRelationship('has_job')
             ->groupBy($this->field_primary())
-            ->orderBy(Job::field_created_at(), 'ASC')
+            ->orderBy($this->field_tanggal(), 'DESC')
             ->sortable()
             ->filter();
 
@@ -115,13 +121,18 @@ class Tiket extends SystemModel
         parent::creating(function ($model)
         {
             $model->{self::field_tanggal()} = date('Y-m-d');
+            if(empty($model->{self::field_type()}))
+            {
+                $model->{self::field_type()} = JobType::Korektif;
+            }
         });
 
         parent::saving(function ($model)
         {
             if(empty($model->{self::field_code()}))
             {
-                $model->{self::field_code()} = Query::autoNumber(Tiket::getTableName(), self::field_code(), date('Ymd'));
+                // $model->{self::field_code()} = Query::autoNumber(Tiket::getTableName(), self::field_code(), date('Ymd'));
+                $model->{self::field_code()} = Str::uuid()->toString();
             }
 
             /*
@@ -154,7 +165,11 @@ class Tiket extends SystemModel
                     $extension = $file_logo->extension();
                     $name = time().'.'.$extension;
 
-                    $file_logo->storeAs('/public/files/tiket/', $name);
+                    $image = Image::read($file_logo);
+                    $resizedImage = $image->scale(width: 300);
+                    $resizedImage->save(Storage::path('/public/files/tiket/'.$name));
+
+                    // $file_logo->storeAs('/public/files/tiket/', $name);
                     $model->{self::field_image()} = $name;
                 }
             }

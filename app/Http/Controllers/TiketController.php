@@ -9,6 +9,7 @@ use App\Dao\Enums\JobType;
 use App\Dao\Models\Job;
 use App\Dao\Models\Sheet;
 use App\Dao\Models\Tiket;
+use App\Events\CreateTiketEvent;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\CategoryModel;
 use App\Facades\Model\LokasiModel;
@@ -50,6 +51,7 @@ class TiketController extends MasterController
     public function postCreate(TiketRequest $request, CreateService $service)
     {
         $data = $service->save($this->model, $request);
+        event(new CreateTiketEvent($data['data']));
 
         return Response::redirectBack($data);
     }
@@ -61,6 +63,16 @@ class TiketController extends MasterController
         return Response::redirectBack($data);
     }
 
+    public function getCode($code)
+    {
+        $this->beforeForm();
+        $model = Tiket::with(['has_job', 'has_job.has_user'])->where(Tiket::field_code(), $code)->first();
+
+        return moduleView(modulePathForm(), $this->share([
+            'model' => $model,
+        ]));
+    }
+
     public function getAmbil($code)
     {
         $model = $this->get($code);
@@ -68,7 +80,31 @@ class TiketController extends MasterController
         $model->save();
 
         Job::updateOrCreate([
-            Job::field_code() => $model->tiket_code,
+            Job::field_assign_id() => auth()->user()->id,
+            Job::field_tiket_id() => $model->field_primary,
+
+        ], [
+            Job::field_type() => TiketType::Korektif,
+            Job::field_status() => JobStatusType::Ambil,
+            Job::field_asset_id() => $model->field_asset_id,
+            Job::field_location_id() => $model->field_location_id,
+            Job::field_description() => $model->field_description,
+            Job::field_type() => JobType::Korektif,
+        ]);
+
+        Alert::update("Tiket berhasil di ambil !");
+
+        return redirect()->back();
+    }
+
+    public function getSelesai($code)
+    {
+        $model = $this->model->with(['has_job'])->where(Tiket::field_code(), $code)->first();
+        $model->{Tiket::field_user()} = auth()->user()->id;
+        $model->save();
+
+        Job::updateOrCreate([
+            Job::field_assign_id() => auth()->user()->id,
             Job::field_tiket_id() => $model->field_primary,
             Job::field_asset_id() => $model->field_asset_id,
             Job::field_location_id() => $model->field_location_id,

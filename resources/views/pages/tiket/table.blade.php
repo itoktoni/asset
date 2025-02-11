@@ -22,7 +22,7 @@
                                         <input class="btn-check-d" type="checkbox">
                                     </th>
                                     <th class="text-center column-action">{{ __('Action') }}</th>
-                                    <th>@sortablelink('tiket_code', __('Nomer Tiket'))</th>
+                                    <th>@sortablelink('tiket_code', __('Nama Tiket'))</th>
                                     <th>@sortablelink('tiket_nama', __('Keterangan'))</th>
                                     <th>Gambar</th>
 
@@ -44,22 +44,26 @@
                                         </td>
 
                                         <td>
-                                            No. <b>{{ $table->field_code }}</b>
+                                            Dibuat : <b>{{ $table->field_pelapor }}</b>
                                             <br>
                                             Tgl Buat : {{ formatDate($table->field_tanggal) }}
                                             <br>
-                                            Dibuat : <b>{{ $table->field_pelapor }}</b>
                                             <br>
-                                            Status : <b>{{ JobStatusType::getDescription($table->job_status) }}</b>
+                                            <b>Status</b> : {{ JobStatusType::getDescription($table->job_status) }}
                                         </td>
 
-										<td class="col-md-6">
-                                            <b style="text-decoration: underline">{{ $table->field_name }}</b>
+										<td class="col-md-7">
+                                            No. <b>{{ $table->field_code }}</b>
                                             <br>
                                             <br>
+                                            <b>{{ $table->field_name }}</b>
+                                            <br>
+                                            <br>
+                                            @if($table->field_type)
                                             Tipe : <b>{{ $table->field_type }}</b>
                                             <br>
-                                            <b>Rusak</b> : {!! nl2br($table->field_description) !!}
+                                            @endif
+                                            <b>Keterangan</b> : {!! nl2br($table->field_description) !!}
                                             @if($table->location_nama)
                                             <br>
                                             <b>Ruangan</b> : {{ $table->location_nama }}
@@ -113,6 +117,12 @@
 
                         });
                     </script>
+
+                    <style>
+                        .img-show{
+                            text-align: center;
+                        }
+                    </style>
                 @endpush
 
             </x-form>

@@ -23,7 +23,6 @@
                                     </th>
                                     <th class="text-center column-action">{{ __('Action') }}</th>
                                     <th>@sortablelink('job_nama', __('Keterangan Pekerjaan'))</th>
-                                    <th>@sortablelink('job_code', __('Nomer Pekerjaan'))</th>
                                     <th>Gambar</th>
                                 </tr>
                             </thead>
@@ -34,22 +33,34 @@
                                             <input type="checkbox" class="checkbox" name="code[]"
                                                 value="{{ $table->field_primary }}">
                                         </td>
-                                        <td class="col-md-2 text-center column-action">
+                                        <td class="text-center column-action">
                                             <x-crud :model="$table" />
                                         </td>
 
-                                        <td class="col-md-6">
-                                            <b>{{ $table->tiket_nama }}</b>
-                                            <br>
-                                            <br>
+                                        <td class="col-md-9">
 
+                                            Type : <b>{{ $table->field_type }}</b>
+                                            <br>
                                             No. Tiket : <a
                                                 href="{{ route('tiket.getUpdate', ['code' => $table->tiket_id]) }}"><b
                                                     class="text-primary">{{ $table->tiket_code }}</b></a>
                                             <br>
                                             <b>Tgl Tiket</b> : {{ formatDate($table->tiket_tanggal) }}
                                             <br>
+                                            <br>
 
+                                            <b>No. Pekerjaan : </b> {{ $table->field_code }}
+                                            <br>
+
+                                            Tgl Ambil : <b>{{ formatDate($table->job_created_at) }}</b>
+                                            dan Tgl Cek : <b>{{ formatDate($table->job_checked_at) }}</b>
+                                            <br>
+                                            <b>Status</b> : {{ $table->field_status }}
+
+                                            <br>
+                                            <br>
+
+                                            <b>{{ $table->tiket_nama }}</b>
                                             <br>
 
                                             <b>Rusak</b> : {!! nl2br($table->field_description) !!}
@@ -57,16 +68,6 @@
                                             @if ($table->location_nama)
                                                 <b>Ruangan :</b> {{ $table->location_nama }}
                                             @endif
-                                        </td>
-
-                                        <td>
-                                            <b>{{ $table->field_code }}</b>
-                                            <br>
-                                            Tgl Ambil : <b>{{ formatDate($table->job_created_at) }}</b>
-                                            <br>
-                                            Tgl Cek : <b>{{ formatDate($table->job_checked_at) }}</b>
-                                            <br>
-                                            <b>Status</b> : {{ $table->field_status }}
                                         </td>
 
                                         <td class="column-action">

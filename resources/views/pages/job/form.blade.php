@@ -1,15 +1,19 @@
 <x-layout>
     <x-form :model="$model" :upload="true">
         <x-card>
-            <x-action form="form" />
+            <x-action form="form">
+                @if ($model && auth()->user()->level >= LevelType::Operator && !empty($model->field_kesimpulan))
+                    <x-button module="getSelesai" key="{{ $model->field_primary }}" color="success" label="Selesai" />
+                @endif
+            </x-action>
 
             @bind($model)
                 <x-form-select col="6" class="search" label="Nama Asset" name="job_id_asset" :options="$asset" />
                 <x-form-select col="6" name="job_id_location" label="Ruangan" :options="$location" />
 
-                <x-form-textarea col="6" rows="5" class="h-100 mb-5" label="Keterangan Kerusakan"
+                <x-form-textarea col="6" rows="5" readonly="true" class="h-100 mb-5" label="Keterangan Kerusakan"
                     name="job_keterangan" />
-                <x-form-textarea readonly="true" col="6" rows="5" class="h-100 mb-5" label="Analisa"
+                <x-form-textarea col="6" rows="5" class="h-100 mb-5" label="Analisa"
                     name="job_analisa" />
 
                 <div class="container mt-3">

@@ -2,6 +2,9 @@
 
 namespace App\Charts;
 
+use App\Dao\Enums\JobStatusType;
+use App\Dao\Models\Job;
+use App\Dao\Models\Tiket;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class Dashboard
@@ -15,13 +18,25 @@ class Dashboard
 
     public function build()
     {
-        return $this->chart->barChart()
-            ->setTitle('San Francisco vs Boston.')
-            ->setSubtitle('Wins during season 2021.')
+        for ($m=1; $m<=12; $m++) {
+            $month[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
+            $booking = Tiket::whereMonth(Tiket::field_tanggal(), $m)
+            ->whereYear(Tiket::field_tanggal(), date('Y'));
+
+            $target[] = $booking->count();
+            $pencapaian[] = Job::where(Job::field_status(), JobStatusType::Selesai)
+            ->whereMonth(Job::field_created_at(), $m)
+            ->whereYear(Job::field_created_at(), date('Y'))
+            ->count();
+        }
+
+        $dashboard = $this->chart->barChart()
+            ->setTitle('Total Tiket vs Tiket Selesai')
             ->setGrid()
-            ->addData('San Francisco', [6, 9, 3, 4, 10, 8])
-            ->addData('Boston', [7, 3, 8, 2, 6, 4])
-            ->addData('Wales', [7, 3, 8, 2, 6, 4])
-            ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June']);
+            ->addData('Total Tiket', $target)
+            ->addData('Tiket Selesai', $pencapaian)
+            ->setXAxis($month);
+
+        return $dashboard;
     }
 }

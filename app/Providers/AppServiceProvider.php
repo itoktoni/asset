@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Contracts\NotificationInterface;
+use App\Services\Command\DefaultNotificationService;
+use App\Services\Command\WhatsappDefaultService;
+use Exception;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
@@ -47,5 +51,23 @@ class AppServiceProvider extends ServiceProvider
         if(env('APP_ENV') !== 'local') {
             URL::forceScheme('https');
         }
+
+
+
+        $this->app->bind(NotificationInterface::class, function($app){
+
+            $provider = env('NOTIFICATION_PROVIDER', 'default');
+
+            if($provider == 'default')
+            {
+                return new DefaultNotificationService();
+            }
+            else
+            {
+                return new DefaultNotificationService();
+            }
+
+            throw new Exception('The driver is not found');
+        });
     }
 }

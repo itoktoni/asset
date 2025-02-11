@@ -12,7 +12,7 @@
         <nav>
             <a href="{{ moduleRoute('getCreate') }}">Back</a>
             <a class="cursor" onclick="window.print()">Print</a>
-            <a href="{{ url()->full().'&action=excel' }}">Excel</a>
+            <a target="_blank" href="{{ url()->full().'&action=excel' }}">Excel</a>
         </nav>
     </div>
 @endif

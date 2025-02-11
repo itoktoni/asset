@@ -10,9 +10,11 @@ use App\Facades\Model\GroupModel;
 use App\Facades\Model\LokasiModel;
 use App\Facades\Model\PenamaanModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 use Wildside\Userstamps\Userstamps;
 use Illuminate\Support\Str;
 use Plugins\Query;
+use Intervention\Image\Laravel\Facades\Image;
 
 /**
  * Class Asset
@@ -183,7 +185,11 @@ class Asset extends SystemModel
                     $extension = $file_logo->extension();
                     $name = time().'.'.$extension;
 
-                    $file_logo->storeAs('/public/files/asset/', $name);
+                    $image = Image::read($file_logo);
+                    $resizedImage = $image->scale(width: 300);
+                    $resizedImage->save(Storage::path('/public/files/asset/'.$name));
+
+                    // $file_logo->storeAs('/public/files/asset/', $name);
                     $model->{self::field_image()} = $name;
                 }
             }

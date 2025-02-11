@@ -20,7 +20,7 @@ class ReportUserController extends ReportController
     {
         $query = $this->model->dataRepository();
 
-        return $query;
+        return $query->get();
     }
 
     public function getPrint(Request $request)
@@ -29,8 +29,9 @@ class ReportUserController extends ReportController
 
         $this->data = $this->getData($request);
 
-        $batch = exportCsv('users', UserModel::query(), $request, JobExportCsvUser::class, env('CSV_DELIMITER', ','), env('CSV_CHUNK', 100));
-        if ($request->queue == 'batch') {
+        if ($request->queue == 'batch')
+        {
+            $batch = exportCsv('users', UserModel::query(), $request, JobExportCsvUser::class, env('CSV_DELIMITER', ','), env('CSV_CHUNK', 100));
             $url = moduleRoute('getCreate', array_merge(['batch' => $batch->id], $request->all()));
 
             return redirect()->to($url);

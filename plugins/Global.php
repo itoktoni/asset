@@ -71,7 +71,7 @@ function modulePathTable($name = null, $core = false)
 function modulePathPrint($name = null)
 {
     if ($name) {
-        return 'report.'.moduleCode().'.'.$name;
+        return 'pages.'.moduleCode().'.'.$name;
     }
 
     return 'report.master.print';

@@ -161,6 +161,11 @@ trait JobEntity
         return 'job_checked_at';
     }
 
+    public function getFieldCheckedAtAttribute()
+    {
+        return $this->{$this->field_checked_at()};
+    }
+
     public function getFieldPickAtAttribute()
     {
         return $this->{$this->field_checked_at()};
@@ -184,5 +189,15 @@ trait JobEntity
     public function getFieldSaranIdAttribute()
     {
         return $this->{$this->field_saran_id()};
+    }
+
+    public static function field_assign_id()
+    {
+        return 'job_id_assign';
+    }
+
+    public function getFieldAssignIdAttribute()
+    {
+        return $this->{$this->field_assign_id()};
     }
 }

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Dao\Enums\Core\LevelType;
 use App\Dao\Enums\JobStatusType;
 use App\Dao\Enums\TiketType;
+use App\Events\CreateTiketEvent;
+use App\Events\FinishJobEvent;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\LokasiModel;
 use App\Http\Controllers\Core\MasterController;
@@ -12,6 +15,7 @@ use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
 use App\Facades\Model\JobModel;
 use App\Facades\Model\SaranModel;
+use Plugins\Alert;
 
 class JobController extends MasterController
 {
@@ -36,5 +40,54 @@ class JobController extends MasterController
             'asset' => $asset,
             'location' => $location,
         ];
+    }
+
+    public function getSelesai($code)
+    {
+        $model = $this->get($code, ['has_tiket']);
+        if($model && empty($model->field_kesimpulan))
+        {
+            Alert::error("Kesimpulan harus diisi !");
+        }
+        else{
+
+            if($tiket = $model->has_tiket)
+            {
+                event(new FinishJobEvent($model));
+            }
+
+            Alert::update("Tiket di informasikan !");
+        }
+
+        return redirect()->back();
+    }
+
+    public function getApproval($code)
+    {
+        $model = $this->get($code, ['has_tiket']);
+        if($model && $this->checkApproval($model->has_tiket->field_user_id ?? false))
+        {
+            $model->job_status = JobStatusType::Selesai;
+            $model->save();
+
+            Alert::update("Tiket di approve !");
+        }
+
+        return redirect()->back();
+    }
+
+    private function checkApproval($pelapor)
+    {
+        if(auth()->user()->level == LevelType::Admin)
+        {
+            return true;
+        }
+
+        if(auth()->user()->id == $pelapor)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

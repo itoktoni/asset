@@ -4,6 +4,7 @@ use Alkhachatryan\LaravelWebConsole\LaravelWebConsoleServiceProvider;
 use App\Dao\Enums\Core\BooleanType;
 use App\Dao\Enums\Core\LevelType;
 use App\Dao\Enums\Core\MenuType;
+use App\Dao\Enums\Core\RoleType;
 use App\Dao\Enums\Core\YesNoType;
 use App\Dao\Enums\JobStatusType;
 use App\Dao\Models\Core\SystemGroup;
@@ -256,11 +257,13 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Enum' => BenSampo\Enum\EnumServiceProvider::class,
+        'Image' => \Intervention\Image\Facades\Image::class,
         'Template' => Template::class,
         'Views' => Views::class,
         'BooleanType' => BooleanType::class,
         'MenuType' => MenuType::class,
         'LevelType' => LevelType::class,
+        'RoleType' => RoleType::class,
         'JobStatusType' => JobStatusType::class,
         'YesNoType' => YesNoType::class,
         'SharedData' => SharedData::class,

@@ -50,10 +50,10 @@ class Template
     public static function print($template = false, $name = false)
     {
         if ($name) {
-            return 'report.'.$template.'.'.$name;
+            return 'pages.'.$template.'.'.$name;
         }
 
-        return 'report.'.$template.'.data';
+        return 'pages.'.$template.'.data';
     }
 
     public static function form($template = false, $name = false)

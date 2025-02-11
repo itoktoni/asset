@@ -6,6 +6,7 @@ use App\Dao\Enums\Core\BooleanType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Core\DeleteRequest;
 use App\Services\Master\DeleteService;
+use Plugins\Alert;
 use Plugins\Response;
 
 class MasterController extends Controller
@@ -73,6 +74,12 @@ class MasterController extends Controller
     public function postTable()
     {
         if (request()->exists('delete')) {
+            if(empty(request()->get('code')))
+            {
+                Alert::error('Pilih data yang akan di hapus');
+                return redirect()->back();
+            }
+
             $code = array_unique(request()->get('code'));
             $data = self::$service->delete($this->model, $code);
         }
