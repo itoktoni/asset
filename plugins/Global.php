@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Laravie\SerializesQuery\Eloquent;
-use MBarlow\Megaphone\Types\BaseAnnouncement;
 use MBarlow\Megaphone\Types\General;
+use Intervention\Image\Laravel\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 define('ACTION_CREATE', 'getCreate');
 define('ACTION_UPDATE', 'getUpdate');
@@ -163,11 +164,69 @@ function level($value)
     return auth()->check() && auth()->user()->level >= $value;
 }
 
+function uploadImage($file, $folder, $width = 300)
+{
+    if(empty($file))
+    {
+        return false;
+    }
+
+    $extension = $file->extension();
+    $name = time().'.'.$extension;
+
+    $image = Image::read($file);
+    $resizedImage = $image->scaleDown($width);
+
+    if(env('PATH_LINK', false))
+    {
+        File::ensureDirectoryExists(storage_path('app/public/files/'.$folder));
+        $resizedImage->save(storage_path('app/public/files/'.$folder.'/'.$name));
+    }
+    else
+    {
+        File::ensureDirectoryExists(public_path('files/'.$folder));
+        $resizedImage->save(public_path('files/'.$folder.'/'.$name));
+    }
+
+    return $name;
+}
+
 function imageUrl($value, $folder = null)
 {
     $path = $folder ? $folder : moduleCode();
 
+    if(empty($value))
+    {
+        return url('images/noimage.jpeg');
+    }
+
+    if(env('PATH_LINK', false))
+    {
+        return file_exists(storage_path('app/public/files/'.$path.'/'.$value)) ? url('storage/files/'.$path.'/'.$value) : url('images/noimage.jpeg');
+    }
+    else
+    {
+        return file_exists(public_path('files/'.$path.'/'.$value)) ? url('files/'.$path.'/'.$value) : url('images/noimage.jpeg');
+    }
+
+
+    $path = $folder ? $folder : moduleCode();
+
     return $value ? url('storage/files/' . $path.'/'.$value) : url('images/noimage.jpeg');
+}
+
+function logoUrl()
+{
+    $logo = env('APP_LOGO');
+
+    if(env('PATH_LINK', false))
+    {
+        return file_exists(storage_path('app/public/'.$logo)) ? url('storage/'.$logo) : url('images/noimage.jpeg');
+    }
+    else
+    {
+        return file_exists(public_path($logo)) ? url($logo) : url('images/noimage.jpeg');
+    }
 }
 
 function formatDateMySql($value, $datetime = false)

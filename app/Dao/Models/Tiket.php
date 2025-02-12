@@ -161,17 +161,8 @@ class Tiket extends SystemModel
 
             if (request()->has('images')) {
                 $file_logo = request()->file('images');
-                if(!empty($file_logo)){
-
-                    $extension = $file_logo->extension();
-                    $name = time().'.'.$extension;
-
-                    $image = Image::read($file_logo);
-                    $resizedImage = $image->scale(width: 300);
-                    Log::info(Storage::path('/public/files/tiket/'.$name));
-                    $resizedImage->save(Storage::path('/public/files/tiket/'.$name));
-
-                    // $file_logo->storeAs('/public/files/tiket/', $name);
+                if($name = uploadImage($file_logo, 'tiket'))
+                {
                     $model->{self::field_image()} = $name;
                 }
             }

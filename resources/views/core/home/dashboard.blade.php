@@ -10,7 +10,7 @@
                             <div>Total Tiket</div>
                         </div>
                         <div>
-                            <i id="detail" class="bi bi-journal-text" style="font-size: 3rem"></i>
+                            <i id="detail" class="cursor bi bi-journal-text" style="font-size: 3rem"></i>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                             <div>Tiket Baru</div>
                         </div>
                         <div>
-                            <i id="buat_tiket" class="bi bi-file-earmark-plus" style="font-size: 3rem"></i>
+                            <i id="buat_tiket" class="cursor bi bi-file-earmark-plus" style="font-size: 3rem"></i>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                             <div>Pekerjaan</div>
                         </div>
                         <div>
-                            <i id="buat_job" class="bi bi-search" style="font-size: 3rem"></i>
+                            <i id="buat_job" class="cursor bi bi-search" style="font-size: 3rem"></i>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                             <div>Tiket Selesai</div>
                         </div>
                         <div>
-                            <i class="bi bi-award" style="font-size: 3rem"></i>
+                            <i class="cursor bi bi-award" style="font-size: 3rem"></i>
                         </div>
                     </div>
                 </div>

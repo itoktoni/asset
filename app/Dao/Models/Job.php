@@ -155,16 +155,8 @@ class Job extends SystemModel
 
             if (request()->has('images')) {
                 $file_logo = request()->file('images');
-                if(!empty($file_logo)){
-
-                    $extension = $file_logo->extension();
-                    $name = time().'.'.$extension;
-
-                    $image = Image::read($file_logo);
-                    $resizedImage = $image->scale(width: 300);
-                    $resizedImage->save(Storage::path('/public/files/job/'.$name));
-
-                    // $file_logo->storeAs('/public/files/job/', $name);
+                if($name = uploadImage($file_logo, 'job'))
+                {
                     $model->{self::field_image()} = $name;
                 }
             }

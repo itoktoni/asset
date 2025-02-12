@@ -4,6 +4,7 @@ namespace App\Services\Core;
 
 use GeoSot\EnvEditor\Facades\EnvEditor as EnvEditor;
 use Plugins\Alert;
+use Intervention\Image\Laravel\Facades\Image;
 
 class CreateSettingService
 {
@@ -22,9 +23,22 @@ class CreateSettingService
                 $file_logo = $data->file('logo');
                 $extension = $file_logo->extension();
                 $name = 'logo.'.$extension;
-                // $name = time().'.'.$name;
+                // $name = time().'.'.$extension;
 
-                $file_logo->storeAs('/public/', $name);
+                $extension = $file_logo->extension();
+
+                $image = Image::read($file_logo);
+                $resizedImage = $image->scale(height: 65);
+
+                if(env('PATH_LINK', false))
+                {
+                    $resizedImage->save(storage_path('app/public/'.$name));
+                }
+                else
+                {
+                    $resizedImage->save(public_path($name));
+                }
+
                 EnvEditor::editKey('APP_LOGO', $name);
             }
 
