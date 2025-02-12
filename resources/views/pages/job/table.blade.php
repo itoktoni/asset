@@ -86,14 +86,16 @@
 
                         <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
                             <div class="modal-dialog" role="document">
-                                <div class="modal-content">
+                                <div class="modal-content" style="background: unset !important">
                                     <div class="modal-body">
 
-                                        <button type="button" class="text-right mb-3 btn btn-block btn-dark"
-                                            data-dismiss="modal">Tutup gambar</button>
-
-                                        <div class="img-show">
+                                        <div class="img-show mb-3">
                                             <img class="img-fluid" src="">
+
+                                            <p class="text-center mt-2">
+                                                <button type="button" class="text-right btn btn-dark w-80"
+                                                data-dismiss="modal">Tutup Gambar</button>
+                                            </p>
                                         </div>
 
                                     </div>
