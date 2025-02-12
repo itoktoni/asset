@@ -16,12 +16,10 @@
 
                 <div class="col-md-6 mt-3">
 
-                    @if ($model)
-                        <input type="hidden" name="file_old" value="{{ $model->field_picture ?? null }}">
-                    @endif
+                    <input type="hidden" name="file_old" value="{{ $model->field_picture ?? null }}">
 
                     <div class="row mb-3">
-                        <x-form-upload col="6" id="cameraFileInput" accept="image/*" style="{!! Template::isMobile() ? 'display:none' : '' !!}"
+                        <x-form-upload col="6" id="cameraFileInput" accept="image/*"
                             label="Upload Gambar" name="images" />
                     </div>
                     <img class="img-thumbnail" style="height: {{ $model && $model->field_image ? 'auto' : '0px' }}"

@@ -25,7 +25,7 @@
                         @if($model)
                         <div class="col-md-6">
                             <img class="img-thumbnail img-fluid mt-4"
-                                src="{{ $model->field_image ? url('storage/files/asset/' . $model->field_image) : url('images/noimage.jpeg') }}">
+                                src="{{ imageUrl($model->field_image, 'asset') }}">
                         </div>
                         @endif
                     </div>
