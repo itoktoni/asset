@@ -34,7 +34,7 @@
                     @endif
 
                     <div class="row mb-3">
-                        <x-form-upload col="6" id="cameraFileInput" accept="image/*" {{ Template::isMobile() ? 'capture="camera"' : 'capture="*"' }}
+                        <x-form-upload col="6" id="cameraFileInput" accept="image/*" capture="camera"
                             label="Upload Gambar" name="images" />
                     </div>
 

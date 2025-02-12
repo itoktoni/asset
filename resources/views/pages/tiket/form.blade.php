@@ -19,7 +19,7 @@
                     <input type="hidden" name="file_old" value="{{ $model->field_picture ?? null }}">
 
                     <div class="row mb-3">
-                        <x-form-upload col="6" id="cameraFileInput" accept="image/*" {{ Template::isMobile() ? 'capture="camera"' : 'capture="*"' }}
+                        <x-form-upload col="6" id="cameraFileInput" accept="image/*" capture="camera"
                             label="Upload Gambar" name="images" />
                     </div>
                     <img class="img-thumbnail" style="height: {{ $model && $model->field_image ? 'auto' : '0px' }}"
