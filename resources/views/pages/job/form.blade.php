@@ -34,7 +34,7 @@
                     @endif
 
                     <div class="row mb-3">
-                        <x-form-upload col="6" id="cameraFileInput" accept="image/*" style="{!! Template::isMobile() ? 'display:none' : '' !!}"
+                        <x-form-upload col="6" id="cameraFileInput"accept="image/*" capture="camera" style="{!! Template::isMobile() ? 'display:none' : '' !!}"
                             label="Upload Gambar" name="images" />
                     </div>
 
