@@ -53,7 +53,8 @@
                                         </td>
 
 										<td class="col-md-7">
-                                            No. <b>{{ $table->field_code }}</b>
+                                            <a href="{{ moduleRoute('getUpdate', ['code' => $table->field_primary]) }}">No. Tiket :  <b class="text-primary">{{ $table->field_code }} </b></a>
+
                                             <br>
                                             <br>
                                             <b>{{ $table->field_name }}</b>

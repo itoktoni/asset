@@ -49,7 +49,8 @@
                                             <br>
                                             <br>
 
-                                            <b>No. Pekerjaan : </b> {{ $table->field_code }}
+                                            <a href="{{ moduleRoute('getUpdate', ['code' => $table->field_primary]) }}">No. Pekerjaan :  <b class="text-primary">{{ $table->field_code }} </b></a>
+
                                             <br>
 
                                             Tgl Ambil : <b>{{ formatDate($table->job_created_at) }}</b>
