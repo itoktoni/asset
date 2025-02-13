@@ -215,9 +215,14 @@ function imageUrl($value, $folder = null)
     return $value ? url('storage/files/' . $path.'/'.$value) : url('images/noimage.jpeg');
 }
 
-function logoUrl()
+function logoUrl($isLogo = true)
 {
     $logo = env('APP_LOGO');
+
+    if($isLogo == false)
+    {
+        $logo = env('APP_BACKGROUND');
+    }
 
     if(env('PATH_LINK', false))
     {

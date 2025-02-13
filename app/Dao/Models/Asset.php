@@ -7,6 +7,7 @@ use App\Dao\Models\Core\SystemModel;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\DepartmentModel;
 use App\Facades\Model\GroupModel;
+use App\Facades\Model\JobModel;
 use App\Facades\Model\LokasiModel;
 use App\Facades\Model\PenamaanModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -92,7 +93,6 @@ class Asset extends SystemModel
         'asset_tanggal_diakui',
         'asset_tanggal_kunjungan',
         'asset_tanggal_kalibrasi',
-
     ];
 
     public static function field_name()
@@ -123,6 +123,11 @@ class Asset extends SystemModel
     public function has_group()
     {
         return $this->hasOne(GroupModel::getModel(), GroupModel::field_primary(), $this->field_group_id());
+    }
+
+    public function has_job()
+    {
+        return $this->hasMany(JobModel::getModel(), JobModel::field_asset_id(), $this->field_primary());
     }
 
     public function dataRepository()

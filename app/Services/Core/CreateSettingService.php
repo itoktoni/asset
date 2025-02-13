@@ -46,9 +46,19 @@ class CreateSettingService
                 $file_background = $data->file('background');
                 $extension = $file_background->extension();
                 $name = 'background.'.$extension;
-                // $name = time().'.'.$name;
 
-                $file_background->storeAs('/public/', $name);
+                $image = Image::read($file_background);
+                $resizedImage = $image->scale(width:1600);
+
+                if(env('PATH_LINK', false))
+                {
+                    $resizedImage->save(storage_path('app/public/'.$name));
+                }
+                else
+                {
+                    $resizedImage->save(public_path($name));
+                }
+
                 EnvEditor::editKey('APP_BACKGROUND', $name);
             }
 

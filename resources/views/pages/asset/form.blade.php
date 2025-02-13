@@ -5,33 +5,30 @@
             <x-action form="form" />
 
             @bind($model)
-            <div class="row">
 
-                <x-form-select col="6" class="search" name="asset_id_penamaan" :options="$naming" />
-                <x-form-input col="3" label="Serial Number" name="asset_serial_number" />
-                <x-form-input col="3" label="Code Asset" name="asset_code" />
+            <x-form-select col="6" class="search" name="asset_id_penamaan" :options="$naming" />
+            <x-form-input col="3" label="Serial Number" name="asset_serial_number" />
+            <x-form-input col="3" label="Code Asset" name="asset_code" />
 
-                <x-form-select col="6" name="asset_id_lokasi" :options="$location" />
-                <x-form-select col="3" name="asset_id_group" label="Pemeliharaan" :options="$teknisi" />
-                <x-form-select col="3" name="asset_id_department" label="Departemen" :options="$department" />
+            <x-form-select col="6" name="asset_id_lokasi" :options="$location" />
+            <x-form-select col="3" name="asset_id_group" label="Pemeliharaan" :options="$teknisi" />
+            <x-form-select col="3" name="asset_id_department" label="Departemen" :options="$department" />
 
-                <x-form-select col="6" name="asset_status" :options="$status" />
-                <x-form-textarea col="6" rows="5" class="h-100" name="asset_keterangan" />
+            <x-form-select col="6" name="asset_status" :options="$status" />
+            <x-form-textarea col="6" rows="5" class="h-100" name="asset_keterangan" />
 
-
-                <div class="col-md-6">
-                    <div class="row">
-                        <x-form-upload col="6" name="images" />
-                        @if($model)
-                        <div class="col-md-6">
-                            <img class="img-thumbnail img-fluid mt-4"
-                                src="{{ imageUrl($model->field_image, 'asset') }}">
-                        </div>
-                        @endif
+            <div class="col-md-6">
+                <div class="row">
+                    <x-form-upload col="6" name="images" />
+                    @if($model)
+                    <div class="col-md-6">
+                        <img class="img-thumbnail img-fluid mt-4"
+                            src="{{ imageUrl($model->field_image, 'asset') }}">
                     </div>
+                    @endif
                 </div>
-
             </div>
+
             @endbind
 
         </x-card>

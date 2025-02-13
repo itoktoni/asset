@@ -9,7 +9,7 @@
 
 		<style>
 			.wrapper {
-				background: url(/storage/{{ env('APP_BACKGROUND') }}) no-repeat right center;
+				background: url({{ env('PATH_LINK', false) ? '/'.env('APP_BACKGROUND') : '/storage/'.env('APP_BACKGROUND') }}) no-repeat right center;
 			}
 		</style>
 	</head>

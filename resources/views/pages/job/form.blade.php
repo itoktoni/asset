@@ -18,10 +18,12 @@
 
                 <div class="container mt-3">
                     <div class="row">
-                        <x-form-textarea col="6" rows="5" class="h-100 mb-5" label="Kesimpulan"
-                            name="job_kesimpulan" />
                         <x-form-select col="6" name="job_id_saran" label="Rekomendasi Penggunaan"
                             :options="$saran" />
+
+                        <x-form-textarea col="6" rows="5" class="h-100 mb-5" label="Kesimpulan"
+                            name="job_kesimpulan" />
+
                     </div>
                 </div>
 

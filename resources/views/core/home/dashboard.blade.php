@@ -10,7 +10,7 @@
                             <div>Total Tiket</div>
                         </div>
                         <div>
-                            <i id="detail" class="cursor bi bi-journal-text" style="font-size: 3rem"></i>
+                            <i id="detail" class="cursor bi bi-journal-text text-primary" style="font-size: 3rem"></i>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                             <div>Tiket Baru</div>
                         </div>
                         <div>
-                            <i id="buat_tiket" class="cursor bi bi-file-earmark-plus" style="font-size: 3rem"></i>
+                            <i id="buat_tiket" class="cursor bi bi-file-earmark-plus text-success" style="font-size: 3rem"></i>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                             <div>Pekerjaan</div>
                         </div>
                         <div>
-                            <i id="buat_job" class="cursor bi bi-search" style="font-size: 3rem"></i>
+                            <i id="buat_job" class="cursor bi bi-search text-danger" style="font-size: 3rem"></i>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                             <div>Tiket Selesai</div>
                         </div>
                         <div>
-                            <i class="cursor bi bi-award" style="font-size: 3rem"></i>
+                            <i class="cursor bi bi-award text-info" style="font-size: 3rem"></i>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                     skipDuplicates: true,
                     callback: function(codes) {
                         var code = codes.split('=');
-                        window.location.replace("{{ route('job.getCreate') }}?id=" + code[1]);
+                        window.location.replace("{{ route('asset.getDetail') }}?id=" + code[1]);
                     }
                 });
             });

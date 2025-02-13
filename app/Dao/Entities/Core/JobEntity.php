@@ -48,7 +48,7 @@ trait JobEntity
 
     public static function field_tanggal()
     {
-        return 'job_tanggal';
+        return 'job_created_at';
     }
 
     public function getFieldTanggalAttribute()
