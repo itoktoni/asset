@@ -50,4 +50,9 @@
 	</div>
 </body>
 
+<script>
+	window.print();
+	Website2APK.printPage();
+</script>
+
 </html>
