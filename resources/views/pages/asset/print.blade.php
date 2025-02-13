@@ -72,7 +72,7 @@
             <span style="position: absolute; right:0px;font-size:5px">.</span>
         </h5>
         <h5 style="margin: 0px auto;text-align:center;">
-			{!! DNS2D::getBarcodeSVG(route('detail_asset', ['code' => $model->field_primary]), 'QRCODE', 8, 8) !!}
+			{!! DNS2D::getBarcodeSVG(route('detail_asset', ['id' => $model->field_primary]), 'QRCODE', 8, 8) !!}
         </h5>
         <h5 style="margin-top:1rem;font-size:2.5rem;margin-bottom:0px">{{ $model->field_serial_number }}</h5>
         <p style="margin-top:0px;margin-bottom:0px;font-size:5px">.</p>
