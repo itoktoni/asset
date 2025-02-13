@@ -38,13 +38,20 @@
         <p style="font-size: 5px;margin-top:0px;margin-bottom:0px">.</p>
         <h5 style="margin-top:5px;font-size:12px;margin-bottom:20px;">
             <span style="position: absolute; left:0px;font-size:5px">.</span>
-            <span style="padding-left: 5px;padding-right:10px;font-size:1rem">{{ $model->field_name }}</span>
+            <span style="padding-left: 5px;padding-right:10px;font-size:2rem">
+				@php
+				$nama = explode(' - ', $model->field_name);
+				@endphp
+				{{ $nama[0] }}
+				<br>
+				{{ $nama[1] }}
+			</span>
             <span style="position: absolute; right:0px;font-size:5px">.</span>
         </h5>
         <h5 style="margin: 0px auto;text-align:center;">
-			{!! DNS2D::getBarcodeSVG(route('detail_asset', ['code' => $model->field_primary]), 'QRCODE', 5, 5) !!}
+			{!! DNS2D::getBarcodeSVG(route('detail_asset', ['code' => $model->field_primary]), 'QRCODE', 10, 10) !!}
         </h5>
-        <h5 style="margin-top:0rem;font-size:1.5rem;margin-bottom:0px">{{ $model->field_serial_number }}</h5>
+        <h5 style="margin-top:0rem;font-size:2.5rem;margin-bottom:0px">{{ $model->field_serial_number }}</h5>
         <p style="margin-top:0px;margin-bottom:0px;font-size:5px">.</p>
     </div>
 </body>
