@@ -38,7 +38,7 @@
         <p style="font-size: 5px;margin-top:0px;margin-bottom:0px">.</p>
         <h5 style="margin-top:5px;font-size:12px;margin-bottom:2rem;">
             <span style="position: absolute; left:0px;font-size:5px">.</span>
-            <span style="padding-left: 5px;padding-right:10px;font-size:3rem">{{ $model->field_name }}</span>
+            <span style="padding-left: 5px;padding-right:10px;font-size:2.5rem">{{ $model->field_name }}</span>
             <span style="position: absolute; right:0px;font-size:5px">.</span>
         </h5>
         <h5 style="margin: 0px auto;text-align:center;">
