@@ -11,17 +11,18 @@
                 <x-form-select col="6" id="asset" default="{{ $selected_asset ?? ($model ? $model->field_asset_id : null) }}" class="search" label="Nama Asset" name="job_id_asset" :options="$asset" />
                 <x-form-select col="6" default="{{ $selected_location ?? ($model ? $model->field_asset_id : null) }}"  name="job_id_location" label="Ruangan" :options="$location" />
 
-                <x-form-textarea col="6" rows="5" readonly="true" class="h-100 mb-5" label="Keterangan Kerusakan"
+                <x-form-textarea col="6" rows="5" readonly="true" class="h-100" label="Keterangan Kerusakan"
                     name="job_keterangan" />
-                <x-form-textarea col="6" rows="5" class="h-100 mb-5" label="Analisa"
+
+                <x-form-textarea col="6" rows="5" class="h-100" label="Analisa"
                     name="job_analisa" />
 
                 <div class="container mt-3">
                     <div class="row">
-                        <x-form-select col="6" name="job_id_saran" label="Rekomendasi Penggunaan"
+                        <x-form-select col="6" name="job_id_saran" class="mb-2" label="Rekomendasi Penggunaan"
                             :options="$saran" />
 
-                        <x-form-textarea col="6" rows="5" class="h-100 mb-5" label="Kesimpulan"
+                        <x-form-textarea col="6" rows="5" class="h-100" label="Kesimpulan"
                             name="job_kesimpulan" />
 
                     </div>
