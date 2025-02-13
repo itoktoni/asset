@@ -167,7 +167,7 @@ class Asset extends SystemModel
 
             if($model->has_location)
             {
-                $name = $name.' '.$model->has_location->field_name;
+                $name = $name.' ~ '.$model->has_location->field_name;
             }
 
             if($model->asset_serial_number)

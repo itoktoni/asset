@@ -20,7 +20,7 @@ class LokasiRequest extends GeneralRequest
         if(!empty($area_id))
         {
             $area = Area::find($area_id)->field_name ?? '';
-            $nama = $nama.' - '.$area;
+            $nama = $nama.' @ '.$area;
 
             if(!empty($group))
             {
