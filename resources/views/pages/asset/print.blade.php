@@ -18,13 +18,6 @@
             padding: 0;
         }
 
-        @media print {
-            @page {
-                size: 580mm 400mm;
-                margin: 10mm;
-            }
-        }
-
         body {
             font-family: Times New Roman;
             font-size: 33px;
@@ -43,17 +36,15 @@
 <body>
     <div class="container" style="text-align: center;">
         <p style="font-size: 5px;margin-top:0px;margin-bottom:0px">.</p>
-        <h5 style="margin-top:5px;font-size:12px;margin-bottom:0px;">
+        <h5 style="margin-top:5px;font-size:12px;margin-bottom:2rem;">
             <span style="position: absolute; left:0px;font-size:5px">.</span>
-            <span style="padding-left: 5px;padding-right:10px">{{ $model->field_name }}</span>
+            <span style="padding-left: 5px;padding-right:10px;font-size:3rem">{{ $model->field_name }}</span>
             <span style="position: absolute; right:0px;font-size:5px">.</span>
         </h5>
-        <h5 style="margin: 0px auto;text-align:center">
-            <img style="margin-top:10px;height:70px"
-                src="data:image/png;base64,{{ BARCODE2D::getBarcodePNG(route('detail_asset', ['code' => $model->field_primary]), 'QRCODE') }}"
-                alt="barcode" />
+        <h5 style="margin: 0px auto;text-align:center;">
+			{!! DNS2D::getBarcodeSVG(route('detail_asset', ['code' => $model->field_primary]), 'QRCODE', 20, 20) !!}
         </h5>
-        <h5 style="margin-top:3px;font-size:15px;margin-bottom:0px">{{ $model->field_serial_number }}</h5>
+        <h5 style="margin-top:2rem;font-size:3rem;margin-bottom:0px">{{ $model->field_serial_number }}</h5>
         <p style="margin-top:0px;margin-bottom:0px;font-size:5px">.</p>
     </div>
 </body>
