@@ -40,11 +40,32 @@
             <span style="position: absolute; left:0px;font-size:5px">.</span>
             <span style="padding-left: 5px;padding-right:10px;font-size:2rem">
 				@php
-				$nama = explode(' ~ ', $model->field_name);
+				$nama = $model->field_name;
+				$tambahan = '';
+
+				if(str_contains($nama, '~'))
+				{
+					$explode = explode(' ~ ', $nama);
+					$nama = $explode[0];
+
+					if(str_contains($explode[1], '-'))
+					{
+						$serial = explode(' - ', $explode[1]);
+						$tambahan = $serial[0];
+					}
+				}
+				else
+				{
+					if(str_contains($nama, ' - '))
+					{
+						$explode = explode(' - ', $nama);
+						$nama = $explode[0];
+					}
+				}
 				@endphp
-				{{ $nama[0] }}
+				{{ $nama }}
 				<br>
-				{{ $nama[1] }}
+				{{ $tambahan }}
 			</span>
             <span style="position: absolute; right:0px;font-size:5px">.</span>
         </h5>
