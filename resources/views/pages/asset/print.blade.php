@@ -36,7 +36,7 @@
 <body>
     <div class="container" style="text-align: center;">
         <p style="font-size: 5px;margin-top:0px;margin-bottom:0px">.</p>
-        <h5 style="margin-top:2rem;font-size:12px;margin-bottom:20px;">
+        <h5 style="margin-top:1rem;font-size:12px;margin-bottom:20px;">
             <span style="position: absolute; left:0px;font-size:5px">.</span>
             <span style="padding-left: 5px;padding-right:10px;font-size:2rem">
 				@php
