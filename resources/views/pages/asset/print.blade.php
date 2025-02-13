@@ -63,9 +63,11 @@
 					}
 				}
 				@endphp
+
 				{{ $nama }}
 				<br>
 				{{ $tambahan }}
+
 			</span>
             <span style="position: absolute; right:0px;font-size:5px">.</span>
         </h5>
