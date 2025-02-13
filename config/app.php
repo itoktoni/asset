@@ -271,6 +271,8 @@ return [
         'Str' => Str::class,
         'EnvEditor' => EnvEditor::class,
         'ModelGroup' => SystemGroup::class,
+        'BARCODE1D' => Milon\Barcode\Facades\DNS1DFacade::class,
+        'BARCODE2D' => Milon\Barcode\Facades\DNS2DFacade::class,
     ],
 
 ];

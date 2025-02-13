@@ -1,6 +1,4 @@
 <x-layout>
-
-    <x-form :model="$model" :upload="true">
         <x-card label="{{ $model ? $model->field_name : 'Asset' }}">
 
             @bind($model)
@@ -78,6 +76,4 @@
 
         </x-card>
 
-
-    </x-form>
 </x-layout>

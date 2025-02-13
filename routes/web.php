@@ -3,6 +3,7 @@
 use App\Dao\Enums\Core\MenuType;
 use App\Dao\Enums\NotificationType;
 use App\Events\SendBroadcast;
+use App\Http\Controllers\AssetController;
 use App\Http\Controllers\Core\HomeController;
 use App\Http\Controllers\PublicController;
 use Buki\AutoRoute\AutoRouteFacade as AutoRoute;
@@ -41,6 +42,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', [PublicController::class, 'index'])->name('public');
 Route::post('/checkout', [PublicController::class, 'checkout'])->middleware('auth')->name('checkout');
+Route::get('/detail', [AssetController::class, 'getDetail'])->name('detail_asset');
 
 try {
     $routes = Query::groups();

@@ -116,7 +116,7 @@
                     skipDuplicates: true,
                     callback: function(codes) {
                         var code = codes.split('=');
-                        window.location.replace("{{ route('asset.getDetail') }}?id=" + code[1]);
+                        window.location.replace("{{ route('detail_asset') }}?id=" + code[1]);
                     }
                 });
             });

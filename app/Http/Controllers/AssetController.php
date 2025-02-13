@@ -93,9 +93,21 @@ class AssetController extends MasterController
         }
     }
 
+    public function getPrint($code)
+    {
+        $this->beforeForm();
+        $this->beforeUpdate($code);
+
+        $model = $this->get($code);
+
+        return moduleView(modulePathForm('print'), $this->share([
+            'model' => $model,
+        ]));
+    }
+
     public function getDetail()
     {
-        $code = request()->get('id');
+        $code = request()->get('code');
 
         $this->beforeForm();
         $this->beforeUpdate($code);
@@ -107,7 +119,7 @@ class AssetController extends MasterController
             ->limit(10)
             ->get();
 
-        return moduleView(modulePathForm('detail'), $this->share([
+        return moduleView(modulePathForm('detail', 'asset'), $this->share([
             'model' => $model,
             'job' => $job,
         ]));

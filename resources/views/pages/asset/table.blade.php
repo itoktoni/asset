@@ -39,6 +39,9 @@
                                             <x-crud :model="$table">
                                                 <x-button class="btn btn-info btn-sm mt-1" module="getDetail" key="{{ $table->field_primary }}"
                                                     label="Detail" />
+
+                                                <x-button class="btn btn-danger btn-sm mt-1" module="getPrint" key="{{ $table->field_primary }}"
+                                                    label="Cetak" />
                                             </x-crud>
                                         </td>
                                         <td class="column-action">
