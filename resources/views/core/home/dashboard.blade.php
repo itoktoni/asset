@@ -40,7 +40,7 @@
                             <div>Pekerjaan</div>
                         </div>
                         <div>
-                            <i id="buat_job" class="cursor bi bi-search text-danger" style="font-size: 3rem"></i>
+                            <i id="buat_job" class="cursor bi bi-wrench-adjustable text-danger" style="font-size: 3rem"></i>
                         </div>
                     </div>
                 </div>

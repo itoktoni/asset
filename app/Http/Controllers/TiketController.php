@@ -6,6 +6,7 @@ use App\Dao\Enums\Core\SheetType;
 use App\Dao\Enums\TiketType;
 use App\Dao\Enums\JobStatusType;
 use App\Dao\Enums\JobType;
+use App\Dao\Models\Asset;
 use App\Dao\Models\Job;
 use App\Dao\Models\Sheet;
 use App\Dao\Models\Tiket;
@@ -40,8 +41,18 @@ class TiketController extends MasterController
         $location = LokasiModel::getOptions();
         $asset = AssetModel::getOptions();
         $status = TiketType::getOptions();
+        $selected_asset = $selected_location = false;
+
+        if($id = request()->get('id'))
+        {
+            $data_asset = Asset::find($id);
+            $selected_asset = $data_asset->field_primary;
+            $selected_location = $data_asset->field_location_id;
+        }
 
         self::$share = [
+            'selected_asset' => $selected_asset,
+            'selected_location' => $selected_location,
             'status' => $status,
             'asset' => $asset,
             'location' => $location,
@@ -59,6 +70,14 @@ class TiketController extends MasterController
         return Response::redirectBack($data);
     }
 
+    public function getCreate()
+    {
+        $this->beforeForm();
+        $this->beforeCreate();
+
+        return moduleView(modulePathForm(path: self::$is_core), $this->share());
+    }
+
     public function postUpdate($code, TiketRequest $request, UpdateService $service)
     {
         $data = $service->update($this->model, $request, $code);
@@ -66,7 +85,7 @@ class TiketController extends MasterController
         return Response::redirectBack($data);
     }
 
-    public function getCode($code)
+    public function getCode($code) //use by whatsapp when url click
     {
         $this->beforeForm();
         $model = Tiket::with(['has_job', 'has_job.has_user'])->where(Tiket::field_code(), $code)->first();

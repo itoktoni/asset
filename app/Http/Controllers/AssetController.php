@@ -107,7 +107,7 @@ class AssetController extends MasterController
 
     public function getDetail()
     {
-        $code = request()->get('code');
+        $code = request()->get('id');
 
         $this->beforeForm();
         $this->beforeUpdate($code);

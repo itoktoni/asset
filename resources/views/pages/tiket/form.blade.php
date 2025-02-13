@@ -8,11 +8,10 @@
             </x-action>
 
             @bind($model)
-
-                <x-form-select col="12" class="search" label="Nama Asset" name="tiket_id_asset" :options="$asset" />
+                <x-form-select id="asset" col="12" class="search" default="{{ $selected_asset ?? ($model ? $model->field_asset_id : null) }}" label="Nama Asset" name="tiket_id_asset" :options="$asset" />
                 <x-form-textarea col="6" rows="5" class="h-100 mb-5" label="Keterangan"
                     name="tiket_keterangan" />
-                <x-form-select col="6" name="tiket_id_location" label="Ruangan" :options="$location" />
+                <x-form-select col="6" name="tiket_id_location" default="{{ $selected_location ?? ($model ? $model->field_asset_id : null) }}"  label="Ruangan" :options="$location" />
 
                 <div class="col-md-6 mt-3">
 
@@ -81,6 +80,18 @@
                         .getElementById("pictureFromCamera")
                         .style.height = 'auto';
                 });
+
+            $('#asset').change(function() {
+                var id = $("#asset option:selected").val();
+                var uri = window.location.toString();
+                var clean_uri = window.location.toString();
+                if (uri.indexOf("?") > 0) {
+                    clean_uri = uri.substring(0, uri.indexOf("?"));
+                    window.history.replaceState({}, document.title, clean_uri);
+                }
+                window.location = clean_uri + '?id=' + id;
+            });
+
         </script>
     @endpush
 

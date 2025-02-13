@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Dao\Enums\Core\LevelType;
 use App\Dao\Enums\JobStatusType;
 use App\Dao\Enums\TiketType;
+use App\Dao\Models\Asset;
 use App\Events\CreateTiketEvent;
 use App\Events\FinishJobEvent;
 use App\Facades\Model\AssetModel;
@@ -34,7 +35,18 @@ class JobController extends MasterController
         $status = JobStatusType::getOptions();
         $saran = SaranModel::getOptions();
 
+        $selected_asset = $selected_location = false;
+
+        if($id = request()->get('id'))
+        {
+            $data_asset = Asset::find($id);
+            $selected_asset = $data_asset->field_primary;
+            $selected_location = $data_asset->field_location_id;
+        }
+
         self::$share = [
+            'selected_asset' => $selected_asset,
+            'selected_location' => $selected_location,
             'saran' => $saran,
             'status' => $status,
             'asset' => $asset,

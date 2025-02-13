@@ -16,6 +16,16 @@ trait AssetEntity
         return $this->{$this->field_code()};
     }
 
+    public static function field_serial_number()
+    {
+        return 'asset_serial_number';
+    }
+
+    public function getFieldSerialNumberAttribute()
+    {
+        return $this->{$this->field_serial_number()};
+    }
+
     public static function field_status()
     {
         return 'asset_status';
