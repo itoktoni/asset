@@ -36,14 +36,22 @@ class NotificationController extends MasterController
         $model = $this->get($code);
 
         $check = $service->send($model->notification_nama, $model->notification_alamat, $model->notification_pesan, $model->notification_gambar);
+        $cek = json_decode($check);
 
-        $model->notification_status = JobStatusType::Selesai;
-        $model->notification_eta = date('Y-m-d');
-        $model->notification_response = $check;
+        if(isset($cek['status']) && $cek['status'])
+        {
+            $model->notification_status = JobStatusType::Selesai;
+            $model->notification_eta = date('Y-m-d');
+            $model->notification_response = $check;
+            $model->save();
 
-        $model->save();
+            Alert::info("Notification Berhasil terkirim !");
+        }
+        else
+        {
+            Alert::error("Notification Gagal terkirim !");
+        }
 
-        Alert::info("Notification Successfully Send");
 
         return redirect()->back();
     }
