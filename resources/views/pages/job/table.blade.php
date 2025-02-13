@@ -42,7 +42,7 @@
                                             Type : <b>{{ $table->field_type }}</b>
                                             <br>
                                             No. Tiket : <a
-                                                href="{{ route('tiket.getUpdate', ['code' => $table->tiket_id]) }}"><b
+                                                href="{{ $table->tiket_id ? route('tiket.getUpdate', ['code' => $table->tiket_id]) : '' }}"><b
                                                     class="text-primary">{{ $table->tiket_code }}</b></a>
                                             <br>
                                             <b>Tgl Tiket</b> : {{ formatDate($table->tiket_tanggal) }}
