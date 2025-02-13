@@ -41,7 +41,7 @@ class TiketController extends MasterController
         $location = LokasiModel::getOptions();
         $asset = AssetModel::getOptions();
         $status = TiketType::getOptions();
-        $selected_asset = $selected_location = false;
+        $selected_asset = $selected_location = null;
 
         if($id = request()->get('id'))
         {

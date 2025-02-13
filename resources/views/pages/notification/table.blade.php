@@ -34,7 +34,10 @@
                                                 value="{{ $table->field_primary }}">
                                         </td>
                                         <td class="col-md-2 text-center column-action">
-                                            <x-crud :model="$table" />
+                                            <x-crud :model="$table">
+                                                <x-button class="btn btn-success btn-sm mt-1" module="getSend" key="{{ $table->field_primary }}"
+                                                    label="Kirim" />
+                                            </x-crud>
                                         </td>
 
 										<td>

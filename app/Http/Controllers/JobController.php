@@ -35,7 +35,7 @@ class JobController extends MasterController
         $status = JobStatusType::getOptions();
         $saran = SaranModel::getOptions();
 
-        $selected_asset = $selected_location = false;
+        $selected_asset = $selected_location = null;
 
         if($id = request()->get('id'))
         {

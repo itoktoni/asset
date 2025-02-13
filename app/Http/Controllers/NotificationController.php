@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\NotificationInterface;
 use App\Dao\Enums\JobStatusType;
+use App\Facades\Model\NotificationModel;
 use App\Http\Controllers\Core\MasterController;
 use App\Http\Function\CreateFunction;
 use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
-use App\Facades\Model\NotificationModel;
+use Plugins\Alert;
+use Plugins\Notes;
 
 class NotificationController extends MasterController
 {
@@ -27,4 +30,22 @@ class NotificationController extends MasterController
             'status' => $status,
         ];
     }
+
+    public function getSend($code, NotificationInterface $service)
+    {
+        $model = $this->get($code);
+
+        $check = $service->send($model->notification_nama, $model->notification_alamat, $model->notification_pesan, $model->notification_gambar);
+
+        $model->notification_status = JobStatusType::Selesai;
+        $model->notification_eta = date('Y-m-d');
+        $model->notification_response = $check;
+
+        $model->save();
+
+        Alert::info("Notification Successfully Send");
+
+        return redirect()->back();
+    }
+
 }
