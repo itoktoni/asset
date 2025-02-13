@@ -11,8 +11,11 @@
                 <x-form-select col="6" id="asset" default="{{ $selected_asset ?? ($model ? $model->field_asset_id : null) }}" class="search" label="Nama Asset" name="job_id_asset" :options="$asset" />
                 <x-form-select col="6" default="{{ $selected_location ?? ($model ? $model->field_asset_id : null) }}"  name="job_id_location" label="Ruangan" :options="$location" />
 
-                <x-form-textarea col="6" rows="5" readonly="true" class="h-100" label="Keterangan Kerusakan"
-                    name="job_keterangan" />
+                @if($model && $model->field_status)
+                <x-form-textarea col="6" rows="5" readonly class="h-100" label="Keterangan Kerusakan" name="job_keterangan" />
+                @else
+                <x-form-textarea col="6" rows="5" class="h-100" label="Keterangan Kerusakan" name="job_keterangan" />
+                @endif
 
                 <x-form-textarea col="6" rows="5" class="h-100" label="Analisa"
                     name="job_analisa" />
