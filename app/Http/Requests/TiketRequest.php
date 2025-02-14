@@ -30,14 +30,13 @@ class TiketRequest extends GeneralRequest
 
     public function withValidator($validator)
     {
-
-        $asset = Asset::find($this->tiket_id_asset);
+        $asset = Asset::find($this->{Tiket::field_asset_id()});
         $location = false;
 
         if($asset)
         {
             $location_id = $asset->asset_id_lokasi;
-            if(empty($this->tiket_id_location) && empty($location_id))
+            if(empty($this->{Tiket::field_location_id()}) && empty($location_id))
             {
                 $location = true;
             }

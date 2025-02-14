@@ -166,7 +166,7 @@ trait JobEntity
         return $this->{$this->field_checked_at()};
     }
 
-    public function getFieldPickAtAttribute()
+    public function getFieldPickedAtAttribute()
     {
         return $this->{$this->field_checked_at()};
     }

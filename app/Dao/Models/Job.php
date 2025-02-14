@@ -119,16 +119,22 @@ class Job extends SystemModel
                 Tiket::field_primary(),
                 Tiket::field_code(),
                 Tiket::field_name(),
+                Tiket::field_pelapor(),
                 Tiket::field_tanggal(),
+                Saran::field_name(),
             ])
             ->leftJoinRelationship('has_tiket')
             ->leftJoinRelationship('has_asset')
             ->leftJoinRelationship('has_location')
+            ->leftJoinRelationship('has_saran')
             ->sortable()
             ->orderBy(self::CREATED_AT , 'DESC')
             ->filter();
 
-        $query = env('PAGINATION_SIMPLE') ? $query->simplePaginate(env('PAGINATION_NUMBER')) : $query->paginate(env('PAGINATION_NUMBER'));
+        if(request()->get('type') != 'report')
+        {
+            $query = env('PAGINATION_SIMPLE') ? $query->simplePaginate(env('PAGINATION_NUMBER')) : $query->paginate(env('PAGINATION_NUMBER'));
+        }
 
         return $query;
     }

@@ -6,6 +6,7 @@ use App\Dao\Enums\Core\LevelType;
 use App\Dao\Enums\JobStatusType;
 use App\Dao\Enums\TiketType;
 use App\Dao\Models\Asset;
+use App\Dao\Models\Job;
 use App\Events\CreateTiketEvent;
 use App\Events\FinishJobEvent;
 use App\Facades\Model\AssetModel;
@@ -79,7 +80,8 @@ class JobController extends MasterController
         $model = $this->get($code, ['has_tiket']);
         if($model && $this->checkApproval($model->has_tiket->field_user_id ?? false))
         {
-            $model->job_status = JobStatusType::Selesai;
+            $model->{Job::field_status()} = JobStatusType::Selesai;
+            $model->{Job::field_finished_at()} = date('Y-m-d H:i:s');
             $model->save();
 
             Alert::update("Tiket di approve !");

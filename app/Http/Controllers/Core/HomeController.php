@@ -41,7 +41,7 @@ class HomeController extends Controller
         $total = Tiket::count();
         $baru = Tiket::whereNull(Tiket::field_user())->count();
         $proses = Tiket::whereNotNull(Tiket::field_user())->count();
-        $selesai = Job::where('job_status', JobStatusType::Selesai())->count();
+        $selesai = Job::where(Job::field_status(), JobStatusType::Selesai())->count();
 
         return view('core.home.dashboard', [
             'chart' => $chart->build(),

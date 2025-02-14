@@ -118,26 +118,4 @@ class TiketController extends MasterController
 
         return redirect()->back();
     }
-
-    public function getSelesai($code)
-    {
-        $model = $this->model->with(['has_job'])->where(Tiket::field_code(), $code)->first();
-        $model->{Tiket::field_user()} = auth()->user()->id;
-        $model->save();
-
-        Job::updateOrCreate([
-            Job::field_assign_id() => auth()->user()->id,
-            Job::field_tiket_id() => $model->field_primary,
-            Job::field_asset_id() => $model->field_asset_id,
-            Job::field_location_id() => $model->field_location_id,
-            Job::field_description() => $model->field_description,
-            Job::field_type() => JobType::Korektif,
-        ], [
-            Job::field_status() => JobStatusType::Ambil,
-        ]);
-
-        Alert::update("Tiket berhasil di ambil !");
-
-        return redirect()->back();
-    }
 }
