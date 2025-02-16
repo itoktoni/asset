@@ -49,13 +49,8 @@ Route::get('/detail', [AssetController::class, 'getDetail'])->name('detail_asset
 
 Route::get('/telegram', function () {
 
-    $telegram = new Api(env('TELEGRAM_BOT_TOKEN'));
-
-    // Example usage
-    $response = $telegram->getMe();
+    $response = Telegram::bot('mybot')->getMe();
     dd($response);
-
-$response = Telegram::bot('AssetNotificationBot')->getMe();
 
     // Response is an array of updates.
     $updates = \NotificationChannels\Telegram\TelegramUpdates::create()
