@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Plugins\Query;
 use Telegram\Bot\Laravel\Facades\Telegram;
+use Telegram\Bot\Api;
 
 
 Route::get('console', [HomeController::class, 'console'])->name('console');
@@ -48,8 +49,13 @@ Route::get('/detail', [AssetController::class, 'getDetail'])->name('detail_asset
 
 Route::get('/telegram', function () {
 
+    $telegram = new Api(env('TELEGRAM_BOT_TOKEN'));
+
+    // Example usage
+    $response = $telegram->getMe();
+    dd($response);
+
 $response = Telegram::bot('AssetNotificationBot')->getMe();
-dd($response);
 
     // Response is an array of updates.
     $updates = \NotificationChannels\Telegram\TelegramUpdates::create()
