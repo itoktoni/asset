@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Core;
 
+use App\Dao\Models\Core\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
@@ -11,10 +13,6 @@ use Telegram\Bot\Laravel\Facades\Telegram;
 
 class WebhookController extends Controller
 {
-    protected $except = [
-        '/webhook/telegram'
-    ];
-
     public function deploy(Request $request)
     {
         $githubPayload = $request->getContent();
@@ -38,8 +36,20 @@ class WebhookController extends Controller
 
     public function telegram(Request $request)
     {
-        $response = Telegram::getMe();
-        Log::info(json_encode($request->all(), JSON_PRETTY_PRINT));
-        Log::info(json_encode($response, JSON_PRETTY_PRINT));
+        if($chat = $request->message)
+        {
+            $chat_id = $chat->from->id ?? null;
+            $username = $chat->from->username ?? null;
+
+            if($chat_id && $username && Auth::user()->username == $username)
+            {
+                Telegram::sendMessage([
+                    'chat_id' => $chat_id,
+                    'text' => "Pendaftaran Berhasil",
+                ]);
+            }
+
+        }
+
     }
 }
