@@ -11,6 +11,10 @@ use Telegram\Bot\Laravel\Facades\Telegram;
 
 class WebhookController extends Controller
 {
+    protected $except = [
+        '/webhook/telegram'
+    ];
+
     public function deploy(Request $request)
     {
         $githubPayload = $request->getContent();
