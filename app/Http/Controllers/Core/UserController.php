@@ -9,6 +9,7 @@ use App\Http\Requests\Core\UserRequest;
 use App\Services\Master\CreateService;
 use App\Services\Master\SingleService;
 use App\Services\Master\UpdateService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Plugins\Notes;
 use Plugins\Response;
@@ -50,7 +51,7 @@ class UserController extends MasterController
 
         if (request()->method() == 'POST') {
 
-            UserModel::find(auth()->user()->id)->update([
+            UserModel::find(Auth::user()->field_primary)->update([
                 'password' => bcrypt(request()->get('password')),
             ]);
 
@@ -88,13 +89,13 @@ class UserController extends MasterController
         $this->beforeForm();
 
         return moduleView(modulePathForm(name: 'form', path: 'core.profile'), $this->share([
-            'model' => auth()->user(),
+            'model' => Auth::user(),
         ]));
     }
 
     public function updateProfile(UserRequest $request, UpdateService $service)
     {
-        $data = $service->update($this->model, $request, auth()->id());
+        $data = $service->update($this->model, $request, Auth::user()->field_primary);
 
         return Response::redirectBack($data);
     }

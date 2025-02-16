@@ -19,6 +19,9 @@ use MBarlow\Megaphone\MegaphoneServiceProvider;
 use Plugins\Query;
 use Plugins\Template;
 use Plugins\Views;
+use Intervention\Image\Image;
+use Telegram\Bot\Laravel\Facades\Telegram;
+use Telegram\Bot\Laravel\TelegramServiceProvider;
 
 return [
 
@@ -206,6 +209,7 @@ return [
         FacadeServiceProviders::class,
         CrudServiceProvider::class,
         MegaphoneServiceProvider::class,
+        TelegramServiceProvider::class,
     ],
 
     /*
@@ -257,7 +261,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Enum' => BenSampo\Enum\EnumServiceProvider::class,
-        'Image' => \Intervention\Image\Facades\Image::class,
+        'Image' => Image::class,
         'Template' => Template::class,
         'Views' => Views::class,
         'BooleanType' => BooleanType::class,
@@ -274,6 +278,7 @@ return [
         'BARCODE1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'BARCODE2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         'Browser' => hisorange\BrowserDetect\Parser::class,
+        'Telegram' => Telegram::class,
     ],
 
 ];

@@ -10,6 +10,8 @@ use Buki\AutoRoute\AutoRouteFacade as AutoRoute;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Plugins\Query;
+use Telegram\Bot\Laravel\Facades\Telegram;
+
 
 Route::get('console', [HomeController::class, 'console'])->name('console');
 Route::get('test', function () {
@@ -45,6 +47,10 @@ Route::post('/checkout', [PublicController::class, 'checkout'])->middleware('aut
 Route::get('/detail', [AssetController::class, 'getDetail'])->name('detail_asset');
 
 Route::get('/telegram', function () {
+
+$response = Telegram::bot('AssetNotificationBot')->getMe();
+dd($response);
+
     // Response is an array of updates.
     $updates = \NotificationChannels\Telegram\TelegramUpdates::create()
         // (Optional). Get's the latest update. NOTE: All previous updates will be forgotten using this method.
