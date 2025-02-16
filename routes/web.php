@@ -47,12 +47,15 @@ Auth::routes(['verify' => true]);
 Route::get('/', [PublicController::class, 'index'])->name('public');
 Route::post('/checkout', [PublicController::class, 'checkout'])->middleware('auth')->name('checkout');
 Route::get('/detail', [AssetController::class, 'getDetail'])->name('detail_asset');
-Route::post('/webhook/telegram', [WebhookController::class, 'telegram'])->name('webhook_telegram');
+Route::post('/'.env('TELEGRAM_BOT_TOKEN').'/webhook', [WebhookController::class, 'telegram'])->name('webhook_telegram');
 
-Route::post('/telegram', function () {
+Route::get('/telegram', function () {
+
+    $response = Telegram::setWebhook(['url' => 'https://rsambkt.itoktoni.com/'.env('TELEGRAM_BOT_TOKEN').'/webhook']);
+    // $response = Telegram::removeWebhook();
+    dd($response);
 
     $response = Telegram::getMe();
-    dd($response);
 
     // Response is an array of updates.
     $updates = \NotificationChannels\Telegram\TelegramUpdates::create()
