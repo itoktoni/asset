@@ -47,7 +47,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', [PublicController::class, 'index'])->name('public');
 Route::post('/checkout', [PublicController::class, 'checkout'])->middleware('auth')->name('checkout');
 Route::get('/detail', [AssetController::class, 'getDetail'])->name('detail_asset');
-Route::get('/webhook/telegram', [WebhookController::class, 'telegram'])->name('webhook_telegram');
+Route::post('/webhook/telegram', [WebhookController::class, 'telegram'])->name('webhook_telegram');
 
 Route::post('/telegram', function () {
 
