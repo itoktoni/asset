@@ -32,9 +32,10 @@ class WebhookController extends Controller
         }
     }
 
-    public function telegram()
+    public function telegram(Request $request)
     {
         $response = Telegram::getMe();
+        Log::info(json_encode($request->all(), JSON_PRETTY_PRINT));
         Log::info(json_encode($response, JSON_PRETTY_PRINT));
     }
 }

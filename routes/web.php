@@ -49,7 +49,7 @@ Route::post('/checkout', [PublicController::class, 'checkout'])->middleware('aut
 Route::get('/detail', [AssetController::class, 'getDetail'])->name('detail_asset');
 Route::get('/webhook/telegram', [WebhookController::class, 'telegram'])->name('webhook_telegram');
 
-Route::get('/telegram', function () {
+Route::post('/telegram', function () {
 
     $response = Telegram::getMe();
     dd($response);
