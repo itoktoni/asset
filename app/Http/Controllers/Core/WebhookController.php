@@ -63,6 +63,13 @@ class WebhookController extends Controller
 
                 sendNotification($notification, NotificationType::Info, $user->id);
             }
+            else
+            {
+                Telegram::sendMessage([
+                    'chat_id' => $chat_id,
+                    'text' => "Pendaftaran Gagal Dilakukan",
+                ]);
+            }
         }
     }
 }
