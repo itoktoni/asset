@@ -226,11 +226,11 @@ function logoUrl($isLogo = true)
 
     if(env('PATH_LINK', false))
     {
-        return file_exists(storage_path('app/public/'.$logo)) ? url('storage/'.$logo) : url('images/noimage.jpeg');
+        return file_exists(storage_path('app/public/'.$logo)) && $logo ? url('storage/'.$logo) : url('images/noimage.jpeg');
     }
     else
     {
-        return file_exists(public_path($logo)) ? url($logo) : url('images/noimage.jpeg');
+        return file_exists(public_path($logo)) && $logo ? url($logo) : url('images/noimage.jpeg');
     }
 }
 
