@@ -61,7 +61,7 @@ class WebhookController extends Controller
                     'Pendaftaran Telegram Berhasil', // Notification Body
                 );
 
-                sendNotification($notification, NotificationType::Info);
+                sendNotification($notification, NotificationType::Info, $user->id);
             }
         }
     }
