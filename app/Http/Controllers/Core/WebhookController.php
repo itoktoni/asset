@@ -39,7 +39,11 @@ class WebhookController extends Controller
         if($chat = $request->message)
         {
             $chat_id = $chat->from->id ?? null;
+            $id = $chat['from']['id'] ?? null;
             $username = $chat->from->username ?? null;
+
+            Log::info($id);
+            Log::info($chat_id);
 
             if($chat_id && $username && Auth::user()->username == $username)
             {
