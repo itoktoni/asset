@@ -100,4 +100,19 @@ trait UserEntity
     {
         return $this->{RoleModel::field_name()};
     }
+
+    /**
+     * Method field_telegram
+     *
+     * @return void
+     */
+    public static function field_telegram()
+    {
+        return 'telegram';
+    }
+
+    public function getFieldTelegramAttribute()
+    {
+        return $this->{self::field_telegram()};
+    }
 }

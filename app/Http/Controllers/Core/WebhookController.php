@@ -42,9 +42,14 @@ class WebhookController extends Controller
             $chat_id = $from['id'] ?? null;
             $username = $from['username'] ?? null;
 
+            $user = User::where('username', $username)->first();
 
-            if($chat_id && $username && Auth::user()->username == $username)
+            if($chat_id && $user)
             {
+                $user->update([
+                    User::field_telegram() => $chat_id
+                ]);
+
                 Telegram::sendMessage([
                     'chat_id' => $chat_id,
                     'text' => "Pendaftaran Berhasil",

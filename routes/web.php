@@ -51,6 +51,11 @@ Route::post('/webhook/telegram', [WebhookController::class, 'telegram'])->name('
 
 Route::get('/telegram', function () {
 
+    Telegram::sendMessage([
+        'chat_id' => 843133427,
+        'text' => 'Pendaftaran Berhasil',
+    ]);
+
     // $response = Telegram::removeWebhook();
     $response = Telegram::setWebhook(['url' => 'https://rsambkt.itoktoni.com/webhook/telegram']);
     dd($response);
