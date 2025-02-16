@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Core;
 
+use App\Dao\Enums\NotificationType;
 use App\Dao\Models\Core\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -54,6 +55,13 @@ class WebhookController extends Controller
                     'chat_id' => $chat_id,
                     'text' => "Pendaftaran Berhasil",
                 ]);
+
+                $notification = new \MBarlow\Megaphone\Types\Important(
+                    'Telegram', // Notification Title
+                    'Pendaftaran Telegram Berhasil', // Notification Body
+                );
+
+                sendNotification($notification, NotificationType::Success);
             }
         }
     }
