@@ -38,7 +38,7 @@ class NotificationController extends MasterController
         $check = $service->send($model->notification_nama, $model->notification_alamat, $model->notification_pesan, $model->notification_gambar);
         $cek = json_decode($check);
 
-        if(isset($cek['status']) && $cek['status'])
+        if(isset($cek))
         {
             $model->notification_status = JobStatusType::Selesai;
             $model->notification_tanggal = date('Y-m-d');
