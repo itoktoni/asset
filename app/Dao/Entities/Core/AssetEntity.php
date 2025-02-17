@@ -76,6 +76,16 @@ trait AssetEntity
         return $this->{$this->field_department_id()};
     }
 
+    public static function field_distributor_id()
+    {
+        return 'asset_id_distributor';
+    }
+
+    public function getFieldDistributorIdAttribute()
+    {
+        return $this->{$this->field_distributor_id()};
+    }
+
     public static function field_group_id()
     {
         return 'asset_id_group';
@@ -85,7 +95,6 @@ trait AssetEntity
     {
         return $this->{$this->field_group_id()};
     }
-
 
     public static function field_location_id()
     {
@@ -125,5 +134,35 @@ trait AssetEntity
     public function getFieldTanggalDiakuiAttribute()
     {
         return $this->{$this->field_tanggal_diakui()};
+    }
+
+    public static function field_pendanaan()
+    {
+        return 'asset_pendanaan';
+    }
+
+    public function getFieldPendanaanAttribute()
+    {
+        return $this->{$this->field_pendanaan()};
+    }
+
+    public static function field_akl_akd()
+    {
+        return 'asset_akl_akd';
+    }
+
+    public function getFieldAklAkdAttribute()
+    {
+        return $this->{$this->field_akl_akd()};
+    }
+
+    public static function field_harga()
+    {
+        return 'asset_harga_perolehan';
+    }
+
+    public function getFieldHargaAttribute()
+    {
+        return $this->{$this->field_harga()};
     }
 }

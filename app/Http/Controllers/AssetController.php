@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Dao\Enums\AssetStatusType;
 use App\Dao\Enums\JobStatusType;
 use App\Dao\Enums\JobType;
+use App\Dao\Enums\PendanaanType;
 use App\Dao\Models\Job;
 use App\Dao\Models\Tiket;
 use App\Http\Controllers\Core\MasterController;
@@ -42,8 +43,10 @@ class AssetController extends MasterController
         $naming = PenamaanModel::getOptions();
         $distributor = DistributorModel::getOptions();
         $status = AssetStatusType::getOptions();
+        $pendanaan = PendanaanType::getOptions();
 
         self::$share = [
+            'pendanaan' => $pendanaan,
             'status' => $status,
             'distributor' => $distributor,
             'naming' => $naming,

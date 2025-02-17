@@ -11,8 +11,9 @@
             <x-form-input col="3" label="Code Asset" name="asset_code" />
 
             <x-form-select col="6" name="asset_id_lokasi" :options="$location" />
+            <x-form-input col="3" label="AKL / AKD" name="asset_akl_akd" />
             <x-form-select col="3" name="asset_status" :options="$status" />
-            <x-form-select col="3" name="asset_id_department" label="Departemen" :options="$department" />
+            <x-form-select col="6" name="asset_id_department" label="Departemen" :options="$department" />
 
             <x-form-select col="6" name="asset_id_group" label="Pemeliharaan" :options="$teknisi" />
             <x-form-select col="6" name="asset_id_distributor" :options="$distributor" />
@@ -40,12 +41,14 @@
             <div class="row">
 
                 <x-form-input col="3" label="Tahun Pengadaan" name="asset_tahun_pengadaan" />
+                <x-form-input col="3" type="date" label="Tanggal Diakui" name="asset_tanggal_diakui" />
+                <x-form-select col="3" name="asset_pendanaan" :options="$pendanaan" />
                 <x-form-input col="3" label="Harga Perolehan" name="asset_harga_perolehan" />
 
-                <x-form-input col="6" type="date" label="Tanggal Diakui" name="asset_tanggal_diakui" />
                 <x-form-input col="3" readonly label="Status Kunjungan Selanjutnya" name="asset_status_kunjungan" />
-                <x-form-input col="3" type="date" label="Kunjungan Terakhir : {{ $tanggal_kunjungan ?? '' }}" name="asset_tanggal_kunjungan" />
-                <x-form-input col="6" type="date" label="Tanggal Kalibrasi" name="asset_tanggal_kalibrasi" />
+                <x-form-input col="3" label="Kunjungan Terakhir" value="{{ $tanggal_kunjungan ?? '' }}" name="kunjungan"/>
+                <x-form-input col="3" type="date" label="Kunjungan Selanjutnya" name="asset_tanggal_kunjungan" />
+                <x-form-input col="3" type="date" label="Tanggal Kalibrasi" name="asset_tanggal_kalibrasi" />
 
             </div>
             @endbind

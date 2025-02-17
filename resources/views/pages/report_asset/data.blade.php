@@ -34,20 +34,40 @@
 		<thead>
 			<tr>
 				<th width="1">No. </th>
+				<th>NOMENKLATUR</th>
+				<th>SERIAL NUMBER</th>
+				<th>KODE ASSET</th>
+				<th>KODE AKL / AKD</th>
 				<th>NAMA ASSET</th>
+				<th>BRAND</th>
+				<th>MODEL/TIPE</th>
 				<th>RUANGAN</th>
+				<th>FULL NAME ASSET</th>
 				<th>TANGGAL DIAKUI</th>
-				<th>KETERANGAN</th>
+				<th>STATUS</th>
+				<th>HARGA</th>
+				<th>PENDANAAN</th>
+				<th>DISTRIBUTOR</th>
 			</tr>
 		</thead>
 		<tbody>
 			@forelse($data as $table)
 			<tr>
 				<td>{{ $loop->iteration }}</td>
-				<td>{{ $table->field_name }}</td>
+				<td>{{ $table->nomenklatur_code }}</td>
+				<td>{{ $table->field_serial_number }}</td>
+				<td>{{ $table->field_code }}</td>
+				<td>{{ $table->field_akl_akd }}</td>
+				<td>{{ $table->penamaan_nama }}</td>
+				<td>{{ $table->brand_nama }}</td>
+				<td>{{ $table->model_nama }}</td>
 				<td>{{ $table->lokasi_gabungan ?? '' }}</td>
+				<td>{{ $table->field_name }}</td>
 				<td>{{ formatDate($table->field_tanggal_kunjungan) }}</td>
-				<td>{{ $table->field_status_kunjungan }}</td>
+				<td>{{ $table->field_status ?? '' }}</td>
+				<td>{{ $table->field_harga ?? '' }}</td>
+				<td>{{ $table->field_pendanaan ?? '' }}</td>
+				<td>{{ $table->distributor_nama ?? '' }}</td>
 			</tr>
 			@empty
 			@endforelse

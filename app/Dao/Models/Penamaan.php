@@ -7,6 +7,7 @@ use App\Dao\Models\Core\SystemModel;
 use App\Facades\Model\BrandModel;
 use App\Facades\Model\CategoryModel;
 use App\Facades\Model\ModelModel;
+use App\Facades\Model\NomenklaturModel;
 use Illuminate\Support\Str;
 
 /**
@@ -33,6 +34,7 @@ class Penamaan extends SystemModel
     protected $perPage = 20;
     protected $table = 'penamaan';
     protected $primaryKey = 'penamaan_id';
+    protected $with = ['has_nomenklatur'];
 
     /**
      * The attributes that are mass assignable.
@@ -48,6 +50,7 @@ class Penamaan extends SystemModel
         'penamaan_id_brand',
         'penamaan_id_satuan',
         'penamaan_id_category',
+        'penamaan_id_nomenklatur',
         'penamaan_tech',
         'penamaan_keterangan',
         'penamaan_angka_fungsi',
@@ -78,6 +81,11 @@ class Penamaan extends SystemModel
     public function has_model()
     {
         return $this->hasOne(ModelModel::getModel(), ModelModel::field_primary(), $this->field_model_id());
+    }
+
+    public function has_nomenklatur()
+    {
+        return $this->hasOne(NomenklaturModel::getModel(), NomenklaturModel::field_primary(), $this->field_nomenklatur_id());
     }
 
     public function dataRepository()

@@ -9,6 +9,7 @@ use App\Dao\Models\Model;
 use App\Facades\Model\BrandModel;
 use App\Facades\Model\CategoryModel;
 use App\Facades\Model\ModelModel;
+use App\Facades\Model\NomenklaturModel;
 use App\Http\Controllers\Core\MasterController;
 use App\Http\Function\CreateFunction;
 use App\Http\Function\UpdateFunction;
@@ -37,6 +38,7 @@ class PenamaanController extends MasterController
         $category = CategoryModel::getOptions();
         $type = ModelModel::getOptions();
         $satuan = SatuanModel::getOptions();
+        $nomenklatur = NomenklaturModel::getOptions();
         $tech = TechnologyType::getOptions();
 
         $fungsi = array_combine(range(1,10), range(1,10));
@@ -48,6 +50,7 @@ class PenamaanController extends MasterController
             'aplikasi' => $aplikasi,
             'fungsi' => $fungsi,
             'tech' => $tech,
+            'nomenklatur' => $nomenklatur,
             'satuan' => $satuan,
             'type' => $type,
             'category' => $category,

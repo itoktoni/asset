@@ -17,7 +17,7 @@ class ReportJadwalController extends ReportController
 
     public function getData()
     {
-        $query = $this->model->dataRepository();
+        $query = $this->model->rawQuery()->with(['has_location']);
 
         return $query->get();
     }

@@ -6,9 +6,11 @@ use App\Dao\Entities\Core\AssetEntity;
 use App\Dao\Models\Core\SystemModel;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\DepartmentModel;
+use App\Facades\Model\DistributorModel;
 use App\Facades\Model\GroupModel;
 use App\Facades\Model\JobModel;
 use App\Facades\Model\LokasiModel;
+use App\Facades\Model\NomenklaturModel;
 use App\Facades\Model\PenamaanModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
@@ -95,6 +97,8 @@ class Asset extends SystemModel
         'asset_tanggal_kunjungan',
         'asset_status_kunjungan',
         'asset_tanggal_kalibrasi',
+        'asset_pendanaan',
+        'asset_akl_akd',
     ];
 
     public static function field_name()
@@ -127,6 +131,12 @@ class Asset extends SystemModel
         return $this->hasOne(DepartmentModel::getModel(), DepartmentModel::field_primary(), $this->field_department_id());
     }
 
+
+    public function has_distributor()
+    {
+        return $this->hasOne(DistributorModel::getModel(), DistributorModel::field_primary(), $this->field_distributor_id());
+    }
+
     public function has_group()
     {
         return $this->hasOne(GroupModel::getModel(), GroupModel::field_primary(), $this->field_group_id());
@@ -137,17 +147,23 @@ class Asset extends SystemModel
         return $this->hasMany(JobModel::getModel(), JobModel::field_asset_id(), $this->field_primary());
     }
 
-    public function dataRepository()
+    public function rawQuery()
     {
         $query = $this
-            ->with(['has_location'])
-            ->addSelect([$this->getTable().'.*', Penamaan::field_name(), Lokasi::field_name(), Department::field_name(), Group::field_name()])
+            ->select([$this->getTable().'.*', Penamaan::field_name(), Lokasi::field_name(), Department::field_name(), Group::field_name()])
             ->leftJoinRelationship('has_naming')
             ->leftJoinRelationship('has_group')
             ->leftJoinRelationship('has_location')
             ->leftJoinRelationship('has_department')
             ->sortable()
             ->filter();
+
+        return $query;
+    }
+
+    public function dataRepository()
+    {
+        $query = $this->rawQuery();
 
         if(request()->get('type') != 'report')
         {

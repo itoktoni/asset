@@ -10,6 +10,7 @@
 
                 <x-form-select col="6" name="penamaan_id_brand" :options="$brand" />
                 <x-form-select col="6" name="penamaan_id_model" :options="$type" />
+                <x-form-select class="search" col="6" name="penamaan_id_nomenklatur" :options="$nomenklatur" />
                 <x-form-select col="3" name="penamaan_tech" label="Teknologi" :options="$tech" />
                 <x-form-select col="3" name="penamaan_id_satuan" :options="$satuan" />
 
