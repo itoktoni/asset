@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Core;
 
-use App\Dao\Enums\BellType;
 use App\Dao\Models\Core\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
+use Telegram\Bot\Keyboard\Keyboard;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 class WebhookController extends Controller
@@ -19,7 +17,7 @@ class WebhookController extends Controller
         $githubPayload = $request->getContent();
         $githubHash = $request->header('X-Hub-Signature');
         $localToken = env('GITHUB_WEBHOOK_SECRET');
-        $localHash = 'sha1='.hash_hmac('sha1', $githubPayload, $localToken, false);
+        $localHash = 'sha1=' . hash_hmac('sha1', $githubPayload, $localToken, false);
         if (hash_equals($githubHash, $localHash)) {
 
             chdir(base_path());
@@ -27,7 +25,7 @@ class WebhookController extends Controller
             $process->run();
 
             // executes after the command finishes
-            if (! $process->isSuccessful()) {
+            if (!$process->isSuccessful()) {
                 throw new ProcessFailedException($process);
             }
 
@@ -37,39 +35,49 @@ class WebhookController extends Controller
 
     public function telegram(Request $request)
     {
-        if($chat = $request->message)
-        {
+        if ($chat = $request->message) {
+
             $from = $chat['from'] ?? [];
+            $text = $chat['text'] ?? null;
             $chat_id = $from['id'] ?? null;
             $username = $from['username'] ?? null;
 
-            $user = User::where('username', $username)->first();
+            if ($text == "Register") {
+                $user = User::where('username', $username)->first();
 
-            if($chat_id && $user)
-            {
-                $user->update([
-                    User::field_telegram() => $chat_id
-                ]);
+                if ($chat_id && $user) {
+                    $user->update([
+                        User::field_telegram() => $chat_id,
+                    ]);
+
+                    Telegram::sendMessage([
+                        'chat_id' => $chat_id,
+                        'text' => "Pendaftaran Berhasil",
+                    ]);
+
+                } else {
+                    Telegram::sendMessage([
+                        'chat_id' => $chat_id,
+                        'text' => "Pendaftaran Gagal Dilakukan",
+                    ]);
+                }
+            } else {
+                $reply_markup = Keyboard::make()
+                    ->setResizeKeyboard(true)
+                    ->setOneTimeKeyboard(true)
+                    ->row([
+                        Keyboard::button('Register'),
+                        Keyboard::button('Help'),
+                    ])
+                ;
 
                 Telegram::sendMessage([
                     'chat_id' => $chat_id,
-                    'text' => "Pendaftaran Berhasil",
-                ]);
-
-                $notification = new \MBarlow\Megaphone\Types\Important(
-                    'Telegram', // Notification Title
-                    'Pendaftaran Telegram Berhasil', // Notification Body
-                );
-
-                sendNotification($notification, BellType::Info, $user->id);
-            }
-            else
-            {
-                Telegram::sendMessage([
-                    'chat_id' => $chat_id,
-                    'text' => "Pendaftaran Gagal Dilakukan",
+                    'text' => "Silahkan Pilih Menu Dibawah",
+                    'reply_markup' => $reply_markup,
                 ]);
             }
+
         }
     }
 }
