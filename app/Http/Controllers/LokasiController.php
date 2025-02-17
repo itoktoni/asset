@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dao\Models\Level3;
 use App\Facades\Model\AreaModel;
 use App\Http\Controllers\Core\MasterController;
 use App\Http\Function\CreateFunction;
@@ -27,8 +28,10 @@ class LokasiController extends MasterController
     protected function beforeForm()
     {
         $area = AreaModel::getOptions();
+        $level = Level3::getOptions();
 
         self::$share = [
+            'level' => $level,
             'area' => $area,
         ];
     }

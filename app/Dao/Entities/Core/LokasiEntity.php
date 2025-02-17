@@ -16,14 +16,14 @@ trait LokasiEntity
         return $this->{$this->field_gabungan()};
     }
 
-    public static function field_group()
+    public static function field_description()
     {
-        return 'lokasi_group';
+        return 'lokasi_keterangan';
     }
 
-    public function getFieldGroupAttribute()
+    public function getFieldDescriptionAttribute()
     {
-        return $this->{$this->field_group()};
+        return $this->{$this->field_description()};
     }
 
     public function getFieldNamingAttribute()
@@ -39,5 +39,15 @@ trait LokasiEntity
     public function getFieldAreaIdAttribute()
     {
         return $this->{$this->field_area_id()};
+    }
+
+    public static function field_level_id()
+    {
+        return 'lokasi_id_level3';
+    }
+
+    public function getFieldLevelIdAttribute()
+    {
+        return $this->{$this->field_level_id()};
     }
 }

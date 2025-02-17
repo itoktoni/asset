@@ -52,20 +52,23 @@
 										<td>
                                             SN : <b>{{ $table->asset_serial_number }}</b>
                                             <br>
-                                            CODE : {{ $table->asset_code }}
+                                        CODE : {{ $table->asset_code }}
                                         </td>
 
 										<td>
                                             <b>
-                                                <a class="text-primary" href="{{ route('penamaan.getUpdate', ['code' => $table->field_penamaan_id]) }}">{{ $table->asset_nama }}</a>
+                                                <a class="text-primary" href="{{ route('penamaan.getUpdate', ['code' => $table->field_penamaan_id]) }}">
+
+                                                    {{ $table->penamaan_gabungan ?? '' }}
+                                                </a>
                                             </b>
                                             <br>
-                                            Departemen : {{ $table->department_nama }}
+                                            Departemen : {{ $table->department_nama ?? '-' }}
 
                                             <br>
-                                            <b>Ruangan</b> : {{ $table->lokasi_gabungan }}
+                                            <b>Ruangan</b> : {{ $table->lokasi_gabungan ?? '-' }}
                                             <br>
-                                            Pemeliharaan : <b>{{ $table->group_nama }}</b>
+                                            Pemeliharaan : <b>{{ $table->group_nama ?? '-' }}</b>
                                         </td>
                                     </tr>
                                 @empty

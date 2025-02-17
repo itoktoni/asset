@@ -34,7 +34,7 @@ class Lokasi extends SystemModel
      *
      * @var array<int, string>
      */
-    protected $fillable = ['lokasi_id', 'lokasi_nama', 'lokasi_gabungan', 'lokasi_group', 'lokasi_id_area', 'lokasi_telp', 'lokasi_pic'];
+    protected $fillable = ['lokasi_id', 'lokasi_nama', 'lokasi_gabungan', 'lokasi_keterangan', 'lokasi_id_area', 'lokasi_id_level3', 'lokasi_telp', 'lokasi_pic'];
 
     public static function field_name()
     {
@@ -51,11 +51,17 @@ class Lokasi extends SystemModel
         return $this->hasOne(AreaModel::getModel(), AreaModel::field_primary(), $this->field_area_id());
     }
 
+    public function has_level()
+    {
+        return $this->hasOne(Level3::getModel(), Level3::field_primary(), $this->field_level_id());
+    }
+
     public function dataRepository()
     {
         $query = $this
             ->addSelect(['lokasi.*', Area::field_name()])
             ->leftJoinRelationship('has_area')
+            ->leftJoinRelationship('has_level')
             ->sortable()
             ->filter();
 

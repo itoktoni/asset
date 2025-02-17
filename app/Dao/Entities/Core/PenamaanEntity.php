@@ -70,4 +70,34 @@ trait PenamaanEntity
     {
         return $this->{$this->field_model_id()};
     }
+
+    public static function field_angka_fungsi()
+    {
+        return 'penamaan_angka_fungsi';
+    }
+
+    public function getFieldAngkaFungsiAttribute()
+    {
+        return $this->{$this->field_angka_fungsi()};
+    }
+
+    public static function field_angka_aplikasi()
+    {
+        return 'penamaan_angka_aplikasi';
+    }
+
+    public function getFieldAngkaAplikasiAttribute()
+    {
+        return $this->{$this->field_angka_aplikasi()};
+    }
+
+    public static function field_angka_maintenance()
+    {
+        return 'penamaan_angka_maintenance';
+    }
+
+    public function getFieldAngkaMaintenanceAttribute()
+    {
+        return $this->{$this->field_angka_maintenance()};
+    }
 }

@@ -111,7 +111,17 @@
 				@endphp
 				<li>
 					<a class="link {{ $active ? 'active' : '' }}" @if(env('APP_SPA')) hx-target="#content" hx-push-url="true" hx-get="{{ $menu->field_action ? route($menu->field_action) : '' }}" @endif href="{{ $menu->field_action ? route($menu->field_action) : '' }}">
-						<span>{{ $menu->field_name }}</span>
+						<span>
+							@if($menu->field_primary == 'level1')
+							{{ env('LEVEL_1', 'Level 1') }}
+							@elseif($menu->field_primary == 'level2')
+							{{ env('LEVEL_2', 'Level 2') }}
+							@elseif($menu->field_primary == 'level3')
+							{{ env('LEVEL_3', 'Level 3') }}
+							@else
+							{{ $menu->field_name }}
+							@endif
+						</span>
 					</a>
 				</li>
 				@elseif($menu->field_type == MenuType::Group)

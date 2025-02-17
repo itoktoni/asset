@@ -20,15 +20,19 @@
                     <x-form-input col="2" value="{{ env('CSV_DELIMITER') }}" label="csv delimiter" name="csv_delimiter" />
                     <x-form-input col="2" value="{{ env('CSV_CHUNK') }}" label="csv chunk" name="csv_chunk" />
 
+                    <x-form-input col="6" value="{{ env('TELEGRAM_BOT_TOKEN') }}" label="Telegram Bot" name="telegram_bot" />
                     <x-form-upload col="3" name="logo" />
                     <div class="col-md-3">
-                        <img class="img-thumbnail img-fluid" src="{{ logoUrl() }}" alt="Logo">
+                        <img class="img-thumbnail img-fluid mt-3" src="{{ logoUrl() }}" alt="Logo">
                     </div>
 
+                    <x-form-input col="2" value="{{ env('LEVEL_1') }}" label="Level 1" name="level_1" />
+                    <x-form-input col="2" value="{{ env('LEVEL_2') }}" label="Level 2" name="level_2" />
+                    <x-form-input col="2" value="{{ env('LEVEL_3') }}" label="Level 3" name="level_3" />
 
                     <x-form-upload col="3" name="background" />
                     <div class="col-md-3">
-                        <img class="img-thumbnail img-fluid"
+                        <img class="mt-4 img-thumbnail img-fluid"
                             src="{{ logoUrl(false) }}"
                             alt="">
                     </div>

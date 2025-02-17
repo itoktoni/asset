@@ -8,10 +8,18 @@
                 <x-form-input col="6" name="penamaan_nama" />
                 <x-form-textarea col="12" name="penamaan_keterangan" />
 
-                <x-form-select col="6" name="penamaan_tech" label="Teknologi" :options="$tech" />
-                <x-form-select col="6" name="penamaan_id_model" :options="$type" />
                 <x-form-select col="6" name="penamaan_id_brand" :options="$brand" />
-                <x-form-select col="6" name="penamaan_id_satuan" :options="$satuan" />
+                <x-form-select col="6" name="penamaan_id_model" :options="$type" />
+                <x-form-select col="3" name="penamaan_tech" label="Teknologi" :options="$tech" />
+                <x-form-select col="3" name="penamaan_id_satuan" :options="$satuan" />
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <x-form-select col="4" name="penamaan_angka_fungsi" :options="$fungsi" />
+                        <x-form-select col="4" name="penamaan_angka_aplikasi" :options="$aplikasi" />
+                        <x-form-select col="4" name="penamaan_angka_maintenance" :options="$maintenance" />
+                    </div>
+                </div>
 
                 <div class="col-md-6">
                     <div class="row">

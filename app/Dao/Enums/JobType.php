@@ -11,9 +11,14 @@ class JobType extends Enum implements LocalizedEnum
     use StatusTrait;
 
     public const Observasi = null;
+
     public const Preventif = 'Preventif';
-    public const Korektif = 'Korektif';
     public const Inspeksi = 'Inspeksi';
+
+    public const Korektif = 'Korektif';
+
+    public const Inventaris = 'Inventaris';
+    public const Promotif = 'Promotif';
     public const Kalibrasi = 'Kalibrasi';
 
 }

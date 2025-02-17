@@ -105,6 +105,11 @@ class Asset extends SystemModel
         return $this->{$this->field_name()};
     }
 
+    public function has_penamaan()
+    {
+        return $this->hasOne(PenamaanModel::getModel(), PenamaanModel::field_primary(), $this->field_penamaan_id());
+    }
+
     public function has_naming()
     {
         return $this->hasOne(PenamaanModel::getModel(), PenamaanModel::field_primary(), $this->field_penamaan_id());
@@ -133,7 +138,8 @@ class Asset extends SystemModel
     public function dataRepository()
     {
         $query = $this
-            ->addSelect([$this->getTable().'.*', Lokasi::field_name(), Department::field_name(), Group::field_name()])
+            ->addSelect([$this->getTable().'.*', Penamaan::field_name(), Lokasi::field_name(), Department::field_name(), Group::field_name()])
+            ->leftJoinRelationship('has_naming')
             ->leftJoinRelationship('has_group')
             ->leftJoinRelationship('has_location')
             ->leftJoinRelationship('has_department')

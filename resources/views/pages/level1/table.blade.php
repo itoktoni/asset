@@ -1,6 +1,6 @@
 <x-layout>
 
-    <x-card class="table-container">
+    <x-card class="table-container" label="{{ env('LEVEL_1', 'Level 1') }}">
 
         <div class="col-md-12">
 
@@ -31,9 +31,6 @@
                                             @endif
                                         </th>
                                     @endforeach
-                                    <th>Keterangan</th>
-                                    <th>PIC</th>
-                                    <th>Handphone</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,11 +44,8 @@
                                             <x-crud :model="$table" />
                                         </td>
 
-										<td >{{ $table->lokasi_id }}</td>
+										<td >{{ $table->field_primary }}</td>
 										<td >{{ $table->field_name }}</td>
-										<td >{{ $table->field_description }}</td>
-										<td >{{ $table->lokasi_pic }}</td>
-										<td >{{ $table->lokasi_telp }}</td>
 
                                     </tr>
                                 @empty

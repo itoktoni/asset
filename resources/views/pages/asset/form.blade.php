@@ -42,7 +42,7 @@
                 <x-form-input col="3" label="Harga Perolehan" name="asset_harga_perolehan" />
 
                 <x-form-input col="6" type="date" label="Tanggal Diakui" name="asset_tanggal_diakui" />
-                <x-form-input col="6" type="date" label="Tanggal Kunjungan" name="asset_tanggal_kunjungan" />
+                <x-form-input col="6" type="date" label="Tanggal Kunjungan Terakhir : {{ $tanggal_kunjungan ?? '' }}" name="asset_tanggal_kunjungan" />
                 <x-form-input col="6" type="date" label="Tanggal Kalibrasi" name="asset_tanggal_kalibrasi" />
 
             </div>

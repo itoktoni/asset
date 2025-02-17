@@ -15,16 +15,16 @@ class LokasiRequest extends GeneralRequest
     {
         $nama = $this->lokasi_nama;
         $area_id = $this->{Lokasi::field_area_id()};
-        $group = $this->{Lokasi::field_group()};
+        $description = $this->{Lokasi::field_description()};
 
         if(!empty($area_id))
         {
             $area = Area::find($area_id)->field_name ?? '';
             $nama = $nama.' @ '.$area;
 
-            if(!empty($group))
+            if(!empty($description))
             {
-                $nama = $nama.' ( '.$group.' )';
+                $nama = $nama.' ( '.$description.' )';
             }
         }
 

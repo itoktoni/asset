@@ -19,6 +19,26 @@ class CreateSettingService
             EnvEditor::editKey('TELESCOPE_ENABLED', $data->telescope_enable);
             EnvEditor::editKey('DEBUGBAR_ENABLED', $data->debugbar_enable);
 
+            if($data->telegram_bot)
+            {
+                EnvEditor::editKey('TELEGRAM_BOT_TOKEN', $data->telegram_bot);
+            }
+
+            if($data->level_1)
+            {
+                EnvEditor::editKey('LEVEL_1', setString($data->level_1));
+            }
+
+            if($data->level_2)
+            {
+                EnvEditor::editKey('LEVEL_2', setString($data->level_2));
+            }
+
+            if($data->level_3)
+            {
+                EnvEditor::editKey('LEVEL_3', setString($data->level_3));
+            }
+
             if ($data->has('logo')) {
                 $file_logo = $data->file('logo');
                 $extension = $file_logo->extension();

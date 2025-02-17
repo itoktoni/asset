@@ -39,7 +39,21 @@ class Penamaan extends SystemModel
      *
      * @var array<int, string>
      */
-    protected $fillable = ['penamaan_id', 'penamaan_nama', 'penamaan_gabungan', 'penamaan_gambar', 'penamaan_id_model', 'penamaan_id_brand', 'penamaan_id_satuan', 'penamaan_id_category', 'penamaan_tech', 'penamaan_keterangan'];
+    protected $fillable = [
+        'penamaan_id',
+        'penamaan_nama',
+        'penamaan_gabungan',
+        'penamaan_gambar',
+        'penamaan_id_model',
+        'penamaan_id_brand',
+        'penamaan_id_satuan',
+        'penamaan_id_category',
+        'penamaan_tech',
+        'penamaan_keterangan',
+        'penamaan_angka_fungsi',
+        'penamaan_angka_aplikasi',
+        'penamaan_angka_maintenance',
+    ];
 
     public static function field_name()
     {
