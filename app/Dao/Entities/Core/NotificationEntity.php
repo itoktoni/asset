@@ -45,4 +45,24 @@ trait NotificationEntity
     {
         return $this->{$this->field_category()};
     }
+
+    public static function field_image()
+    {
+        return 'notification_gambar';
+    }
+
+    public function getFieldImageAttribute()
+    {
+        return $this->{$this->field_image()};
+    }
+
+    public static function field_tanggal()
+    {
+        return 'notification_tanggal';
+    }
+
+    public function getFieldTanggalAttribute()
+    {
+        return $this->{$this->field_tanggal()};
+    }
 }

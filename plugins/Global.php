@@ -1,6 +1,6 @@
 <?php
 
-use App\Dao\Enums\NotificationType;
+use App\Dao\Enums\BellType;
 use App\Events\SendBroadcast;
 use App\Facades\Model\UserModel;
 use Carbon\Carbon;
@@ -342,7 +342,7 @@ if (! function_exists('getMegaphoneAdminTypes')) {
 }
 
 if (! function_exists('sendNotification')) {
-    function sendNotification($data, $type = NotificationType::Info, $user_id = 0)
+    function sendNotification($data, $type = BellType::Info, $user_id = 0)
     {
         if ($data instanceof General) {
             foreach (UserModel::all() as $model) {
@@ -395,7 +395,7 @@ if (! function_exists('exportCsv')) {
 
                 Log::info('notif');
 
-                sendNotification($notification, NotificationType::Success, $user_id);
+                sendNotification($notification, BellType::Success, $user_id);
 
             })
             ->catch(function (Batch $batch, Throwable $e) use ($user_id) {
@@ -407,7 +407,7 @@ if (! function_exists('exportCsv')) {
                     $e->getMessage(),
                 );
 
-                sendNotification($notification, NotificationType::Error, $user_id);
+                sendNotification($notification, BellType::Error, $user_id);
 
             })
             ->finally(function (Batch $batch) use ($name) {

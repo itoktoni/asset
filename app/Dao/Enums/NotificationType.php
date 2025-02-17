@@ -10,13 +10,11 @@ class NotificationType extends Enum implements LocalizedEnum
 {
     use StatusTrait;
 
-    public const Success = 'success';
+    public const Unknown = null;
 
-    public const Warning = 'warning';
+    public const WhatsApp = 'whatsApp';
+    public const Telegram = 'telegram';
+    public const SMS = 'sms';
+    public const Email = 'email';
 
-    public const Info = 'info';
-
-    public const Question = 'question';
-
-    public const Error = 'error';
 }

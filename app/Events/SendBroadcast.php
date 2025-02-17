@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Dao\Enums\NotificationType;
+use App\Dao\Enums\BellType;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
@@ -25,7 +25,7 @@ class SendBroadcast implements ShouldBroadcastNow
     /**
      * Create a new event instance.
      */
-    public function __construct(BaseAnnouncement $data, $type = NotificationType::Info, $user_id = null)
+    public function __construct(BaseAnnouncement $data, $type = BellType::Info, $user_id = null)
     {
         $this->data = $data;
         $this->type = $type;

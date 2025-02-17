@@ -1,7 +1,7 @@
 <?php
 
 use App\Dao\Enums\Core\MenuType;
-use App\Dao\Enums\NotificationType;
+use App\Dao\Enums\BellType;
 use App\Events\SendBroadcast;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\Core\HomeController;
@@ -25,7 +25,7 @@ Route::get('test', function () {
         'Read More...' // Optional: Link Text. The text that will be shown on the link button.
     );
 
-    sendNotification($notification, NotificationType::Error);
+    sendNotification($notification, BellType::Error);
 
 //     $ably   = new \Ably\AblyRest(env('ABLY_KEY'));
 
