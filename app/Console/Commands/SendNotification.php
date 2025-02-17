@@ -37,7 +37,7 @@ class SendNotification extends Command
         {
             $check = $notification->send($item->notification_nama, $item->notification_alamat, $item->notification_pesan, $item->notification_gambar);
             $item->notification_status = JobStatusType::Selesai;
-            $item->notification_eta = date('Y-m-d');
+            $item->notification_tanggal = date('Y-m-d');
 
             $item->notification_response = $check;
 

@@ -51,14 +51,6 @@
                                         </td>
 										<td>
                                             <b>Pesan</b> : {!! nl2br( $table->notification_pesan ) !!}
-                                            @if($table->notification_response)
-                                            <br>
-                                            @php
-                                            $decode = json_decode($table->notification_response, true);
-                                            @endphp
-
-                                            Respon : <b>{{ $decode['status'] ? 'Berhasil Terkirim' : 'Gagal Terkirim' }}</b>
-                                            @endif
                                         </td>
 
                                     </tr>
