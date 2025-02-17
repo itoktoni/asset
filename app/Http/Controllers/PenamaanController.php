@@ -39,9 +39,9 @@ class PenamaanController extends MasterController
         $satuan = SatuanModel::getOptions();
         $tech = TechnologyType::getOptions();
 
-        $fungsi = range(1, 10);
-        $aplikasi = range(1, 5);
-        $maintenance = range(1, 5);
+        $fungsi = array_combine(range(1,10), range(1,10));
+        $aplikasi = array_combine(range(1,5), range(1,5));
+        $maintenance = array_combine(range(1,5), range(1,5));
 
         self::$share = [
             'maintenance' => $maintenance,

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dao\Models\Core\User;
 use App\Dao\Models\Level2;
 use App\Http\Controllers\Core\MasterController;
 use App\Http\Function\CreateFunction;
@@ -22,8 +23,10 @@ class Level3Controller extends MasterController
     protected function beforeForm()
     {
         $level2 = Level2::getOptions();
+        $user = User::getOptions();
 
         self::$share = [
+            'user' => $user,
             'level2' => $level2,
         ];
     }

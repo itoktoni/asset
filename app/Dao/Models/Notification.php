@@ -50,7 +50,7 @@ class Notification extends SystemModel
      *
      * @var array<int, string>
      */
-    protected $fillable = ['notification_id', 'notification_nama', 'notification_alamat', 'notification_pesan', 'notification_gambar', 'notification_created_at', 'notification_created_by', 'notification_updated_at', 'notification_updated_by', 'notification_eta', 'notification_etd', 'notification_status', 'notification_response'];
+    protected $fillable = ['notification_id', 'notification_category', 'notification_nama', 'notification_alamat', 'notification_pesan', 'notification_gambar', 'notification_created_at', 'notification_created_by', 'notification_updated_at', 'notification_updated_by', 'notification_eta', 'notification_etd', 'notification_status', 'notification_response'];
 
     public static function field_name()
     {

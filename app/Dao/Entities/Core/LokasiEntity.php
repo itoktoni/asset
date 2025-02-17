@@ -41,6 +41,16 @@ trait LokasiEntity
         return $this->{$this->field_area_id()};
     }
 
+    public static function field_user_id()
+    {
+        return 'lokasi_id_user';
+    }
+
+    public function getFieldUserIdAttribute()
+    {
+        return $this->{$this->field_user_id()};
+    }
+
     public static function field_level_id()
     {
         return 'lokasi_id_level3';

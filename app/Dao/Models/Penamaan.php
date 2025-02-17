@@ -101,7 +101,7 @@ class Penamaan extends SystemModel
              * set naming for gabungan
              */
 
-            $name = $model->{$model->field_name()};
+            $name = request()->get('penamaan_nama');
 
             if($model->has_brand)
             {
@@ -112,6 +112,7 @@ class Penamaan extends SystemModel
             {
                 $name = $name.' '.$model->has_model->field_name;
             }
+
 
             $model->{$model->field_gabungan()} = Str::upper($name);
 

@@ -96,4 +96,34 @@ trait AssetEntity
     {
         return $this->{$this->field_location_id()};
     }
+
+    public static function field_tanggal_kunjungan()
+    {
+        return 'asset_tanggal_kunjungan';
+    }
+
+    public function getFieldTanggalKunjunganAttribute()
+    {
+        return $this->{$this->field_tanggal_kunjungan()};
+    }
+
+    public static function field_status_kunjungan()
+    {
+        return 'asset_status_kunjungan';
+    }
+
+    public function getFieldStatusKunjunganAttribute()
+    {
+        return $this->{$this->field_status_kunjungan()};
+    }
+
+    public static function field_tanggal_diakui()
+    {
+        return 'asset_tanggal_diakui';
+    }
+
+    public function getFieldTanggalDiakuiAttribute()
+    {
+        return $this->{$this->field_tanggal_diakui()};
+    }
 }

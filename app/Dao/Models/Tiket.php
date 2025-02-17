@@ -88,7 +88,7 @@ class Tiket extends SystemModel
 
     public function has_asset()
     {
-        return $this->hasOne(AssetModel::getModel(), AssetModel::field_primary(), $this->field_user_id());
+        return $this->hasOne(AssetModel::getModel(), AssetModel::field_primary(), $this->field_asset_id());
     }
 
     public function has_pelapor()
@@ -104,7 +104,8 @@ class Tiket extends SystemModel
     public function dataRepository()
     {
         $query = $this
-            ->addSelect([$this->getTable().'.*', Lokasi::field_name(), Job::field_status(), Job::field_primary(), Job::field_analisa(), Job::field_kesimpulan()])
+            ->addSelect([$this->getTable().'.*', Asset::field_name(), Lokasi::field_name(), Job::field_status(), Job::field_primary(), Job::field_analisa(), Job::field_kesimpulan()])
+            ->leftJoinRelationship('has_asset')
             ->leftJoinRelationship('has_location')
             ->leftJoinRelationship('has_job')
             ->groupBy($this->field_primary())

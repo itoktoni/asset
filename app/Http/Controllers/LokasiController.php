@@ -9,6 +9,7 @@ use App\Http\Function\CreateFunction;
 use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
 use App\Facades\Model\LokasiModel;
+use App\Facades\Model\UserModel;
 use App\Http\Requests\LokasiRequest;
 use App\Http\Requests\PenamaanRequest;
 use App\Services\Master\CreateService;
@@ -28,10 +29,12 @@ class LokasiController extends MasterController
     protected function beforeForm()
     {
         $area = AreaModel::getOptions();
+        $user = UserModel::getOptions();
         $level = Level3::getOptions();
 
         self::$share = [
             'level' => $level,
+            'user' => $user,
             'area' => $area,
         ];
     }

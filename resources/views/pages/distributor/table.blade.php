@@ -31,8 +31,9 @@
                                             @endif
                                         </th>
                                     @endforeach
-                                    <th>Keterangan</th>
-                                    <th>PIC</th>
+                                    <th>{{ __('Pic') }}</th>
+                                    <th>{{ __('Phone') }}</th>
+                                    <th>{{ __('Email') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,14 +47,11 @@
                                             <x-crud :model="$table" />
                                         </td>
 
-										<td >{{ $table->lokasi_id }}</td>
-										<td >
-                                            {{ $table->field_name }}
-                                        </td>
-										<td >
-                                            {{ $table->level3_nama }}
-                                        </td>
-										<td >{{ $table->name }}</td>
+										<td >{{ $table->distributor_id }}</td>
+										<td >{{ $table->distributor_nama }}</td>
+										<td >{{ $table->distributor_pic }}</td>
+										<td >{{ $table->distributor_phone }}</td>
+										<td >{{ $table->distributor_email }}</td>
 
                                     </tr>
                                 @empty

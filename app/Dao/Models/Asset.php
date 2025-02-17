@@ -92,6 +92,7 @@ class Asset extends SystemModel
         'asset_tahun_pengadaan',
         'asset_tanggal_diakui',
         'asset_tanggal_kunjungan',
+        'asset_status_kunjungan',
         'asset_tanggal_kalibrasi',
     ];
 
@@ -138,6 +139,7 @@ class Asset extends SystemModel
     public function dataRepository()
     {
         $query = $this
+            ->with(['has_location'])
             ->addSelect([$this->getTable().'.*', Penamaan::field_name(), Lokasi::field_name(), Department::field_name(), Group::field_name()])
             ->leftJoinRelationship('has_naming')
             ->leftJoinRelationship('has_group')
@@ -146,7 +148,10 @@ class Asset extends SystemModel
             ->sortable()
             ->filter();
 
-        $query = env('PAGINATION_SIMPLE') ? $query->simplePaginate(env('PAGINATION_NUMBER')) : $query->paginate(env('PAGINATION_NUMBER'));
+        if(request()->get('type') != 'report')
+        {
+            $query = env('PAGINATION_SIMPLE') ? $query->simplePaginate(env('PAGINATION_NUMBER')) : $query->paginate(env('PAGINATION_NUMBER'));
+        }
 
         return $query;
     }

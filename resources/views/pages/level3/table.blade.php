@@ -31,6 +31,7 @@
                                             @endif
                                         </th>
                                     @endforeach
+                                    <th>PIC</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,6 +47,7 @@
 
 										<td >{{ $table->field_primary }}</td>
 										<td >{{ $table->field_name }}</td>
+										<td >{{ $table->name }}</td>
 
                                     </tr>
                                 @empty

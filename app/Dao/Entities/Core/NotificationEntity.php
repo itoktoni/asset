@@ -35,4 +35,14 @@ trait NotificationEntity
     {
         return $this->{$this->field_status()};
     }
+
+    public static function field_category()
+    {
+        return 'notification_category';
+    }
+
+    public function getFieldCategoryAttribute()
+    {
+        return $this->{$this->field_category()};
+    }
 }

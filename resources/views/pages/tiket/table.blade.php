@@ -22,7 +22,6 @@
                                         <input class="btn-check-d" type="checkbox">
                                     </th>
                                     <th class="text-center column-action">{{ __('Action') }}</th>
-                                    <th>@sortablelink('tiket_code', __('Nama Tiket'))</th>
                                     <th>@sortablelink('tiket_nama', __('Keterangan'))</th>
                                     <th>Gambar</th>
 
@@ -43,20 +42,18 @@
                                             </x-crud>
                                         </td>
 
-                                        <td>
-                                            Dibuat : <b>{{ $table->field_pelapor }}</b>
-                                            <br>
-                                            Tgl Buat : {{ formatDate($table->field_tanggal) }}
-                                            <br>
-                                            <br>
-                                            <b>Status</b> : {{ JobStatusType::getDescription($table->job_status) }}
-                                        </td>
-
-										<td class="col-md-7">
+										<td class="col-md-9">
                                             <a href="{{ moduleRoute('getUpdate', ['code' => $table->field_primary]) }}">No. Tiket :  <b class="text-primary">{{ $table->field_code }} </b></a>
 
                                             <br>
                                             <br>
+
+                                            Dibuat : <b>{{ $table->field_pelapor }}</b>
+                                            <br>
+                                            <b>Tgl Buat</b> : {{ formatDate($table->field_tanggal) }}
+                                            <br>
+                                            <br>
+
                                             <b>{{ $table->field_name }}</b>
                                             <br>
                                             <br>
@@ -69,6 +66,12 @@
                                             <br>
                                             <b>Ruangan</b> : {{ $table->location_nama }}
                                             @endif
+
+                                            <br>
+                                            <br>
+
+                                            <b>Status</b> : {{ JobStatusType::getDescription($table->job_status) }}
+
                                         </td>
 
                                         <td class="column-action">

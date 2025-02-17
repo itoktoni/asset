@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\Model\JobModel;
+use App\Facades\Model\AssetModel;
 use App\Http\Controllers\Core\ReportController;
 use Illuminate\Http\Request;
 
-class ReportJobController extends ReportController
+class ReportJadwalController extends ReportController
 {
     public $data;
 
-    public function __construct(JobModel $model)
+    public function __construct(AssetModel $model)
     {
         $this->model = $model::getModel();
     }
