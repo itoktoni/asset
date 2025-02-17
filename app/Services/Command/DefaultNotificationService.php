@@ -4,7 +4,6 @@ namespace App\Services\Command;
 
 use App\Contracts\NotificationInterface;
 use Telegram\Bot\FileUpload\InputFile;
-use Telegram\Bot\Keyboard\Keyboard;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 class DefaultNotificationService implements NotificationInterface
