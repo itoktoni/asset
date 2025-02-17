@@ -50,7 +50,7 @@ class CreateNotificationTiketService
             if ($asset_id = $data->field_asset_id)
             {
                 $asset = Asset::with(['has_group'])->find($asset_id);
-                $gambar = url(imageUrl($asset->field_image, 'tiket'), [], true);
+                $gambar = url(imageUrl($data->field_image, 'tiket'), [], true);
                 $this->create($asset->has_group, $message, $gambar);
             }
 
