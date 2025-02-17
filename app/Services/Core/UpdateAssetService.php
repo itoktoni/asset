@@ -102,12 +102,12 @@ class UpdateAssetService
         }
         else if($total >= 12 and $total <= 14)
         {
-            $next = Carbon::createFromDate($tanggal_kunjungan)->addDay(intval(365 / $berapa_kali));
+            $next = Carbon::createFromDate($tanggal_kunjungan)->addDay(round(365 / $berapa_kali));
             $status = JobType::Preventif;
         }
         else if($total > 12 and $total <= 15)
         {
-            $next = Carbon::createFromDate($tanggal_kunjungan)->addDay(intval(365 / $berapa_kali));
+            $next = Carbon::createFromDate($tanggal_kunjungan)->addDay(round(365 / $berapa_kali));
             $status = JobType::Inspeksi;
         }
         else

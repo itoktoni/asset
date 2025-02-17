@@ -13,6 +13,7 @@ use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\DepartmentModel;
+use App\Facades\Model\DistributorModel;
 use App\Facades\Model\GroupModel;
 use App\Facades\Model\LokasiModel;
 use App\Facades\Model\PenamaanModel;
@@ -39,10 +40,12 @@ class AssetController extends MasterController
         $teknisi = GroupModel::getOptions();
         $location = LokasiModel::getOptions();
         $naming = PenamaanModel::getOptions();
+        $distributor = DistributorModel::getOptions();
         $status = AssetStatusType::getOptions();
 
         self::$share = [
             'status' => $status,
+            'distributor' => $distributor,
             'naming' => $naming,
             'location' => $location,
             'teknisi' => $teknisi,

@@ -80,6 +80,7 @@ class Asset extends SystemModel
         'asset_id_penamaan',
         'asset_id_lokasi',
         'asset_id_department',
+        'asset_id_distributor',
         'asset_id_group',
         'asset_keterangan',
         'asset_created_at',

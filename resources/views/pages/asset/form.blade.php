@@ -11,10 +11,11 @@
             <x-form-input col="3" label="Code Asset" name="asset_code" />
 
             <x-form-select col="6" name="asset_id_lokasi" :options="$location" />
-            <x-form-select col="3" name="asset_id_group" label="Pemeliharaan" :options="$teknisi" />
+            <x-form-select col="3" name="asset_status" :options="$status" />
             <x-form-select col="3" name="asset_id_department" label="Departemen" :options="$department" />
 
-            <x-form-select col="6" name="asset_status" :options="$status" />
+            <x-form-select col="6" name="asset_id_group" label="Pemeliharaan" :options="$teknisi" />
+            <x-form-select col="6" name="asset_id_distributor" :options="$distributor" />
             <x-form-textarea col="6" rows="5" class="h-100" name="asset_keterangan" />
 
             <div class="col-md-6">
