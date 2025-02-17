@@ -41,7 +41,7 @@ class NotificationController extends MasterController
         if(isset($cek['status']) && $cek['status'])
         {
             $model->notification_status = JobStatusType::Selesai;
-            $model->notification_eta = date('Y-m-d');
+            $model->notification_tanggal = date('Y-m-d');
             $model->notification_response = $check;
             $model->save();
 
