@@ -43,15 +43,7 @@ class Level2 extends SystemModel
      */
     public function has_level1()
     {
-        return $this->belongsTo(\App\Facades\Model\Level1Model::getModel(), 'level2_code_level1', 'level1_code');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function has_level3()
-    {
-        return $this->hasMany(\App\Facades\Model\Level3Model::getModel(), 'level2_code', 'level3_id_level2');
+        return $this->hasOne(Level1::class, Level1::field_primary(), $this->field_id_level1());
     }
 
     public static function field_name()
@@ -61,7 +53,7 @@ class Level2 extends SystemModel
 
     public function getFieldNameAttribute()
     {
-        return $this->has_level ? $this->has_level1->field_name.' - '.$this->{$this->field_name()} : null;
+        return $this->{$this->field_name()};
     }
 
     public static function field_id_level1()
@@ -82,6 +74,23 @@ class Level2 extends SystemModel
     public function getFieldIdLevel3Attribute()
     {
         return $this->{$this->field_id_level3()};
+    }
+
+
+    public function dataRepository()
+    {
+        $query = $this
+            ->addSelect([$this->getTable().'.*', Level1::field_name()])
+            ->leftJoinRelationship('has_level1')
+            ->sortable()
+            ->filter();
+
+        if(request()->get('type') != 'report')
+        {
+            $query = env('PAGINATION_SIMPLE') ? $query->simplePaginate(env('PAGINATION_NUMBER')) : $query->paginate(env('PAGINATION_NUMBER'));
+        }
+
+        return $query;
     }
 
 }

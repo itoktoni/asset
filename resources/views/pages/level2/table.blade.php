@@ -45,7 +45,7 @@
                                         </td>
 
                                         <td >{{ $table->field_primary }}</td>
-										<td >{{ $table->field_name }}</td>
+										<td >{{ $table->level2_nama.' - '.$table->field_name }}</td>
 
                                     </tr>
                                 @empty
