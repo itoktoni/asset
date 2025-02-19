@@ -6,6 +6,7 @@ use App\Dao\Entities\Core\Level3Entity;
 use App\Dao\Models\Core\SystemModel;
 use App\Dao\Models\Core\User;
 use App\Facades\Model\Level2Model;
+use Monolog\Level;
 
 /**
  * Class Level3
@@ -60,15 +61,16 @@ class Level3 extends SystemModel
 
     public function getFieldNameAttribute()
     {
-        return $this->has_level2->field_name.' - '.$this->{$this->field_name()};
+        return $this->{$this->field_name()};
     }
 
     public function dataRepository()
     {
         $query = $this
-            ->addSelect([$this->getTable().'.*', User::field_name(), Level2::field_name()])
+            ->addSelect([$this->getTable().'.*', User::field_name(), Level2::field_name(), Level1::field_name()])
             ->leftJoinRelationship('has_user')
             ->leftJoinRelationship('has_level2')
+            ->leftJoinRelationship('has_level2.has_level1')
             ->sortable()
             ->filter();
 
