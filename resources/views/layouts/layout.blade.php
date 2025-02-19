@@ -37,20 +37,20 @@
     @livewireScripts
 
     <script>
-    Pusher.logToConsole = {{ env('APP_DEBUG') ? 'true' : 'false' }};
 
-    var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
-        cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
-        authEndpoint: '{{ url('/broadcasting/auth') }}'
-    });
+        Pusher.logToConsole = {{ env('APP_DEBUG') ? 'true' : 'false' }};
 
-    var channel = pusher.subscribe('private-broadcast');
-    channel.bind('bell', function(data) {
-        window.Livewire.dispatch('bell');
-    });
+        var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
+            cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
+            authEndpoint: '{{ url('/broadcasting/auth') }}'
+        });
+
+        var channel = pusher.subscribe('private-broadcast');
+        channel.bind('bell', function(data) {
+            window.Livewire.dispatch('bell');
+        });
     </script>
 
 </body>
 
 </html>
-

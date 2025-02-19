@@ -5,14 +5,15 @@ namespace App\Dao\Models;
 use App\Dao\Entities\Core\Level3Entity;
 use App\Dao\Models\Core\SystemModel;
 use App\Dao\Models\Core\User;
+use App\Facades\Model\Level2Model;
 
 /**
  * Class Level3
  *
- * @property $level3_id
+ * @property $level3_code
  * @property $level3_nama
  * @property $level3_keterangan
- * @property $level3_id_level2
+ * @property $level3_code_level2
  *
  * @property Level2 $level2
  * @package App
@@ -25,15 +26,18 @@ class Level3 extends SystemModel
 
     protected $perPage = 20;
     protected $table = 'level3';
-    protected $primaryKey = 'level3_id';
-    protected $with = ['has_level2'];
+    protected $primaryKey = 'level3_code';
+    // protected $with = ['has_level2'];
+
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = ['level3_id', 'level3_nama', 'level3_keterangan', 'level3_id_level2', 'level3_id_user'];
+    protected $fillable = ['level3_code', 'level3_nama', 'level3_keterangan', 'level3_code_level2', 'level3_code_user', 'level3_code'];
 
 
     /**
@@ -41,7 +45,7 @@ class Level3 extends SystemModel
      */
     public function has_level2()
     {
-        return $this->belongsTo(\App\Facades\Model\Level2Model::getModel(), 'level3_id_level2', 'level2_id');
+        return $this->hasOne(Level2Model::getModel(), Level2::field_primary(), $this->field_id_level2());
     }
 
     public function has_user()
@@ -62,8 +66,9 @@ class Level3 extends SystemModel
     public function dataRepository()
     {
         $query = $this
-            ->addSelect([$this->getTable().'.*', User::field_name()])
+            ->addSelect([$this->getTable().'.*', User::field_name(), Level2::field_name()])
             ->leftJoinRelationship('has_user')
+            ->leftJoinRelationship('has_level2')
             ->sortable()
             ->filter();
 

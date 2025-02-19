@@ -8,7 +8,7 @@ use App\Dao\Models\Core\SystemModel;
 /**
  * Class Level1
  *
- * @property $level1_id
+ * @property $level1_code
  * @property $level1_nama
  * @property $level1_keterangan
  *
@@ -21,14 +21,17 @@ class Level1 extends SystemModel
 {
     protected $perPage = 20;
     protected $table = 'level1';
-    protected $primaryKey = 'level1_id';
+    protected $primaryKey = 'level1_code';
+
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = ['level1_id', 'level1_nama', 'level1_keterangan'];
+    protected $fillable = ['level1_code', 'level1_nama', 'level1_keterangan'];
 
 
     /**
@@ -36,7 +39,7 @@ class Level1 extends SystemModel
      */
     public function has_level2()
     {
-        return $this->hasMany(\App\Facades\Model\Level2Model::getModel(), 'level1_id', 'level2_id_level1');
+        return $this->hasMany(\App\Facades\Model\Level2Model::getModel(), 'level1_code', 'level2_code_level1');
     }
 
     public static function field_name()

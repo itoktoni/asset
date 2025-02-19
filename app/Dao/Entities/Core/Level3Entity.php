@@ -25,4 +25,24 @@ trait Level3Entity
     {
         return $this->{$this->field_pic()};
     }
+
+    public static function field_code()
+    {
+        return 'level3_code';
+    }
+
+    public function getFieldCodeAttribute()
+    {
+        return $this->{$this->field_code()};
+    }
+
+    public static function field_id_level2()
+    {
+        return 'level3_code_level2';
+    }
+
+    public function getFieldIdLevel1Attribute()
+    {
+        return $this->{$this->field_id_level2()};
+    }
 }

@@ -91,7 +91,6 @@ trait DataTableTrait
 
     public function fieldSearching()
     {
-
         return $this->getKeyName();
     }
 }
