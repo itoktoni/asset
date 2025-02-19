@@ -8,12 +8,15 @@ use App\Dao\Enums\Core\RoleType;
 use App\Dao\Enums\Core\YesNoType;
 use App\Dao\Enums\JobStatusType;
 use App\Dao\Models\Core\SystemGroup;
+use App\Facades\Model\BrandModel;
+use App\Facades\Model\PenamaanModel;
 use App\Providers\CacheableAuthUserServiceProvider;
 use App\Providers\FacadeServiceProviders;
 use Coderello\SharedData\Facades\SharedData;
 use GeoSot\EnvEditor\Facades\EnvEditor;
 use GeoSot\EnvEditor\ServiceProvider;
 use Ibex\CrudGenerator\CrudServiceProvider;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use MBarlow\Megaphone\MegaphoneServiceProvider;
 use Plugins\Query;
@@ -279,6 +282,8 @@ return [
         'BARCODE2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         'Browser' => hisorange\BrowserDetect\Parser::class,
         'Telegram' => Telegram::class,
+        'BrandModel' => BrandModel::class,
+        'PenamaanModel' => PenamaanModel::class,
     ],
 
 ];

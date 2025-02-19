@@ -10,14 +10,12 @@ use App\Facades\Model\DistributorModel;
 use App\Facades\Model\GroupModel;
 use App\Facades\Model\JobModel;
 use App\Facades\Model\LokasiModel;
-use App\Facades\Model\NomenklaturModel;
+use App\Facades\Model\ModelModel;
 use App\Facades\Model\PenamaanModel;
+use App\Facades\Model\VendorModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Storage;
 use Wildside\Userstamps\Userstamps;
-use Illuminate\Support\Str;
 use Plugins\Query;
-use Intervention\Image\Laravel\Facades\Image;
 
 /**
  * Class Asset
@@ -81,9 +79,11 @@ class Asset extends SystemModel
         'asset_gambar',
         'asset_id_penamaan',
         'asset_id_lokasi',
+        'asset_id_model',
         'asset_id_department',
-        'asset_id_distributor',
+        'asset_id_vendor',
         'asset_id_group',
+        'asset_id_kalibrasi',
         'asset_keterangan',
         'asset_created_at',
         'asset_updated_at',
@@ -99,6 +99,10 @@ class Asset extends SystemModel
         'asset_tanggal_kalibrasi',
         'asset_pendanaan',
         'asset_akl_akd',
+        'asset_status_kalibrasi',
+        'asset_status_maintenance',
+        'asset_status_kepemilikan',
+
     ];
 
     public static function field_name()
@@ -131,10 +135,19 @@ class Asset extends SystemModel
         return $this->hasOne(DepartmentModel::getModel(), DepartmentModel::field_primary(), $this->field_department_id());
     }
 
-
-    public function has_distributor()
+    public function has_model()
     {
-        return $this->hasOne(DistributorModel::getModel(), DistributorModel::field_primary(), $this->field_distributor_id());
+        return $this->hasOne(ModelModel::getModel(), ModelModel::field_primary(), $this->field_model_id());
+    }
+
+    public function has_vendor()
+    {
+        return $this->hasOne(VendorModel::getModel(), VendorModel::field_primary(), $this->field_vendor_id());
+    }
+
+    public function has_kalibrasi()
+    {
+        return $this->hasOne(VendorModel::getModel(), VendorModel::field_primary(), $this->field_kalibrasi_id());
     }
 
     public function has_group()
@@ -182,6 +195,12 @@ class Asset extends SystemModel
                 $model->{self::field_code()} = Query::autoNumber(AssetModel::getTableName(), self::field_code(), date('Ymd'));
             }
 
+            if(empty($model->{self::field_status_kalibrasi()}))
+            {
+                $model->{self::field_tanggal_kalibrasi()} = null;
+                $model->{self::field_kalibrasi_id()} = null;
+            }
+
             /*
              * set naming for gabungan
              */
@@ -193,14 +212,23 @@ class Asset extends SystemModel
                 $name = $model->has_naming->field_name;
             }
 
-            if($model->has_location)
+            if($model->has_model)
             {
-                $name = $name.' ~ '.$model->has_location->field_name;
+                $type = $model->has_model;
+                $brand = $type->has_brand;
+
+                $name_model = $type->field_name;
+                if($brand)
+                {
+                    $name_model = ' ( '.$brand->field_name.' ) '.$name_model;
+                }
+
+                $name = $name.' ~ '.$name_model;
             }
 
             if($model->asset_serial_number)
             {
-                $name = $name.' - '. $model->asset_serial_number;
+                $name = $name.' | '. $model->asset_serial_number;
             }
 
 

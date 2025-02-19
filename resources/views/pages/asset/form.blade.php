@@ -11,12 +11,12 @@
             <x-form-input col="3" label="Code Asset" name="asset_code" />
 
             <x-form-select col="6" name="asset_id_lokasi" :options="$location" />
-            <x-form-input col="3" label="AKL / AKD" name="asset_akl_akd" />
-            <x-form-select col="3" name="asset_status" :options="$status" />
-            <x-form-select col="6" name="asset_id_department" label="Departemen" :options="$department" />
+            <x-form-input col="6" label="AKL / AKD" name="asset_akl_akd" />
+            <x-form-select col="6" name="asset_id_model" label="Model/Tipe" :options="$type" />
 
-            <x-form-select col="6" name="asset_id_group" label="Pemeliharaan" :options="$teknisi" />
-            <x-form-select col="6" name="asset_id_distributor" :options="$distributor" />
+            <x-form-select col="3" name="asset_status" :options="$status" />
+            <x-form-select col="3" name="asset_status_maintenance" :options="$maintenance" />
+
             <x-form-textarea col="6" rows="5" class="h-100" name="asset_keterangan" />
 
             <div class="col-md-6">
@@ -35,22 +35,29 @@
 
         </x-card>
 
-        <x-card label="Detail Pengadaan" style="margin-top: -2rem">
+        <x-card label="Detail Riwayat Alat" style="margin-top: -2rem">
 
             @bind($model)
-            <div class="row">
 
-                <x-form-input col="3" label="Tahun Pengadaan" name="asset_tahun_pengadaan" />
-                <x-form-input col="3" type="date" label="Tanggal Diakui" name="asset_tanggal_diakui" />
-                <x-form-select col="3" name="asset_pendanaan" :options="$pendanaan" />
-                <x-form-input col="3" label="Harga Perolehan" name="asset_harga_perolehan" />
+                <x-form-input col="2" label="Tahun Pengadaan" name="asset_tahun_pengadaan" />
+                <x-form-input col="2" type="date" label="Tanggal Diakui" name="asset_tanggal_diakui" />
+                <x-form-select col="2" name="asset_pendanaan" :options="$pendanaan" />
+                <x-form-input col="2" label="Harga Perolehan" name="asset_harga_perolehan" />
+                <x-form-select col="4" name="asset_id_vendor" :options="$vendor" />
 
-                <x-form-input col="3" readonly label="Status Kunjungan Selanjutnya" name="asset_status_kunjungan" />
-                <x-form-input col="3" label="Kunjungan Terakhir" value="{{ $tanggal_kunjungan ?? '' }}" name="kunjungan"/>
-                <x-form-input col="3" type="date" label="Kunjungan Selanjutnya" name="asset_tanggal_kunjungan" />
-                <x-form-input col="3" type="date" label="Tanggal Kalibrasi" name="asset_tanggal_kalibrasi" />
+                <x-form-input col="2" readonly label="Status Kunjungan" name="asset_status_kunjungan" />
+                <x-form-input col="2" label="Kunjungan Terakhir" value="{{ $tanggal_kunjungan ?? '' }}" name="kunjungan"/>
+                <x-form-input col="2" type="date" label="Kunjungan Selanjutnya" name="asset_tanggal_kunjungan" />
+                <x-form-select col="6" name="asset_id_group" label="Pelaksana" :options="$teknisi" />
 
-            </div>
+                <x-form-select col="2" name="asset_status_kalibrasi" label="Status Kalibrasi" :options="$kalibrasi" />
+                @if($model && $model->field_status_kalibrasi == 'Yes')
+                <x-form-input col="2" type="date" label="Kalibrasi Terakhir" name="asset_tanggal_kalibrasi" />
+                <x-form-input col="2" type="date" label="Kalibrasi Selanjutnya" name="kalibrasi_selanjutnya" value="{{ $tanggal_kalibrasi ?? null }}" />
+                <x-form-input col="2" label="Status" name="kalibrasi" value="{{ $expired ? 'Expired' : 'Berlaku' }}" />
+                <x-form-select col="4" name="asset_id_kalibrasi" label="Pelaksana" :options="$vendor" />
+                @endif
+
             @endbind
 
         </x-card>

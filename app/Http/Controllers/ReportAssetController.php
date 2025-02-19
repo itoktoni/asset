@@ -6,6 +6,7 @@ use App\Dao\Models\Brand;
 use App\Dao\Models\Distributor;
 use App\Dao\Models\Model;
 use App\Dao\Models\Nomenklatur;
+use App\Dao\Models\Vendor;
 use App\Facades\Model\AssetModel;
 use App\Http\Controllers\Core\ReportController;
 use Illuminate\Http\Request;
@@ -22,16 +23,16 @@ class ReportAssetController extends ReportController
     public function getData()
     {
         $query = $this->model->rawQuery()
-        ->leftJoinRelationship('has_distributor')
-        ->leftJoinRelationship('has_naming.has_nomenklatur')
-        ->leftJoinRelationship('has_naming.has_brand')
-        ->leftJoinRelationship('has_naming.has_model')
+        ->leftJoinRelationship('has_vendor')
+        ->leftJoinRelationship('has_naming')
+        ->leftJoinRelationship('has_model')
+        ->leftJoinRelationship('has_model.has_brand')
         ->addSelect([
-            Nomenklatur::field_primary(),
             'penamaan.penamaan_nama',
+            'penamaan.penamaan_code_nomenklatur',
             Brand::field_name(),
             Model::field_name(),
-            Distributor::field_name(),
+            Vendor::field_name(),
         ]);
 
         return $query->get();

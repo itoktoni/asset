@@ -25,6 +25,11 @@ define('ACTION_PRINT', 'getPrint');
 define('ACTION_EXPORT', 'getExport');
 define('ERROR_PERMISION', 'Maaf anda tidak punya otorisasi untuk melakukan hal ini');
 
+define('HAS_LEVEL_3', 'has_level3');
+define('HAS_LEVEL_2', 'has_level2');
+define('HAS_LEVEL_1', 'has_level1');
+define('HAS_BRAND', 'has_brand');
+
 define('UPLOAD', 'upload');
 define('KEY', 'key');
 

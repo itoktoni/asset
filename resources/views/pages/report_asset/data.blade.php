@@ -54,7 +54,7 @@
 			@forelse($data as $table)
 			<tr>
 				<td>{{ $loop->iteration }}</td>
-				<td>{{ $table->nomenklatur_code }}</td>
+				<td>{{ $table->penamaan_code_nomenklatur ?? '' }}</td>
 				<td>{{ $table->field_serial_number }}</td>
 				<td>{{ $table->field_code }}</td>
 				<td>{{ $table->field_akl_akd }}</td>
@@ -67,7 +67,7 @@
 				<td>{{ $table->field_status ?? '' }}</td>
 				<td>{{ $table->field_harga ?? '' }}</td>
 				<td>{{ $table->field_pendanaan ?? '' }}</td>
-				<td>{{ $table->distributor_nama ?? '' }}</td>
+				<td>{{ $table->vendor_nama ?? '' }}</td>
 			</tr>
 			@empty
 			@endforelse

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Dao\Enums\AssetStatusType;
+use App\Dao\Enums\Core\YesNoType;
 use App\Dao\Enums\JobStatusType;
 use App\Dao\Enums\JobType;
+use App\Dao\Enums\KepemilikanType;
+use App\Dao\Enums\MaintenanceType;
 use App\Dao\Enums\PendanaanType;
 use App\Dao\Models\Job;
 use App\Dao\Models\Tiket;
@@ -17,12 +20,14 @@ use App\Facades\Model\DepartmentModel;
 use App\Facades\Model\DistributorModel;
 use App\Facades\Model\GroupModel;
 use App\Facades\Model\LokasiModel;
+use App\Facades\Model\ModelModel;
 use App\Facades\Model\PenamaanModel;
+use App\Facades\Model\VendorModel;
 use App\Http\Requests\AssetRequest;
 use App\Services\Core\UpdateAssetService;
 use App\Services\Master\CreateService;
-use App\Services\Master\UpdateService;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
+use Plugins\Query;
 use Plugins\Response;
 
 class AssetController extends MasterController
@@ -38,20 +43,28 @@ class AssetController extends MasterController
     protected function beforeForm()
     {
         $department = DepartmentModel::getOptions();
+        $type = Query::getModelMap();
         $teknisi = GroupModel::getOptions();
         $location = LokasiModel::getOptions();
         $naming = PenamaanModel::getOptions();
-        $distributor = DistributorModel::getOptions();
+        $vendor = VendorModel::getOptions();
         $status = AssetStatusType::getOptions();
         $pendanaan = PendanaanType::getOptions();
+        $maintenance = MaintenanceType::getOptions();
+        $kepemilikan = KepemilikanType::getOptions();
+        $kalibrasi = YesNoType::getOptions();
 
         self::$share = [
+            'kalibrasi' => $kalibrasi,
+            'kepemilikan' => $kepemilikan,
+            'maintenance' => $maintenance,
             'pendanaan' => $pendanaan,
             'status' => $status,
-            'distributor' => $distributor,
+            'vendor' => $vendor,
             'naming' => $naming,
             'location' => $location,
             'teknisi' => $teknisi,
+            'type' => $type,
             'department' => $department,
         ];
     }
@@ -61,6 +74,28 @@ class AssetController extends MasterController
         $data = $service->save($this->model, $request);
 
         return Response::redirectBack($data);
+    }
+
+    private function tanggalKalibrasi($model)
+    {
+        if($model && !empty($model->field_tanggal_kalibrasi))
+        {
+            $next = Carbon::createFromDate($model->field_tanggal_kalibrasi)->addYear(1);
+            return $next->format('Y-m-d');
+        }
+    }
+
+    private function kalibrasiExpired($model)
+    {
+        if($model && !empty($model->field_tanggal_kalibrasi))
+        {
+            if($model->field_tanggal_kalibrasi < date('Y-m-d'))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private function tanggalKunjungan($model)
@@ -87,9 +122,13 @@ class AssetController extends MasterController
 
         $model = $this->get($code);
         $tanggal_kunjungan = $this->tanggalKunjungan($model);
+        $tanggal_kalibrasi = $this->tanggalKalibrasi($model);
+        $expired = $this->kalibrasiExpired($model);
 
         return moduleView(modulePathForm(path: self::$is_core), $this->share([
             'model' => $model,
+            'expired' => $expired,
+            'tanggal_kalibrasi' => $tanggal_kalibrasi,
             'tanggal_kunjungan' => $tanggal_kunjungan,
         ]));
     }

@@ -37,8 +37,9 @@
                                         </td>
                                         <td class="col-md-2 text-center column-action">
                                             <x-crud :model="$table">
-                                                <x-button class="btn btn-info btn-sm mt-1" module="getDetail" key="{{ $table->field_primary }}"
-                                                    label="Detail" />
+                                                <a href="{{ route('asset.getDetail', ['id' => $table->field_primary]) }}" class="btn btn-primary btn btn-info btn-sm mt-1">
+                                                        Detail
+                                                </a>
 
                                                 <x-button class="btn btn-danger btn-sm mt-1" module="getPrint" key="{{ $table->field_primary }}"
                                                     label="Cetak" />
@@ -59,11 +60,9 @@
                                             <b>
                                                 <a class="text-primary" href="{{ route('penamaan.getUpdate', ['code' => $table->field_penamaan_id]) }}">
 
-                                                    {{ $table->penamaan_gabungan ?? '' }}
+                                                    {{ $table->{PenamaanModel::field_name()} ?? '' }}
                                                 </a>
                                             </b>
-                                            <br>
-                                            Departemen : {{ $table->department_nama ?? '-' }}
 
                                             <br>
                                             <b>Ruangan</b> : {{ $table->lokasi_gabungan ?? '-' }}

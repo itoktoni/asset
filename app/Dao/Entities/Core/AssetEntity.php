@@ -76,14 +76,24 @@ trait AssetEntity
         return $this->{$this->field_department_id()};
     }
 
-    public static function field_distributor_id()
+    public static function field_vendor_id()
     {
-        return 'asset_id_distributor';
+        return 'asset_id_vendor';
     }
 
-    public function getFieldDistributorIdAttribute()
+    public function getFieldVendorIdAttribute()
     {
-        return $this->{$this->field_distributor_id()};
+        return $this->{$this->field_vendor_id()};
+    }
+
+    public static function field_kalibrasi_id()
+    {
+        return 'asset_id_kalibrasi';
+    }
+
+    public function getFieldKalibrasiIdAttribute()
+    {
+        return $this->{$this->field_kalibrasi_id()};
     }
 
     public static function field_group_id()
@@ -114,6 +124,16 @@ trait AssetEntity
     public function getFieldTanggalKunjunganAttribute()
     {
         return $this->{$this->field_tanggal_kunjungan()};
+    }
+
+    public static function field_tanggal_kalibrasi()
+    {
+        return 'asset_tanggal_kalibrasi';
+    }
+
+    public function getFieldTanggalKalibrasiAttribute()
+    {
+        return $this->{$this->field_tanggal_kalibrasi()};
     }
 
     public static function field_status_kunjungan()
@@ -164,5 +184,25 @@ trait AssetEntity
     public function getFieldHargaAttribute()
     {
         return $this->{$this->field_harga()};
+    }
+
+    public static function field_model_id()
+    {
+        return 'asset_id_model';
+    }
+
+    public function getFieldModelIdAttribute()
+    {
+        return $this->{$this->field_model_id()};
+    }
+
+    public static function field_status_kalibrasi()
+    {
+        return 'asset_status_kalibrasi';
+    }
+
+    public function getFieldStatusKalibrasiAttribute()
+    {
+        return $this->{$this->field_status_kalibrasi()};
     }
 }

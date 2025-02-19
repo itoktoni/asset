@@ -14,6 +14,7 @@ use App\Http\Requests\LokasiRequest;
 use App\Http\Requests\PenamaanRequest;
 use App\Services\Master\CreateService;
 use App\Services\Master\UpdateService;
+use Plugins\Query;
 use Plugins\Response;
 
 class LokasiController extends MasterController
@@ -28,9 +29,9 @@ class LokasiController extends MasterController
 
     protected function beforeForm()
     {
+        $level = Query::getLevelMap();
         $area = AreaModel::getOptions();
         $user = UserModel::getOptions();
-        $level = Level3::getOptions();
 
         self::$share = [
             'level' => $level,

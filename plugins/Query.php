@@ -2,6 +2,11 @@
 
 namespace Plugins;
 
+use App\Dao\Models\Brand;
+use App\Dao\Models\Level1;
+use App\Dao\Models\Level2;
+use App\Dao\Models\Level3;
+use App\Dao\Models\Model;
 use App\Facades\Model\FilterModel;
 use App\Facades\Model\GroupsModel;
 use App\Facades\Model\LinkModel;
@@ -191,5 +196,32 @@ class Query
         }
 
         return $data;
+    }
+
+    public static function getLevelMap()
+    {
+        $query = Level3::select([Level3::field_primary(), Level3::field_name(), Level2::field_name(), Level1::field_name()])
+        ->leftJoinRelationship(HAS_LEVEL_2.'.'.HAS_LEVEL_1)
+        ->leftJoinRelationship(HAS_LEVEL_2)
+        ->get()
+        ->mapWithKeys(function($item){
+
+            return [$item->field_primary => '( '.$item->{Level1::field_name()}.' ) '.$item->{Level2::field_name()}.' - '.$item->field_name];
+        }) ?? [];
+
+        return $query;
+    }
+
+    public static function getModelMap()
+    {
+        $query = Model::select([Model::field_primary(), Model::field_name(), Brand::field_name()])
+        ->leftJoinRelationship(HAS_BRAND)
+        ->get()
+        ->mapWithKeys(function($item){
+
+            return [$item->field_primary => $item->{Brand::field_name()}.' - '.$item->field_name];
+        }) ?? [];
+
+        return $query;
     }
 }

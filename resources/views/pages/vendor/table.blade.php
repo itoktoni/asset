@@ -47,11 +47,11 @@
                                             <x-crud :model="$table" />
                                         </td>
 
-										<td >{{ $table->distributor_id }}</td>
-										<td >{{ $table->distributor_nama }}</td>
-										<td >{{ $table->distributor_pic }}</td>
-										<td >{{ $table->distributor_phone }}</td>
-										<td >{{ $table->distributor_email }}</td>
+										<td >{{ $table->vendor_id }}</td>
+										<td >{{ $table->vendor_nama }}</td>
+										<td >{{ $table->vendor_pic }}</td>
+										<td >{{ $table->vendor_phone }}</td>
+										<td >{{ $table->vendor_email }}</td>
 
                                     </tr>
                                 @empty

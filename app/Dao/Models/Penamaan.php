@@ -34,7 +34,6 @@ class Penamaan extends SystemModel
     protected $perPage = 20;
     protected $table = 'penamaan';
     protected $primaryKey = 'penamaan_id';
-    protected $with = ['has_nomenklatur'];
 
     /**
      * The attributes that are mass assignable.
@@ -44,13 +43,10 @@ class Penamaan extends SystemModel
     protected $fillable = [
         'penamaan_id',
         'penamaan_nama',
-        'penamaan_gabungan',
         'penamaan_gambar',
-        'penamaan_id_model',
-        'penamaan_id_brand',
         'penamaan_id_satuan',
         'penamaan_id_category',
-        'penamaan_id_nomenklatur',
+        'penamaan_code_nomenklatur',
         'penamaan_tech',
         'penamaan_keterangan',
         'penamaan_angka_fungsi',
@@ -60,7 +56,7 @@ class Penamaan extends SystemModel
 
     public static function field_name()
     {
-        return 'penamaan_gabungan';
+        return 'penamaan_nama';
     }
 
     public function getFieldNameAttribute()
@@ -71,21 +67,6 @@ class Penamaan extends SystemModel
     public function has_category()
     {
         return $this->hasOne(CategoryModel::getModel(), CategoryModel::field_primary(), $this->field_category_id());
-    }
-
-    public function has_brand()
-    {
-        return $this->hasOne(BrandModel::getModel(), BrandModel::field_primary(), $this->field_brand_id());
-    }
-
-    public function has_model()
-    {
-        return $this->hasOne(ModelModel::getModel(), ModelModel::field_primary(), $this->field_model_id());
-    }
-
-    public function has_nomenklatur()
-    {
-        return $this->hasOne(NomenklaturModel::getModel(), NomenklaturModel::field_primary(), $this->field_nomenklatur_id());
     }
 
     public function dataRepository()
@@ -105,30 +86,6 @@ class Penamaan extends SystemModel
     {
         parent::saving(function ($model)
         {
-            /*
-             * set naming for gabungan
-             */
-
-            $name = request()->get('penamaan_nama');
-
-            if($model->has_brand)
-            {
-                $name = $name.' '.$model->has_brand->field_name;
-            }
-
-            if($model->has_model)
-            {
-                $name = $name.' '.$model->has_model->field_name;
-            }
-
-
-            $model->{$model->field_gabungan()} = Str::upper($name);
-
-
-            /*
-             * set upload gambar
-             */
-
             if (request()->has('images')) {
                 $file_logo = request()->file('images');
                 if(!empty($file_logo)){

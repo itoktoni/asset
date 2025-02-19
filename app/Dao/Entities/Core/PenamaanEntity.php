@@ -61,24 +61,14 @@ trait PenamaanEntity
         return $this->{$this->field_satuan_id()};
     }
 
-    public static function field_model_id()
+    public static function field_nomenklatur()
     {
-        return 'penamaan_id_model';
+        return 'penamaan_code_nomenklatur';
     }
 
-    public function getFieldModelIdAttribute()
+    public function getFieldNomenklaturAttribute()
     {
-        return $this->{$this->field_model_id()};
-    }
-
-    public static function field_nomenklatur_id()
-    {
-        return 'penamaan_id_nomenklatur';
-    }
-
-    public function getFieldNomenklaturIdAttribute()
-    {
-        return $this->{$this->field_nomenklatur_id()};
+        return $this->{$this->field_nomenklatur()};
     }
 
     public static function field_angka_fungsi()

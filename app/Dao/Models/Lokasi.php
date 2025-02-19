@@ -36,7 +36,7 @@ class Lokasi extends SystemModel
      *
      * @var array<int, string>
      */
-    protected $fillable = ['lokasi_id', 'lokasi_nama', 'lokasi_gabungan', 'lokasi_keterangan', 'lokasi_id_area', 'lokasi_id_level3', 'lokasi_id_user'];
+    protected $fillable = ['lokasi_id', 'lokasi_nama', 'lokasi_gabungan', 'lokasi_keterangan', 'lokasi_id_area', 'lokasi_code_level', 'lokasi_id_user'];
 
     public static function field_name()
     {

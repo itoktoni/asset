@@ -53,7 +53,7 @@ trait LokasiEntity
 
     public static function field_level_id()
     {
-        return 'lokasi_id_level3';
+        return 'lokasi_code_level';
     }
 
     public function getFieldLevelIdAttribute()

@@ -31,6 +31,7 @@
                                             @endif
                                         </th>
                                     @endforeach
+                                    <th>Merek</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,9 +44,10 @@
                                         <td class="col-md-2 text-center column-action">
                                             <x-crud :model="$table" />
                                         </td>
-                                        
+
 										<td >{{ $table->model_id }}</td>
 										<td >{{ $table->model_nama }}</td>
+										<td >{{ $table->{BrandModel::field_name()} }}</td>
 
                                     </tr>
                                 @empty

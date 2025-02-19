@@ -4,7 +4,7 @@ namespace App\Facades\Model;
 
 use Illuminate\Support\Facades\Facade;
 
-class NomenklaturModel extends \App\Dao\Models\Nomenklatur
+class VendorModel extends \App\Dao\Models\Vendor
 {
     protected static function getFacadeAccessor()
     {
