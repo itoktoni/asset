@@ -63,6 +63,117 @@
         </div>
     </div>
 
+    @if(Browser::isDesktop())
+    <div class="row">
+        <div class="container">
+            <table class="table table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="2" class="text-center" scope="col">INSPEKSI</th>
+                        <th colspan="2" class="text-center" scope="col">PREVENTIF</th>
+                        <th colspan="2" class="text-center" scope="col">KOREKTIF</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center" scope="col">TOTAL</th>
+                        <th class="text-center" scope="col">SELESAI</th>
+                        <th class="text-center" scope="col">TOTAL</th>
+                        <th class="text-center" scope="col">SELESAI</th>
+                        <th class="text-center" scope="col">TOTAL</th>
+                        <th class="text-center" scope="col">SELESAI</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">{{ $inspeksi }}</td>
+                        <td class="text-center">{{ $total_inspeksi }}</td>
+                        <td class="text-center">{{ $preventif }}</td>
+                        <td class="text-center">{{ $total_preventif }}</td>
+                        <td class="text-center">{{ $korektif }}</td>
+                        <td class="text-center">{{ $total_korektif }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <table class="table table-responsive table-bordered" id="table">
+                <thead>
+                    <tr>
+                        <th colspan="3" class="text-center" scope="col">JADWAL MAINTENANCE DAN KALIBRASI</th>
+                    </tr>
+                    <tr>
+                        <th rowspan="2" class="text-center" scope="col">JADWAL IPM</th>
+                        <th colspan="2" class="text-center" scope="col">KALIBRASI</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center" scope="col">SELESAI</th>
+                        <th class="text-center" scope="col">BELUM SELESAI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">{{ $total_asset }}</td>
+                        <td class="text-center">{{ $total_belum_kalibrasi }}</td>
+                        <td class="text-center">{{ $total_sudah_kalibrasi }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <table class="table table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="3" class="text-center" scope="col">STATUS KEPEMILIKAN</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center" scope="col">INTERNAL</th>
+                        <th class="text-center" scope="col">KSO</th>
+                        <th class="text-center" scope="col">LAINNYA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">{{ $kepemilikan }}</td>
+                        <td class="text-center">{{ $kso }}</td>
+                        <td class="text-center">{{ $lain }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <table class="table table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="2" class="text-center" scope="col">MAINTENANCE EXTERNAL</th>
+                        <th rowspan="2" class="text-center" scope="col">MAINTENANCE INTERNAL</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center" scope="col">GARANSI</th>
+                        <th class="text-center" scope="col">KONTRAK</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">{{ $garansi }}</td>
+                        <td class="text-center">{{ $kontrak }}</td>
+                        <td class="text-center">{{ $internal }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @endif
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">

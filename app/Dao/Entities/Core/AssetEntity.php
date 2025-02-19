@@ -205,4 +205,24 @@ trait AssetEntity
     {
         return $this->{$this->field_status_kalibrasi()};
     }
+
+    public static function field_status_kepemilikan()
+    {
+        return 'asset_status_kepemilikan';
+    }
+
+    public function getFieldStatusKepemilikanAttribute()
+    {
+        return $this->{$this->field_status_kepemilikan()};
+    }
+
+    public static function field_status_maintenance()
+    {
+        return 'asset_status_maintenance';
+    }
+
+    public function getFieldStatusMaintenanceAttribute()
+    {
+        return $this->{$this->field_status_maintenance()};
+    }
 }
