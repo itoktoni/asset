@@ -26,6 +26,7 @@
                                     </th>
                                     <th class="text-center column-action">{{ __('Action') }}</th>
                                     <th>Gambar</th>
+                                    <th>Nomenklatur</th>
                                     <th>Kategori</th>
                                     <th>@sortablelink('penamaan_gabungan', __('Penamaan Asset'))</th>
                                 </tr>
@@ -45,6 +46,7 @@
                                                 <img class="img-thumbnail img-fluid" src="{{ imageUrl($table->field_image, 'penamaan') }}">
                                             </div>
                                         </td>
+										<td>{{ $table->field_nomenklatur }}</td>
 										<td>{{ $table->category_nama }}</td>
 										<td>{{ $table->field_name }}</td>
                                     </tr>

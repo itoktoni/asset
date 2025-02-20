@@ -4,7 +4,8 @@
             <x-action form="form" />
                 @bind($model)
 
-                <x-form-select col="6" name="penamaan_id_category" :options="$category" />
+                <x-form-input col="3" name="penamaan_code_nomenklatur" />
+                <x-form-select col="3" name="penamaan_id_category" :options="$category" />
                 <x-form-input col="6" name="penamaan_nama" />
 
                 <x-form-textarea col="6" name="penamaan_keterangan" />

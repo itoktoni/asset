@@ -46,7 +46,7 @@ class AssetController extends MasterController
         $type = Query::getModelMap();
         $teknisi = GroupModel::getOptions();
         $location = LokasiModel::getOptions();
-        $naming = PenamaanModel::getOptions();
+        $naming = Query::getPenamaanMap();
         $vendor = VendorModel::getOptions();
         $status = AssetStatusType::getOptions();
         $pendanaan = PendanaanType::getOptions();

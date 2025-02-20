@@ -7,6 +7,7 @@ use App\Dao\Models\Level1;
 use App\Dao\Models\Level2;
 use App\Dao\Models\Level3;
 use App\Dao\Models\Model;
+use App\Dao\Models\Penamaan;
 use App\Facades\Model\FilterModel;
 use App\Facades\Model\GroupsModel;
 use App\Facades\Model\LinkModel;
@@ -220,6 +221,25 @@ class Query
         ->mapWithKeys(function($item){
 
             return [$item->field_primary => $item->{Brand::field_name()}.' - '.$item->field_name];
+        }) ?? [];
+
+        return $query;
+    }
+
+    public static function getPenamaanMap()
+    {
+        $query = Penamaan::select(Penamaan::field_primary(), Penamaan::field_nomenklatur(), Penamaan::field_name())
+        ->get()
+        ->mapWithKeys(function($item){
+
+            $nama = $item->field_name;
+
+            if(!empty($item->field_nomenklatur))
+            {
+                $nama = $nama. ' - '.$item->field_nomenklatur;
+            }
+
+            return [$item->field_primary => $nama];
         }) ?? [];
 
         return $query;
