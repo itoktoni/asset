@@ -53,7 +53,7 @@
 										<td>
                                             SN : <b>{{ $table->asset_serial_number }}</b>
                                             <br>
-                                        CODE : {{ $table->asset_code }}
+                                            CODE : {{ $table->asset_code }}
                                         </td>
 
 										<td>
@@ -68,6 +68,12 @@
                                             <b>Ruangan</b> : {{ $table->lokasi_gabungan ?? '-' }}
                                             <br>
                                             Pemeliharaan : <b>{{ $table->group_nama ?? '-' }}</b>
+
+                                            <br>
+                                            <br>
+                                            Kalibrasi Terakhir : <b>{{ formatDate($table->field_tanggal_kalibrasi) }}</b>
+                                            <br>
+                                            Kalibrasi Selanjutnya : <b>{{ !empty($table->field_tanggal_kalibrasi) ? \Carbon\Carbon::createFromDate($table->field_tanggal_kalibrasi)->addYear(1)->format('d/m/Y') : null }}</b>
                                         </td>
                                     </tr>
                                 @empty

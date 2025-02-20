@@ -64,8 +64,11 @@ class HomeController extends Controller
             ->count();
 
         $total_asset = Asset::whereNotNull(Asset::field_tanggal_kunjungan())->count();
-        $total_belum_kalibrasi = Asset::where(Asset::field_tanggal_kalibrasi(), '>=', date('Y-m-d'))->count();
-        $total_sudah_kalibrasi = Asset::where(Asset::field_tanggal_kalibrasi(), '<', date('Y-m-d'))->count();
+
+        $total_kalibrasi_belum_expired = Asset::where(Asset::field_tanggal_kalibrasi(), '>=', date('Y-m-d'))
+            ->count();
+
+        $total_kalibrasi_expired = Asset::where(Asset::field_tanggal_kalibrasi(), '<', date('Y-m-d'))->count();
 
         $kepemilikan = Asset::where(Asset::field_status_kepemilikan(), KepemilikanType::Internal)->count();
         $kso = Asset::where(Asset::field_status_kepemilikan(), KepemilikanType::KSO)->count();
@@ -100,8 +103,8 @@ class HomeController extends Controller
             'lain' => $lain,
 
             'total_asset' => $total_asset,
-            'total_belum_kalibrasi' => $total_belum_kalibrasi,
-            'total_sudah_kalibrasi' => $total_sudah_kalibrasi,
+            'total_kalibrasi_belum_expired' => $total_kalibrasi_belum_expired,
+            'total_kalibrasi_expired' => $total_kalibrasi_expired,
         ]);
     }
 

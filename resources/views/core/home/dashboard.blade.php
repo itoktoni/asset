@@ -109,15 +109,15 @@
                         <th colspan="2" class="text-center" scope="col">KALIBRASI</th>
                     </tr>
                     <tr>
-                        <th class="text-center" scope="col">SELESAI</th>
-                        <th class="text-center" scope="col">BELUM SELESAI</th>
+                        <th class="text-center" scope="col">MASIH BERLAKU</th>
+                        <th class="text-center" scope="col">EXPIRED</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="text-center">{{ $total_asset }}</td>
-                        <td class="text-center">{{ $total_belum_kalibrasi }}</td>
-                        <td class="text-center">{{ $total_sudah_kalibrasi }}</td>
+                        <td class="text-center">{{ $total_kalibrasi_belum_expired }}</td>
+                        <td class="text-center">{{ $total_kalibrasi_expired }}</td>
                     </tr>
                 </tbody>
             </table>
