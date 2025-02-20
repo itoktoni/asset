@@ -13,6 +13,7 @@ use App\Facades\Model\LokasiModel;
 use App\Facades\Model\UserModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Plugins\Query;
@@ -120,6 +121,7 @@ class Tiket extends SystemModel
 
     public static function boot()
     {
+        parent::boot();
         parent::creating(function ($model)
         {
             $model->{self::field_tanggal()} = date('Y-m-d');
@@ -127,6 +129,11 @@ class Tiket extends SystemModel
             {
                 $model->{self::field_type()} = JobType::Korektif;
             }
+        });
+
+        self::created(function($model)
+        {
+            event(new CreateTiketEvent($model));
         });
 
         parent::saving(function ($model)

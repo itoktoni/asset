@@ -62,10 +62,6 @@ class TiketController extends MasterController
     public function postCreate(TiketRequest $request, CreateService $service)
     {
         $data = $service->save($this->model, $request);
-        if(isset($data['status']) && $data['status'])
-        {
-            event(new CreateTiketEvent($data['data']));
-        }
 
         return Response::redirectBack($data);
     }
