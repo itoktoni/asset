@@ -225,4 +225,24 @@ trait AssetEntity
     {
         return $this->{$this->field_status_maintenance()};
     }
+
+    public static function field_cek_kalibrasi()
+    {
+        return 'asset_cek_kalibrasi';
+    }
+
+    public function getFieldCekKalibrasiAttribute()
+    {
+        return $this->{$this->field_cek_kalibrasi()};
+    }
+
+    public static function field_cek_jadwal()
+    {
+        return 'asset_cek_jadwal';
+    }
+
+    public function getFieldCekJadwalAttribute()
+    {
+        return $this->{$this->field_cek_jadwal()};
+    }
 }

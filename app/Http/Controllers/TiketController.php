@@ -106,12 +106,11 @@ class TiketController extends MasterController
             Job::field_tiket_id() => $model->field_primary,
 
         ], [
-            Job::field_type() => TiketType::Korektif,
+            Job::field_type() => $model->field_type,
             Job::field_status() => JobStatusType::Ambil,
             Job::field_asset_id() => $model->field_asset_id,
             Job::field_location_id() => $model->field_location_id,
             Job::field_description() => $model->field_description,
-            Job::field_type() => JobType::Korektif,
         ]);
 
         Alert::update("Tiket berhasil di ambil !");

@@ -16,7 +16,7 @@ class UpdateAssetService
         if ($check['status']) {
 
             $model = $check['data'];
-            $this->calculate($model, $data);
+            $this->calculate($model);
 
             if (request()->wantsJson()) {
                 return response()->json($check)->getData();
@@ -78,7 +78,7 @@ class UpdateAssetService
         return $maintenance;
     }
 
-    private function calculate($model, $request)
+    public function calculate($model)
     {
         $tanggal_kunjungan = $this->tanggalKunjungan($model);
         $penamaan = $model->has_naming ?? null;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dao\Enums\Core\LevelType;
 use App\Dao\Enums\JobStatusType;
+use App\Dao\Enums\JobType;
 use App\Dao\Enums\TiketType;
 use App\Dao\Models\Asset;
 use App\Dao\Models\Job;
@@ -17,6 +18,7 @@ use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
 use App\Facades\Model\JobModel;
 use App\Facades\Model\SaranModel;
+use App\Services\Core\UpdateAssetService;
 use Plugins\Alert;
 
 class JobController extends MasterController
@@ -75,11 +77,24 @@ class JobController extends MasterController
         return redirect()->back();
     }
 
-    public function getApproval($code)
+    public function getApproval($code, UpdateAssetService $service)
     {
         $model = $this->get($code, ['has_tiket']);
         if($model && $this->checkApproval($model->has_tiket->field_user_id ?? false))
         {
+            $asset = Asset::find($model->field_asset_id);
+            if($model->field_type == JobType::Kalibrasi)
+            {
+                $asset->update([
+                    Asset::field_tanggal_kalibrasi() => now()->addYear()->format('Y-m-d')
+                ]);
+            }
+
+            if($model->field_type != JobType::Kalibrasi)
+            {
+                $service->calculate($asset);
+            }
+
             $model->{Job::field_status()} = JobStatusType::Selesai;
             $model->{Job::field_finished_at()} = date('Y-m-d H:i:s');
             $model->save();

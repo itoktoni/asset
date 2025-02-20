@@ -69,7 +69,7 @@ class Tiket extends SystemModel
      *
      * @var array<int, string>
      */
-    protected $fillable = ['tiket_id', 'tiket_code', 'tiket_type', 'tiket_nama', 'tiket_keterangan', 'tiket_gambar', 'tiket_tanggal', 'tiket_pelapor', 'tiket_id_location', 'tiket_id_category', 'tiket_id_asset', 'tiket_taked_by'];
+    protected $fillable = ['tiket_id', 'tiket_code', 'tiket_type', 'tiket_nama', 'tiket_keterangan', 'tiket_gambar', 'tiket_tanggal', 'tiket_pelapor', 'tiket_id_location', 'tiket_id_category', 'tiket_id_asset', 'tiket_taked_by', 'tiket_created_by', 'tiket_updated_by'];
 
     public static function field_name()
     {
@@ -109,7 +109,7 @@ class Tiket extends SystemModel
             ->leftJoinRelationship('has_location')
             ->leftJoinRelationship('has_job')
             ->groupBy($this->field_primary())
-            ->orderBy($this->field_tanggal(), 'DESC')
+            ->orderBy(Tiket::CREATED_AT, 'DESC')
             ->sortable()
             ->filter();
 

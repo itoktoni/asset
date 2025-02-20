@@ -102,6 +102,8 @@ class Asset extends SystemModel
         'asset_status_kalibrasi',
         'asset_status_maintenance',
         'asset_status_kepemilikan',
+        'asset_cek_kalibrasi',
+        'asset_cek_jadwal',
 
     ];
 
