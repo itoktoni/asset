@@ -47,13 +47,13 @@
 
                 <x-form-input col="2" readonly label="Status Kunjungan" name="asset_status_kunjungan" />
                 <x-form-input col="2" label="Kunjungan Terakhir" value="{{ $tanggal_kunjungan ?? '' }}" name="kunjungan"/>
-                <x-form-input col="2" type="date" label="Kunjungan Selanjutnya" name="asset_tanggal_kunjungan" />
+                <x-form-input col="2" type="date" label="Next Kunjungan" name="asset_tanggal_kunjungan" />
                 <x-form-select col="6" name="asset_id_group" label="Pelaksana" :options="$teknisi" />
 
                 <x-form-select col="2" name="asset_status_kalibrasi" label="Status Kalibrasi" :options="$kalibrasi" />
                 @if($model && $model->field_status_kalibrasi == 'Yes')
                 <x-form-input col="2" type="date" label="Kalibrasi Terakhir" name="asset_tanggal_kalibrasi" />
-                <x-form-input col="2" type="date" label="Kalibrasi Selanjutnya" name="kalibrasi_selanjutnya" value="{{ $tanggal_kalibrasi ?? null }}" />
+                <x-form-input col="2" type="date" label="Next Kalibrasi" name="kalibrasi_selanjutnya" value="{{ $tanggal_kalibrasi ?? null }}" />
                 <x-form-input col="2" label="Status" name="kalibrasi" value="{{ $expired ? 'Expired' : 'Berlaku' }}" />
                 <x-form-select col="4" name="asset_id_kalibrasi" label="Pelaksana" :options="$vendor" />
                 @endif
