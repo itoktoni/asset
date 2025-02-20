@@ -97,32 +97,42 @@ class PenamaanController extends MasterController
 
                 $file->storeAs('/public/files/penamaan/', $name);
 
+                Penamaan::query()->delete();
+
                 $rows = SimpleExcelReader::create(storage_path('app/public/files/penamaan/' . $name))
                     ->noHeaderRow()
                     ->getRows()
                     ->each(function (array $row) {
 
-                        if ($row[0] != null && is_int($row[0]) && !empty($row[1])) {
+                        if ($row[0] != null && (is_numeric($row[0])) && !empty($row[1])) {
 
-                            if($this->code != trim($row[0]))
-                            {
-                                $this->code = trim($row[0]);
+                            $fungsi = $row[2] ?? null;
+                            $aplikasi = $row[3] ?? null;
+                            $maintenance = $row[4] ?? null;
 
-                                $this->insert[] = [
-                                    Penamaan::field_nomenklatur() => trim($row[0]),
-                                    Penamaan::field_name() => trim($row[1]),
-                                ];
-                            }
+                            $this->insert[] = [
+                                Penamaan::field_nomenklatur() => trim($row[0]),
+                                Penamaan::field_name() => trim($row[1]),
+                                Penamaan::field_angka_fungsi() => $fungsi,
+                                Penamaan::field_angka_aplikasi() => $aplikasi,
+                                Penamaan::field_angka_maintenance() => $maintenance,
+                            ];
                         }
                     });
 
+                    // dd($this->insert);
+
                 if(!empty($this->insert))
                 {
-                    Penamaan::insert($this->insert);
+                    try {
+
+                        Penamaan::insert($this->insert);
+                        Alert::info('Data berhasil di upload');
+
+                    } catch (\Throwable $th) {
+                        Alert::error($th->getMessage());
+                    }
                 }
-
-                Alert::info('Data berhasil di upload');
-
             }
 
         }
