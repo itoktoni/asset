@@ -90,7 +90,7 @@ class Level3Controller extends MasterController
                             ]);
                         }
 
-                        if ($row[1] != null && is_int($row[1]) && !empty($row[2]))
+                        if ($row[1] != null && is_numeric($row[1]) && !empty($row[2]))
                         {
                             if($this->level2 != $row[1])
                             {
@@ -106,7 +106,7 @@ class Level3Controller extends MasterController
                             }
                         }
 
-                        if ($row[3] != null && is_int($row[3]) && !empty($row[4]))
+                        if ($row[3] != null && is_numeric($row[3]) && !empty($row[4]))
                         {
                             if($this->level3 != $row[3])
                             {
