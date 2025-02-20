@@ -120,7 +120,9 @@ class AssetController extends MasterController
         $this->beforeForm();
         $this->beforeUpdate($code);
 
-        $model = $this->get($code);
+        $model = $this->get($code, ['has_penamaan']);
+        $is_kalibrasi = $model->has_penamaan->field_kalibrasi ?? YesNoType::No;
+
         $tanggal_kunjungan = $this->tanggalKunjungan($model);
         $tanggal_kalibrasi = $this->tanggalKalibrasi($model);
         $expired = $this->kalibrasiExpired($model);
@@ -128,6 +130,7 @@ class AssetController extends MasterController
         return moduleView(modulePathForm(path: self::$is_core), $this->share([
             'model' => $model,
             'expired' => $expired,
+            'is_kalibrasi' => $is_kalibrasi,
             'tanggal_kalibrasi' => $tanggal_kalibrasi,
             'tanggal_kunjungan' => $tanggal_kunjungan,
         ]));
