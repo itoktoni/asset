@@ -10,7 +10,7 @@ class KepemilikanType extends Enum implements LocalizedEnum
 {
     use StatusTrait;
 
-    public const Observasi = null;
+    public const Unknown = null;
 
     public const Internal = 'Internal';
     public const KSO = 'KSO';
