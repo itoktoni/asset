@@ -52,6 +52,7 @@ class Penamaan extends SystemModel
         'penamaan_angka_fungsi',
         'penamaan_angka_aplikasi',
         'penamaan_angka_maintenance',
+        'penamaan_kalibrasi',
     ];
 
     public static function field_name()

@@ -9,9 +9,10 @@
                 <x-form-input col="6" name="penamaan_nama" />
 
                 <x-form-textarea col="6" name="penamaan_keterangan" />
-                <x-form-select col="3" name="penamaan_tech" label="Teknologi" :options="$tech" />
 
-                <x-form-select col="3" name="penamaan_id_satuan" :options="$satuan" />
+                <x-form-select col="2" name="penamaan_tech" label="Teknologi" :options="$tech" />
+                <x-form-select col="2" name="penamaan_kalibrasi" label="Kalibrasi" :options="$kalibrasi" />
+                <x-form-select col="2" name="penamaan_id_satuan" :options="$satuan" />
 
                 <div class="col-md-12">
                     <div class="row">

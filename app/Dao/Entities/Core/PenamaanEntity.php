@@ -100,4 +100,24 @@ trait PenamaanEntity
     {
         return $this->{$this->field_angka_maintenance()};
     }
+
+    public static function field_kalibrasi()
+    {
+        return 'penamaan_kalibrasi';
+    }
+
+    public function getFieldKalibrasiAttribute()
+    {
+        return $this->{$this->field_kalibrasi()};
+    }
+
+    public static function field_technology()
+    {
+        return 'penamaan_tech';
+    }
+
+    public function getFieldTechnologyAttribute()
+    {
+        return $this->{$this->field_technology()};
+    }
 }

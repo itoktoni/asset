@@ -43,6 +43,7 @@ class PenamaanController extends MasterController
         $category = CategoryModel::getOptions();
         $satuan = SatuanModel::getOptions();
         $tech = TechnologyType::getOptions();
+        $kalibrasi = YesNoType::getOptions();
 
         $fungsi = array_combine(range(1,10), range(1,10));
         $aplikasi = array_combine(range(1,5), range(1,5));
@@ -52,6 +53,7 @@ class PenamaanController extends MasterController
             'maintenance' => $maintenance,
             'aplikasi' => $aplikasi,
             'fungsi' => $fungsi,
+            'kalibrasi' => $kalibrasi,
             'tech' => $tech,
             'satuan' => $satuan,
             'category' => $category,
@@ -99,24 +101,49 @@ class PenamaanController extends MasterController
 
                 Penamaan::query()->delete();
 
+                $category = Category::get()->mapWithKeys(function($item){
+                    return [$item->field_name => $item->field_primary];
+                })->toArray();
+
                 $rows = SimpleExcelReader::create(storage_path('app/public/files/penamaan/' . $name))
                     ->noHeaderRow()
                     ->getRows()
-                    ->each(function (array $row) {
+                    ->each(function (array $row) use ($category) {
 
                         if ($row[0] != null && (is_numeric($row[0])) && !empty($row[1])) {
 
-                            $fungsi = $row[2] ?? null;
-                            $aplikasi = $row[3] ?? null;
-                            $maintenance = $row[4] ?? null;
+                            $id_category = $kalibrasi = $tech = null;
+
+                            if(!empty($row[2]) && isset($category[$row[2]]))
+                            {
+                                $id_category = $category[$row[2]];
+                            }
+
+                            if(!empty($row[7]))
+                            {
+                                $kalibrasi = $row[7] == 'Ya' ? 'Yes' : 'No';
+                            }
+
+                            if(!empty($row[3]))
+                            {
+                                $tech = strtoupper($row[3]);
+                            }
+
+                            $fungsi = $row[4] ?? null;
+                            $aplikasi = $row[5] ?? null;
+                            $maintenance = $row[6] ?? null;
 
                             $this->insert[] = [
                                 Penamaan::field_nomenklatur() => trim($row[0]),
                                 Penamaan::field_name() => trim($row[1]),
+                                Penamaan::field_category_id() => $id_category,
+                                Penamaan::field_technology() => $tech,
                                 Penamaan::field_angka_fungsi() => $fungsi,
                                 Penamaan::field_angka_aplikasi() => $aplikasi,
                                 Penamaan::field_angka_maintenance() => $maintenance,
+                                Penamaan::field_kalibrasi() => $kalibrasi,
                             ];
+
                         }
                     });
 
