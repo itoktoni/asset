@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dao\Models\Asset;
 use App\Facades\Model\AssetModel;
 use App\Http\Controllers\Core\ReportController;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class ReportJadwalController extends ReportController
 
     public function getData()
     {
-        $query = $this->model->rawQuery()->with(['has_location']);
+        $query = $this->model->rawQuery()->with(['has_location'])
+            ->whereNotNull(Asset::field_tanggal_kunjungan());
 
         return $query->get();
     }
