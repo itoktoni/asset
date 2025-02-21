@@ -7,6 +7,7 @@ use App\Dao\Models\Core\SystemModel;
 use App\Dao\Models\Core\User;
 use App\Facades\Model\Level2Model;
 use Monolog\Level;
+use Plugins\Query;
 
 /**
  * Class Level3
@@ -80,6 +81,19 @@ class Level3 extends SystemModel
         }
 
         return $query;
+    }
+
+    public static function boot()
+    {
+        parent::creating(function ($model)
+        {
+            if(request()->get($model->field_primary()))
+            {
+                $model->{self::field_primary()} = Query::autoNumber(self::getTableName(), Level3::field_primary(), 'LEV3');
+            }
+        });
+
+        parent::boot();
     }
 
 }
