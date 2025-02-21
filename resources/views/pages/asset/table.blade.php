@@ -57,7 +57,6 @@
                                             <br>
                                             CODE : {{ $table->asset_code }}
                                             <br>
-
                                         </td>
 
 										<td>
@@ -75,6 +74,11 @@
                                             Pemeliharaan : <b>{{ $table->group_nama ?? '-' }}</b>
 
                                             <br>
+                                            <br>
+                                            @php
+                                            $expired = $table->field_tanggal_kalibrasi < date('Y-m-d') ? 'Expired' : 'Berlaku';
+                                            @endphp
+                                            Status Kalibrasi : <b>{{ $expired }}</b>
                                             <br>
                                             Kalibrasi Terakhir : <b>{{ formatDate($table->field_tanggal_kalibrasi) }}</b>
                                             <br>
