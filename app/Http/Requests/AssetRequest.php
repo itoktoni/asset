@@ -15,7 +15,7 @@ class AssetRequest extends GeneralRequest
 
     public function prepareForValidation()
     {
-
+        $next = null;
         if(!empty($this->{Asset::field_tanggal_kalibrasi()}))
         {
             $next = Carbon::createFromDate($this->{Asset::field_tanggal_kalibrasi()})->addYear(1);
