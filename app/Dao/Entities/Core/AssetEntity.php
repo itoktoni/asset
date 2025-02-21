@@ -245,4 +245,24 @@ trait AssetEntity
     {
         return $this->{$this->field_cek_jadwal()};
     }
+
+    public static function field_next_kunjungan()
+    {
+        return 'asset_next_kunjungan';
+    }
+
+    public function getFieldNextKunjunganAttribute()
+    {
+        return $this->{$this->field_next_kunjungan()};
+    }
+
+    public static function field_next_kalibrasi()
+    {
+        return 'asset_next_kalibrasi';
+    }
+
+    public function getFieldNextKalibrasiAttribute()
+    {
+        return $this->{$this->field_next_kalibrasi()};
+    }
 }

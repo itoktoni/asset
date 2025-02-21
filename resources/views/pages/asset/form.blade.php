@@ -41,7 +41,7 @@
             @bind($model)
 
                 <x-form-input col="2" label="Tahun Pengadaan" name="asset_tahun_pengadaan" />
-                <x-form-input col="2" type="date" label="Tanggal Diakui" name="asset_tanggal_diakui" />
+                <x-form-input col="2" type="date" label="Tanggal Diakui/IPM Pertama" name="asset_tanggal_diakui" />
                 <x-form-select col="2" name="asset_pendanaan" :options="$pendanaan" />
                 <x-form-input col="2" label="Harga Perolehan" name="asset_harga_perolehan" />
                 <x-form-select col="4" name="asset_id_vendor" :options="$vendor" />
@@ -54,7 +54,7 @@
                 <x-form-select col="2" name="asset_status_kalibrasi" default="{{ $is_kalibrasi ?? null }}" label="Status Kalibrasi" :options="$kalibrasi" />
                 @if($model && $is_kalibrasi == 'Yes')
                 <x-form-input col="2" type="date" label="Kalibrasi Terakhir" name="asset_tanggal_kalibrasi" />
-                <x-form-input col="2" type="date" label="Next Kalibrasi" name="kalibrasi_selanjutnya" value="{{ $tanggal_kalibrasi ?? null }}" />
+                <x-form-input col="2" type="date" label="Next Kalibrasi" name="kalibrasi_selanjutnya" value="{{ $model->field_next_kalibrasi ?? null }}" />
                 <x-form-input col="2" label="Status" name="kalibrasi" value="{{ $expired ? 'Expired' : 'Berlaku' }}" />
                 <x-form-select col="4" name="asset_id_kalibrasi" label="Pelaksana" :options="$vendor" />
                 @endif

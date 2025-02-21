@@ -6,6 +6,7 @@ use App\Dao\Models\Asset;
 use App\Dao\Traits\ValidationTrait;
 use App\Facades\Model\GroupsModel;
 use App\Http\Requests\Core\GeneralRequest;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class AssetRequest extends GeneralRequest
@@ -14,8 +15,14 @@ class AssetRequest extends GeneralRequest
 
     public function prepareForValidation()
     {
-        $this->merge([
 
+        if(!empty($this->{Asset::field_tanggal_kalibrasi()}))
+        {
+            $next = Carbon::createFromDate($this->{Asset::field_tanggal_kalibrasi()})->addYear(1);
+        }
+
+        $this->merge([
+            Asset::field_next_kalibrasi() => $next
         ]);
     }
 

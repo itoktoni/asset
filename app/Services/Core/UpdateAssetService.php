@@ -97,27 +97,27 @@ class UpdateAssetService
 
         if($berapa_kali == 0 || $total <= 11)
         {
-            $next = Carbon::createFromDate($tanggal_kunjungan)->addYear(1);
+            $next = null;
             $status = JobType::Promotif;
         }
         else if($total >= 12 and $total <= 14)
         {
-            $next = Carbon::createFromDate($tanggal_kunjungan)->addDay(round(365 / $berapa_kali));
+            $next = Carbon::createFromDate($tanggal_kunjungan)->addDay(round(365 / $berapa_kali))->format('Y-m-d');
             $status = JobType::Preventif;
         }
         else if($total > 12 and $total <= 15)
         {
-            $next = Carbon::createFromDate($tanggal_kunjungan)->addDay(round(365 / $berapa_kali));
+            $next = Carbon::createFromDate($tanggal_kunjungan)->addDay(round(365 / $berapa_kali))->format('Y-m-d');
             $status = JobType::Inspeksi;
         }
         else
         {
-            $next = Carbon::createFromDate($tanggal_kunjungan)->addYear(1);
+            $next = null;
             $status = JobType::Inventaris;
         }
 
         $model->asset_status_kunjungan = $status;
-        $model->asset_tanggal_kunjungan = $next->format('Y-m-d');
+        $model->asset_tanggal_kunjungan = $next;
         $model->save();
     }
 
@@ -126,6 +126,7 @@ class UpdateAssetService
         $sekarang = now()->format('Y-m-d');
 
         return Tiket::where(Tiket::field_asset_id(), $id)
+                ->where(Tiket::field_type(), JobType::Korektif)
                 ->whereBetween(Tiket::field_tanggal(), [$tanggal, $sekarang])
                 ->count();
 

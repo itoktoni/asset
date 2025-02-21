@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Dao\Enums\AssetStatusType;
 use App\Dao\Enums\Core\YesNoType;
-use App\Dao\Enums\JobStatusType;
-use App\Dao\Enums\JobType;
 use App\Dao\Enums\KepemilikanType;
 use App\Dao\Enums\MaintenanceType;
 use App\Dao\Enums\PendanaanType;
@@ -17,16 +15,12 @@ use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\DepartmentModel;
-use App\Facades\Model\DistributorModel;
 use App\Facades\Model\GroupModel;
 use App\Facades\Model\LokasiModel;
-use App\Facades\Model\ModelModel;
-use App\Facades\Model\PenamaanModel;
 use App\Facades\Model\VendorModel;
 use App\Http\Requests\AssetRequest;
 use App\Services\Core\UpdateAssetService;
 use App\Services\Master\CreateService;
-use Carbon\Carbon;
 use Plugins\Query;
 use Plugins\Response;
 
@@ -76,15 +70,6 @@ class AssetController extends MasterController
         return Response::redirectBack($data);
     }
 
-    private function tanggalKalibrasi($model)
-    {
-        if($model && !empty($model->field_tanggal_kalibrasi))
-        {
-            $next = Carbon::createFromDate($model->field_tanggal_kalibrasi)->addYear(1);
-            return $next->format('Y-m-d');
-        }
-    }
-
     private function kalibrasiExpired($model)
     {
         if($model && !empty($model->field_tanggal_kalibrasi))
@@ -124,14 +109,12 @@ class AssetController extends MasterController
         $is_kalibrasi = $model->has_penamaan->field_kalibrasi ?? YesNoType::No;
 
         $tanggal_kunjungan = $this->tanggalKunjungan($model);
-        $tanggal_kalibrasi = $this->tanggalKalibrasi($model);
         $expired = $this->kalibrasiExpired($model);
 
         return moduleView(modulePathForm(path: self::$is_core), $this->share([
             'model' => $model,
             'expired' => $expired,
             'is_kalibrasi' => $is_kalibrasi,
-            'tanggal_kalibrasi' => $tanggal_kalibrasi,
             'tanggal_kunjungan' => $tanggal_kunjungan,
         ]));
     }
