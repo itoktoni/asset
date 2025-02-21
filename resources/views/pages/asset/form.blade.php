@@ -41,7 +41,7 @@
             @bind($model)
 
                 <x-form-input col="2" label="Tahun Pengadaan" name="asset_tahun_pengadaan" />
-                <x-form-input col="2" type="date" label="Tanggal Diakui/IPM Pertama" name="asset_tanggal_diakui" />
+                <x-form-input col="2" type="date" label="Tgl Diakui/IPM Pertama" name="asset_tanggal_diakui" />
                 <x-form-select col="2" name="asset_pendanaan" :options="$pendanaan" />
                 <x-form-input col="2" label="Harga Perolehan" name="asset_harga_perolehan" />
                 <x-form-select col="4" name="asset_id_vendor" :options="$vendor" />
