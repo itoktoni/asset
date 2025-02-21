@@ -23,6 +23,7 @@ class AssetRequest extends GeneralRequest
     {
         return [
             Asset::field_penamaan_id() => 'required',
+            Asset::field_serial_number() => 'unique:asset,asset_serial_number',
         ];
     }
 }

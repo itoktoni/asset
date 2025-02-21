@@ -63,7 +63,7 @@ class HomeController extends Controller
             ->where(Job::field_status(), JobStatusType::Selesai())
             ->count();
 
-        $total_asset = Asset::whereNotNull(Asset::field_tanggal_kunjungan())->count();
+        $total_ipm = Tiket::whereIn(Tiket::field_type(), [JobType::Inspeksi, JobType::Preventif])->count();
 
         $total_kalibrasi_belum_expired = Asset::where(Asset::field_tanggal_kalibrasi(), '>=', date('Y-m-d'))
             ->count();
@@ -102,7 +102,7 @@ class HomeController extends Controller
             'kso' => $kso,
             'lain' => $lain,
 
-            'total_asset' => $total_asset,
+            'total_ipm' => $total_ipm,
             'total_kalibrasi_belum_expired' => $total_kalibrasi_belum_expired,
             'total_kalibrasi_expired' => $total_kalibrasi_expired,
         ]);
