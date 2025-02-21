@@ -51,12 +51,13 @@
                                             </div>
                                         </td>
 										<td>
+                                            <b>Merk/Tipe</b> : {{ $table->brand_nama }} - {{ $table->model_nama }}
+                                            <br>
                                             SN : <b>{{ $table->asset_serial_number }}</b>
                                             <br>
                                             CODE : {{ $table->asset_code }}
                                             <br>
-                                            <b>Merk/Tipe</b> : {{ $table->brand_nama }} - {{ $table->model_nama }}
-                                            <br>
+
                                         </td>
 
 										<td>
