@@ -55,11 +55,12 @@
                                             <br>
                                             CODE : {{ $table->asset_code }}
                                             <br>
+                                            <b>Merk/Tipe</b> : {{ $table->brand_nama }} - {{ $table->model_nama }}
+                                            <br>
                                         </td>
 
 										<td>
-                                            <b>Merk/Tipe</b> : {{ $table->brand_nama }} - {{ $table->model_nama }}
-                                            <br>
+
                                             <b>
                                                 <a class="text-primary" href="{{ route('penamaan.getUpdate', ['code' => $table->field_penamaan_id]) }}">
 
