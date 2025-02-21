@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
+use Telegram\Bot\FileUpload\InputFile;
 use Telegram\Bot\Keyboard\Keyboard;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
@@ -61,7 +62,18 @@ class WebhookController extends Controller
                         'text' => "Pendaftaran Gagal Dilakukan",
                     ]);
                 }
-            } else {
+            }
+            elseif($text == "Help")
+            {
+                $help = "Masukan username telegram ke dalam system".PHP_EOL.'untuk lebih jelas buka ducument berikut';
+                $ducument = new InputFile(url('telegram.pdf'));
+                Telegram::sendDocument([
+                    'chat_id' => $chat_id,
+                    'caption' => $help,
+                    'document' => $ducument
+                ]);
+            }
+            else {
                 $reply_markup = Keyboard::make()
                     ->setResizeKeyboard(true)
                     ->setOneTimeKeyboard(true)

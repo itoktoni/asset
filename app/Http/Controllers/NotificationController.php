@@ -11,6 +11,8 @@ use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
 use Plugins\Alert;
 use Plugins\Notes;
+use Telegram\Bot\FileUpload\InputFile;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class NotificationController extends MasterController
 {
