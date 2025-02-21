@@ -11,7 +11,9 @@
 
             <x-form method="POST" action="{{ moduleRoute('getTable') }}">
 
-                <x-action />
+                <x-action>
+                    <a class="btn btn-info" target="_blank" href="https://t.me/AssetNotificationBot">Telegram</a>
+                </x-action>
 
                 <div class="container-fluid" id="table">
                     <div class="table-responsive">

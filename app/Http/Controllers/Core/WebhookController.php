@@ -65,7 +65,7 @@ class WebhookController extends Controller
             }
             elseif($text == "Help")
             {
-                $help = "Masukan username telegram ke dalam system".PHP_EOL.'untuk lebih jelas buka ducument berikut';
+                $help = 'catat username telegram'.PHP_EOL.'input ke dalam system'.PHP_EOL.'buka menu profile'.PHP_EOL.'masukan username telegram'.PHP_EOL.'untuk lebih jelas buka ducument berikut';
                 $ducument = new InputFile(url('telegram.pdf'));
                 Telegram::sendDocument([
                     'chat_id' => $chat_id,
