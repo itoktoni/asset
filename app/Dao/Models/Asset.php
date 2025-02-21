@@ -165,11 +165,12 @@ class Asset extends SystemModel
     public function rawQuery()
     {
         $query = $this
-            ->select([$this->getTable().'.*', Penamaan::field_name(), Lokasi::field_name(), Department::field_name(), Group::field_name()])
+            ->select([$this->getTable().'.*', Penamaan::field_name(), Penamaan::field_nomenklatur(), Lokasi::field_name(), Model::field_name(), Brand::field_name(), Group::field_name()])
             ->leftJoinRelationship('has_naming')
+            ->leftJoinRelationship('has_model')
+            ->leftJoinRelationship('has_model.has_brand')
             ->leftJoinRelationship('has_group')
             ->leftJoinRelationship('has_location')
-            ->leftJoinRelationship('has_department')
             ->sortable()
             ->filter();
 

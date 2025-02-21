@@ -54,9 +54,18 @@
                                             SN : <b>{{ $table->asset_serial_number }}</b>
                                             <br>
                                             CODE : {{ $table->asset_code }}
+                                            <br>
+                                            NOMENKLATUR : {{ $table->penamaan_code_nomenklatur }}
+                                            <br>
+                                            AKL /AKD : {{ $table->field_akl_akd }}
+                                            <br>
+                                            <br>
+
                                         </td>
 
 										<td>
+                                            <b>Model / Tipe</b> : {{ $table->brand_nama }} - {{ $table->model_nama }}
+                                            <br>
                                             <b>
                                                 <a class="text-primary" href="{{ route('penamaan.getUpdate', ['code' => $table->field_penamaan_id]) }}">
 
