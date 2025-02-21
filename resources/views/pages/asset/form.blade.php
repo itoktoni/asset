@@ -47,7 +47,7 @@
                 <x-form-select col="4" name="asset_id_vendor" :options="$vendor" />
 
                 <x-form-input col="2" readonly label="Status Kunjungan" name="asset_status_kunjungan" />
-                <x-form-input col="2" label="Kunjungan Terakhir" value="{{ !empty($tanggal_kunjungan) ? \Carbon\Carbon::createFromDate($model->tanggal_kunjungan)->format('m/d/Y') : '' }}" name="kunjungan"/>
+                <x-form-input type="date" col="2" label="Kunjungan Terakhir" value="{{ !empty($tanggal_kunjungan) ? \Carbon\Carbon::createFromDate($model->tanggal_kunjungan)->format('Y-m-d') : '' }}" name="kunjungan"/>
                 <x-form-input col="2" type="date" label="Next Kunjungan" name="asset_tanggal_kunjungan" />
                 <x-form-select col="6" name="asset_id_group" label="Pelaksana" :options="$teknisi" />
 
