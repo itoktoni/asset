@@ -76,7 +76,7 @@
                                             <br>
                                             <br>
                                             @php
-                                            $expired = $table->field_tanggal_kalibrasi < date('Y-m-d') ? 'Expired' : 'Berlaku';
+                                            $expired = $table->field_next_kalibrasi < date('Y-m-d') ? 'Expired' : 'Berlaku';
                                             @endphp
                                             Status Kalibrasi : <b>{{ $expired }}</b>
                                             <br>
