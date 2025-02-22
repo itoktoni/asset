@@ -8,6 +8,9 @@ use App\Http\Function\CreateFunction;
 use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
 use App\Facades\Model\ModelModel;
+use App\Http\Requests\ModelRequest;
+use App\Services\Master\CreateService;
+use Plugins\Response;
 
 class ModelController extends MasterController
 {
@@ -26,5 +29,12 @@ class ModelController extends MasterController
         self::$share = [
             'brand' => $brand,
         ];
+    }
+
+    public function postCreate(ModelRequest $request, CreateService $service)
+    {
+        $data = $service->save($this->model, $request);
+
+        return Response::redirectBack($data);
     }
 }
