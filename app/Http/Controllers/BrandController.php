@@ -7,6 +7,9 @@ use App\Http\Function\CreateFunction;
 use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
 use App\Facades\Model\BrandModel;
+use App\Http\Requests\BrandRequest;
+use App\Services\Master\CreateService;
+use Plugins\Response;
 
 class BrandController extends MasterController
 {
@@ -17,4 +20,12 @@ class BrandController extends MasterController
         self::$service = self::$service ?? $service;
         $this->model = $model::getModel();
     }
+
+    public function postCreate(BrandRequest $request, CreateService $service)
+    {
+        $data = $service->save($this->model, $request);
+
+        return Response::redirectBack($data);
+    }
+
 }
