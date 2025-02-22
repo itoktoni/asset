@@ -51,7 +51,7 @@
 				<td>{{ formatDate($table->field_tanggal_expired) }}</td>
 				<td>{{ formatDate($table->field_next_expired) }}</td>
 				<td>{{ $table->vendor_nama ?? '' }}</td>
-				<td>{{ $table->field_next_expired < date('Y-m-d') ? 'Expired' : 'Berlaku' }}</td>
+				<td>{{ statusExpired($table->field_next_expired) }}</td>
 			</tr>
 			@empty
 			@endforelse

@@ -261,7 +261,6 @@ function formatDateMySql($value, $datetime = false)
 
 function formatDate($value, $datetime = false)
 {
-
     if ($datetime === false) {
         $format = 'd/m/Y';
     } elseif ($datetime === true) {
@@ -281,6 +280,15 @@ function formatDate($value, $datetime = false)
     }
 
     return $value ?: null;
+}
+
+function statusExpired($date)
+{
+    if (empty($date)) {
+        return null;
+    }
+
+    return $date < date('Y-m-d') ? 'Expired' : 'Berlaku';
 }
 
 function iteration($model, $key)

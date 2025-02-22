@@ -70,19 +70,6 @@ class AssetController extends MasterController
         return Response::redirectBack($data);
     }
 
-    private function kalibrasiExpired($model)
-    {
-        if($model && !empty($model->field_next_expired))
-        {
-            if($model->field_next_expired < date('Y-m-d'))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     private function tanggalKunjungan($model)
     {
         $tanggal_kunjungan = $model->field_tanggal_diakui;
@@ -109,11 +96,11 @@ class AssetController extends MasterController
         $is_kalibrasi = $model->has_penamaan->field_kalibrasi ?? YesNoType::No;
 
         $tanggal_kunjungan = $this->tanggalKunjungan($model);
-        $expired = $this->kalibrasiExpired($model);
+        $status_expired = statusExpired($model->field_next_expired);
 
         return moduleView(modulePathForm(path: self::$is_core), $this->share([
             'model' => $model,
-            'expired' => $expired,
+            'status_expired' => $status_expired,
             'is_kalibrasi' => $is_kalibrasi,
             'tanggal_kunjungan' => $tanggal_kunjungan,
         ]));
