@@ -3,7 +3,7 @@
 		<td></td>
 		<td colspan="6">
 			<h3>
-				<b>Report Jadwal IPM</b>
+				<b>Report Jadwal Kalibrasi</b>
 			</h3>
 		</td>
 		<td rowspan="3">
@@ -34,22 +34,24 @@
 		<thead>
 			<tr>
 				<th width="1">No. </th>
-				<th>KETERANGAN</th>
-				<th>TANGGAL</th>
 				<th>NAMA ASSET</th>
 				<th>RUANGAN</th>
 				<th>PIC RUANGAN</th>
+				<th>KALIBRASI TERAKHIR</th>
+				<th>KALIBRASI SELANJUTNYA</th>
+				<th>STATUS</th>
 			</tr>
 		</thead>
 		<tbody>
 			@forelse($data as $table)
 			<tr>
 				<td>{{ $loop->iteration }}</td>
-				<td>{{ $table->field_status_kunjungan }}</td>
-				<td>{{ formatDate($table->field_tanggal_kunjungan) }}</td>
 				<td>{{ $table->field_name }}</td>
 				<td>{{ $table->lokasi_gabungan ?? '' }}</td>
 				<td>{{ $table->has_location->has_user->name ?? '' }}</td>
+				<td>{{ formatDate($table->field_tanggal_kalibrasi) }}</td>
+				<td>{{ formatDate($table->field_next_kalibrasi) }}</td>
+				<td>{{ $table->field_next_kalibrasi < date('Y-m-d') ? 'Expired' : 'Berlaku' }}</td>
 			</tr>
 			@empty
 			@endforelse

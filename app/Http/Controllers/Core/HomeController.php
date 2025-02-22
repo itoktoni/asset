@@ -67,10 +67,10 @@ class HomeController extends Controller
             ->whereIn(Asset::field_status_kunjungan(), [JobType::Inspeksi, JobType::Preventif])
             ->count();
 
-        $total_kalibrasi_belum_expired = Asset::where(Asset::field_tanggal_kalibrasi(), '>=', date('Y-m-d'))
+        $total_kalibrasi_belum_expired = Asset::where(Asset::field_next_kalibrasi(), '>=', date('Y-m-d'))
             ->count();
 
-        $total_kalibrasi_expired = Asset::where(Asset::field_tanggal_kalibrasi(), '<', date('Y-m-d'))->count();
+        $total_kalibrasi_expired = Asset::where(Asset::field_next_kalibrasi(), '<', date('Y-m-d'))->count();
 
         $kepemilikan = Asset::where(Asset::field_status_kepemilikan(), KepemilikanType::Internal)->count();
         $kso = Asset::where(Asset::field_status_kepemilikan(), KepemilikanType::KSO)->count();
