@@ -16,13 +16,13 @@ class AssetRequest extends GeneralRequest
     public function prepareForValidation()
     {
         $next = null;
-        if(!empty($this->{Asset::field_tanggal_kalibrasi()}))
+        if(!empty($this->{Asset::field_tanggal_expired()}))
         {
-            $next = Carbon::createFromDate($this->{Asset::field_tanggal_kalibrasi()})->addYear(1);
+            $next = Carbon::createFromDate($this->{Asset::field_tanggal_expired()})->addYear(1);
         }
 
         $this->merge([
-            Asset::field_next_kalibrasi() => $next
+            Asset::field_next_expired() => $next
         ]);
     }
 

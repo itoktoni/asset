@@ -72,9 +72,9 @@ class AssetController extends MasterController
 
     private function kalibrasiExpired($model)
     {
-        if($model && !empty($model->field_next_kalibrasi))
+        if($model && !empty($model->field_next_expired))
         {
-            if($model->field_next_kalibrasi < date('Y-m-d'))
+            if($model->field_next_expired < date('Y-m-d'))
             {
                 return true;
             }

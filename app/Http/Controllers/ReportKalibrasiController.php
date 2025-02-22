@@ -19,7 +19,7 @@ class ReportKalibrasiController extends ReportController
     public function getData()
     {
         $query = $this->model->rawQuery()->with(['has_location'])
-            ->whereNotNull(Asset::field_next_kalibrasi());
+            ->whereNotNull(Asset::field_next_expired());
 
         return $query->get();
     }

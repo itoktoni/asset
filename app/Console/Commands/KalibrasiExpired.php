@@ -32,12 +32,12 @@ class KalibrasiExpired extends Command
         $kalibrasi = now()->addMonth()->format('Y-m-d');
 
         $data = Asset::with(['has_location.has_user'])
-            ->whereYear(Asset::field_tanggal_kalibrasi(), date('Y'))
-            ->where(Asset::field_tanggal_kalibrasi(), $kalibrasi)
+            ->whereYear(Asset::field_tanggal_expired(), date('Y'))
+            ->where(Asset::field_tanggal_expired(), $kalibrasi)
             ->whereNot(Asset::field_cek_kalibrasi(), $today)
             ->orWhereNull(Asset::field_cek_kalibrasi())
-            ->whereYear(Asset::field_tanggal_kalibrasi(), date('Y'))
-            ->where(Asset::field_tanggal_kalibrasi(), $kalibrasi)
+            ->whereYear(Asset::field_tanggal_expired(), date('Y'))
+            ->where(Asset::field_tanggal_expired(), $kalibrasi)
             ->limit(env('LIMIT_JADWAL', 10))
             ->get();
 
@@ -51,7 +51,7 @@ class KalibrasiExpired extends Command
                 Tiket::field_type() => JobType::Kalibrasi,
                 Tiket::field_location_id() => $item->field_location_id,
                 Tiket::field_asset_id() => $item->field_primary,
-                Tiket::field_description() => 'Sudah waktunya Kalibrasi'.PHP_EOL.'Tanggal Kalibrasi '.formatDate($item->field_tanggal_kalibrasi),
+                Tiket::field_description() => 'Sudah waktunya Kalibrasi'.PHP_EOL.'Tanggal Kalibrasi '.formatDate($item->field_tanggal_expired),
             ]);
 
             Asset::find($item->field_primary)->update([

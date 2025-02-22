@@ -53,8 +53,8 @@
 
                 <x-form-select col="2" name="asset_status_kalibrasi" default="{{ $is_kalibrasi ?? null }}" label="Status Kalibrasi" :options="$kalibrasi" />
                 @if($model && $is_kalibrasi == 'Yes')
-                <x-form-input col="2" type="date" label="Kalibrasi Terakhir" name="asset_tanggal_kalibrasi" />
-                <x-form-input col="2" type="date" label="Next Kalibrasi" name="kalibrasi_selanjutnya" value="{{ $model->field_next_kalibrasi ?? null }}" />
+                <x-form-input col="2" type="date" label="Kalibrasi Terakhir" name="asset_tanggal_expired" />
+                <x-form-input col="2" type="date" label="Next Kalibrasi" name="kalibrasi_selanjutnya" value="{{ $model->field_next_expired ?? null }}" />
                 <x-form-input col="2" label="Status" name="kalibrasi" value="{{ $expired ? 'Expired' : 'Berlaku' }}" />
                 <x-form-select col="4" name="asset_id_kalibrasi" label="Pelaksana" :options="$vendor" />
                 @endif

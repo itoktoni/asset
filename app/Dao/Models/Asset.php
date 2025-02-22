@@ -97,8 +97,8 @@ class Asset extends SystemModel
         'asset_tanggal_kunjungan',
         'asset_next_kunjungan',
         'asset_status_kunjungan',
-        'asset_tanggal_kalibrasi',
-        'asset_next_kalibrasi',
+        'asset_tanggal_expired',
+        'asset_next_expired',
         'asset_pendanaan',
         'asset_akl_akd',
         'asset_status_kalibrasi',
@@ -202,7 +202,7 @@ class Asset extends SystemModel
 
             if(empty($model->{self::field_status_kalibrasi()}))
             {
-                $model->{self::field_tanggal_kalibrasi()} = null;
+                $model->{self::field_tanggal_expired()} = null;
                 $model->{self::field_kalibrasi_id()} = null;
             }
 

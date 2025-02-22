@@ -86,7 +86,7 @@ class JobController extends MasterController
             if($model->field_type == JobType::Kalibrasi)
             {
                 $asset->update([
-                    Asset::field_tanggal_kalibrasi() => now()->addYear()->format('Y-m-d')
+                    Asset::field_tanggal_expired() => now()->addYear()->format('Y-m-d')
                 ]);
             }
 

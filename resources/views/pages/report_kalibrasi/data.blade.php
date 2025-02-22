@@ -49,9 +49,9 @@
 				<td>{{ $table->field_name }}</td>
 				<td>{{ $table->lokasi_gabungan ?? '' }}</td>
 				<td>{{ $table->has_location->has_user->name ?? '' }}</td>
-				<td>{{ formatDate($table->field_tanggal_kalibrasi) }}</td>
-				<td>{{ formatDate($table->field_next_kalibrasi) }}</td>
-				<td>{{ $table->field_next_kalibrasi < date('Y-m-d') ? 'Expired' : 'Berlaku' }}</td>
+				<td>{{ formatDate($table->field_tanggal_expired) }}</td>
+				<td>{{ formatDate($table->field_next_expired) }}</td>
+				<td>{{ $table->field_next_expired < date('Y-m-d') ? 'Expired' : 'Berlaku' }}</td>
 			</tr>
 			@empty
 			@endforelse

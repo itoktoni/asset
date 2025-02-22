@@ -76,13 +76,13 @@
                                             <br>
                                             <br>
                                             @php
-                                            $expired = $table->field_next_kalibrasi < date('Y-m-d') ? 'Expired' : 'Berlaku';
+                                            $expired = $table->field_next_expired < date('Y-m-d') ? 'Expired' : 'Berlaku';
                                             @endphp
                                             Status Kalibrasi : <b>{{ $expired }}</b>
                                             <br>
-                                            Kalibrasi Terakhir : <b>{{ formatDate($table->field_tanggal_kalibrasi) }}</b>
+                                            Kalibrasi Terakhir : <b>{{ formatDate($table->field_tanggal_expired) }}</b>
                                             <br>
-                                            Kalibrasi Selanjutnya : <b>{{ !empty($table->field_tanggal_kalibrasi) ? \Carbon\Carbon::createFromDate($table->field_tanggal_kalibrasi)->addYear(1)->format('d/m/Y') : null }}</b>
+                                            Kalibrasi Selanjutnya : <b>{{ !empty($table->field_tanggal_expired) ? \Carbon\Carbon::createFromDate($table->field_tanggal_expired)->addYear(1)->format('d/m/Y') : null }}</b>
                                         </td>
                                     </tr>
                                 @empty

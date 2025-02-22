@@ -126,14 +126,14 @@ trait AssetEntity
         return $this->{$this->field_tanggal_kunjungan()};
     }
 
-    public static function field_tanggal_kalibrasi()
+    public static function field_tanggal_expired()
     {
-        return 'asset_tanggal_kalibrasi';
+        return 'asset_tanggal_expired';
     }
 
-    public function getFieldTanggalKalibrasiAttribute()
+    public function getFieldTanggalExpiredAttribute()
     {
-        return $this->{$this->field_tanggal_kalibrasi()};
+        return $this->{$this->field_tanggal_expired()};
     }
 
     public static function field_status_kunjungan()
@@ -256,13 +256,13 @@ trait AssetEntity
         return $this->{$this->field_next_kunjungan()};
     }
 
-    public static function field_next_kalibrasi()
+    public static function field_next_expired()
     {
-        return 'asset_next_kalibrasi';
+        return 'asset_next_expired';
     }
 
-    public function getFieldNextKalibrasiAttribute()
+    public function getFieldNextExpiredAttribute()
     {
-        return $this->{$this->field_next_kalibrasi()};
+        return $this->{$this->field_next_expired()};
     }
 }

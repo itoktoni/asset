@@ -22,7 +22,7 @@
                                 <x-form-input col="4" type="date" label="Tanggal Kunjungan"
                                     name="asset_tanggal_kunjungan" />
                                 <x-form-input col="4" type="date" label="Tanggal Kalibrasi"
-                                    name="asset_tanggal_kalibrasi" />
+                                    name="asset_tanggal_expired" />
 
                                 <x-form-textarea col="12" rows="5" class="h-100" name="asset_keterangan" />
                                 <div class="col-md-12 mb-4"></div>
