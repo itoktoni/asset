@@ -42,7 +42,7 @@
 				<div class="dropdown-menu">
 					<a href="{{ route('getProfile') }}" class="dropdown-item">My Profile</a>
 					<a href="#" class="dropdown-item">Settings</a>
-					<a href="#" class="dropdown-item">Billing</a>
+					<a href="{{ env('NOTIFICATION_LINK') }}" class="dropdown-item">Notifikasi Telegram</a>
 					<a href="{{ route('signout') }}" class="dropdown-item">Logout</a>
 				</div>
 			</li>

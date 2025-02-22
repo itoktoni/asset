@@ -12,7 +12,7 @@
             <x-form method="POST" action="{{ moduleRoute('getTable') }}">
 
                 <x-action>
-                    <a class="btn btn-info" target="_blank" href="https://t.me/AssetNotificationBot">Telegram</a>
+                    <a class="btn btn-info" target="_blank" href="{{ env('NOTIFICATION_LINK') }}">Telegram</a>
                 </x-action>
 
                 <div class="container-fluid" id="table">
