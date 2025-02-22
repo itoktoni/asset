@@ -116,8 +116,8 @@
                 <tbody>
                     <tr>
                         <td class="text-center">{{ $total_ipm }}</td>
-                        <td class="text-center">{{ $total_kalibrasi_expired }}</td>
                         <td class="text-center">{{ $total_kalibrasi_belum_expired }}</td>
+                        <td class="text-center">{{ $total_kalibrasi_expired }}</td>
                     </tr>
                 </tbody>
             </table>
