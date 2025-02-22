@@ -20,6 +20,7 @@ use App\Facades\Model\JobModel;
 use App\Facades\Model\SaranModel;
 use App\Services\Core\UpdateAssetService;
 use Plugins\Alert;
+use Plugins\Query;
 
 class JobController extends MasterController
 {
@@ -34,7 +35,7 @@ class JobController extends MasterController
     protected function beforeForm()
     {
         $location = LokasiModel::getOptions();
-        $asset = AssetModel::getOptions();
+        $asset = Query::getAssetMap();
         $status = JobStatusType::getOptions();
         $saran = SaranModel::getOptions();
 

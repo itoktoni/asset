@@ -24,6 +24,7 @@ use App\Http\Requests\TiketRequest;
 use App\Services\Master\CreateService;
 use App\Services\Master\UpdateService;
 use Plugins\Alert;
+use Plugins\Query;
 use Plugins\Response;
 
 class TiketController extends MasterController
@@ -39,7 +40,7 @@ class TiketController extends MasterController
     protected function beforeForm()
     {
         $location = LokasiModel::getOptions();
-        $asset = AssetModel::getOptions();
+        $asset = Query::getAssetMap();
         $status = TiketType::getOptions();
         $selected_asset = $selected_location = null;
 

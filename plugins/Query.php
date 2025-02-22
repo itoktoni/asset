@@ -3,6 +3,7 @@
 namespace Plugins;
 
 use App\Dao\Models\Area;
+use App\Dao\Models\Asset;
 use App\Dao\Models\Brand;
 use App\Dao\Models\Level1;
 use App\Dao\Models\Level2;
@@ -240,6 +241,26 @@ class Query
             {
                 $nama = $nama. ' - '.$item->field_nomenklatur;
             }
+
+            return [$item->field_primary => $nama];
+        }) ?? [];
+
+        return $query;
+    }
+
+    public static function getAssetMap()
+    {
+        $query = Asset::select(Asset::field_primary(), Asset::field_name());
+
+        if(!empty(auth()->user()->lokasi))
+        {
+            $query = $query->where(Asset::field_location_id(), auth()->user()->lokasi);
+        }
+
+        $query = $query->get()
+        ->mapWithKeys(function($item){
+
+            $nama = $item->field_name;
 
             return [$item->field_primary => $nama];
         }) ?? [];
