@@ -14,6 +14,7 @@ use App\Services\Master\UpdateService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Plugins\Notes;
+use Plugins\Query;
 use Plugins\Response;
 
 class UserController extends MasterController
@@ -29,7 +30,7 @@ class UserController extends MasterController
     {
         $roles = RoleModel::getOptions();
         $level = LevelType::getOptions();
-        $location = Lokasi::getOptions();
+        $location = Query::getLocationMap();
 
         self::$share = [
             'roles' => $roles,

@@ -2,10 +2,12 @@
 
 namespace Plugins;
 
+use App\Dao\Models\Area;
 use App\Dao\Models\Brand;
 use App\Dao\Models\Level1;
 use App\Dao\Models\Level2;
 use App\Dao\Models\Level3;
+use App\Dao\Models\Lokasi;
 use App\Dao\Models\Model;
 use App\Dao\Models\Penamaan;
 use App\Facades\Model\FilterModel;
@@ -237,6 +239,26 @@ class Query
             if(!empty($item->field_nomenklatur))
             {
                 $nama = $nama. ' - '.$item->field_nomenklatur;
+            }
+
+            return [$item->field_primary => $nama];
+        }) ?? [];
+
+        return $query;
+    }
+
+    public static function getLocationMap()
+    {
+        $query = Lokasi::select(Lokasi::field_primary(), Area::field_name(), Lokasi::field_name())
+        ->leftJoinRelationship('has_area')
+        ->get()
+        ->mapWithKeys(function($item){
+
+            $nama = $item->field_name;
+
+            if(!empty($item->{Area::field_name()}))
+            {
+                $nama = $nama. ' - '.$item->{Area::field_name()};
             }
 
             return [$item->field_primary => $nama];
