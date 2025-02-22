@@ -51,7 +51,7 @@
                                             </div>
                                         </td>
 										<td>
-                                            <b>Merk/Tipe</b> : {{ $table->brand_nama }} - {{ $table->model_nama }}
+                                            Merk/Tipe : <b>{{ $table->brand_nama }} - {{ $table->model_nama }}</b>
                                             <br>
                                             SN : <b>{{ $table->asset_serial_number }}</b>
                                             <br>
@@ -69,7 +69,7 @@
                                             </b>
 
                                             <br>
-                                            <b>Ruangan</b> : {{ $table->lokasi_gabungan ?? '-' }}
+                                            Ruangan : <b>{{ $table->lokasi_gabungan ?? '-' }}</b>
                                             <br>
                                             Pemeliharaan : <b>{{ $table->group_nama ?? '-' }}</b>
 
