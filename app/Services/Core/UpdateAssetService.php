@@ -94,6 +94,7 @@ class UpdateAssetService
         $berapa_kali = $this->berapaKunjungan($model, $total);
 
         $status = JobType::Inventaris;
+        $next = null;
 
         if($berapa_kali == 0 || $total <= 11)
         {
