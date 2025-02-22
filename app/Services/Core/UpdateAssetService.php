@@ -86,6 +86,11 @@ class UpdateAssetService
         $insiden = $this->insiden($model);
         $em1 = ($penamaan->field_angka_fungsi + $penamaan->field_angka_aplikasi + $penamaan->field_angka_maintenance);
 
+        if(empty($tanggal_kunjungan))
+        {
+            return;
+        }
+
         if($penamaan)
         {
             $total = $em1 + $insiden;
