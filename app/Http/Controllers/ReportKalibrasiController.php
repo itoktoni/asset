@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Dao\Models\Asset;
+use App\Dao\Models\Vendor;
 use App\Facades\Model\AssetModel;
 use App\Http\Controllers\Core\ReportController;
 use Illuminate\Http\Request;
@@ -18,7 +19,9 @@ class ReportKalibrasiController extends ReportController
 
     public function getData()
     {
-        $query = $this->model->rawQuery()->with(['has_location'])
+        $query = $this->model->rawQuery()
+            ->addSelect(Vendor::field_name())
+            ->leftJoinRelationship('has_kalibrasi')
             ->whereNotNull(Asset::field_next_expired());
 
         return $query->get();
