@@ -117,7 +117,12 @@ class Tiket extends SystemModel
 
         if(!empty(auth()->user()->level == LevelType::Operator))
         {
-            $query = $query->where($this->field_user(), auth()->user->id);
+            $query = $query->where($this->field_user_id(), auth()->user()->id);
+        }
+
+        if(!empty(auth()->user()->lokasi))
+        {
+            $query = $query->where($this->field_location_id(), auth()->user()->lokasi);
         }
 
         $query = env('PAGINATION_SIMPLE') ? $query->simplePaginate(env('PAGINATION_NUMBER')) : $query->paginate(env('PAGINATION_NUMBER'));

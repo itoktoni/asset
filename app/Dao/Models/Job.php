@@ -3,6 +3,7 @@
 namespace App\Dao\Models;
 
 use App\Dao\Entities\Core\JobEntity;
+use App\Dao\Enums\Core\LevelType;
 use App\Dao\Enums\JobStatusType;
 use App\Dao\Enums\JobType;
 use App\Dao\Models\Core\SystemModel;
@@ -130,6 +131,16 @@ class Job extends SystemModel
             ->sortable()
             ->orderBy(self::CREATED_AT , 'DESC')
             ->filter();
+
+        if(!empty(auth()->user()->level == LevelType::Operator))
+        {
+            $query = $query->where($this->field_user_id(), auth()->user()->id);
+        }
+
+        if(!empty(auth()->user()->lokasi))
+        {
+            $query = $query->where($this->field_location_id(), auth()->user()->lokasi);
+        }
 
         if(request()->get('type') != 'report')
         {

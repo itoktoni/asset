@@ -176,6 +176,11 @@ class Asset extends SystemModel
             ->sortable()
             ->filter();
 
+        if(!empty(auth()->user()->lokasi))
+        {
+            $query = $query->where($this->field_location_id(), auth()->user()->lokasi);
+        }
+
         return $query;
     }
 
