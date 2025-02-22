@@ -3,6 +3,7 @@
 namespace App\Dao\Models;
 
 use App\Dao\Entities\Core\TiketEntity;
+use App\Dao\Enums\Core\LevelType;
 use App\Dao\Enums\JobType;
 use App\Dao\Enums\TiketType;
 use App\Dao\Models\Core\SystemModel;
@@ -113,6 +114,11 @@ class Tiket extends SystemModel
             ->orderBy(Tiket::CREATED_AT, 'DESC')
             ->sortable()
             ->filter();
+
+        if(!empty(auth()->user()->level == LevelType::Operator))
+        {
+            $query = $query->where($this->field_user(), auth()->user->id);
+        }
 
         $query = env('PAGINATION_SIMPLE') ? $query->simplePaginate(env('PAGINATION_NUMBER')) : $query->paginate(env('PAGINATION_NUMBER'));
 

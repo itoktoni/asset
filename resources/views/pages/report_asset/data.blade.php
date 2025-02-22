@@ -48,6 +48,8 @@
 				<th>HARGA</th>
 				<th>PENDANAAN</th>
 				<th>DISTRIBUTOR</th>
+				<th>STATUS KEPEMILIKAN</th>
+				<th>STATUS PEMELIHARAAN</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -68,6 +70,8 @@
 				<td>{{ $table->field_harga ?? '' }}</td>
 				<td>{{ $table->field_pendanaan ?? '' }}</td>
 				<td>{{ $table->vendor_nama ?? '' }}</td>
+				<td>{{ $table->field_status_kepemilikan ?? '' }}</td>
+				<td>{{ $table->field_status_maintenance ?? '' }}</td>
 			</tr>
 			@empty
 			@endforelse

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Core;
 
+use App\Dao\Enums\Core\LevelType;
+use App\Dao\Models\Lokasi;
 use App\Facades\Model\RoleModel;
 use App\Facades\Model\UserModel;
 use App\Http\Requests\Core\LoginRequest;
@@ -26,9 +28,13 @@ class UserController extends MasterController
     protected function beforeForm()
     {
         $roles = RoleModel::getOptions();
+        $level = LevelType::getOptions();
+        $location = Lokasi::getOptions();
 
         self::$share = [
             'roles' => $roles,
+            'location' => $location,
+            'level' => $level,
         ];
     }
 
