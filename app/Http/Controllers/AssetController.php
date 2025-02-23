@@ -124,10 +124,9 @@ class AssetController extends MasterController
             'model' => $model,
         ])->setPaper('A7', 'landscape')->stream();
 
-        return base64_encode($pdf);
-
         return moduleView(modulePathForm('print'), $this->share([
             'model' => $model,
+            'pdf' => $pdf
         ]));
     }
 

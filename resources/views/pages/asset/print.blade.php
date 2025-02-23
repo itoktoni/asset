@@ -82,4 +82,9 @@
         <p style="margin-top:0px;margin-bottom:0px;font-size:5px">.</p>
     </div>
 </body>
+
+<script>
+    Website2APK.openExternal(rawbt:data:application/pdf;base64,{{$pdf}})
+</script>
+
 </html>
