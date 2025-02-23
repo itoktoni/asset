@@ -23,6 +23,7 @@ use App\Services\Core\UpdateAssetService;
 use App\Services\Master\CreateService;
 use Plugins\Query;
 use Plugins\Response;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AssetController extends MasterController
 {
@@ -118,6 +119,12 @@ class AssetController extends MasterController
         $this->beforeUpdate($code);
 
         $model = $this->get($code);
+
+        $pdf = Pdf::loadView('pages.asset.print', [
+            'model' => $model,
+        ])->setPaper('A7', 'landscape')->stream();
+
+        return base64_encode($pdf);
 
         return moduleView(modulePathForm('print'), $this->share([
             'model' => $model,

@@ -14,6 +14,7 @@ class CreateSettingService
         try {
 
             EnvEditor::editKey('APP_NAME', setString($data->name));
+            EnvEditor::editKey('APP_TITLE', setString($data->website));
 
             EnvEditor::editKey('APP_DEBUG', $data->debug_enable);
             EnvEditor::editKey('TELESCOPE_ENABLED', $data->telescope_enable);

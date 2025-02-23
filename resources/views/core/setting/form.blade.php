@@ -4,7 +4,8 @@
             <x-action form="form" />
 
                 @bind($model)
-                    <x-form-input col="6" value="{{ env('APP_NAME') }}" label="Nama Perusahaan" name="name" />
+                    <x-form-input col="6" value="{{ env('APP_NAME') }}" label="Title Website" name="name" />
+                    <x-form-input col="6" value="{{ env('APP_TITLE') }}" label="Website Name" name="website" />
                     <x-form-select col="2" name="debug_enable" :default="env('APP_DEBUG')" label="Debug Enable"
                         :options="$active" />
                     <x-form-select col="2" name="telescope_enable" :default="env('TELESCOPE_ENABLED')" label="Telescope"

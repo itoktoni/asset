@@ -41,6 +41,12 @@
                                                         Detail
                                                 </a>
 
+                                                @if(Browser::isInApp())
+                                                <a class="click" href="rawbt:data:application/pdf;base64,{{ route('asset.getPrint', ['code' => $table->field_primary]) }}">Klik</a>
+                                                @else
+                                                <a class="click" href="rawbt:data:application/pdf;base64,{{ route('asset.getPrint', ['code' => $table->field_primary]) }}">Klik</a>
+                                                @endif
+
                                                 <x-button class="btn btn-danger btn-sm mt-1" module="getPrint" key="{{ $table->field_primary }}"
                                                     label="Cetak" />
                                             </x-crud>
@@ -98,5 +104,14 @@
         </div>
 
     </x-card>
+
+    @push('footer')
+        <script>
+            $('.click').change(function() {
+                var uri = $(this).attr("href");
+                Website2APK.openExternal(uri);
+            });
+        </script>
+    @endpush
 
 </x-layout>
