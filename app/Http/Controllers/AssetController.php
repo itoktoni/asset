@@ -124,12 +124,10 @@ class AssetController extends MasterController
             'model' => $model,
             ])->setPaper('A7', 'landscape')->save('barcode.pdf');
 
-        $barcode = file_get_contents(public_path('barcode.pdf'));
-        $barcode = base64_encode($barcode);
+        $model['pdf'] = base64_encode(file_get_contents(public_path('barcode.pdf')));
 
         return moduleView(modulePathForm('print'), $this->share([
             'model' => $model,
-            'pdf' => $barcode
         ]));
     }
 
