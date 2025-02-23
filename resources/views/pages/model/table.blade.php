@@ -22,16 +22,9 @@
                                         <input class="btn-check-d" type="checkbox">
                                     </th>
                                     <th class="text-center column-action">{{ __('Action') }}</th>
-                                    @foreach ($fields as $value)
-                                        <th {{ Template::extractColumn($value) }}>
-                                            @if ($value->sort)
-                                                @sortablelink($value->code, __($value->name))
-                                            @else
-                                                {{ __($value->name) }}
-                                            @endif
-                                        </th>
-                                    @endforeach
-                                    <th>Merek</th>
+                                    <th>ID</th>
+                                    <th>@sortablelink('has_brand.brand_nama', __('Merek'))</th>
+                                    <th>@sortablelink('model_nama', __('Model'))</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,8 +39,8 @@
                                         </td>
 
 										<td >{{ $table->model_id }}</td>
+										<td >{{ $table->has_brand->{BrandModel::field_name()} ?? '' }}</td>
 										<td >{{ $table->model_nama }}</td>
-										<td >{{ $table->{BrandModel::field_name()} }}</td>
 
                                     </tr>
                                 @empty

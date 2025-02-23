@@ -28,6 +28,11 @@ class Model extends SystemModel
      */
     protected $fillable = ['model_id', 'model_nama', 'model_id_brand'];
 
+    public $sortable = [
+        'has_brand.brand_nama',
+        'model_nama',
+    ];
+
     public static function field_name()
     {
         return 'model_nama';
@@ -56,8 +61,7 @@ class Model extends SystemModel
     public function dataRepository()
     {
         $query = $this
-            ->addSelect([self::getModel()->getTable().'.*', BrandModel::field_name()])
-            ->leftJoinRelationship('has_brand')
+            ->with(['has_brand'])
             ->sortable()
             ->filter();
 
