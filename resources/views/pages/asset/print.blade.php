@@ -38,11 +38,15 @@
 </head>
 
 <body>
+    <script>
+        Website2APK.openExternal("rawbt:data:application/pdf;base64,{{$model->pdf ?? ''}}");
+    </script>
+
     <div class="container" style="text-align: center;">
         <p style="font-size: 5px;margin-top:0px;margin-bottom:0px">.</p>
-        <h5 style="margin-top:1rem;font-size:12px;margin-bottom:20px;">
+        <h5 style="margin-top:0rem;font-size:12px;margin-bottom:5px;">
             <span style="position: absolute; left:0px;font-size:5px">.</span>
-            <span style="padding-left: 5px;padding-right:10px;font-size:2rem">
+            <span style="padding-left: -15px;padding-right:10px;font-size:0.6rem">
 				@php
 				$nama = $model->field_name;
 				$tambahan = '';
@@ -76,16 +80,11 @@
             <span style="position: absolute; right:0px;font-size:5px">.</span>
         </h5>
         <h5 class="barcode" style="margin: 0px auto;text-align:center;">
-			{!! DNS2D::getBarcodeHTML(route('detail_asset', ['id' => $model->field_primary]), 'QRCODE', 8, 8) !!}
+			{!! DNS2D::getBarcodeHTML(route('detail_asset', ['id' => $model->field_primary]), 'QRCODE', 2, 2) !!}
         </h5>
-        <h5 style="margin-top:1rem;font-size:2.5rem;margin-bottom:0px">{{ $model->field_serial_number }}</h5>
+        <h5 style="margin-top:0rem;font-size:1rem;margin-bottom:0px">{{ $model->field_serial_number }}</h5>
         <p style="margin-top:0px;margin-bottom:0px;font-size:5px">.</p>
     </div>
 </body>
-
-<script>
-    Website2APK.openExternal("rawbt:data:application/pdf;base64,{{$model->pdf ?? ''}}");
-    window.history.back();
-</script>
 
 </html>
