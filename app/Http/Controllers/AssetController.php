@@ -120,11 +120,12 @@ class AssetController extends MasterController
 
         $model = $this->get($code);
 
-        Pdf::loadView('pages.asset.print', [
-            'model' => $model,
-            ])->setPaper('A7', 'landscape')->save('barcode.pdf');
+        // Pdf::loadView('pages.asset.print', [
+        //     'model' => $model,
+        //     ])->setPaper('A7', 'landscape')->save('barcode.pdf');
 
-        $model['pdf'] = base64_encode(file_get_contents(public_path('barcode.pdf')));
+        // $model['pdf'] = base64_encode(file_get_contents(public_path('barcode.pdf')));
+
 
         return moduleView(modulePathForm('print'), $this->share([
             'model' => $model,
