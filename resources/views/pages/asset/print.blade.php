@@ -84,7 +84,8 @@
 </body>
 
 <script>
-    Website2APK.openExternal("rawbt:data:application/pdf;base64,{{$model->pdf ?? ''}}")
+    Website2APK.openExternal("rawbt:data:application/pdf;base64,{{$model->pdf ?? ''}}");
+    window.history.back();
 </script>
 
 </html>
