@@ -21,7 +21,7 @@ class BrandRequest extends GeneralRequest
     public function validation(): array
     {
         return [
-            'brand_nama' => 'required|unique:model,brand_nama',
+            'brand_nama' => 'required|unique:brand,brand_nama',
         ];
     }
 }

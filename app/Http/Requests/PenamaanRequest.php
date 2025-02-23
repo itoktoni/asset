@@ -21,7 +21,7 @@ class PenamaanRequest extends GeneralRequest
     public function validation(): array
     {
         return [
-            'penamaan_nama' => 'required',
+            'penamaan_nama' => 'required|unique:penamaan,penamaan_nama',
         ];
     }
 }
