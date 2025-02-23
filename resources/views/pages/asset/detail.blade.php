@@ -17,20 +17,39 @@
 
                                 <x-form-select col="4" name="asset_status" :options="$status" />
 
-                                <x-form-input col="4" type="date" label="Tanggal Diakui"
+                                <x-form-input col="4" type="date" label="Tanggal Register"
                                     name="asset_tanggal_diakui" />
                                 <x-form-input col="4" type="date" label="Tanggal Kunjungan"
                                     name="asset_tanggal_kunjungan" />
                                 <x-form-input col="4" type="date" label="Tanggal Kalibrasi"
                                     name="asset_tanggal_expired" />
 
-                                <x-form-textarea col="12" rows="5" class="h-100" name="asset_keterangan" />
+                                <x-form-select col="12" name="asset_id_lokasi" :options="$location" />
+
+
+                                <x-form-textarea col="12" readonly rows="5" class="h-100" name="asset_keterangan" />
                                 <div class="col-md-12 mb-4"></div>
                             </div>
+
                         </div>
 
                     </div>
                 </div>
+
+                <div class="row">
+                    <x-form-select col="1" name="asset_status_kalibrasi" default="{{ $is_kalibrasi ?? $model->asset_status_kalibrasi ?? null }}" label="Kalibrasi" :options="$kalibrasi" />
+                    @if($model && !empty($model->asset_tanggal_expired))
+                    <x-form-input col="2" type="date" label="Kalibrasi Terakhir" name="asset_tanggal_expired" />
+                    <x-form-input col="2" type="date" label="Next Kalibrasi" name="kalibrasi_selanjutnya" value="{{ $model->field_next_expired ?? null }}" />
+                    <x-form-input col="2" label="Status" name="kalibrasi" value="{{ statusExpired($model->asset_next_expired) }}" />
+                    <x-form-select col="3" name="asset_id_kalibrasi" label="Pelaksana" :options="$vendor" />
+                    <div class="col-md-2">
+                        <a class="btn btn-primary btn-block" style="margin-top: 33px" href="{{ $url }}">Sertifikat</a>
+                    </div>
+
+                    @endif
+                </div>
+
             @endbind
 
         </x-card>

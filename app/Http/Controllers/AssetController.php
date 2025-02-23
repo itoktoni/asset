@@ -21,6 +21,7 @@ use App\Facades\Model\VendorModel;
 use App\Http\Requests\AssetRequest;
 use App\Services\Core\UpdateAssetService;
 use App\Services\Master\CreateService;
+use Illuminate\Support\Facades\Http;
 use Plugins\Query;
 use Plugins\Response;
 
@@ -131,7 +132,25 @@ class AssetController extends MasterController
         $this->beforeForm();
         $this->beforeUpdate($code);
 
-        $model = $this->get($code, ['has_job']);
+        $model = $this->get($code, ['has_job', 'has_location']);
+
+        $client = Http::asForm()->post('https://ecm.co.id/sertifikat/view_trx', [
+            'kode' => 2035240
+        ]);
+
+        $url = null;
+
+        if($client->status() == 200)
+        {
+            $data = $client->body();
+            $parser = json_decode($data);
+
+            if(isset($parser->url) && !empty($parser->url))
+            {
+                $url = $parser->url;
+            }
+        }
+
         $job = Job::with(['has_user', 'has_saran'])
             ->where(Job::field_asset_id(), $model->field_primary)
             ->orderBy(Job::field_tanggal(), 'DESC')
@@ -141,6 +160,7 @@ class AssetController extends MasterController
         return moduleView(modulePathForm('detail', 'asset'), $this->share([
             'model' => $model,
             'job' => $job,
+            'url' => $url,
         ]));
     }
 }
