@@ -47,10 +47,32 @@ class CreateNotificationTiketService
 
             $message = $this->getMessage($data);
 
+            $gambar = $data->field_image ? url(imageUrl($data->field_image, 'tiket'), [], true) : null;
+
+            if($data->has_pelapor)
+            {
+                $has_pelapor = $data->Has_pelapor;
+
+                if($has_pelapor->field_telegram)
+                {
+                    Notification::create([
+                        Notification::field_name() => $has_pelapor->name,
+                        Notification::field_address() => $has_pelapor->field_telegram,
+                        Notification::field_message() => $message,
+                        Notification::field_image() => $gambar,
+                        Notification::field_category() => NotificationType::Telegram,
+                        Notification::field_tanggal() => date('Y-m-d'),
+                        'notification_created_at' => date('Y-m-d H:i:s'),
+                        'notification_updated_at' => date('Y-m-d H:i:s'),
+                        'notification_created_by' => $has_pelapor->id,
+                        'notification_updated_by' => $has_pelapor->id,
+                    ]);
+                }
+            }
+
             if ($asset_id = $data->field_asset_id)
             {
                 $asset = Asset::with(['has_group'])->find($asset_id);
-                $gambar = $data->field_image ? url(imageUrl($data->field_image, 'tiket'), [], true) : null;
                 $this->create($asset->has_group, $message, $gambar);
             }
 
