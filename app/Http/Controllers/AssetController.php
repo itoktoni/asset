@@ -135,7 +135,7 @@ class AssetController extends MasterController
         $model = $this->get($code, ['has_job', 'has_location']);
 
         $client = Http::asForm()->post('https://ecm.co.id/sertifikat/view_trx', [
-            'kode' => 2035240
+            'kode' => $model->field_code
         ]);
 
         $url = null;
@@ -144,7 +144,6 @@ class AssetController extends MasterController
         {
             $data = $client->body();
             $parser = json_decode($data);
-
             if(isset($parser->url) && !empty($parser->url))
             {
                 $url = $parser->url;
