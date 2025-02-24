@@ -36,21 +36,34 @@
                                                 value="{{ $table->field_primary }}">
                                         </td>
                                         <td class="col-md-2 text-center column-action">
-                                            <x-crud :model="$table">
-                                                <a href="{{ route('asset.getDetail', ['id' => $table->field_primary]) }}" class="btn btn-primary btn btn-info btn-sm mt-1">
-                                                        Detail
+                                            <x-crud :model="$table" :action=[]>
+
+                                                @if(auth()->user()->level >= LevelType::Admin)
+                                                <x-button module="getUpdate" key="{{ $table->field_primary }}"
+                                                    color="primary" icon="pencil-square" />
+
+                                                <x-button module="getDelete" key="{{ $table->field_primary }}"
+                                                    color="danger" icon="trash3"
+                                                    onclick="return confirm('Apakah anda yakin ingin menghapus ?')"
+                                                    class="button-delete" />
+                                                @endif
+
+                                                <a href="{{ route('asset.getDetail', ['id' => $table->field_primary]) }}"
+                                                    class="btn btn-primary btn btn-info btn-sm mt-1">
+                                                    Detail
                                                 </a>
 
-                                                <x-button class="btn btn-danger btn-sm mt-1" module="getPrint" key="{{ $table->field_primary }}"
-                                                    label="Cetak" />
+                                                <x-button class="btn btn-danger btn-sm mt-1" module="getPrint"
+                                                    key="{{ $table->field_primary }}" label="Cetak" />
                                             </x-crud>
                                         </td>
                                         <td class="column-action">
                                             <div>
-                                                <img class="img-thumbnail img-fluid" src="{{ imageUrl($table->field_image, 'asset') }}">
+                                                <img class="img-thumbnail img-fluid"
+                                                    src="{{ imageUrl($table->field_image, 'asset') }}">
                                             </div>
                                         </td>
-										<td>
+                                        <td>
                                             Merk/Tipe : <b>{{ $table->brand_nama }} - {{ $table->model_nama }}</b>
                                             <br>
                                             SN : <b>{{ $table->asset_serial_number }}</b>
@@ -59,10 +72,11 @@
                                             <br>
                                         </td>
 
-										<td>
+                                        <td>
 
                                             <b>
-                                                <a class="text-primary" href="{{ route('penamaan.getUpdate', ['code' => $table->field_penamaan_id]) }}">
+                                                <a class="text-primary"
+                                                    href="{{ route('penamaan.getUpdate', ['code' => $table->field_penamaan_id]) }}">
 
                                                     {{ $table->{PenamaanModel::field_name()} ?? '' }}
                                                 </a>
@@ -76,13 +90,15 @@
                                             <br>
                                             <br>
                                             @php
-                                            $expired = $table->field_next_expired < date('Y-m-d') ? 'Expired' : 'Berlaku';
+                                                $expired =
+                                                    $table->field_next_expired < date('Y-m-d') ? 'Expired' : 'Berlaku';
                                             @endphp
                                             Status Kalibrasi : <b>{{ $expired }}</b>
                                             <br>
                                             Kalibrasi Terakhir : <b>{{ formatDate($table->field_tanggal_expired) }}</b>
                                             <br>
-                                            Kalibrasi Selanjutnya : <b>{{ !empty($table->field_tanggal_expired) ? \Carbon\Carbon::createFromDate($table->field_tanggal_expired)->addYear(1)->format('d/m/Y') : null }}</b>
+                                            Kalibrasi Selanjutnya :
+                                            <b>{{ !empty($table->field_tanggal_expired)? \Carbon\Carbon::createFromDate($table->field_tanggal_expired)->addYear(1)->format('d/m/Y'): null }}</b>
                                         </td>
                                     </tr>
                                 @empty
