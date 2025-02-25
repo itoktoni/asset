@@ -17,7 +17,16 @@ class JobType extends Enum implements LocalizedEnum
 
     public const Korektif = 'Korektif';
 
-    public const Inventaris = 'Inventaris / Promotif';
+    public const Inventaris = 'Inventaris';
     public const Kalibrasi = 'Kalibrasi';
+
+    public static function getDescription($value): string
+    {
+        if ($value === self::Inventaris) {
+            return 'Inventaris / Promotif';
+        }
+
+        return parent::getDescription($value);
+    }
 
 }

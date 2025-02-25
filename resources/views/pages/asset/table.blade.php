@@ -85,7 +85,7 @@
                                             <br>
                                             Ruangan : <b>{{ $table->lokasi_gabungan ?? '-' }}</b>
                                             <br>
-                                            Status Pemeliharaan :  <b>{{ $table->field_status_kunjungan ?? '-' }}</b>
+                                            Status Pemeliharaan :  <b>{{ JobType::getDescription($table->field_status_kunjungan) ?? '-' }}</b>
                                             <br>
                                             Tanggal Pemeliharaan :  <b>{{ $table->tanggal_kunjungan ?? '-' }}</b>
                                             <br>
