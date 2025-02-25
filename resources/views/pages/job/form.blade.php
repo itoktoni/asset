@@ -40,7 +40,7 @@
                     @endif
 
                     <div class="row mb-3">
-                        <x-form-upload col="6" id="cameraFileInput" accept="image/*" capture="camera"
+                        <x-form-upload col="6" id="cameraFileInput" accept="image/*" capture="environment"
                             label="Upload Gambar" name="images" />
                     </div>
 
