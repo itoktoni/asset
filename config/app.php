@@ -7,6 +7,7 @@ use App\Dao\Enums\Core\MenuType;
 use App\Dao\Enums\Core\RoleType;
 use App\Dao\Enums\Core\YesNoType;
 use App\Dao\Enums\JobStatusType;
+use App\Dao\Enums\JobType;
 use App\Dao\Models\Core\SystemGroup;
 use App\Facades\Model\BrandModel;
 use App\Facades\Model\PenamaanModel;
@@ -272,6 +273,7 @@ return [
         'LevelType' => LevelType::class,
         'RoleType' => RoleType::class,
         'JobStatusType' => JobStatusType::class,
+        'JobType' => JobType::class,
         'YesNoType' => YesNoType::class,
         'SharedData' => SharedData::class,
         'Query' => Query::class,
