@@ -19,7 +19,7 @@
 
                                 <x-form-input col="4" type="date" label="Tanggal Register"
                                     name="asset_tanggal_diakui" />
-                                <x-form-input col="4" type="date" label="Tanggal Kunjungan"
+                                <x-form-input col="4" type="date" label="Tanggal Pemeliharaan"
                                     name="asset_tanggal_kunjungan" />
                                 <x-form-input col="4" type="date" label="Tanggal Kalibrasi"
                                     name="asset_tanggal_expired" />
@@ -44,7 +44,9 @@
                     <x-form-input col="2" label="Status" name="kalibrasi" value="{{ statusExpired($model->asset_next_expired) }}" />
                     <x-form-select col="3" name="asset_id_kalibrasi" label="Pelaksana" :options="$vendor" />
                     <div class="col-md-2">
-                        <a class="btn btn-primary btn-block" style="margin-top: 33px" href="{{ $url }}">{{ $url ? 'Sertifikat' : 'Belum Bersertifikat' }}</a>
+                        @if($url)
+                        <a class="btn btn-primary btn-block" style="margin-top: 33px" href="{{ $url }}">{{ $url ? 'Cek Sertifikat' : 'Belum Bersertifikat' }}</a>
+                        @endif
                     </div>
 
                     @endif

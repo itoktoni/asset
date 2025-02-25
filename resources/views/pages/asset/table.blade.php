@@ -85,7 +85,11 @@
                                             <br>
                                             Ruangan : <b>{{ $table->lokasi_gabungan ?? '-' }}</b>
                                             <br>
-                                            Pemeliharaan : <b>{{ $table->group_nama ?? '-' }}</b>
+                                            Status Pemeliharaan :  <b>{{ $table->field_status_kunjungan ?? '-' }}</b>
+                                            <br>
+                                            Tanggal Pemeliharaan :  <b>{{ $table->tanggal_kunjungan ?? '-' }}</b>
+                                            <br>
+                                            Pelaksana Pemeliharaan : <b>{{ $table->group_nama ?? '-' }}</b>
 
                                             <br>
                                             <br>
