@@ -44,9 +44,7 @@
                     <x-form-input col="2" label="Status" name="kalibrasi" value="{{ statusExpired($model->asset_next_expired) }}" />
                     <x-form-select col="3" name="asset_id_kalibrasi" label="Pelaksana" :options="$vendor" />
                     <div class="col-md-2">
-                        @if($url)
-                        <a class="btn btn-primary btn-block" style="margin-top: 33px" href="{{ $url }}">{{ $url ? 'Cek Sertifikat' : 'Belum Bersertifikat' }}</a>
-                        @endif
+                        <a class="btn btn-primary btn-block" style="margin-top: 33px" href="{{ $url }}">{{ $url && $model->asset_status_kalibrasi == 'Yes' ? 'Cek Sertifikat' : 'Layanan tidak tersedia' }}</a>
                     </div>
 
                     @endif
