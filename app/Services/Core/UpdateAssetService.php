@@ -104,7 +104,7 @@ class UpdateAssetService
         else if($berapa_kali == 0 || $total <= 11)
         {
             $next = null;
-            $status = JobType::Promotif;
+            $status = JobType::Inventaris;
         }
         else if($total >= 12 and $total <= 14)
         {

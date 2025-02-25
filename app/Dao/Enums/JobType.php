@@ -17,8 +17,7 @@ class JobType extends Enum implements LocalizedEnum
 
     public const Korektif = 'Korektif';
 
-    public const Inventaris = 'Inventaris';
-    public const Promotif = 'Promotif';
+    public const Inventaris = 'Inventaris / Promotif';
     public const Kalibrasi = 'Kalibrasi';
 
 }
