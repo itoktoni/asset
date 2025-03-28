@@ -40,6 +40,11 @@ function module($module = null)
 
 function moduleCode($name = null)
 {
+    return ! empty($name) ? $name : SharedData::get('menu_code');
+}
+
+function moduleController($name = null)
+{
     return ! empty($name) ? $name : SharedData::get('module_code');
 }
 
@@ -60,7 +65,7 @@ function moduleRoute($action, $param = false)
 
 function modulePath($name = null)
 {
-    return ! empty($name) ? $name : moduleCode($name);
+    return ! empty($name) ? $name : moduleController($name);
 }
 
 function modulePathTable($name = null, $core = false)
@@ -71,13 +76,13 @@ function modulePathTable($name = null, $core = false)
         return $path.$name.'.table';
     }
 
-    return $path.moduleCode().'.table';
+    return $path.moduleController().'.table';
 }
 
 function modulePathPrint($name = null)
 {
     if ($name) {
-        return 'pages.'.moduleCode().'.'.$name;
+        return 'report.'.moduleController().'.'.$name;
     }
 
     return 'report.master.print';
@@ -96,14 +101,14 @@ function modulePathForm($name = null, $template = null, $path = false)
     }
 
     if ($name) {
-        return $path.moduleCode().'.'.$name;
+        return $path.moduleController().'.'.$name;
     }
 
     if ($template) {
         return $path.$template.'.form';
     }
 
-    return $path.moduleCode().'.form';
+    return $path.moduleController().'.form';
 }
 
 function moduleView($template, $data = [])
