@@ -18,6 +18,10 @@ class Response
             return self::sentJson($data);
         }
 
+        if (request()->wantsJson()) {
+            return self::sentJson($data);
+        }
+
         // if(isset($data['name']) && $data['name'] == 'Update' && !$back){
         //     return redirect()->route(SharedData::get('template').'.getTable');
         // }

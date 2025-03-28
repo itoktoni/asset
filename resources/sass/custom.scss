@@ -27,29 +27,33 @@ body {
 
 .navigation {
   box-shadow: none !important;
+  border-right: 0.5px solid #ced4da;
 
   .navigation-menu-body {
-    border-right: 0.5px solid #ced4da;
 
     ul {
+
+      li{
+        a{
+          background-color: whitesmoke;
+        }
+      }
+
       li>a.active:after {
         background-color: unset !important;
       }
     }
 
     .navigation-header {
-      position: absolute;
-      width: 170px;
-      padding: 10px;
-      padding-left: 25px;
-      background: #fff;
-      top: 0px;
-      margin-left: 3px;
+      background: #fff !important;
+      z-index: 99;
+      width: 100% !important;
+      padding: 10px 0px;
     }
   }
 
   .navigation-menu-group {
-    margin-top: 70px;
+    margin-bottom: 30px;
   }
 
   .navigation-menu-tab {
@@ -121,8 +125,33 @@ body {
 
     ul {
       li {
+
+        a{
+          background-color: #fff;
+          margin-top: 5px;
+
+          &.link{
+            justify-content: flex-start;
+          }
+        }
+
+        .left-cursor{
+          margin-right: 10px;
+        }
+
+        .right-cursor{
+
+          margin-right: -5px;
+          // position: absolute;
+          // right: 25px;
+
+          &::before{
+            font-size: 15px;
+          }
+        }
+
         >a.active {
-          background-color: whitesmoke !important;
+          background-color: white !important;
 
           &:before {
             content: unset !important;

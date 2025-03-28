@@ -27,7 +27,6 @@ trait CrudRepository
     {
         try {
             $activity = $this->create($request);
-
             return Notes::create($activity);
         } catch (QueryException $ex) {
             return Notes::error($ex->getMessage());

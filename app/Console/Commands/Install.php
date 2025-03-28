@@ -12,7 +12,7 @@ class Install extends Command
      *
      * @var string
      */
-    protected $signature = 'notification:whatsapp';
+    protected $signature = 'dummy:user';
 
     /**
      * The console command description.

@@ -190,6 +190,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\WebDavServiceProvider::class,
         Illuminate\Concurrency\ConcurrencyServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -87,7 +87,7 @@ class SystemMenu extends SystemModel
                     $act = '.getCreate';
                 }
 
-                $model->{SystemMenu::field_action()} = Core::getControllerName($model->{SystemMenu::field_controller()}).$act;
+                $model->{SystemMenu::field_action()} = ($model->{SystemMenu::field_url()}).$act;
             }
         });
 
@@ -95,12 +95,18 @@ class SystemMenu extends SystemModel
         {
             if ($model->{SystemMenu::field_type()} == MenuType::Menu)
             {
-                $model->{SystemMenu::field_primary()} = Core::getControllerName($model->{SystemMenu::field_controller()});
+                $model->{SystemMenu::field_primary()} = ($model->{SystemMenu::field_url()});
+
                 if (empty($model->{SystemMenu::field_url()}))
                 {
-                    $model->{SystemMenu::field_url()} = Core::getControllerName($model->{SystemMenu::field_controller()});
+                    $model->{SystemMenu::field_url()} = ($model->{SystemMenu::field_url()});
                 }
 
+                if($model->{SystemMenu::field_action()})
+                {
+                    $link = explode('.', ($model->{SystemMenu::field_action()}));
+                    $model->{SystemMenu::field_action()} = ($model->{SystemMenu::field_url()}).'.'.$link[1];
+                }
             }
             else
             {

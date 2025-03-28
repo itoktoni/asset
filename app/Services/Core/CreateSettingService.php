@@ -12,10 +12,10 @@ class CreateSettingService
     {
         $check = false;
         try {
-
             EnvEditor::editKey('APP_NAME', setString($data->name));
 
             EnvEditor::editKey('APP_DEBUG', $data->debug_enable);
+            EnvEditor::editKey('APP_COLOR', setString($data->color));
             EnvEditor::editKey('TELESCOPE_ENABLED', $data->telescope_enable);
             EnvEditor::editKey('DEBUGBAR_ENABLED', $data->debugbar_enable);
 

@@ -5,6 +5,25 @@
 <head>
     @vite(['resources/sass/app.scss'])
     @livewireStyles
+
+    <style>
+        .navigation .navigation-menu-tab ul li, .navigation .navigation-menu-tab   {
+            background-color: {{ env('APP_COLOR') ?? '#1565C0' }} !important;
+        }
+
+        .navigation .navigation-menu-body ul li>a.active{
+            color: {{ env('APP_COLOR') ?? '#1565C0' }} !important;
+        }
+
+        .navigation .navigation-menu-body ul li.open>a{
+            color: {{ env('APP_COLOR') ?? '#1565C0' }} !important;
+        }
+
+        .navigation .navigation-menu-body ul li>a:hover{
+            color: {{ env('APP_COLOR') ?? '#1565C0' }} !important;
+        }
+    </style>
+
 </head>
 
 <body class="fixed">

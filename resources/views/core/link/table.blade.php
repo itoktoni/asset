@@ -36,6 +36,7 @@
                             </thead>
                             <tbody>
                                 @forelse($data as $table)
+
                                     <tr>
                                         <td>
                                             <input type="checkbox" class="checkbox" name="code[]"

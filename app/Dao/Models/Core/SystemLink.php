@@ -39,11 +39,17 @@ class SystemLink extends SystemModel
 
     protected $casts = [
         'system_link_sort' => 'integer',
+        'system_link_name' => 'string',
     ];
 
     public static function field_name()
     {
         return 'system_link_name';
+    }
+
+    public function getFieldNameAttribute()
+    {
+        return $this->{$this->field_name()};
     }
 
     public function fieldDatatable(): array
@@ -71,7 +77,7 @@ class SystemLink extends SystemModel
                     $act = '.getCreate';
                 }
 
-                $model->{SystemLink::field_action()} = Core::getControllerName($model->{SystemLink::field_controller()}).$act;
+                $model->{SystemLink::field_action()} = ($model->{SystemLink::field_url()}).$act;
             }
         });
 
@@ -79,12 +85,19 @@ class SystemLink extends SystemModel
         {
             if ($model->{SystemLink::field_type()} == MenuType::Menu)
             {
-                $model->{SystemLink::field_primary()} = Core::getControllerName($model->{SystemLink::field_controller()});
+                $model->{SystemLink::field_primary()} = ($model->{SystemLink::field_url()});
 
                 if (empty($model->{SystemLink::field_url()}))
                 {
-                    $model->{SystemLink::field_url()} = Core::getControllerName($model->{SystemLink::field_controller()});
+                    $model->{SystemLink::field_url()} = ($model->{SystemLink::field_url()});
                 }
+
+                if($model->{SystemLink::field_action()})
+                {
+                    $link = explode('.', ($model->{SystemLink::field_action()}));
+                    $model->{SystemLink::field_action()} = ($model->{SystemLink::field_url()}).'.'.$link[1];
+                }
+
             }
 
             else

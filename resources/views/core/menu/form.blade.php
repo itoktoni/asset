@@ -12,7 +12,7 @@
                     <x-form-input col="6" name="system_menu_sort" />
 
                     @if (!empty($model) && $model->field_type == MenuType::Group)
-                        <x-form-select col="12" class="search" multiple name="link[]" :options="$link"
+                        <x-form-select col="12" class="tag" multiple name="link[]" :options="$link"
                             :default="$selected" />
                     @endif
                 @endbind

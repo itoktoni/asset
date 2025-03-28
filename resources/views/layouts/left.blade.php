@@ -3,9 +3,9 @@
 		<ul>
 			<li>
 				<a class="icon {{ request()->segment(1) == 'home' ? 'active' : '' }}" href="{{ route('home') }}">
-					<i class="bi bi-bar-chart-fill"></i>
+					<i class="bi bi-house-down"></i>
 					<h5 class="text-center text-white">
-						Dashboard
+						Home
 					</h5>
 				</a>
 			</li>
@@ -110,7 +110,7 @@
 				$active = request()->segment(2) == $group_data->field_primary && request()->segment(3) == 'default' && request()->segment(4) == $menu->field_url;
 				@endphp
 				<li>
-					<a class="link {{ $active ? 'active' : '' }}" @if(env('APP_SPA')) hx-target="#content" hx-push-url="true" hx-get="{{ $menu->field_action ? route($menu->field_action) : '' }}" @endif href="{{ $menu->field_action ? route($menu->field_action) : '' }}">
+					<a rel="prefetch" class="link {{ $active ? 'active' : '' }}" @if(env('APP_SPA')) hx-target="#content" hx-push-url="true" hx-get="{{ $menu->field_action ? route($menu->field_action) : '' }}" @endif href="{{ $menu->field_action ? route($menu->field_action) : '' }}">
 						<span>
 							@if($menu->field_primary == 'level1')
 							{{ env('LEVEL_1', 'Level 1') }}
@@ -141,14 +141,15 @@
 						@endphp
 						@if($link->field_type == MenuType::External || $link->field_type == MenuType::Internal)
 						<li>
-							<a class="link {{ $active ? 'active' : '' }}" target="{{ $link->field_type == MenuType::External ? '_blank' : '' }}" href="{{ $link->field_url }}">
+							<a rel="prefetch" class="link {{ $active ? 'active' : '' }}" target="{{ $link->field_type == MenuType::External ? '_blank' : '' }}" href="{{ $link->field_url }}">
 								{{ $link->field_name }}
 							</a>
 						</li>
 						@else
 						<li>
 							<a class="link {{ $active ? 'active' : '' }}" @if(env('APP_SPA')) hx-target="#content" hx-push-url="true" hx-get="{{ route($link->field_action) }}" @endif href="{{ route($link->field_action) }}">
-								{{ $link->field_name }}
+								<i class="left-cursor bi bi-arrow-right"></i>
+								<span>{{ $link->field_name }}</span>
 							</a>
 						</li>
 						@endif

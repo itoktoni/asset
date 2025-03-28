@@ -58,7 +58,7 @@ class Notes
         $log['code'] = 200;
         $log['name'] = self::create;
         $log['message'] = 'Data berhasil di buat';
-        $log['data'] = $data;
+        $log['data'] = $data->getAttributes();
         if (self::checkDebug()) {
             Log::info(self::create, $log);
         }
@@ -157,12 +157,11 @@ class Notes
         }
 
         if (request()->wantsJson()) {
-
             if ($status >= 400) {
                 $data['data'] = [];
             }
 
-            return response()->json($data, 200);
+            return $data;
         }
 
         return $data;

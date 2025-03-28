@@ -12,7 +12,8 @@
                     <x-form-select col="2" name="debugbar_enable" :default="env('BREADCRUMB_ENABLED')" label="Debugbar"
                         :options="$active" />
 
-                    <x-form-input col="6" value="{{ env('APP_URL') }}" label="Website URL" name="url" />
+                    <x-form-input col="2" style="height: 40px" type="color" value="{{ env('APP_COLOR') }}" label="Color" name="color" />
+                    <x-form-input col="4" value="{{ env('APP_URL') }}" label="Website URL" name="url" />
 
 
                     <x-form-select col="2" name="app_auth" :default="env('APP_AUTH')" label="Login Auth"

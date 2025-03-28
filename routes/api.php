@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Core\GroupsController;
 use App\Http\Controllers\Core\UserController;
 use App\Http\Controllers\Core\WebhookController;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,5 @@ Route::post('login', [UserController::class, 'postLoginApi'])->name('postLoginAp
 Route::post('deploy', [WebhookController::class, 'deploy'])->name('deploy');
 
 Route::middleware(['auth:sanctum'])->group(function () {});
+
+Route::get('groups', [GroupsController::class, 'getData']);

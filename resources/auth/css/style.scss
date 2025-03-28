@@ -54,7 +54,6 @@ a {
 .inner {
 	position: absolute;
 	top: 50%;
-	left: 11.07%;
 	transform: translateY(-50%);
 	width: 511px;
 	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
@@ -86,7 +85,6 @@ h3 {
 }
 .form-row {
 	display: flex;
-	margin-bottom: 25px;
 	&.last {
 		margin-bottom: 22px;
 	}
@@ -177,7 +175,7 @@ h3 {
 
 .button {
 	border: none;
-	width: 173px;
+	width: 100%;
 	height: 42px;
 	margin-top: 30px;
 	cursor: pointer;
@@ -259,19 +257,21 @@ h3 {
 	    -moz-box-shadow: none;
 	    -ms-box-shadow: none;
 	    -o-box-shadow: none;
+
 	}
 	.wrapper {
 		background: none !important;
 		display: block;
 	}
 	form {
-		padding: 30px 20px;
+		padding: 30px 40px;
+		padding-top: 25% !important;
+
 	}
 	.form-row {
 		display: block;
 		.form-wrapper {
 			width: 100%;
-			margin-bottom: 25px;
 			&:first-child {
 				margin-right: 0;
 			}

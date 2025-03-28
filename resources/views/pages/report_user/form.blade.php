@@ -1,5 +1,5 @@
 <x-layout>
-    <x-form :model="$model" method="GET" action="{{ moduleRoute('getPrint') }}" :upload="true">
+    <x-form :model="$model" method="GET" target="_blank" action="{{ moduleRoute('getPrint') }}" :upload="true">
         <x-card>
             <x-action form="print" />
 

@@ -81,6 +81,11 @@ return [
             'prefix_indexes' => true,
             'strict' => false,
             'engine' => null,
+            'dump' => [
+                'dump_binary_path' => env('DB_DUMP', 'C:\Program Files\MySQL\MySQL Server 8.4\bin'), // only the path, so without `mysqldump` or `pg_dump`
+                'use_single_transaction',
+                'timeout' => 60 * 100, // 5 minute timeout
+            ],
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],

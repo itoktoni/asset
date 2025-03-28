@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="{{ asset('vendor/megaphone/css/megaphone.css') }}">
     @yield('css')
     @livewireStyles
+
+    <style>
+        .navigation .navigation-menu-tab ul li  {
+            background-color: "{{ env('APP_COLOR') }}";
+        }
+    </style>
+
 </head>
 
 <body class="fixed">

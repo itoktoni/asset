@@ -53,6 +53,10 @@ class MenuController extends MasterController
     public function postUpdate($code, MenuRequest $request, UpdateMenuService $service)
     {
         $data = $service->update($this->model, $request, $code);
+        if($data['status'])
+        {
+            return Response::redirectTo(moduleRoute(moduleCode('getUpdate'), ['code' => $data['data']->field_primary]));
+        }
 
         return Response::redirectBack($data);
     }

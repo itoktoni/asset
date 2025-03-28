@@ -1,5 +1,5 @@
 .navigation {
-	background: white;
+	background: #f5f5f5;
 	z-index: 4;
 	width: $navigation-width;
 	display: flex;
@@ -72,14 +72,16 @@
 		}
 	}
 
-	.navigation-menu-body {
-		flex: 1;
+	.navigation-menu-group{
 		display: flex;
 		flex-direction: column;
+	}
+
+	.navigation-menu-body {
+		flex: 1;
 		overflow: auto;
 
 		.navigation-menu-group {
-			padding: 1rem 0;
 
 			& > div {
 				display: none;
@@ -127,6 +129,7 @@
 					padding: 10px 20px;
 					color: #505050;
 					transition: background .3s;
+					justify-content: space-between;
 
 					.nav-link-icon {
 						margin-right: .8rem;
@@ -185,7 +188,7 @@
 							margin: 0;
 
 							a {
-								padding-left: 40px;
+								padding-left: 20px;
 							}
 						}
 
