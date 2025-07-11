@@ -174,6 +174,40 @@ function level($value)
     return auth()->check() && auth()->user()->level >= $value;
 }
 
+function uploadFile($file, $folder)
+{
+    $file->storeAs('public/files/'.$folder, $file->getClientOriginalName());
+
+    return $file->getClientOriginalName();
+}
+
+
+function fileUrl($value, $folder)
+{
+    $path = $folder ? $folder : moduleCode();
+
+    if(empty($value))
+    {
+        return url('images/noimage.jpeg');
+    }
+
+    if(env('PATH_LINK', false))
+    {
+        return file_exists(storage_path('app/public/files/'.$path.'/'.$value)) ? url('storage/files/'.$path.'/'.$value) : url('images/noimage.jpeg');
+    }
+    else
+    {
+        return file_exists(public_path('files/'.$path.'/'.$value)) ? url('files/'.$path.'/'.$value) : url('images/noimage.jpeg');
+    }
+
+
+    $path = $folder ? $folder : moduleCode();
+
+    return $value ? url('storage/files/' . $path.'/'.$value) : url('images/noimage.jpeg');
+
+}
+
+
 function uploadImage($file, $folder, $width = 300)
 {
     if(empty($file))
