@@ -133,22 +133,29 @@ class AssetController extends MasterController
         $this->beforeUpdate($code);
 
         $model = $this->get($code, ['has_job', 'has_location']);
-
-        $client = Http::asForm()->post('https://ecm.co.id/sertifikat/view_trx', [
-            'kode' => $model->field_code
-        ]);
-
-        $url = null;
-
-        if($client->status() == 200)
+        if(empty($model->field_sertifikat))
         {
-            $data = $client->body();
-            $parser = json_decode($data);
-            if(isset($parser->url) && !empty($parser->url))
+            $client = Http::asForm()->post('https://ecm.co.id/sertifikat/view_trx', [
+                'kode' => $model->field_code
+            ]);
+
+            $url = null;
+
+            if($client->status() == 200)
             {
-                $url = $parser->url;
+                $data = $client->body();
+                $parser = json_decode($data);
+                if(isset($parser->url) && !empty($parser->url))
+                {
+                    $url = $parser->url;
+                }
             }
         }
+        else
+        {
+            $url = fileUrl($model->field_sertifikat, 'sertifikat');
+        }
+
 
         $job = Job::with(['has_user', 'has_saran'])
             ->where(Job::field_asset_id(), $model->field_primary)

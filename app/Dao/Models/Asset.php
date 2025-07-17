@@ -106,7 +106,7 @@ class Asset extends SystemModel
         'asset_status_kepemilikan',
         'asset_cek_kalibrasi',
         'asset_cek_jadwal',
-
+        'asset_sertifikat'
     ];
 
     public static function field_name()
@@ -254,6 +254,19 @@ class Asset extends SystemModel
                 if($name = uploadImage($file_logo, 'asset'))
                 {
                     $model->{self::field_image()} = $name;
+                }
+            }
+
+
+            /*
+             * set upload sertifikat
+             */
+
+             if (request()->has('sertifikat')) {
+                $file = request()->file('sertifikat');
+                if($name = uploadFile($file, 'sertifikat'))
+                {
+                    $model->{self::field_sertifikat()} = $name;
                 }
             }
 

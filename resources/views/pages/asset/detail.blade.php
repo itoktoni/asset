@@ -45,7 +45,7 @@
                     <x-form-select col="3" name="asset_id_kalibrasi" label="Pelaksana" :options="$vendor" />
                     <div class="col-md-2">
                         @if($model->asset_status_kalibrasi == 'Yes')
-                        <a class="btn btn-primary btn-block" style="margin-top: 33px" href="{{ $url }}">{{ $url ? 'Cek Sertifikat' : 'Layanan tidak tersedia' }}</a>
+                        <a class="btn btn-primary btn-block" style="margin-top: 33px" target="_blank" href="{{ $url }}">{{ $url ? 'Cek Sertifikat' : 'Layanan tidak tersedia' }}</a>
                         @endif
                     </div>
 

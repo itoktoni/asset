@@ -56,6 +56,17 @@ trait AssetEntity
         return $this->{$this->field_image()};
     }
 
+
+    public static function field_sertifikat()
+    {
+        return 'asset_sertifikat';
+    }
+
+    public function getFieldSertifikatAttribute()
+    {
+        return $this->{$this->field_sertifikat()};
+    }
+
     public static function field_penamaan_id()
     {
         return 'asset_id_penamaan';
