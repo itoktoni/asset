@@ -48,7 +48,7 @@
                                                     class="button-delete" />
                                                 @endif
 
-                                                <a href="{{ route('asset.getDetail', ['id' => $table->field_primary]) }}"
+                                                <a href="{{ route(moduleAction('getDetail'), ['id' => $table->field_primary]) }}"
                                                     class="btn btn-primary btn btn-info btn-sm mt-1">
                                                     Detail
                                                 </a>

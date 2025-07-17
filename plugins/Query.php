@@ -270,16 +270,23 @@ class Query
 
     public static function getLocationMap()
     {
-        $query = Lokasi::select(Lokasi::field_primary(), Area::field_name(), Lokasi::field_name())
+        $query = Lokasi::select(Lokasi::field_primary(), Area::field_name(), Lokasi::field_name(), Level3::field_name())
         ->leftJoinRelationship('has_area')
-        ->get()
+        ->leftJoinRelationship('has_level');
+
+        if(!empty(auth()->user()->lokasi))
+        {
+            $query = $query->where(Lokasi::field_primary(), auth()->user()->lokasi);
+        }
+
+        $query = $query->get()
         ->mapWithKeys(function($item){
 
             $nama = $item->field_name;
 
-            if(!empty($item->{Area::field_name()}))
+            if(!empty($item->{Level3::field_name()}))
             {
-                $nama = $nama. ' - '.$item->{Area::field_name()};
+                $nama = $nama. ' - '.$item->{Level3::field_name()};
             }
 
             return [$item->field_primary => $nama];
