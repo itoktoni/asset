@@ -3,7 +3,7 @@
 namespace App\Dao\Models;
 
 use App\Dao\Models\Core\SystemModel;
-
+use Plugins\Query;
 
 /**
  * Class Level1
@@ -60,6 +60,23 @@ class Level1 extends SystemModel
     public function getFieldDescriptionAttribute()
     {
         return $this->{$this->field_description()};
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        parent::creating(function ($model)
+        {
+
+            if(empty($model->{self::field_primary()}))
+            {
+                $model->{self::field_primary()} = Query::autoNumber(self::getTableName(), self::field_primary(), 'LV1');
+            }
+
+        });
+
+        parent::boot();
     }
 
 }

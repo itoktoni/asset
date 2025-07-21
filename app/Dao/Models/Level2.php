@@ -3,7 +3,7 @@
 namespace App\Dao\Models;
 
 use App\Dao\Models\Core\SystemModel;
-
+use Plugins\Query;
 
 /**
  * Class Level2
@@ -91,6 +91,22 @@ class Level2 extends SystemModel
         }
 
         return $query;
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        parent::creating(function ($model)
+        {
+            if(empty($model->{self::field_primary()}))
+            {
+                $model->{self::field_primary()} = Query::autoNumber(self::getTableName(), self::field_primary(), 'LV2');
+            }
+
+        });
+
+        parent::boot();
     }
 
 }
