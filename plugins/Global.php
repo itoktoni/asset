@@ -246,7 +246,7 @@ function imageUrl($value, $folder = null)
 
     if(env('PATH_LINK', false))
     {
-        return file_exists(storage_path('app/public/files/'.$path.'/'.$value)) ? url('storage/files/'.$path.'/'.$value) : url('images/noimage.jpeg');
+        return file_exists(storage_path('app/public/files/'.$path.'/'.$value)) ? url('storage/app/public/files/'.$path.'/'.$value) : url('images/noimage.jpeg');
     }
     else
     {
@@ -270,7 +270,7 @@ function logoUrl($isLogo = true)
 
     if(env('PATH_LINK', false))
     {
-        return file_exists(storage_path('app/public/'.$logo)) && $logo ? url('storage/'.$logo) : url('images/noimage.jpeg');
+        return file_exists(storage_path('app/public/'.$logo)) && $logo ? url('storage/app/public/'.$logo) : url('images/noimage.jpeg');
     }
     else
     {
