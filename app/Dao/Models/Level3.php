@@ -87,9 +87,9 @@ class Level3 extends SystemModel
     {
         parent::creating(function ($model)
         {
-            if(request()->get($model->field_primary()))
+            if(empty($model->{self::field_primary()}))
             {
-                $model->{self::field_primary()} = Query::autoNumber(self::getTableName(), Level3::field_primary(), 'LV3');
+                $model->{self::field_primary()} = Query::autoNumber(self::getTableName(), self::field_primary(), 'LV3');
             }
         });
 
