@@ -216,6 +216,19 @@ class Query
         return $query;
     }
 
+    public static function getLevel2()
+    {
+        $query = Level2::select([Level2::field_primary(), Level2::field_name(), Level1::field_name()])
+        ->leftJoinRelationship(HAS_LEVEL_1)
+        ->get()
+        ->mapWithKeys(function($item){
+
+            return [$item->field_primary => $item->{Level1::field_name()}.' - '.$item->field_name];
+        }) ?? [];
+
+        return $query;
+    }
+
     public static function getModelMap()
     {
         $query = Model::select([Model::field_primary(), Model::field_name(), Brand::field_name()])

@@ -35,7 +35,7 @@ class Level3Controller extends MasterController
 
     protected function beforeForm()
     {
-        $level2 = Level2::getOptions();
+        $level2 = Query::getLevel2();
         $user = User::getOptions();
 
         self::$share = [
