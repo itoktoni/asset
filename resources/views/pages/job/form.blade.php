@@ -50,6 +50,17 @@
 
                 </div>
 
+                @if($model->field_type == JobType::Kalibrasi)
+                <div class="col-md-6">
+
+                    <div class="row mb-3">
+                        <x-form-input col="4" label="Tanggal Kalibrasi" value="{{ $model->has_asset->asset_tanggal_expired ?? null }}" type="date"  class="date" name="tanggal_kalibrasi" />
+                        <x-form-upload col="8" label="Upload Kalibrasi" name="sertifikat" />
+                    </div>
+
+                </div>
+                @endif
+
                 <div class="pb-3"></div>
             @endbind
 

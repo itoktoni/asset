@@ -18,9 +18,12 @@ use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
 use App\Facades\Model\JobModel;
 use App\Facades\Model\SaranModel;
+use App\Http\Requests\Core\GeneralRequest;
 use App\Services\Core\UpdateAssetService;
+use App\Services\UpdateJobService;
 use Plugins\Alert;
 use Plugins\Query;
+use Plugins\Response;
 
 class JobController extends MasterController
 {
@@ -56,6 +59,25 @@ class JobController extends MasterController
             'asset' => $asset,
             'location' => $location,
         ];
+    }
+
+    public function getUpdate($code)
+    {
+        $this->beforeForm();
+        $this->beforeUpdate($code);
+
+        $data = $this->get($code, ['has_asset']);
+
+        return moduleView(modulePathForm(path: self::$is_core), $this->share([
+            'model' => $data,
+        ]));
+    }
+
+    public function postUpdate($code, GeneralRequest $request, UpdateJobService $service)
+    {
+        $data = $service->update($this->model, $request, $code);
+
+        return Response::redirectBack($data);
     }
 
     public function getSelesai($code)
