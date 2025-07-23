@@ -87,7 +87,7 @@
                                             <br>
                                             Status Pemeliharaan :  <b>{{ JobType::getDescription($table->field_status_kunjungan) ?? '-' }}</b>
                                             <br>
-                                            Jadwal Pemeliharaan :  <b>{{ $table->tanggal_kunjungan ?? '-' }}</b>
+                                            Jadwal Pemeliharaan :  <b>{{ $table->field_tanggal_kunjungan ?? '-' }}</b>
                                             <br>
                                             Pelaksana Pemeliharaan : <b>{{ $table->group_nama ?? '-' }}</b>
 
