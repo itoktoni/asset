@@ -21,10 +21,7 @@ class UpdateJobService
             $tanggal_kalibrasi = $data->tanggal_kalibrasi;
             if(!empty($tanggal_kalibrasi))
             {
-                if (request()->has('sertifikat')) {
-                    $file = request()->file('sertifikat');
-                    $name = uploadFile($file, 'sertifikat');
-                }
+
 
                 $next = Carbon::createFromDate($tanggal_kalibrasi)->addYear()->format('Y-m-d');
                 Asset::find($job->job_id_asset)->update([
@@ -33,9 +30,14 @@ class UpdateJobService
                     Asset::field_sertifikat() => $name ?? null,
                 ]);
 
-                $job->update([
-                    Job::field_status() => JobStatusType::Selesai
-                ]);
+                if (request()->has('sertifikat')) {
+                    $file = request()->file('sertifikat');
+                    $name = uploadFile($file, 'sertifikat');
+
+                    $job->update([
+                        Job::field_status() => JobStatusType::Selesai
+                    ]);
+                }
             }
         }
 
