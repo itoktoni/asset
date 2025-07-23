@@ -213,14 +213,18 @@ class Asset extends SystemModel
                 Job::field_location_id() => $model->field_location_id,
                 Job::field_description() => $model->asset_keterangan,
             ]);
-
-            $model->find($id)->update([
-                Asset::field_tanggal_kunjungan() => $model->asset_tanggal_diakui
-            ]);
         });
 
         parent::saving(function ($model)
         {
+            if(empty($model->asset_tanggal_kunjungan))
+            {
+                $tanggal = $model->asset_tanggal_diakui ?? date('Y-m-d');
+
+                $model->asset_tanggal_diakui = $tanggal;
+                $model->asset_tanggal_kunjungan = $tanggal;
+            }
+
             if(empty($model->{self::field_code()}))
             {
                 $model->{self::field_code()} = Query::autoNumber(AssetModel::getTableName(), self::field_code(), date('Ymd'));

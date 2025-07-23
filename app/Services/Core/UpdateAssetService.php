@@ -85,14 +85,12 @@ class UpdateAssetService
         $total = 0;
         $insiden = $this->insiden($model);
         $em1 = ($penamaan->field_angka_fungsi + $penamaan->field_angka_aplikasi + $penamaan->field_angka_maintenance);
-
         if($penamaan)
         {
             $total = $em1 + $insiden;
         }
 
         $berapa_kali = $this->berapaKunjungan($model, $total);
-
         $status = JobType::Inventaris;
         $next = null;
 
