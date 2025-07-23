@@ -41,6 +41,7 @@ class JadwalMaintenance extends Command
             ->limit(env('LIMIT_JADWAL', 10))
             ->get();
 
+
         foreach ($data as $item) {
 
             $asset = Asset::find($item->field_primary);
