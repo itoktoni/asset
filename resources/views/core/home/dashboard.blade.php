@@ -1,5 +1,7 @@
 <x-layout>
 
+    @if(env('MAINTENANCE', false))
+
     <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-12">
             <div class="card">
@@ -64,6 +66,7 @@
     </div>
 
     @if(Browser::isDesktop())
+
     <div class="row">
         <div class="container">
             <table class="table table-responsive table-bordered">
@@ -185,6 +188,8 @@
 
     </div>
 
+    @endif
+
     @push('footer')
 
         <style>
@@ -202,6 +207,7 @@
         <script>
             jQuery(function($) {
 
+                @if(env('MAINTENANCE', false))
                 $("#buat_tiket").qrCodeReader({
                     audioFeedback: true,
                     multiple: false,
@@ -222,6 +228,8 @@
                         window.location.replace("{{ route('job.getCreate') }}?id=" + code[1]);
                     }
                 });
+                @endif
+                @endif
 
                 $("#detail").qrCodeReader({
                     audioFeedback: true,
@@ -232,7 +240,6 @@
                         window.location.replace("{{ route('detail_asset') }}?id=" + code[1]);
                     }
                 });
-                @endif
             });
         </script>
     @endpush

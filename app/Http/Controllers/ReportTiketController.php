@@ -9,6 +9,7 @@ use App\Facades\Model\JobModel;
 use App\Facades\Model\UserModel;
 use App\Http\Controllers\Core\ReportController;
 use Illuminate\Http\Request;
+use Plugins\Query;
 
 class ReportTiketController extends ReportController
 {
@@ -21,7 +22,7 @@ class ReportTiketController extends ReportController
 
     protected function beforeForm()
     {
-        $pelapor = UserModel::getOptions();
+        $pelapor = Query::getUserByRole();
         $type = JobType::getOptions();
 
         self::$share = [

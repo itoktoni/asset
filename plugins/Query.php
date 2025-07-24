@@ -2,6 +2,7 @@
 
 namespace Plugins;
 
+use App\Dao\Enums\Core\LevelType;
 use App\Dao\Enums\Core\RoleType;
 use App\Dao\Models\Area;
 use App\Dao\Models\Asset;
@@ -190,14 +191,17 @@ class Query
         return $newcode;
     }
 
-    public static function getUserByRole($role)
+    public static function getUserByRole($role = false)
     {
         $data = [];
-        $user = UserModel::select(UserModel::field_primary(), UserModel::field_name())
-            ->where(UserModel::field_role(), $role)
-            ;
+        $user = UserModel::select(UserModel::field_primary(), UserModel::field_name());
 
-        if(auth()->user()->role == RoleType::Teknisi)
+        if($role)
+        {
+            $user = $user->where(UserModel::field_role(), $role);
+        }
+
+        if(auth()->user()->level <= LevelType::Operation)
         {
             $user = $user->where(User::field_primary(), auth()->user()->id);
         }
@@ -320,19 +324,16 @@ class Query
 
     public static function getTiketMenu($route = false)
     {
-        $query = Query::groups(auth()->user()->role)->first();
-        $menu = collect($query->has_menu)->filter(function($item){
-            if($item->system_menu_controller == 'App\Http\Controllers\TiketController')
-            {
-                return $item;
-            }
-        })->first();
+        $query = DB::table('view_role')
+            ->where('system_role_code', auth()->user()->role)
+            ->where('system_menu_controller', 'App\Http\Controllers\TiketController')
+            ->first();
 
-        if(!empty($menu) && $route)
+        if(!empty($query) && $route)
         {
-            return $menu->system_menu_code;
+            return $query->system_menu_code;
         }
 
-        return $menu;
+        return $query;
     }
 }
