@@ -26,7 +26,7 @@
                                     </th>
                                     <th class="text-center column-action">{{ __('Action') }}</th>
                                     <th>Gambar</th>
-                                    <th>Nomenklatur</th>
+                                    <th>{{ env('NOMENKLATUR_NAME', 'Nomenklatur') }}</th>
                                     <th>Kategori</th>
                                     <th>@sortablelink('penamaan_gabungan', __('Penamaan Asset'))</th>
                                 </tr>

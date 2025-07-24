@@ -4,15 +4,18 @@
             <x-action form="form" />
                 @bind($model)
 
-                <x-form-input col="3" name="penamaan_code_nomenklatur" />
+                <x-form-input col="3" label="{{ env('NOMENKLATUR_NAME', 'Nomenklatur') }}" name="penamaan_code_nomenklatur" />
                 <x-form-select col="3" name="penamaan_id_category" :options="$category" />
                 <x-form-input col="6" name="penamaan_nama" />
 
                 <x-form-textarea col="6" name="penamaan_keterangan" />
 
-                <x-form-select col="2" name="penamaan_tech" label="Teknologi" :options="$tech" />
-                <x-form-select col="2" name="penamaan_kalibrasi" label="Kalibrasi" :options="$kalibrasi" />
                 <x-form-select col="2" name="penamaan_id_satuan" :options="$satuan" />
+                @if(env('KALIBRASI', false))
+                <x-form-select col="2" name="penamaan_kalibrasi" label="Kalibrasi" :options="$kalibrasi" />
+                @endif
+                @if(env('MAINTENANCE', false))
+                <x-form-select col="2" name="penamaan_tech" label="Teknologi" :options="$tech" />
 
                 <div class="col-md-12">
                     <div class="row">
@@ -21,6 +24,9 @@
                         <x-form-select col="4" name="penamaan_angka_maintenance" :options="$maintenance" />
                     </div>
                 </div>
+
+                @endif
+
 
                 <div class="col-md-6">
                     <div class="row">

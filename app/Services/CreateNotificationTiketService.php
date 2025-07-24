@@ -28,7 +28,7 @@ class CreateNotificationTiketService
             $message = $message . 'Asset : ' . $asset->field_name . PHP_EOL;
 
             if ($asset->has_location) {
-                $message = $message . 'Ruangan : ' . $asset->has_location->field_name . PHP_EOL;
+                $message = $message . env('LOCATION_NAME', 'Lokasi').' : ' . $asset->has_location->field_name . PHP_EOL;
             }
 
             $message = $message . 'Keterangan : ' . $description . PHP_EOL . PHP_EOL;

@@ -5,12 +5,16 @@
             <x-action form="form" />
 
             @bind($model)
-                <x-form-select col="6" class="search" name="asset_id_penamaan" :options="$naming" />
+                <x-form-select col="6" label="Penamaan Asset" class="search" name="asset_id_penamaan" :options="$naming" />
                 <x-form-input col="3" label="Serial Number" name="asset_serial_number" />
                 <x-form-input col="3" label="Code Asset" name="asset_code" />
 
-                <x-form-select col="6" name="asset_id_lokasi" :options="$location" />
+                <x-form-select col="6" label="{{ env('LOCATION_NAME', 'Lokasi') }}" name="asset_id_lokasi" :options="$location" />
+
+                @if(env('KALIBRASI', false))
                 <x-form-input col="6" label="AKL / AKD" name="asset_akl_akd" />
+                @endif
+
                 <x-form-select col="3" name="asset_id_model" label="Model/Tipe" :options="$type" />
                 <x-form-select col="3" name="asset_status" :options="$status" />
 
@@ -33,6 +37,8 @@
             @endbind
 
         </x-card>
+
+        @if(env('MAINTENANCE', false))
 
         <x-card label="Detail Riwayat Alat" style="margin-top: -2rem">
 
@@ -77,6 +83,8 @@
             @endbind
 
         </x-card>
+
+        @endif
 
     </x-form>
 </x-layout>

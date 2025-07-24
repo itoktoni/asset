@@ -9,7 +9,7 @@
 
             @bind($model)
                 <x-form-select col="6" id="asset" default="{{ $selected_asset ?? $model->field_asset_id ?? null }}" class="search" label="Nama Asset" name="job_id_asset" :options="$asset" />
-                <x-form-select col="6" default="{{ $selected_location ?? $model->field_location_id ?? null }}"  name="job_id_location" label="Ruangan" :options="$location" />
+                <x-form-select col="6" default="{{ $selected_location ?? $model->field_location_id ?? null }}"  name="job_id_location"  label="{{ env('LOCATION_NAME', 'Lokasi') }}"  :options="$location" />
 
                 @if($model && $model->field_status)
                 <x-form-textarea col="6" rows="5" readonly class="h-100" label="Keterangan Kerusakan" name="job_keterangan" />
@@ -50,7 +50,7 @@
 
                 </div>
 
-                @if($model->field_type == JobType::Kalibrasi)
+                @if($model && $model->field_type == JobType::Kalibrasi)
                 <div class="col-md-6">
 
                     <div class="row mb-3">

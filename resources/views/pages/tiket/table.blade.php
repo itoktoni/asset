@@ -94,7 +94,7 @@
 
                                             @if($table->location_nama)
                                             <br>
-                                            <b>Ruangan</b> : {{ $table->location_nama }}
+                                            <b>{{ env('LOCATION_NAME', 'Lokasi') }}</b> : {{ $table->location_nama }}
                                             @endif
 
                                             <br>

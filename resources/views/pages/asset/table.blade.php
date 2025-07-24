@@ -96,8 +96,9 @@
                                             </b>
 
                                             <br>
-                                            Ruangan : <b>{{ $table->lokasi_gabungan ?? '-' }}</b>
+                                            {{ env('LOCATION_NAME', 'Lokasi') }} : <b>{{ $table->lokasi_gabungan ?? '-' }}</b>
                                             <br>
+                                            @if(env('MAINTENANCE', false))
                                             Status Pemeliharaan :  <b>{{ JobType::getDescription($table->field_status_kunjungan) ?? '-' }}</b>
                                             <br>
                                             Jadwal Pemeliharaan :  <b>{{ !empty($table->field_tanggal_kunjungan) ? formatDate($table->field_tanggal_kunjungan) : '-' }}</b>
@@ -106,16 +107,21 @@
 
                                             <br>
                                             <br>
+                                            @endif
+
                                             @php
-                                                $expired =
-                                                    $table->field_next_expired < date('Y-m-d') ? 'Expired' : 'Berlaku';
+                                                $expired = $table->field_next_expired < date('Y-m-d') ? 'Expired' : 'Berlaku';
                                             @endphp
+
+                                            @if(env('KALIBRASI', false))
                                             Status Kalibrasi : <b>{{ $expired }}</b>
                                             <br>
                                             Kalibrasi Terakhir : <b>{{ formatDate($table->field_tanggal_expired) }}</b>
                                             <br>
                                             Kalibrasi Selanjutnya :
                                             <b>{{ !empty($table->field_tanggal_expired)? \Carbon\Carbon::createFromDate($table->field_tanggal_expired)->addYear(1)->format('d/m/Y'): null }}</b>
+                                            @endif
+
                                         </td>
                                     </tr>
                                 @empty

@@ -307,7 +307,7 @@ class Query
 
             $nama = $item->field_name;
 
-            if(!empty($item->{Level3::field_name()}))
+            if(env('LEVELING', false) && !empty($item->{Level3::field_name()}))
             {
                 $nama = $nama. ' - '.$item->{Level3::field_name()};
             }
