@@ -4,6 +4,7 @@ namespace App\Dao\Models;
 
 use App\Dao\Entities\Core\TiketEntity;
 use App\Dao\Enums\Core\LevelType;
+use App\Dao\Enums\Core\RoleType;
 use App\Dao\Enums\JobType;
 use App\Dao\Enums\TiketType;
 use App\Dao\Models\Core\SystemModel;
@@ -129,6 +130,11 @@ class Tiket extends SystemModel
         if(auth()->user()->level == LevelType::Operation)
         {
             $query = $query->where($this->field_type(), JobType::Kalibrasi);
+        }
+
+        if(auth()->user()->role == RoleType::User)
+        {
+            $query = $query->where(Tiket::field_pelapor_id(), auth()->user()->id);
         }
 
         if(!empty(auth()->user()->lokasi))
