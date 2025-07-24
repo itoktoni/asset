@@ -19,13 +19,18 @@
 
                                 <x-form-input col="4" type="date" label="Tanggal Register"
                                     name="asset_tanggal_diakui" />
+
+                                @if(env('MAINTENANCE', false))
                                 <x-form-input col="4" type="date" label="Tanggal Pemeliharaan"
-                                    name="asset_tanggal_kunjungan" />
+                                name="asset_tanggal_kunjungan" />
+                                @endif
+
+                                @if(env('KALIBRASI', false))
                                 <x-form-input col="4" type="date" label="Tanggal Kalibrasi"
-                                    name="asset_tanggal_expired" />
+                                name="asset_tanggal_expired" />
+                                @endif
 
-                                <x-form-select col="12" name="asset_id_lokasi" :options="$location" />
-
+                                <x-form-select col="8" name="asset_id_lokasi" :options="$location" />
 
                                 <x-form-textarea col="12" readonly rows="5" class="h-100" name="asset_keterangan" />
                                 <div class="col-md-12 mb-4"></div>
@@ -35,6 +40,8 @@
 
                     </div>
                 </div>
+
+                @if(env('KALIBRASI', false))
 
                 <div class="row">
                     <x-form-select col="1" name="asset_status_kalibrasi" default="{{ $is_kalibrasi ?? $model->asset_status_kalibrasi ?? null }}" label="Kalibrasi" :options="$kalibrasi" />
@@ -52,10 +59,13 @@
                     @endif
                 </div>
 
+                @endif
+
             @endbind
 
         </x-card>
 
+        @if(env('MAINTENANCE', false))
         <x-card label="Track Record Maintenance" style="margin-top: -30px">
 
             @bind($model)
@@ -100,5 +110,6 @@
             @endbind
 
         </x-card>
+        @endif
 
 </x-layout>
