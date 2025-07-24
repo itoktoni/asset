@@ -62,7 +62,7 @@
 				<td>{{ $table->field_name }}</td>
 				<td>{{ $table->field_description }}</td>
 				<td>{{ $table->field_analisa }}</td>
-				<td>{{ $table->has_saran->field_name ?? '' }}</td>
+				<td>{{ $table->saran_nama ?? '' }}</td>
 				<td>{{ $table->field_kesimpulan }}</td>
 			</tr>
 			@empty
