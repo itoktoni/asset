@@ -105,7 +105,7 @@ class Job extends SystemModel
 
     public function has_asset()
     {
-        return $this->hasOne(AssetModel::getModel(), AssetModel::field_primary(), $this->field_user_id());
+        return $this->hasOne(AssetModel::getModel(), AssetModel::field_primary(), $this->field_asset_id());
     }
 
     public function has_tiket()
@@ -148,6 +148,12 @@ class Job extends SystemModel
             $query = $query->where($this->field_user_id(), auth()->user()->id);
         }
 
+        if(auth()->user()->level == LevelType::Operation)
+        {
+            $query = $query->where($this->field_type(), JobType::Kalibrasi)
+                ->where($this->field_status(), '!=', JobStatusType::Selesai);
+        }
+
         if(!empty(auth()->user()->lokasi))
         {
             $query = $query->where($this->field_location_id(), auth()->user()->lokasi);
@@ -168,7 +174,10 @@ class Job extends SystemModel
             if(request()->get($model->field_analisa()))
             {
                 $model->{self::field_checked_at()} = date('Y-m-d H:i:s');
-                $model->{self::field_status()} = JobStatusType::Proses;
+                if($model->{self::field_type()} != JobType::Kalibrasi)
+                {
+                    $model->{self::field_status()} = JobStatusType::Proses;
+                }
             }
 
             if(empty($model->{self::field_code()}))

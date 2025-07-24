@@ -3,6 +3,8 @@
 namespace App\Dao\Models;
 
 use App\Dao\Entities\Core\AssetEntity;
+use App\Dao\Enums\JobStatusType;
+use App\Dao\Enums\JobType;
 use App\Dao\Models\Core\SystemModel;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\DepartmentModel;
@@ -14,6 +16,8 @@ use App\Facades\Model\ModelModel;
 use App\Facades\Model\PenamaanModel;
 use App\Facades\Model\VendorModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Testing\Assert;
 use Wildside\Userstamps\Userstamps;
 use Plugins\Query;
 
@@ -211,8 +215,29 @@ class Asset extends SystemModel
 
     public static function boot()
     {
+        parent::created(function ($model)
+        {
+            $id = DB::getPdo()->lastInsertId();
+            Job::Create([
+                Job::field_assign_id() => auth()->user()->id,
+                Job::field_type() => JobType::Inventaris,
+                Job::field_status() => JobStatusType::Selesai,
+                Job::field_asset_id() => $id,
+                Job::field_location_id() => $model->field_location_id,
+                Job::field_description() => $model->asset_keterangan,
+            ]);
+        });
+
         parent::saving(function ($model)
         {
+            if(empty($model->asset_tanggal_kunjungan))
+            {
+                $tanggal = $model->asset_tanggal_diakui ?? date('Y-m-d');
+
+                $model->asset_tanggal_diakui = $tanggal;
+                $model->asset_tanggal_kunjungan = $tanggal;
+            }
+
             if(empty($model->{self::field_code()}))
             {
                 $model->{self::field_code()} = Query::autoNumber(AssetModel::getTableName(), self::field_code(), date('Ymd'));

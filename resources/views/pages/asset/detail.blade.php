@@ -77,6 +77,9 @@
                                 <td class="col-md-1">{{ $table->field_status }}</td>
                                 <td class="col-md-2">{{ $table->has_user->field_name ?? '' }}</td>
                                 <td class="col-md-6">
+                                    @if($table->field_type == JobType::Inventaris)
+                                    <b>Keterangan</b> : {!! nl2br($table->field_description) !!}
+                                    @else
                                     <b>Keterangan</b> : {!! nl2br($table->field_description) !!}
                                     <br>
                                     <b>Analisa</b> : {!! nl2br($table->field_analisa) !!}
@@ -84,7 +87,7 @@
                                     <b>Hasil</b> : {{ $table->has_saran->field_name ?? '' }}
                                     <br>
                                     <b>Kesimpulan</b> : {!! nl2br($table->field_kesimpulan) !!}
-
+                                    @endif
                                 </td>
                             </tr>
                             @empty

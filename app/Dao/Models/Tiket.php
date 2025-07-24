@@ -84,14 +84,14 @@ class Tiket extends SystemModel
         return 'tiket_nama';
     }
 
-    public function getFieldNameAttribute()
-    {
-        return $this->{$this->field_name()};
-    }
-
     public function fieldSearching()
     {
         return $this->field_name();
+    }
+
+    public function getFieldNameAttribute()
+    {
+        return $this->{$this->field_name()};
     }
 
     public function has_location()
@@ -125,6 +125,11 @@ class Tiket extends SystemModel
             ->orderBy(Tiket::CREATED_AT, 'DESC')
             ->sortable()
             ->filter();
+
+        if(auth()->user()->level == LevelType::Operation)
+        {
+            $query = $query->where($this->field_type(), JobType::Kalibrasi);
+        }
 
         if(!empty(auth()->user()->lokasi))
         {

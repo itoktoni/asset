@@ -32,7 +32,8 @@ class ReportJadwalController extends ReportController
     public function getData()
     {
         $query = $this->model->rawQuery()->with(['has_location'])
-            ->whereNotNull(Asset::field_tanggal_kunjungan());
+            ->whereNotNull(Asset::field_tanggal_kunjungan())
+            ->orderBy(Asset::field_tanggal_kunjungan(), 'ASC');
 
         if ($start_date = request()->get('start_date')) {
             $query = $query->whereDate(Asset::field_tanggal_kunjungan(), '>=', $start_date);

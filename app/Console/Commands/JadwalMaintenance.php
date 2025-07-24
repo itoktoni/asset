@@ -39,6 +39,7 @@ class JadwalMaintenance extends Command
             ->whereYear(Asset::field_tanggal_kunjungan(), date('Y'))
             ->where(Asset::field_tanggal_kunjungan(), $jadwal)
             ->limit(env('LIMIT_JADWAL', 10))
+            // ->where(Asset::field_primary(), 59)
             ->get();
 
         foreach ($data as $item) {

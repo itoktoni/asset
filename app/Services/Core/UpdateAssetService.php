@@ -85,14 +85,12 @@ class UpdateAssetService
         $total = 0;
         $insiden = $this->insiden($model);
         $em1 = ($penamaan->field_angka_fungsi + $penamaan->field_angka_aplikasi + $penamaan->field_angka_maintenance);
-
         if($penamaan)
         {
             $total = $em1 + $insiden;
         }
 
         $berapa_kali = $this->berapaKunjungan($model, $total);
-
         $status = JobType::Inventaris;
         $next = null;
 
@@ -111,7 +109,7 @@ class UpdateAssetService
             $next = Carbon::createFromDate($tanggal_kunjungan)->addDay(round(365 / $berapa_kali))->format('Y-m-d');
             $status = JobType::Preventif;
         }
-        else if($total > 12 and $total <= 15)
+        else if($total >= 15)
         {
             $next = Carbon::createFromDate($tanggal_kunjungan)->addDay(round(365 / $berapa_kali))->format('Y-m-d');
             $status = JobType::Inspeksi;
