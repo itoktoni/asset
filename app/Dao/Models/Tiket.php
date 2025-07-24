@@ -115,11 +115,6 @@ class Tiket extends SystemModel
             ->sortable()
             ->filter();
 
-        if(auth()->user()->level == LevelType::Operator)
-        {
-            $query = $query->where($this->field_user_id(), auth()->user()->id);
-        }
-
         if(auth()->user()->level == LevelType::Operation)
         {
             $query = $query->where($this->field_type(), JobType::Kalibrasi);
