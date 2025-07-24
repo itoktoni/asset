@@ -134,7 +134,7 @@ class Tiket extends SystemModel
 
         if(auth()->user()->role == RoleType::User)
         {
-            $query = $query->where(Tiket::field_pelapor_id(), auth()->user()->id);
+            $query = $query->where(Tiket::field_user_id(), auth()->user()->id);
         }
 
         if(!empty(auth()->user()->lokasi))

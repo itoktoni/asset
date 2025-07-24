@@ -9,6 +9,7 @@ use App\Dao\Models\Tiket;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
+use Plugins\Query;
 
 class FinishJobListener
 {
@@ -32,7 +33,7 @@ class FinishJobListener
         // NAMING TIKET
         $description = $data->field_kesimpulan;
         $name = $teknisi->field_name;
-        $link = route('tiket.getCode', ['code' => $tiket->field_code]);
+        $link = route(Query::getTiketMenu(true).'.getCode', ['code' => $tiket->field_code]);
 
         $message = 'PEKERJAAN SELESAI'.PHP_EOL.PHP_EOL;
         $message = $message.'Teknisi : '.$name.PHP_EOL;

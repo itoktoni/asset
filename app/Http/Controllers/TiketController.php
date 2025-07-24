@@ -57,7 +57,7 @@ class TiketController extends MasterController
     {
         $data = $service->save($this->model, $request);
 
-        return Response::redirectBack($data);
+        return redirect()->back();
     }
 
     public function getCreate()

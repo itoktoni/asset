@@ -6,6 +6,7 @@ use App\Dao\Enums\NotificationType;
 use App\Dao\Models\Asset;
 use App\Dao\Models\Notification;
 use Plugins\Alert;
+use Plugins\Query;
 
 class CreateNotificationTiketService
 {
@@ -14,7 +15,7 @@ class CreateNotificationTiketService
         // NAMING TIKET
         $description = $data->field_description;
         $pelapor = $data->field_pelapor;
-        $link = route('tiket.getCode', ['code' => $data->field_code]);
+        $link = route(Query::getTiketMenu(true).'.getCode', ['code' => $data->field_code]);
 
         $message = 'TIKET DIBUAT' . PHP_EOL . PHP_EOL;
         $message = 'Pelapor : ' . $pelapor . PHP_EOL;

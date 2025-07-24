@@ -201,16 +201,18 @@
 
         <script>
             jQuery(function($) {
+
                 $("#buat_tiket").qrCodeReader({
                     audioFeedback: true,
                     multiple: false,
                     skipDuplicates: true,
                     callback: function(codes) {
                         var code = codes.split('=');
-                        window.location.replace("{{ route('tiket.getCreate') }}?id=" + code[1]);
+                        window.location.replace("{{ route(Query::getTiketMenu(true).'.getCreate') }}?id=" + code[1]);
                     }
                 });
 
+                @if(auth()->user()->role != RoleType::User)
                 $("#buat_job").qrCodeReader({
                     audioFeedback: true,
                     multiple: false,
@@ -230,6 +232,7 @@
                         window.location.replace("{{ route('detail_asset') }}?id=" + code[1]);
                     }
                 });
+                @endif
             });
         </script>
     @endpush

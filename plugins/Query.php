@@ -317,4 +317,22 @@ class Query
 
         return $query;
     }
+
+    public static function getTiketMenu($route = false)
+    {
+        $query = Query::groups(auth()->user()->role)->first();
+        $menu = collect($query->has_menu)->filter(function($item){
+            if($item->system_menu_controller == 'App\Http\Controllers\TiketController')
+            {
+                return $item;
+            }
+        })->first();
+
+        if(!empty($menu) && $route)
+        {
+            return $menu->system_menu_code;
+        }
+
+        return $menu;
+    }
 }

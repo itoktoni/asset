@@ -7,6 +7,7 @@ use App\Http\Controllers\AssetController;
 use App\Http\Controllers\Core\HomeController;
 use App\Http\Controllers\Core\WebhookController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\TiketController;
 use Buki\AutoRoute\AutoRouteFacade as AutoRoute;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -89,6 +90,9 @@ try {
 if ($routes) {
     Route::middleware(['auth', 'access'])->group(function () use ($routes) {
         Route::prefix('admin')->group(function () use ($routes) {
+
+            Route::get('/app/create_tiket/default/create', [TiketController::class, 'getCreate'])->name('create_tiket');
+
             if ($routes) {
                 foreach ($routes as $group) {
                     Route::group(['prefix' => $group->field_primary, 'middleware' => [
