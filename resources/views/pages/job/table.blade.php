@@ -64,7 +64,7 @@
                                             <b>{{ $table->tiket_nama }}</b>
                                             <br>
 
-                                            <b>Rusak</b> : {!! nl2br($table->field_description) !!}
+                                            <b>Keterangan</b> : {!! nl2br($table->field_description) !!}
                                             <br>
                                             @if ($table->location_nama)
                                                 <b>Ruangan :</b> {{ $table->location_nama }}
