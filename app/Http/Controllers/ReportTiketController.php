@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dao\Enums\Core\RoleType;
 use App\Dao\Enums\JobType;
 use App\Dao\Models\Tiket;
 use App\Facades\Model\JobModel;
@@ -39,6 +40,11 @@ class ReportTiketController extends ReportController
 
         if ($end_date = request()->get('end_date')) {
             $query = $query->whereDate(Tiket::field_tanggal(), '<=', $end_date);
+        }
+
+        if(auth()->user()->role == RoleType::User)
+        {
+            $query = $query->where(Tiket::field_pelapor_id(), auth()->user()->id);
         }
 
         return $query->filter()->get();
