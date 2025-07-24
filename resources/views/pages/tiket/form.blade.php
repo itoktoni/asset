@@ -1,9 +1,13 @@
 <x-layout>
     <x-form :model="$model" :upload="true">
         <x-card>
-            <x-action form="form">
+            <x-action form="blank">
                 @if ($model && auth()->user()->level >= LevelType::Operator)
                     <x-button module="getAmbil" key="{{ $model->field_primary }}" color="success" label="Ambil" />
+                @endif
+
+                @if (empty($model) || (!empty($model) && auth()->user()->level != LevelType::Pengguna))
+                <x-button type="submit" label="Simpan" />
                 @endif
             </x-action>
 

@@ -55,6 +55,14 @@ class Asset extends SystemModel
         SELF::DELETED_AT,
     ];
 
+    protected $filters = [
+        'filter',
+        'asset_id',
+        'asset_id_lokasi',
+        'asset_id_penamaan',
+        'asset_id_kalibrasi',
+    ];
+
     const CREATED_AT = 'asset_created_at';
     const UPDATED_AT = 'asset_updated_at';
     const DELETED_AT = 'asset_deleted_at';
@@ -112,6 +120,11 @@ class Asset extends SystemModel
     public static function field_name()
     {
         return 'asset_nama';
+    }
+
+    public function fieldSearching()
+    {
+        return $this->field_name();
     }
 
     public function getFieldNameAttribute()

@@ -7,6 +7,7 @@ use App\Dao\Enums\Core\LevelType;
 use App\Dao\Enums\JobStatusType;
 use App\Dao\Enums\JobType;
 use App\Dao\Models\Core\SystemModel;
+use App\Dao\Traits\DataTableTrait;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\LokasiModel;
 use App\Facades\Model\SaranModel;
@@ -47,7 +48,7 @@ use Illuminate\Support\Str;
 
 class Job extends SystemModel
 {
-    use JobEntity , SoftDeletes, Userstamps;
+    use JobEntity , SoftDeletes, Userstamps, DataTableTrait;
 
     protected $perPage = 20;
     protected $table = 'job';
@@ -69,6 +70,11 @@ class Job extends SystemModel
         SELF::DELETED_AT,
     ];
 
+    protected $filters = [
+        'filter',
+        'tiket_created_by'
+    ];
+
     const CREATED_AT = 'job_created_at';
     const UPDATED_AT = 'job_updated_at';
     const DELETED_AT = 'job_deleted_at';
@@ -80,6 +86,11 @@ class Job extends SystemModel
     public static function field_name()
     {
         return 'job_keterangan';
+    }
+
+    public function fieldSearching()
+    {
+        return $this->field_name();
     }
 
     public function getFieldNameAttribute()

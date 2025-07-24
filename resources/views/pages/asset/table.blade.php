@@ -11,7 +11,18 @@
 
             <x-form method="POST" action="{{ moduleRoute('getTable') }}">
 
-                <x-action />
+                @if(auth()->user()->level >= LevelType::Admin)
+                <x-action form="blank">
+                    <input class="btn-check-m d-lg-none" type="checkbox">
+                    @can(ACTION_EMPTY)
+                        <x-button onclick="return confirm('Apakah anda yakin ingin menghapus ?')" name="delete" type="submit"
+                            color="danger" label="Kosongkan" />
+                    @endcan
+                    @can(ACTION_CREATE)
+                        <x-button :module="ACTION_CREATE" color="success" label="Buat" />
+                    @endcan
+                </x-form>
+                @endif
 
                 <div class="container-fluid" id="table">
                     <div class="table-responsive">
@@ -53,8 +64,10 @@
                                                     Detail
                                                 </a>
 
+                                                @if(auth()->user()->level >= LevelType::Operator)
                                                 <x-button class="btn btn-danger btn-sm mt-1" module="getPrint"
                                                     key="{{ $table->field_primary }}" label="Cetak" />
+                                                @endif
                                             </x-crud>
                                         </td>
                                         <td class="column-action">

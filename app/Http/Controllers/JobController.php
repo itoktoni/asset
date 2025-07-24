@@ -102,6 +102,10 @@ class JobController extends MasterController
 
             Alert::update("Tiket di approve !");
         }
+        else
+        {
+            Alert::error("Tiket hanya bisa di approve oleh pelapor atau admin !");
+        }
 
         return redirect()->back();
     }

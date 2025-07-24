@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dao\Models\Asset;
 use App\Dao\Models\Brand;
 use App\Dao\Models\Distributor;
 use App\Dao\Models\Model;
@@ -10,6 +11,7 @@ use App\Dao\Models\Vendor;
 use App\Facades\Model\AssetModel;
 use App\Http\Controllers\Core\ReportController;
 use Illuminate\Http\Request;
+use Plugins\Query;
 
 class ReportAssetController extends ReportController
 {
@@ -18,6 +20,17 @@ class ReportAssetController extends ReportController
     public function __construct(AssetModel $model)
     {
         $this->model = $model::getModel();
+    }
+
+    protected function beforeForm()
+    {
+        $asset = Query::getPenamaanMap();
+        $location = Query::getLocationMap();
+
+        self::$share = [
+            'location' => $location,
+            'asset' => $asset,
+        ];
     }
 
     public function getData()
@@ -34,6 +47,14 @@ class ReportAssetController extends ReportController
             Model::field_name(),
             Vendor::field_name(),
         ]);
+
+        if ($start_date = request()->get('start_date')) {
+            $query = $query->whereDate(Asset::field_tanggal_diakui(), '>=', $start_date);
+        }
+
+        if ($end_date = request()->get('end_date')) {
+            $query = $query->whereDate(Asset::field_tanggal_diakui(), '<=', $end_date);
+        }
 
         return $query->get();
     }

@@ -6,6 +6,8 @@ use App\Dao\Models\Asset;
 use App\Facades\Model\AssetModel;
 use App\Http\Controllers\Core\ReportController;
 use Illuminate\Http\Request;
+use Plugins\Query;
+use Telegram\Bot\Objects\Location;
 
 class ReportJadwalController extends ReportController
 {
@@ -16,10 +18,29 @@ class ReportJadwalController extends ReportController
         $this->model = $model::getModel();
     }
 
+    protected function beforeForm()
+    {
+        $asset = Query::getAssetMap();
+        $location = Query::getLocationMap();
+
+        self::$share = [
+            'location' => $location,
+            'asset' => $asset,
+        ];
+    }
+
     public function getData()
     {
         $query = $this->model->rawQuery()->with(['has_location'])
             ->whereNotNull(Asset::field_tanggal_kunjungan());
+
+        if ($start_date = request()->get('start_date')) {
+            $query = $query->whereDate(Asset::field_tanggal_kunjungan(), '>=', $start_date);
+        }
+
+        if ($end_date = request()->get('end_date')) {
+            $query = $query->whereDate(Asset::field_tanggal_kunjungan(), '<=', $end_date);
+        }
 
         return $query->get();
     }

@@ -11,7 +11,20 @@
 
             <x-form method="POST" action="{{ moduleRoute('getTable') }}">
 
-                <x-action />
+                <x-action form="blank">
+                    <input class="btn-check-m d-lg-none" type="checkbox">
+
+                    @if(auth()->user()->level >= LevelType::Admin)
+                    @can(ACTION_EMPTY)
+                        <x-button onclick="return confirm('Apakah anda yakin ingin menghapus ?')" name="delete" type="submit"
+                            color="danger" label="Kosongkan" />
+                    @endcan
+                    @endif
+
+                    @can(ACTION_CREATE)
+                        <x-button :module="ACTION_CREATE" color="success" label="Buat" />
+                    @endcan
+                </x-action>
 
                 <div class="container-fluid" id="table">
                     <div class="table-responsive">
@@ -36,9 +49,22 @@
                                         </td>
 
                                         <td class="col-md-2 text-center column-action">
-                                            <x-crud :model="$table">
-                                                <x-button class="btn btn-success btn-sm mt-1" module="getAmbil" key="{{ $table->field_primary }}" color="success"
-                                                    label="Ambil" />
+                                            <x-crud :model="$table" :action="[]">
+
+                                                <x-button module="getUpdate" key="{{ $table->field_primary }}" color="primary"
+                                                    icon="pencil-square" />
+
+                                                @if(auth()->user()->level >= LevelType::Admin)
+                                                <x-button module="getDelete" key="{{ $table->field_primary }}" color="danger"
+                                                        icon="trash3" onclick="return confirm('Apakah anda yakin ingin menghapus ?')" class="button-delete" />
+                                                @endif
+
+                                                @if(auth()->user()->level >= LevelType::Operator)
+                                                <x-button
+                                                    class="btn btn-success btn-sm mt-1"
+                                                    module="getAmbil" key="{{ $table->field_primary }}"
+                                                    color="success" label="Ambil" />
+                                                @endif
                                             </x-crud>
                                         </td>
 
@@ -50,6 +76,7 @@
 
                                             Dibuat : <b>{{ $table->field_pelapor }}</b>
                                             <br>
+
                                             <b>Tgl Buat</b> : {{ formatDate($table->field_tanggal) }}
                                             <br>
                                             <br>
@@ -57,11 +84,14 @@
                                             <b>{{ $table->field_name }}</b>
                                             <br>
                                             <br>
+
                                             @if($table->field_type)
                                             Tipe : <b>{{ $table->field_type }}</b>
                                             <br>
                                             @endif
+
                                             <b>Keterangan</b> : {!! nl2br($table->field_description) !!}
+
                                             @if($table->location_nama)
                                             <br>
                                             <b>Ruangan</b> : {{ $table->location_nama }}

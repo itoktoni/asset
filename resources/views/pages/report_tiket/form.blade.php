@@ -6,7 +6,12 @@
             @bind($model)
                 <x-form-input col="6" type="date" label="Tanggal Awal" name="start_date" />
                 <x-form-input col="6" type="date" label="Tanggal Akhir" name="end_date" />
-                {{-- <input type="hidden" name="queue" value="batch" /> --}}
+
+                <x-form-select col="6" name="tiket_type" label="Type Tiket"
+                :options="$type" />
+                <x-form-select col="6" name="tiket_created_by" label="Pelapor"
+                :options="$pelapor" />
+
             @endbind
 
         </x-card>

@@ -1,6 +1,7 @@
 /node_modules
 /public/files/*
 /public/hot
+/public/*
 /public/storage
 /storage/*.key
 /postman/*

@@ -2,24 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Dao\Enums\Core\SheetType;
 use App\Dao\Enums\TiketType;
 use App\Dao\Enums\JobStatusType;
-use App\Dao\Enums\JobType;
 use App\Dao\Models\Asset;
 use App\Dao\Models\Job;
-use App\Dao\Models\Sheet;
 use App\Dao\Models\Tiket;
-use App\Events\CreateTiketEvent;
-use App\Facades\Model\AssetModel;
-use App\Facades\Model\CategoryModel;
 use App\Facades\Model\LokasiModel;
 use App\Http\Controllers\Core\MasterController;
 use App\Http\Function\CreateFunction;
 use App\Http\Function\UpdateFunction;
 use App\Services\Master\SingleService;
 use App\Facades\Model\TiketModel;
-use App\Http\Requests\Core\GeneralRequest;
 use App\Http\Requests\TiketRequest;
 use App\Services\Master\CreateService;
 use App\Services\Master\UpdateService;

@@ -14,7 +14,7 @@
 		<td></td>
 		<td colspan="10">
 			<h3>
-				laporan pekerjaan berdasarkan jadwal
+				laporan pekerjaan berdasarkan jadwal kalibrasi selanjutnya
 			</h3>
 		</td>
 	</tr>

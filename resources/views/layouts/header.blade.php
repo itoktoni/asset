@@ -41,7 +41,6 @@
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">[ {{ Auth::user()->name }} ]</a>
 				<div class="dropdown-menu">
 					<a href="{{ route('getProfile') }}" class="dropdown-item">My Profile</a>
-					<a href="#" class="dropdown-item">Settings</a>
 					<a href="{{ env('NOTIFICATION_LINK') }}" class="dropdown-item">Notifikasi Telegram</a>
 					<a href="{{ route('signout') }}" class="dropdown-item">Logout</a>
 				</div>

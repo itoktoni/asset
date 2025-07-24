@@ -14,7 +14,7 @@
 		<td></td>
 		<td colspan="10">
 			<h3>
-				laporan pekerjaan berdasarkan tanggal register
+				laporan pekerjaan berdasarkan tanggal pengecekan
 			</h3>
 		</td>
 	</tr>
@@ -22,7 +22,7 @@
 		<td></td>
 		<td colspan="10">
 			<h3>
-				Tanggal Register : {{ formatDate(request()->get('start_date')) }} - {{ formatDate(request()->get('end_date')) }}
+				Tanggal Pengecekan : {{ formatDate(request()->get('start_date')) }} - {{ formatDate(request()->get('end_date')) }}
 			</h3>
 		</td>
 	</tr>

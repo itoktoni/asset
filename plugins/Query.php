@@ -2,9 +2,11 @@
 
 namespace Plugins;
 
+use App\Dao\Enums\Core\RoleType;
 use App\Dao\Models\Area;
 use App\Dao\Models\Asset;
 use App\Dao\Models\Brand;
+use App\Dao\Models\Core\User;
 use App\Dao\Models\Level1;
 use App\Dao\Models\Level2;
 use App\Dao\Models\Level3;
@@ -192,8 +194,16 @@ class Query
     {
         $data = [];
         $user = UserModel::select(UserModel::field_primary(), UserModel::field_name())
-            ->where(UserModel::field_type(), $role)
-            ->get();
+            ->where(UserModel::field_role(), $role)
+            ;
+
+        if(auth()->user()->role == RoleType::Teknisi)
+        {
+            $user = $user->where(User::field_primary(), auth()->user()->id);
+        }
+
+        $user = $user->get();
+
 
         if ($user) {
             $data = $user->pluck(UserModel::field_name(), UserModel::field_primary());

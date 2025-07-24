@@ -14,7 +14,7 @@
 		<td></td>
 		<td colspan="10">
 			<h3>
-				laporan tiket berdasarkan tanggal register
+				laporan tiket berdasarkan tanggal buat
 			</h3>
 		</td>
 	</tr>
@@ -22,7 +22,7 @@
 		<td></td>
 		<td colspan="10">
 			<h3>
-				Tanggal Register : {{ formatDate(request()->get('start_date')) }} - {{ formatDate(request()->get('end_date')) }}
+				Tanggal Buat : {{ formatDate(request()->get('start_date')) }} - {{ formatDate(request()->get('end_date')) }}
 			</h3>
 		</td>
 	</tr>

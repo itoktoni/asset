@@ -7,6 +7,7 @@ use App\Dao\Enums\Core\LevelType;
 use App\Dao\Enums\JobType;
 use App\Dao\Enums\TiketType;
 use App\Dao\Models\Core\SystemModel;
+use App\Dao\Traits\DataTableTrait;
 use App\Events\CreateTiketEvent;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\JobModel;
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Storage;
 use Plugins\Query;
 use Wildside\Userstamps\Userstamps;
 use Illuminate\Support\Str;
-use Intervention\Image\Laravel\Facades\Image;
+use Mehradsadeghi\FilterQueryString\FilterQueryString;
 
 /**
  * Class Tiket
@@ -57,6 +58,11 @@ class Tiket extends SystemModel
         SELF::DELETED_AT,
     ];
 
+    protected $filters = [
+        'filter',
+        'tiket_created_by'
+    ];
+
     const CREATED_AT = 'tiket_created_at';
     const UPDATED_AT = 'tiket_updated_at';
     const DELETED_AT = 'tiket_deleted_at';
@@ -81,6 +87,11 @@ class Tiket extends SystemModel
     public function getFieldNameAttribute()
     {
         return $this->{$this->field_name()};
+    }
+
+    public function fieldSearching()
+    {
+        return $this->field_name();
     }
 
     public function has_location()
@@ -115,18 +126,15 @@ class Tiket extends SystemModel
             ->sortable()
             ->filter();
 
-        if(!empty(auth()->user()->level == LevelType::Operator))
-        {
-            $query = $query->where($this->field_user_id(), auth()->user()->id);
-        }
-
         if(!empty(auth()->user()->lokasi))
         {
             $query = $query->where($this->field_location_id(), auth()->user()->lokasi);
         }
 
-        $query = env('PAGINATION_SIMPLE') ? $query->simplePaginate(env('PAGINATION_NUMBER')) : $query->paginate(env('PAGINATION_NUMBER'));
-
+        if(request()->get('type') != 'report')
+        {
+            $query = env('PAGINATION_SIMPLE') ? $query->simplePaginate(env('PAGINATION_NUMBER')) : $query->paginate(env('PAGINATION_NUMBER'));
+        }
         return $query;
     }
 
