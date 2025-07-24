@@ -14,6 +14,7 @@ use App\Facades\Model\JobModel;
 use App\Facades\Model\LokasiModel;
 use App\Facades\Model\ModelModel;
 use App\Facades\Model\PenamaanModel;
+use App\Facades\Model\StatusModel;
 use App\Facades\Model\VendorModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
@@ -141,6 +142,11 @@ class Asset extends SystemModel
         return $this->hasOne(PenamaanModel::getModel(), PenamaanModel::field_primary(), $this->field_penamaan_id());
     }
 
+    public function has_status()
+    {
+        return $this->hasOne(StatusModel::getModel(), StatusModel::field_primary(), $this->field_status());
+    }
+
     public function has_naming()
     {
         return $this->hasOne(PenamaanModel::getModel(), PenamaanModel::field_primary(), $this->field_penamaan_id());
@@ -184,7 +190,16 @@ class Asset extends SystemModel
     public function rawQuery()
     {
         $query = $this
-            ->select([$this->getTable().'.*', Penamaan::field_name(), Penamaan::field_nomenklatur(), Lokasi::field_name(), Model::field_name(), Brand::field_name(), Group::field_name()])
+            ->select([$this->getTable().'.*',
+                Penamaan::field_name(),
+                Penamaan::field_nomenklatur(),
+                Lokasi::field_name(),
+                Model::field_name(),
+                Brand::field_name(),
+                Group::field_name(),
+                Status::field_name(),
+            ])
+            ->leftJoinRelationship('has_status')
             ->leftJoinRelationship('has_naming')
             ->leftJoinRelationship('has_model')
             ->leftJoinRelationship('has_model.has_brand')

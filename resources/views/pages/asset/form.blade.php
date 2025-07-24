@@ -18,8 +18,10 @@
                 <x-form-select col="3" name="asset_id_model" label="Model/Tipe" :options="$type" />
                 <x-form-select col="3" name="asset_status" :options="$status" />
 
+                @if(env('MAINTENANCE', false))
                 <x-form-select col="3" name="asset_status_kepemilikan" :options="$kepemilikan" />
                 <x-form-select col="3" name="asset_status_maintenance" :options="$maintenance" />
+                @endif
 
                 <x-form-textarea col="6" rows="5" class="h-100" name="asset_keterangan" />
 

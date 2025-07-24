@@ -6,20 +6,20 @@ use App\Dao\Models\Core\SystemModel;
 
 
 /**
- * Class Satuan
+ * Class Status
  *
- * @property $satuan_code
- * @property $satuan_name
+ * @property $status_code
+ * @property $status_nama
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 
-class Satuan extends SystemModel
+class Status extends SystemModel
 {
     protected $perPage = 20;
-    protected $table = 'satuan';
-    protected $primaryKey = 'satuan_code';
+    protected $table = 'status';
+    protected $primaryKey = 'status_code';
     protected $keyType = 'string';
 
     public $incrementing = false;
@@ -29,11 +29,12 @@ class Satuan extends SystemModel
      *
      * @var array<int, string>
      */
-    protected $fillable = ['satuan_code', 'satuan_nama'];
+    protected $fillable = ['status_code', 'status_nama'];
+
 
     public static function field_name()
     {
-        return 'satuan_nama';
+        return 'status_nama';
     }
 
     public function getFieldNameAttribute()

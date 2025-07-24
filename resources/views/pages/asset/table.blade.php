@@ -98,6 +98,8 @@
                                             <br>
                                             {{ env('LOCATION_NAME', 'Lokasi') }} : <b>{{ $table->lokasi_gabungan ?? '-' }}</b>
                                             <br>
+                                            Status : <b>{{ $table->status_nama ?? '-' }}</b>
+                                            <br>
                                             @if(env('MAINTENANCE', false))
                                             Status Pemeliharaan :  <b>{{ JobType::getDescription($table->field_status_kunjungan) ?? '-' }}</b>
                                             <br>

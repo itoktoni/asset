@@ -17,6 +17,7 @@ use App\Facades\Model\AssetModel;
 use App\Facades\Model\DepartmentModel;
 use App\Facades\Model\GroupModel;
 use App\Facades\Model\LokasiModel;
+use App\Facades\Model\StatusModel;
 use App\Facades\Model\VendorModel;
 use App\Http\Requests\AssetRequest;
 use App\Services\Core\UpdateAssetService;
@@ -43,7 +44,7 @@ class AssetController extends MasterController
         $location = Query::getLocationMap();
         $naming = Query::getPenamaanMap();
         $vendor = VendorModel::getOptions();
-        $status = AssetStatusType::getOptions();
+        $status = StatusModel::getOptions();
         $pendanaan = PendanaanType::getOptions();
         $maintenance = MaintenanceType::getOptions();
         $kepemilikan = KepemilikanType::getOptions();
