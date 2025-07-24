@@ -118,6 +118,11 @@ class Asset extends SystemModel
         return 'asset_nama';
     }
 
+    public function fieldSearching()
+    {
+        return $this->field_name();
+    }
+
     public function getFieldNameAttribute()
     {
         return $this->{$this->field_name()};

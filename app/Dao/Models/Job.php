@@ -82,6 +82,11 @@ class Job extends SystemModel
         return 'job_keterangan';
     }
 
+    public function fieldSearching()
+    {
+        return $this->field_name();
+    }
+
     public function getFieldNameAttribute()
     {
         return $this->{$this->field_name()};
