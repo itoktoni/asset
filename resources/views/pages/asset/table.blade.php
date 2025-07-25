@@ -102,7 +102,9 @@
                                             </b>
 
                                             @if(env('LEVELING', false))
+                                            <b>
                                             - {{ $table->level3_nama ?? '' }}
+                                            </b>
                                             @endif
                                             <br>
                                             Status : <b>{{ $table->status_nama ?? '-' }}</b>
