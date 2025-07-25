@@ -198,6 +198,7 @@ class Asset extends SystemModel
                 Brand::field_name(),
                 Group::field_name(),
                 Status::field_name(),
+                Level3::field_name(),
             ])
             ->leftJoinRelationship('has_status')
             ->leftJoinRelationship('has_naming')
@@ -205,6 +206,7 @@ class Asset extends SystemModel
             ->leftJoinRelationship('has_model.has_brand')
             ->leftJoinRelationship('has_group')
             ->leftJoinRelationship('has_location')
+            ->leftJoinRelationship('has_location.has_level')
             ->sortable()
             ->filter();
 
