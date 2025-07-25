@@ -37,7 +37,7 @@ class JobController extends MasterController
 
     protected function beforeForm()
     {
-        $location = LokasiModel::getOptions();
+        $location = Query::getLocationMap();
         $asset = Query::getAssetMap();
         $status = JobStatusType::getOptions();
         $saran = SaranModel::getOptions();

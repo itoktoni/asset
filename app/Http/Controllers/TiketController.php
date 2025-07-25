@@ -32,7 +32,7 @@ class TiketController extends MasterController
 
     protected function beforeForm()
     {
-        $location = LokasiModel::getOptions();
+        $location = Query::getLocationMap();
         $asset = Query::getAssetMap();
         $status = TiketType::getOptions();
         $selected_asset = $selected_location = null;
