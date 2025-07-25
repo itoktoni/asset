@@ -58,11 +58,11 @@ trait DataTableTrait
                 $query = $query->where($value, 'like', "%{$search}%");
             }
 
-            foreach (request()->except(['filter', 'search']) as $key => $val) {
-                if (! empty($val)) {
-                    $query = $query->where($key, $val);
-                }
-            }
+            // foreach (request()->except(['filter', 'search', 'page']) as $key => $val) {
+            //     if (! empty($val)) {
+            //         $query = $query->where($key, $val);
+            //     }
+            // }
         }
 
         return $query;
