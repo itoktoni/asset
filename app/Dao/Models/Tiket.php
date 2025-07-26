@@ -117,8 +117,28 @@ class Tiket extends SystemModel
 
     public function dataRepository()
     {
+        $level = [];
+
+        if(env('LEVELING', false))
+        {
+            $level = [
+                Level3::field_primary(),
+                Level3::field_name(),
+            ];
+        }
+
+        $select = [
+            $this->getTable().'.*',
+            Asset::field_name(),
+            Lokasi::field_name(),
+            Job::field_status(),
+            Job::field_primary(),
+            Job::field_analisa(),
+            Job::field_kesimpulan()
+        ];
+
         $query = $this
-            ->addSelect([$this->getTable().'.*', Asset::field_name(), Lokasi::field_name(), Job::field_status(), Job::field_primary(), Job::field_analisa(), Job::field_kesimpulan()])
+            ->addSelect(array_merge($select, $level))
             ->leftJoinRelationship('has_asset')
             ->leftJoinRelationship('has_location')
             ->leftJoinRelationship('has_job')
@@ -126,6 +146,20 @@ class Tiket extends SystemModel
             ->orderBy(Tiket::CREATED_AT, 'DESC')
             ->sortable()
             ->filter();
+
+        if(env('LEVELING', false))
+        {
+            $query = $query
+            ->leftJoinRelationship('has_location.has_level');
+            // ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2.'.'.HAS_LEVEL_1)
+            // ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2);
+
+            if(!empty(auth()->user()->level3))
+            {
+                $query = $query->where(Level3::field_primary(), auth()->user()->level3);
+            }
+        }
+
 
         if(auth()->user()->level == LevelType::Operation)
         {

@@ -9,7 +9,7 @@
                 <x-form-input col="3" label="Serial Number" name="asset_serial_number" />
                 <x-form-input col="3" label="Code Asset" name="asset_code" />
 
-                <x-form-select col="6" label="{{ env('LOCATION_NAME', 'Lokasi') }}" name="asset_id_lokasi" :options="$location" />
+                <x-form-select col="6" class="search" label="{{ env('LOCATION_NAME', 'Lokasi') }}" name="asset_id_lokasi" :options="$location" />
 
                 @if(env('KALIBRASI', false))
                 <x-form-input col="6" label="AKL / AKD" name="asset_akl_akd" />

@@ -277,11 +277,39 @@ class Query
 
     public static function getAssetMap()
     {
-        $query = Asset::select(Asset::field_primary(), Asset::field_name());
+        $level = [];
+
+        if(env('LEVELING', false))
+        {
+            $level = [
+                Level3::field_primary(),
+                Level3::field_name(),
+            ];
+        }
+
+        $select = [
+            Asset::field_primary(),
+            Asset::field_name(),
+        ];
+
+        $query = Asset::select(array_merge($select, $level));
 
         if(!empty(auth()->user()->lokasi))
         {
             $query = $query->where(Asset::field_location_id(), auth()->user()->lokasi);
+        }
+
+        if(env('LEVELING', false))
+        {
+            $query = $query
+            ->leftJoinRelationship('has_location.has_level');
+            // ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2.'.'.HAS_LEVEL_1)
+            // ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2);
+
+            if(!empty(auth()->user()->level3))
+            {
+                $query = $query->where(Level3::field_primary(), auth()->user()->level3);
+            }
         }
 
         $query = $query->get()
@@ -297,9 +325,38 @@ class Query
 
     public static function getLocationMap()
     {
-        $query = Lokasi::select(Lokasi::field_primary(), Area::field_name(), Lokasi::field_name(), Level3::field_name())
-        ->leftJoinRelationship('has_area')
-        ->leftJoinRelationship('has_level');
+        $level = [];
+        if(env('LEVELING', false))
+        {
+            $level = [
+                Level3::field_primary(),
+                Level3::field_name(),
+                Level2::field_name(),
+                Level1::field_name(),
+            ];
+        }
+
+        $select = [
+            Lokasi::field_primary(),
+            Area::field_name(),
+            Lokasi::field_name(),
+        ];
+
+        $query = Lokasi::select(array_merge($select, $level))
+        ->leftJoinRelationship('has_area');
+
+        if(env('LEVELING', false))
+        {
+            $query = $query
+            ->leftJoinRelationship('has_level')
+            ->leftJoinRelationship('has_level'.'.'.HAS_LEVEL_2.'.'.HAS_LEVEL_1)
+            ->leftJoinRelationship('has_level'.'.'.HAS_LEVEL_2);
+
+            if(!empty(auth()->user()->level3))
+            {
+                $query = $query->where(Level3::field_primary(), auth()->user()->level3);
+            }
+        }
 
         if(!empty(auth()->user()->lokasi))
         {
@@ -313,7 +370,27 @@ class Query
 
             if(env('LEVELING', false) && !empty($item->{Level3::field_name()}))
             {
-                $nama = $nama. ' - '.$item->{Level3::field_name()};
+                $level1 = '( '.$item->{Level1::field_name()}.' ) ';
+                $level2 = $item->{Level2::field_name()};
+                $level3 = $item->{Level3::field_name()};
+
+                $level = '';
+                if(!empty($level1))
+                {
+                    $level = $level. $level1;
+                }
+
+                if(!empty($level2))
+                {
+                    $level = $level. $level2.' - ';
+                }
+
+                if(!empty($level3))
+                {
+                    $level = $level. $level3;
+                }
+
+                $nama = $nama. ' - '.$level;
             }
 
             return [$item->field_primary => $nama];

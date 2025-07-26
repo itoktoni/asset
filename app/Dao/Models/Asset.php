@@ -189,26 +189,50 @@ class Asset extends SystemModel
 
     public function rawQuery()
     {
-        $query = $this
-            ->select([$this->getTable().'.*',
-                Penamaan::field_name(),
-                Penamaan::field_nomenklatur(),
-                Lokasi::field_name(),
-                Model::field_name(),
-                Brand::field_name(),
-                Group::field_name(),
-                Status::field_name(),
+        $level = [];
+
+        if(env('LEVELING', false))
+        {
+            $level = [
+                Level3::field_primary(),
                 Level3::field_name(),
-            ])
+            ];
+        }
+
+        $select = [
+            $this->getTable().'.*',
+            Penamaan::field_name(),
+            Penamaan::field_nomenklatur(),
+            Lokasi::field_name(),
+            Model::field_name(),
+            Brand::field_name(),
+            Group::field_name(),
+            Status::field_name(),
+        ];
+
+        $query = $this
+            ->select(array_merge($select, $level))
             ->leftJoinRelationship('has_status')
             ->leftJoinRelationship('has_naming')
             ->leftJoinRelationship('has_model')
             ->leftJoinRelationship('has_model.has_brand')
             ->leftJoinRelationship('has_group')
             ->leftJoinRelationship('has_location')
-            ->leftJoinRelationship('has_location.has_level')
             ->sortable()
             ->filter();
+
+        if(env('LEVELING', false))
+        {
+            $query = $query
+            ->leftJoinRelationship('has_location.has_level');
+            // ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2.'.'.HAS_LEVEL_1)
+            // ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2);
+
+            if(!empty(auth()->user()->level3))
+            {
+                $query = $query->where(Level3::field_primary(), auth()->user()->level3);
+            }
+        }
 
         if(!empty(auth()->user()->lokasi))
         {

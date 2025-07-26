@@ -125,8 +125,18 @@ class Job extends SystemModel
 
     public function dataRepository()
     {
-        $query = $this
-            ->addSelect([$this->getTable().'.*',
+        $level = [];
+
+        if(env('LEVELING', false))
+        {
+            $level = [
+                Level3::field_primary(),
+                Level3::field_name(),
+            ];
+        }
+
+        $select = [
+            $this->getTable().'.*',
                 Lokasi::field_name(),
                 Tiket::field_primary(),
                 Tiket::field_code(),
@@ -134,7 +144,10 @@ class Job extends SystemModel
                 Tiket::field_pelapor(),
                 Tiket::field_tanggal(),
                 Saran::field_name(),
-            ])
+        ];
+
+        $query = $this
+            ->addSelect(array_merge($select, $level))
             ->leftJoinRelationship('has_tiket')
             ->leftJoinRelationship('has_asset')
             ->leftJoinRelationship('has_location')
@@ -142,6 +155,19 @@ class Job extends SystemModel
             ->sortable()
             ->orderBy(self::CREATED_AT , 'DESC')
             ->filter();
+
+        if(env('LEVELING', false))
+        {
+            $query = $query
+            ->leftJoinRelationship('has_location.has_level');
+            // ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2.'.'.HAS_LEVEL_1)
+            // ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2);
+
+            if(!empty(auth()->user()->level3))
+            {
+                $query = $query->where(Level3::field_primary(), auth()->user()->level3);
+            }
+        }
 
         if(!empty(auth()->user()->level == LevelType::Operator))
         {
