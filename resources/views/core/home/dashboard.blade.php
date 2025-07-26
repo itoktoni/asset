@@ -1,6 +1,6 @@
 <x-layout>
 
-    @if(env('MAINTENANCE', false))
+@if(env('MAINTENANCE', false))
 
     <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-12">
@@ -188,7 +188,7 @@
 
     </div>
 
-    @endif
+
 
     @push('footer')
 
@@ -243,5 +243,7 @@
             });
         </script>
     @endpush
+
+@endif
 
 </x-layout>

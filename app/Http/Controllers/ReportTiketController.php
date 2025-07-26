@@ -43,7 +43,7 @@ class ReportTiketController extends ReportController
             $query = $query->whereDate(Tiket::field_tanggal(), '<=', $end_date);
         }
 
-        if(auth()->user()->role == RoleType::User)
+        if(auth()->user()->level == LevelType::Pengguna)
         {
             $query = $query->where(Tiket::field_pelapor_id(), auth()->user()->id);
         }

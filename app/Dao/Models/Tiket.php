@@ -160,13 +160,12 @@ class Tiket extends SystemModel
             }
         }
 
-
         if(auth()->user()->level == LevelType::Operation)
         {
             $query = $query->where($this->field_type(), JobType::Kalibrasi);
         }
 
-        if(auth()->user()->role == RoleType::User)
+        if(auth()->user()->level == LevelType::Pengguna)
         {
             $query = $query->where(Tiket::field_user_id(), auth()->user()->id);
         }

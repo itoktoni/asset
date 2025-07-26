@@ -47,6 +47,8 @@
                                             <br>
                                             <b>Tgl Tiket</b> : {{ formatDate($table->tiket_tanggal) }}
                                             <br>
+                                            Dibuat : <b>{{ $table->tiket_pelapor }}</b>
+                                            <br>
                                             <br>
 
                                             <a href="{{ moduleRoute('getUpdate', ['code' => $table->field_primary]) }}">No. Pekerjaan :  <b class="text-primary">{{ $table->field_code }} </b></a>
