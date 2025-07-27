@@ -12,6 +12,14 @@
 			@if($groups = module('groups'))
 			@foreach($groups as $group_data)
 			<li>
+				@if(!empty($group_data->system_group_url))
+				<a target="_blank" class="icon" href="{{ $group_data->field_url ?? '#' }}">
+					<i class="bi bi-{{ $group_data->field_icon }}"></i>
+					<h5 class="text-center text-white">
+						{{ __($group_data->field_name) }}
+					</h5>
+				</a>
+				@else
 				<a class="icon {{ request()->segment(2) == $group_data->field_primary ? 'active' : '' }}" href="{{ $group_data->field_url ?? '#' }}"
 					data-nav-target="#{{ $group_data->field_primary }}">
 					<i class="bi bi-{{ $group_data->field_icon }}"></i>
@@ -19,6 +27,7 @@
 						{{ __($group_data->field_name) }}
 					</h5>
 				</a>
+				@endif
 			</li>
 			@endforeach
 			@endif
