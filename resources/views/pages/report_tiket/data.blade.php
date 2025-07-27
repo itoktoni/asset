@@ -42,6 +42,7 @@
 				<th>AMBIL</th>
 				<th>SELESAI</th>
 				<th>NAMA ASSET</th>
+				<th>{{ strtoupper(env('LOCATION_NAME')) }}</th>
 				<th>KETERANGAN</th>
 				<th>ANALISA</th>
 				<th>REKOMENDASI</th>
@@ -59,7 +60,20 @@
 				<td>{{ formatDate($table->tiket_tanggal) }}</td>
 				<td>{{ formatDate($table->field_picked_at) }}</td>
 				<td>{{ formatDate($table->field_finished_at) }}</td>
-				<td>{{ $table->field_name }}</td>
+				<td>{{ $table->asset_nama }}</td>
+				<td>
+					{{ $table->lokasi_gabungan ?? '' }}
+
+					@if(env('LEVELING', false))
+						@if(!empty($table->level3_nama))
+						- {{ $table->level3_nama }}
+						@endif
+						@if(!empty($table->level2_nama))
+						- {{ $table->level2_nama }}
+						@endif
+					@endif
+
+				</td>
 				<td>{{ $table->field_description }}</td>
 				<td>{{ $table->field_analisa }}</td>
 				<td>{{ $table->saran_nama ?? '' }}</td>

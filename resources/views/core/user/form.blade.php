@@ -14,7 +14,8 @@
                     <x-form-select col="12" class="search" name="lokasi" :options="$location" />
 
                     @if(env('LEVELING', false))
-                    <x-form-select col="12" class="search" label="{{ env('LEVEL_3', 'Level 3') }}" name="level3" :options="$leveling" />
+                    <x-form-select col="12" class="search" label="{{ env('LEVEL_3', 'Level 3') }}" name="level3" :options="$level3" />
+                    <x-form-select col="12" class="search" label="{{ env('LEVEL_2', 'Level 2') }}" name="level2" :options="$level2" />
                     @endif
                 @endbind
 

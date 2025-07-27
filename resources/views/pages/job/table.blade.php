@@ -68,8 +68,17 @@
 
                                             <b>Keterangan</b> : {!! nl2br($table->field_description) !!}
                                             <br>
-                                            @if ($table->location_nama)
-                                                <b>Ruangan :</b> {{ $table->location_nama }}
+                                            @if ($table->lokasi_gabungan)
+                                                <b>Ruangan :</b>
+                                                {{ $table->lokasi_gabungan }}
+                                                @if(env('LEVELING', false))
+                                                    @if(!empty($table->level3_nama))
+                                                    - {{ $table->level3_nama }}
+                                                    @endif
+                                                    @if(!empty($table->level2_nama))
+                                                    - {{ $table->level2_nama }}
+                                                    @endif
+                                                @endif
                                             @endif
                                         </td>
 

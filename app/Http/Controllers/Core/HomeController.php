@@ -120,7 +120,6 @@ class HomeController extends Controller
                 }
             }
 
-
             //KOREKTIF
             $korektif = Job::where(Job::field_type(), JobType::Korektif);
             $total_korektif = Job::where(Job::field_type(), JobType::Korektif)->where(Job::field_status(), JobStatusType::Selesai());

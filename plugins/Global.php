@@ -29,6 +29,7 @@ define('HAS_LEVEL_3', 'has_level3');
 define('HAS_LEVEL_2', 'has_level2');
 define('HAS_LEVEL_1', 'has_level1');
 define('HAS_BRAND', 'has_brand');
+define('HAS_LOCATION', 'has_location');
 
 define('UPLOAD', 'upload');
 define('KEY', 'key');

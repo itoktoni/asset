@@ -35,7 +35,7 @@
 			<tr>
 				<th width="1">No. </th>
 				<th>NAMA ASSET</th>
-				<th>RUANGAN</th>
+				<th>{{ strtoupper(env('LOCATION_NAME')) }}</th>
 				<th>KALIBRASI TERAKHIR</th>
 				<th>KALIBRASI SELANJUTNYA</th>
 				<th>PELAKSANA</th>
@@ -47,7 +47,18 @@
 			<tr>
 				<td>{{ $loop->iteration }}</td>
 				<td>{{ $table->field_name }}</td>
-				<td>{{ $table->lokasi_gabungan ?? '' }}</td>
+				<td>
+					{{ $table->lokasi_gabungan }}
+
+					@if(env('LEVELING', false))
+						@if(!empty($table->level3_nama))
+						- {{ $table->level3_nama }}
+						@endif
+						@if(!empty($table->level2_nama))
+						- {{ $table->level2_nama }}
+						@endif
+					@endif
+				</td>
 				<td>{{ formatDate($table->field_tanggal_expired) }}</td>
 				<td>{{ formatDate($table->field_next_expired) }}</td>
 				<td>{{ $table->vendor_nama ?? '' }}</td>

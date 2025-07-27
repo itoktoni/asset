@@ -124,6 +124,8 @@ class Tiket extends SystemModel
             $level = [
                 Level3::field_primary(),
                 Level3::field_name(),
+                Level2::field_primary(),
+                Level2::field_name(),
             ];
         }
 
@@ -150,13 +152,18 @@ class Tiket extends SystemModel
         if(env('LEVELING', false))
         {
             $query = $query
-            ->leftJoinRelationship('has_location.has_level');
+            ->leftJoinRelationship('has_location.has_level')
+            ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2);
             // ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2.'.'.HAS_LEVEL_1)
-            // ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2);
 
             if(!empty(auth()->user()->level3))
             {
                 $query = $query->where(Level3::field_primary(), auth()->user()->level3);
+            }
+
+            if(!empty(auth()->user()->level2))
+            {
+                $query = $query->where(Level2::field_primary(), auth()->user()->level2);
             }
         }
 

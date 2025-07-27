@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dao\Enums\Core\LevelType;
 use App\Dao\Enums\Core\RoleType;
 use App\Dao\Enums\JobType;
 use App\Dao\Models\Tiket;

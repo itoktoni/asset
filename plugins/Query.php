@@ -222,8 +222,8 @@ class Query
         ->leftJoinRelationship(HAS_LEVEL_2.'.'.HAS_LEVEL_1)
         ->leftJoinRelationship(HAS_LEVEL_2)
         ->get()
-        ->mapWithKeys(function($item){
-
+        ->mapWithKeys(function($item)
+        {
             return [$item->field_primary => '( '.$item->{Level1::field_name()}.' ) '.$item->{Level2::field_name()}.' - '.$item->field_name];
         }) ?? [];
 
@@ -235,9 +235,9 @@ class Query
         $query = Level2::select([Level2::field_primary(), Level2::field_name(), Level1::field_name()])
         ->leftJoinRelationship(HAS_LEVEL_1)
         ->get()
-        ->mapWithKeys(function($item){
-
-            return [$item->field_primary => $item->{Level1::field_name()}.' - '.$item->field_name];
+        ->mapWithKeys(function($item)
+        {
+            return [$item->field_primary => '( '.$item->{Level1::field_name()}.' ) '.$item->field_name];
         }) ?? [];
 
         return $query;
@@ -248,8 +248,8 @@ class Query
         $query = Model::select([Model::field_primary(), Model::field_name(), Brand::field_name()])
         ->leftJoinRelationship(HAS_BRAND)
         ->get()
-        ->mapWithKeys(function($item){
-
+        ->mapWithKeys(function($item)
+        {
             return [$item->field_primary => $item->{Brand::field_name()}.' - '.$item->field_name];
         }) ?? [];
 
@@ -260,8 +260,8 @@ class Query
     {
         $query = Penamaan::select(Penamaan::field_primary(), Penamaan::field_nomenklatur(), Penamaan::field_name())
         ->get()
-        ->mapWithKeys(function($item){
-
+        ->mapWithKeys(function($item)
+        {
             $nama = $item->field_name;
 
             if(!empty($item->field_nomenklatur))
@@ -302,13 +302,18 @@ class Query
         if(env('LEVELING', false))
         {
             $query = $query
-            ->leftJoinRelationship('has_location.has_level');
+            ->leftJoinRelationship('has_location.has_level')
+            ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2);
             // ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2.'.'.HAS_LEVEL_1)
-            // ->leftJoinRelationship('has_location.has_level'.'.'.HAS_LEVEL_2);
 
             if(!empty(auth()->user()->level3))
             {
                 $query = $query->where(Level3::field_primary(), auth()->user()->level3);
+            }
+
+            if(!empty(auth()->user()->level2))
+            {
+                $query = $query->where(Level2::field_primary(), auth()->user()->level2);
             }
         }
 
@@ -355,6 +360,11 @@ class Query
             if(!empty(auth()->user()->level3))
             {
                 $query = $query->where(Level3::field_primary(), auth()->user()->level3);
+            }
+
+            if(!empty(auth()->user()->level2))
+            {
+                $query = $query->where(Level2::field_primary(), auth()->user()->level2);
             }
         }
 

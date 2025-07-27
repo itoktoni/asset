@@ -92,9 +92,20 @@
 
                                             <b>Keterangan</b> : {!! nl2br($table->field_description) !!}
 
-                                            @if($table->location_nama)
+                                            @if($table->lokasi_gabungan)
                                             <br>
-                                            <b>{{ env('LOCATION_NAME', 'Lokasi') }}</b> : {{ $table->location_nama }}
+                                            <b>{{ env('LOCATION_NAME', 'Lokasi') }}</b>
+                                            : {{ $table->lokasi_gabungan }}
+
+                                            @if(env('LEVELING', false))
+                                                @if(!empty($table->level3_nama))
+                                                - {{ $table->level3_nama }}
+                                                @endif
+                                                @if(!empty($table->level2_nama))
+                                                - {{ $table->level2_nama }}
+                                                @endif
+                                            @endif
+
                                             @endif
 
                                             <br>

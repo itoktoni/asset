@@ -41,8 +41,7 @@
 				<th>NAMA ASSET</th>
 				<th>BRAND</th>
 				<th>MODEL/TIPE</th>
-				<th>RUANGAN</th>
-				<th>FULL NAME ASSET</th>
+				<th>{{ strtoupper(env('LOCATION_NAME')) }}</th>
 				<th>TANGGAL DIAKUI</th>
 				<th>STATUS</th>
 				<th>HARGA</th>
@@ -63,8 +62,19 @@
 				<td>{{ $table->penamaan_nama }}</td>
 				<td>{{ $table->brand_nama }}</td>
 				<td>{{ $table->model_nama }}</td>
-				<td>{{ $table->lokasi_gabungan ?? '' }}</td>
-				<td>{{ $table->field_name }}</td>
+				<td>
+					{{ $table->lokasi_gabungan ?? '' }}
+
+					@if(env('LEVELING', false))
+						@if(!empty($table->level3_nama))
+						- {{ $table->level3_nama }}
+						@endif
+						@if(!empty($table->level2_nama))
+						- {{ $table->level2_nama }}
+						@endif
+					@endif
+
+				</td>
 				<td>{{ formatDate($table->field_tanggal_kunjungan) }}</td>
 				<td>{{ $table->field_status ?? '' }}</td>
 				<td>{{ $table->field_harga ?? '' }}</td>

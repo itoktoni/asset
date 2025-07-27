@@ -31,13 +31,15 @@ class UserController extends MasterController
         $roles = RoleModel::getOptions();
         $level = LevelType::getOptions();
         $location = Query::getLocationMap();
-        $leveling = Query::getLevelMap();
+        $level3 = Query::getLevelMap();
+        $level2 = Query::getLevel2();
 
         self::$share = [
             'roles' => $roles,
             'location' => $location,
             'level' => $level,
-            'leveling' => $leveling,
+            'level3' => $level3,
+            'level2' => $level2,
         ];
     }
 
