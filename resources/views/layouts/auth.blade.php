@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>{{ env('APP_NAME', 'System') }}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="manifest" href="/manifest.json">
 
 		@vite(['resources/auth/css/style.scss'])
 
@@ -35,37 +36,31 @@
 
                 @yield('content')
 
-				<button class="btn btn-primary" id="installButton">Add to Home Screen</button>
+				<button class="btn btn-primary text-center" id="installButton">Add to Home Screen</button>
 
 			</div>
 		</div>
 
 		<script>
-			document.getElementById('installButton').addEventListener('click', function() {
-				// Check if the browser supports the Web App Manifest
-				if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-					alert('This app is already installed on your home screen!');
-					return;
-				}
+			let deferredPrompt;
 
-				// Show installation prompt for PWA-capable browsers
-				if ('BeforeInstallPromptEvent' in window) {
-					window.addEventListener('beforeinstallprompt', (e) => {
-						e.preventDefault();
-						e.prompt();
-					});
-				} else {
-					// Fallback for non-PWA browsers (manual instructions)
-					if (/Android/i.test(navigator.userAgent)) {
-						alert('To add to home screen:\n1. Open browser menu\n2. Tap "Add to Home screen"');
-					} else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-						alert('To add to home screen:\n1. Tap the share icon\n2. Tap "Add to Home Screen"');
-					} else {
-						alert('Your device doesn\'t support direct home screen installation. Please use your browser\'s menu to add this site to your home screen.');
-					}
-				}
+			window.addEventListener('beforeinstallprompt', (e) => {
+			  e.preventDefault();
+			  deferredPrompt = e;
+			  document.getElementById('installButton').style.display = 'block';
 			});
-		</script>
+
+			document.getElementById('installButton').addEventListener('click', async () => {
+			  if (deferredPrompt) {
+				deferredPrompt.prompt();
+				const { outcome } = await deferredPrompt.userChoice;
+				if (outcome === 'accepted') {
+				  console.log('Shortcut added to home screen');
+				}
+				deferredPrompt = null;
+			  }
+			});
+		  </script>
 
 	</body>
 </html>
