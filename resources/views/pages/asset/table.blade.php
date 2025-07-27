@@ -99,7 +99,6 @@
                                             {{ env('LOCATION_NAME', 'Lokasi') }} :
                                             <b>
                                                 {{ $table->lokasi_gabungan ?? '-' }}
-                                            </b>
 
                                             @if(env('LEVELING', false))
                                                 @if(!empty($table->level3_nama))
@@ -109,6 +108,8 @@
                                                 - {{ $table->level2_nama }}
                                                 @endif
                                             @endif
+
+                                            </b>
                                             <br>
                                             Status : <b>{{ $table->status_nama ?? '-' }}</b>
                                             <br>
