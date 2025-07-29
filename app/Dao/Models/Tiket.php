@@ -132,6 +132,7 @@ class Tiket extends SystemModel
         $select = [
             $this->getTable().'.*',
             Asset::field_name(),
+            Asset::field_department_id(),
             Lokasi::field_name(),
             Job::field_status(),
             Job::field_primary(),
@@ -180,6 +181,11 @@ class Tiket extends SystemModel
         if(!empty(auth()->user()->lokasi))
         {
             $query = $query->where($this->field_location_id(), auth()->user()->lokasi);
+        }
+
+        if(!empty(auth()->user()->department))
+        {
+            $query = $query->where(Asset::field_department_id(), auth()->user()->department);
         }
 
         if(request()->get('type') != 'report')

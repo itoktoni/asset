@@ -77,7 +77,7 @@
 				</td>
 				<td>{{ formatDate($table->field_tanggal_kunjungan) }}</td>
 				<td>{{ $table->field_status ?? '' }}</td>
-				<td>{{ $table->field_harga ?? '' }}</td>
+				<td>{{ $table->field_harga_perolehan ?? '' }}</td>
 				<td>{{ $table->field_pendanaan ?? '' }}</td>
 				<td>{{ $table->vendor_nama ?? '' }}</td>
 				<td>{{ $table->field_status_kepemilikan ?? '' }}</td>

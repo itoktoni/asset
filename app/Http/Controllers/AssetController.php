@@ -7,7 +7,10 @@ use App\Dao\Enums\Core\YesNoType;
 use App\Dao\Enums\KepemilikanType;
 use App\Dao\Enums\MaintenanceType;
 use App\Dao\Enums\PendanaanType;
+use App\Dao\Models\Department;
+use App\Dao\Models\Harta;
 use App\Dao\Models\Job;
+use App\Dao\Models\Penyusutan;
 use App\Dao\Models\Tiket;
 use App\Http\Controllers\Core\MasterController;
 use App\Http\Function\CreateFunction;
@@ -38,6 +41,8 @@ class AssetController extends MasterController
 
     protected function beforeForm()
     {
+        $kalibrasi = $maintenance = $harta = $kepemilikan = [];
+
         $department = DepartmentModel::getOptions();
         $type = Query::getModelMap();
         $teknisi = GroupModel::getOptions();
@@ -46,9 +51,22 @@ class AssetController extends MasterController
         $vendor = VendorModel::getOptions();
         $status = StatusModel::getOptions();
         $pendanaan = PendanaanType::getOptions();
-        $maintenance = MaintenanceType::getOptions();
-        $kepemilikan = KepemilikanType::getOptions();
-        $kalibrasi = YesNoType::getOptions();
+
+        if(env('KALIBRASI', false))
+        {
+            $kalibrasi = YesNoType::getOptions();
+        }
+
+        if(env('MAINTENANCE', false))
+        {
+            $maintenance = MaintenanceType::getOptions();
+            $kepemilikan = KepemilikanType::getOptions();
+        }
+
+        if(env('PENYUSUTAN', false))
+        {
+            $harta = Harta::getOptions();
+        }
 
         self::$share = [
             'kalibrasi' => $kalibrasi,
@@ -62,6 +80,7 @@ class AssetController extends MasterController
             'teknisi' => $teknisi,
             'type' => $type,
             'department' => $department,
+            'harta' => $harta,
         ];
     }
 
@@ -97,14 +116,37 @@ class AssetController extends MasterController
         $model = $this->get($code, ['has_penamaan']);
         $is_kalibrasi = $model->has_penamaan->field_kalibrasi ?? YesNoType::No;
 
-        $tanggal_kunjungan = $this->tanggalKunjungan($model);
-        $status_expired = statusExpired($model->field_next_expired);
+        $tanggal_kunjungan = null;
+        if(env('MAINTENANCE', false))
+        {
+            $tanggal_kunjungan = $this->tanggalKunjungan($model);
+        }
+
+        $status_expired = false;
+        if(env('KALIBRASI', false))
+        {
+            $status_expired = statusExpired($model->field_next_expired);
+        }
+
+        $department = [];
+        if(env('DEPARTMENT', false))
+        {
+            $department = Department::getOptions();
+        }
+
+        $penyusutan = [];
+        if(env('PENYUSUTAN', false))
+        {
+            $penyusutan = Penyusutan::where(Penyusutan::field_asset_id(), $code)->get();
+        }
 
         return moduleView(modulePathForm(path: self::$is_core), $this->share([
             'model' => $model,
             'status_expired' => $status_expired,
             'is_kalibrasi' => $is_kalibrasi,
             'tanggal_kunjungan' => $tanggal_kunjungan,
+            'penyusutan' => $penyusutan,
+            'department' => $department,
         ]));
     }
 

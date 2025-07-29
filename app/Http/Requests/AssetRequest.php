@@ -16,14 +16,21 @@ class AssetRequest extends GeneralRequest
     public function prepareForValidation()
     {
         $next = null;
-        if(!empty($this->{Asset::field_tanggal_expired()}))
+
+        if(env('KALIBRASI', false) && !empty($this->{Asset::field_tanggal_expired()}))
         {
             $next = Carbon::createFromDate($this->{Asset::field_tanggal_expired()})->addYear(1);
+            $this->merge([
+                Asset::field_next_expired() => $next,
+                Asset::field_harga_perolehan() => str_replace('.', '', $this->asset_harga_perolehan),
+            ]);
         }
-
-        $this->merge([
-            Asset::field_next_expired() => $next
-        ]);
+        else
+        {
+            $this->merge([
+                Asset::field_harga_perolehan() => str_replace('.', '', $this->asset_harga_perolehan),
+            ]);
+        }
     }
 
     public function validation(): array

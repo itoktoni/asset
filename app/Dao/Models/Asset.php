@@ -104,6 +104,9 @@ class Asset extends SystemModel
         'asset_deleted_by',
         'asset_updated_by',
         'asset_created_by',
+        'asset_id_penyusutan',
+        'asset_harga_penyusutan',
+        'asset_tanggal_penyusutan',
         'asset_harga_perolehan',
         'asset_tahun_pengadaan',
         'asset_tanggal_diakui',
@@ -177,6 +180,11 @@ class Asset extends SystemModel
         return $this->hasOne(VendorModel::getModel(), VendorModel::field_primary(), $this->field_kalibrasi_id());
     }
 
+    public function has_penyusutan()
+    {
+        return $this->hasOne(Harta::getModel(), Harta::field_primary(), $this->field_penyusutan_id());
+    }
+
     public function has_group()
     {
         return $this->hasOne(GroupModel::getModel(), GroupModel::field_primary(), $this->field_group_id());
@@ -247,6 +255,11 @@ class Asset extends SystemModel
             $query = $query->where($this->field_location_id(), auth()->user()->lokasi);
         }
 
+        if(!empty(auth()->user()->department))
+        {
+            $query = $query->where($this->field_department_id(), auth()->user()->department);
+        }
+
         return $query;
     }
 
@@ -279,7 +292,7 @@ class Asset extends SystemModel
 
         parent::saving(function ($model)
         {
-            if(empty($model->asset_tanggal_kunjungan))
+            if((env('MAINTENANCE', false)) && empty($model->asset_tanggal_kunjungan))
             {
                 $tanggal = $model->asset_tanggal_diakui ?? date('Y-m-d');
 
@@ -292,7 +305,7 @@ class Asset extends SystemModel
                 $model->{self::field_code()} = Query::autoNumber(AssetModel::getTableName(), self::field_code(), date('Ymd'));
             }
 
-            if(empty($model->{self::field_status_kalibrasi()}))
+            if((env('KALIBRASI', false)) && empty($model->{self::field_status_kalibrasi()}))
             {
                 $model->{self::field_tanggal_expired()} = null;
                 $model->{self::field_kalibrasi_id()} = null;

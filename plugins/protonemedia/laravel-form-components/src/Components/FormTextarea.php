@@ -43,7 +43,7 @@ class FormTextarea extends Component
         $icon = null,
         $toggle = null,
         $label = '',
-        string $rows = 'text',
+        String $rows = '',
         $bind = null,
         $default = null,
         $col = null,
@@ -69,9 +69,8 @@ class FormTextarea extends Component
         if ($language) {
             $this->name = "{$name}[{$language}]";
         }
-
         $this->col = $this->col ? 'col-md-'.$this->col : 'col';
-        $this->rows = $this->rows ? '3' : '';
+        $this->rows = $this->rows ? $this->rows : '3';
 
         if (! is_bool($this->label)) {
             $this->label = $this->label ? $this->label : formatLabel($name);

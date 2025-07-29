@@ -117,6 +117,16 @@ trait AssetEntity
         return $this->{$this->field_group_id()};
     }
 
+public static function field_penyusutan_id()
+    {
+        return 'asset_id_penyusutan';
+    }
+
+    public function getFieldPenyusutanIdAttribute()
+    {
+        return $this->{$this->field_penyusutan_id()};
+    }
+
     public static function field_location_id()
     {
         return 'asset_id_lokasi';
@@ -135,6 +145,16 @@ trait AssetEntity
     public function getFieldTanggalKunjunganAttribute()
     {
         return $this->{$this->field_tanggal_kunjungan()};
+    }
+
+    public static function field_tanggal_penyusutan()
+    {
+        return 'asset_tanggal_penyusutan';
+    }
+
+    public function getFieldTanggalPenyusutanAttribute()
+    {
+        return $this->{$this->field_tanggal_penyusutan()};
     }
 
     public static function field_tanggal_expired()
@@ -187,14 +207,24 @@ trait AssetEntity
         return $this->{$this->field_akl_akd()};
     }
 
-    public static function field_harga()
+    public static function field_harga_perolehan()
     {
         return 'asset_harga_perolehan';
     }
 
-    public function getFieldHargaAttribute()
+    public function getFieldHargaPerolehanAttribute()
     {
-        return $this->{$this->field_harga()};
+        return $this->{$this->field_harga_perolehan()};
+    }
+
+    public static function field_harga_penyusutan()
+    {
+        return 'asset_harga_penyusutan';
+    }
+
+    public function getFieldHargaPenyusutanAttribute()
+    {
+        return $this->{$this->field_harga_penyusutan()};
     }
 
     public static function field_model_id()

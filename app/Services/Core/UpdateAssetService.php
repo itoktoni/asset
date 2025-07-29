@@ -16,7 +16,11 @@ class UpdateAssetService
         if ($check['status']) {
 
             $model = $check['data'];
-            $this->calculate($model);
+
+            if(env('MAINTENANCE', false))
+            {
+                $this->calculate($model);
+            }
 
             if (request()->wantsJson()) {
                 return response()->json($check)->getData();

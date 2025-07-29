@@ -11,7 +11,8 @@
             id="{{ $id() }}"
         @endif
 
-        {!! $attributes->merge(['class' => 'form-control ' . ($hasError($name) ? 'is-invalid' : '')]) !!}
-    >@unless($isWired()){!! $value !!}@endunless</textarea>
+        rows="{{ $rows }}"
+
+        {!! $attributes->merge(['class' => 'form-control ']) !!}>@unless($isWired()){!! $value !!}@endunless</textarea>
 
 </div>

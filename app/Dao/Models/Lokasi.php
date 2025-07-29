@@ -65,12 +65,26 @@ class Lokasi extends SystemModel
 
     public function dataRepository()
     {
+        $level = [];
+
+        if(env('LEVELING', false))
+        {
+            $level = [
+                Level3::field_primary(),
+                Level3::field_name(),
+            ];
+        }
+
         $query = $this
-            ->addSelect(['lokasi.*', UserModel::field_name(), Level3::field_name()])
+            ->addSelect(array_merge(['lokasi.*', UserModel::field_name()], $level))
             ->leftJoinRelationship('has_user')
-            ->leftJoinRelationship('has_level')
             ->sortable()
             ->filter();
+
+        if(env('LEVELING', false))
+        {
+            $query = $query->leftJoinRelationship('has_level');
+        }
 
         $query = env('PAGINATION_SIMPLE') ? $query->simplePaginate(env('PAGINATION_NUMBER')) : $query->paginate(env('PAGINATION_NUMBER'));
 

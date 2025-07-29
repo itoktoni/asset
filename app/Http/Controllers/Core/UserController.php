@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Core;
 
 use App\Dao\Enums\Core\LevelType;
+use App\Dao\Models\Department;
 use App\Dao\Models\Lokasi;
 use App\Facades\Model\RoleModel;
 use App\Facades\Model\UserModel;
@@ -31,13 +32,25 @@ class UserController extends MasterController
         $roles = RoleModel::getOptions();
         $level = LevelType::getOptions();
         $location = Query::getLocationMap();
-        $level3 = Query::getLevelMap();
-        $level2 = Query::getLevel2();
+
+        $level2 = $level3 = [];
+        if(env('LEVELING', false))
+        {
+            $level3 = Query::getLevelMap();
+            $level2 = Query::getLevel2();
+        }
+
+        $department = [];
+        if(env('DEPARTMENT', false))
+        {
+            $department = Department::getOptions();
+        }
 
         self::$share = [
             'roles' => $roles,
             'location' => $location,
             'level' => $level,
+            'department' => $department,
             'level3' => $level3,
             'level2' => $level2,
         ];
@@ -59,7 +72,6 @@ class UserController extends MasterController
 
     public function changePassword()
     {
-
         if (request()->method() == 'POST') {
 
             UserModel::find(Auth::user()->field_primary)->update([

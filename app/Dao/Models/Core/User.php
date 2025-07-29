@@ -61,6 +61,7 @@ class User extends Authenticatable implements AuthMustVerifyEmail
         'lokasi',
         'level3',
         'level2',
+        'department',
     ];
 
     public $sortable = [

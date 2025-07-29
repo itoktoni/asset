@@ -38,7 +38,7 @@ class KalibrasiExpired extends Command
             ->orWhereNull(Asset::field_cek_kalibrasi())
             ->whereYear(Asset::field_tanggal_expired(), date('Y'))
             ->where(Asset::field_tanggal_expired(), $kalibrasi)
-            ->limit(env('LIMIT_JADWAL', 10))
+            ->limit(env('LIMIT_JOB', 10))
             ->get();
 
         foreach ($data as $item)

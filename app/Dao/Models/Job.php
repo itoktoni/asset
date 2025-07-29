@@ -141,6 +141,7 @@ class Job extends SystemModel
             $this->getTable().'.*',
                 Lokasi::field_name(),
                 Asset::field_name(),
+                Asset::field_department_id(),
                 Tiket::field_primary(),
                 Tiket::field_code(),
                 Tiket::field_name(),
@@ -191,6 +192,11 @@ class Job extends SystemModel
         if(!empty(auth()->user()->lokasi))
         {
             $query = $query->where($this->field_location_id(), auth()->user()->lokasi);
+        }
+
+        if(!empty(auth()->user()->department))
+        {
+            $query = $query->where(Asset::field_department_id(), auth()->user()->department);
         }
 
         if(request()->get('type') != 'report')

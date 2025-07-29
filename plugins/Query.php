@@ -299,6 +299,11 @@ class Query
             $query = $query->where(Asset::field_location_id(), auth()->user()->lokasi);
         }
 
+        if(!empty(auth()->user()->department))
+        {
+            $query = $query->where(Asset::field_department_id(), auth()->user()->department);
+        }
+
         if(env('LEVELING', false))
         {
             $query = $query

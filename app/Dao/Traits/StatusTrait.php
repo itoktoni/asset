@@ -16,7 +16,10 @@ trait StatusTrait
 
         $data = [];
         foreach ($collect as $item) {
-            $data[$item->value] = $item->description;
+            if(!empty($item->value))
+            {
+                $data[$item->value] = $item->description;
+            }
         }
 
         return $data;

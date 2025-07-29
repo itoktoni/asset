@@ -29,7 +29,13 @@ class LokasiController extends MasterController
 
     protected function beforeForm()
     {
-        $level = Query::getLevelMap();
+        $level = [];
+
+        if(env('LEVELING', false))
+        {
+            $level = Query::getLevelMap();
+        }
+
         $area = AreaModel::getOptions();
         $user = UserModel::getOptions();
 

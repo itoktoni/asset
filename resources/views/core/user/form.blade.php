@@ -11,7 +11,11 @@
                     <x-form-input col="3" name="phone" />
                     <x-form-select col="3" class="search" name="role" :options="$roles" />
                     <x-form-select col="3" class="search" name="level" :options="$level" />
-                    <x-form-select col="12" class="search" name="lokasi" :options="$location" />
+                    <x-form-select col="9" class="search" name="lokasi" :options="$location" />
+
+                    @if(env('DEPARTMENT', false))
+                    <x-form-select col="3" name="department" :options="$department" />
+                    @endif
 
                     @if(env('LEVELING', false))
                     <x-form-select col="12" class="search" label="{{ env('LEVEL_3', 'Level 3') }}" name="level3" :options="$level3" />
