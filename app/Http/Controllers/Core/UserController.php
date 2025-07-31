@@ -99,7 +99,7 @@ class UserController extends MasterController
         $user->api_token = $string_token;
         $user->save();
 
-        return Notes::token($user->toArray());
+        return Notes::token(array_merge($user->toArray(), ['api_token' => $string_token]));
     }
 
     public function getExportJob()

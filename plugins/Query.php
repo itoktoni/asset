@@ -347,9 +347,10 @@ class Query
         }
 
         $select = [
-            Lokasi::field_primary(),
             Area::field_name(),
+            Lokasi::field_primary(),
             Lokasi::field_name(),
+            Lokasi::field_nama(),
         ];
 
         $query = Lokasi::select(array_merge($select, $level))
@@ -381,7 +382,12 @@ class Query
         $query = $query->get()
         ->mapWithKeys(function($item){
 
-            $nama = $item->field_name;
+            $nama = $item->field_nama;
+
+            if(!empty($item->area_nama))
+            {
+                $nama = $item->field_nama.' @ '.$item->area_nama;
+            }
 
             if(env('LEVELING', false) && !empty($item->{Level3::field_name()}))
             {

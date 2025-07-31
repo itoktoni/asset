@@ -50,6 +50,7 @@ class User extends Authenticatable implements AuthMustVerifyEmail
         'email',
         'phone',
         'password',
+        'api_token',
         'username',
         'role',
         'birthday',
@@ -77,7 +78,7 @@ class User extends Authenticatable implements AuthMustVerifyEmail
     ];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token'
     ];
 
     protected $casts = [

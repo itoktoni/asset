@@ -65,6 +65,11 @@ class Penamaan extends SystemModel
         return $this->{$this->field_name()};
     }
 
+    public function fieldSearching()
+    {
+        return $this->field_name();
+    }
+
     public function has_category()
     {
         return $this->hasOne(CategoryModel::getModel(), CategoryModel::field_primary(), $this->field_category_id());

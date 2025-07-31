@@ -279,15 +279,19 @@ class Asset extends SystemModel
     {
         parent::created(function ($model)
         {
-            $id = DB::getPdo()->lastInsertId();
-            Job::Create([
-                Job::field_assign_id() => auth()->user()->id,
-                Job::field_type() => JobType::Inventaris,
-                Job::field_status() => JobStatusType::Selesai,
-                Job::field_asset_id() => $id,
-                Job::field_location_id() => $model->field_location_id,
-                Job::field_description() => $model->asset_keterangan,
-            ]);
+            if(env('MAINTENANCE', false))
+            {
+                $id = DB::getPdo()->lastInsertId();
+                Job::Create([
+                    Job::field_assign_id() => auth()->user()->id,
+                    Job::field_type() => JobType::Inventaris,
+                    Job::field_status() => JobStatusType::Selesai,
+                    Job::field_asset_id() => $id,
+                    Job::field_location_id() => $model->field_location_id,
+                    Job::field_description() => $model->asset_keterangan,
+                ]);
+            }
+
         });
 
         parent::saving(function ($model)

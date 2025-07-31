@@ -23,7 +23,9 @@ use App\Facades\Model\LokasiModel;
 use App\Facades\Model\StatusModel;
 use App\Facades\Model\VendorModel;
 use App\Http\Requests\AssetRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Services\Core\UpdateAssetService;
+use App\Services\CreateRegisterService;
 use App\Services\Master\CreateService;
 use Illuminate\Support\Facades\Http;
 use Plugins\Query;
@@ -41,14 +43,13 @@ class AssetController extends MasterController
 
     protected function beforeForm()
     {
-        $kalibrasi = $maintenance = $harta = $kepemilikan = [];
+        $kalibrasi = $maintenance = $harta = $kepemilikan = $vendor = [];
 
         $department = DepartmentModel::getOptions();
         $type = Query::getModelMap();
         $teknisi = GroupModel::getOptions();
         $location = Query::getLocationMap();
         $naming = Query::getPenamaanMap();
-        $vendor = VendorModel::getOptions();
         $status = StatusModel::getOptions();
         $pendanaan = PendanaanType::getOptions();
 
@@ -61,6 +62,7 @@ class AssetController extends MasterController
         {
             $maintenance = MaintenanceType::getOptions();
             $kepemilikan = KepemilikanType::getOptions();
+            $vendor = VendorModel::getOptions();
         }
 
         if(env('PENYUSUTAN', false))
@@ -74,7 +76,6 @@ class AssetController extends MasterController
             'maintenance' => $maintenance,
             'pendanaan' => $pendanaan,
             'status' => $status,
-            'vendor' => $vendor,
             'naming' => $naming,
             'location' => $location,
             'teknisi' => $teknisi,
@@ -175,7 +176,22 @@ class AssetController extends MasterController
         $this->beforeForm();
         $this->beforeUpdate($code);
 
-        $model = $this->get($code, ['has_job', 'has_location']);
+        $job = [];
+
+        if(env('MAINTENANCE', false))
+        {
+            $model = $this->get($code, ['has_job', 'has_location']);
+            $job = Job::with(['has_user', 'has_saran'])
+            ->where(Job::field_asset_id(), $model->field_primary)
+            ->orderBy(Job::field_tanggal(), 'DESC')
+            ->limit(10)
+            ->get();
+        }
+        else
+        {
+            $model = $this->get($code, ['has_location']);
+        }
+
         if(empty($model->field_sertifikat))
         {
             $client = Http::asForm()->post('https://ecm.co.id/sertifikat/view_trx', [
@@ -199,17 +215,16 @@ class AssetController extends MasterController
             $url = fileUrl($model->field_sertifikat, 'sertifikat');
         }
 
-
-        $job = Job::with(['has_user', 'has_saran'])
-            ->where(Job::field_asset_id(), $model->field_primary)
-            ->orderBy(Job::field_tanggal(), 'DESC')
-            ->limit(10)
-            ->get();
-
         return moduleView(modulePathForm('detail', 'asset'), $this->share([
             'model' => $model,
             'job' => $job,
             'url' => $url,
         ]));
+    }
+
+    public function postRegister(RegisterRequest $request, CreateRegisterService $service)
+    {
+        $data = $service->save($this->model, $request);
+        return Response::redirectBack($data);
     }
 }

@@ -28,6 +28,8 @@ class Model extends SystemModel
      */
     protected $fillable = ['model_id', 'model_nama', 'model_id_brand'];
 
+    protected $with = ['has_brand'];
+
     public $sortable = [
         'has_brand.brand_nama',
         'model_nama',

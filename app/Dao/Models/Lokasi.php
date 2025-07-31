@@ -43,6 +43,16 @@ class Lokasi extends SystemModel
         return 'lokasi_gabungan';
     }
 
+    public static function field_nama()
+    {
+        return 'lokasi_nama';
+    }
+
+    public function getFieldNamaAttribute()
+    {
+        return $this->{$this->field_nama()};
+    }
+
     public function getFieldNameAttribute()
     {
         return $this->{$this->field_name()};
@@ -76,7 +86,13 @@ class Lokasi extends SystemModel
         }
 
         $query = $this
-            ->addSelect(array_merge(['lokasi.*', UserModel::field_name()], $level))
+            ->addSelect(array_merge([
+                'lokasi.*',
+                UserModel::field_name(),
+                Area::field_name()],
+                $level
+            ))
+            ->leftJoinRelationship('has_area')
             ->leftJoinRelationship('has_user')
             ->sortable()
             ->filter();

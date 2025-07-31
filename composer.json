@@ -19,7 +19,7 @@
         "kirschbaum-development/eloquent-power-joins": "*",
         "kyslik/column-sortable": "^6.4",
         "laravel/framework": "^11.0",
-        "laravel/sanctum": "*",
+        "laravel/sanctum": "^4.0",
         "laravel/telescope": "^5.0",
         "laravel/ui": "^4.5",
         "laravie/serialize-queries": "^3.0",
