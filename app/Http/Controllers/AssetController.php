@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Dao\Enums\AssetStatusType;
 use App\Dao\Enums\Core\YesNoType;
 use App\Dao\Enums\KepemilikanType;
 use App\Dao\Enums\MaintenanceType;
@@ -19,7 +18,6 @@ use App\Services\Master\SingleService;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\DepartmentModel;
 use App\Facades\Model\GroupModel;
-use App\Facades\Model\LokasiModel;
 use App\Facades\Model\StatusModel;
 use App\Facades\Model\VendorModel;
 use App\Http\Requests\AssetRequest;

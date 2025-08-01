@@ -8,6 +8,8 @@ use App\Dao\Enums\Core\RoleType;
 use App\Dao\Enums\Core\YesNoType;
 use App\Dao\Enums\JobStatusType;
 use App\Dao\Enums\JobType;
+use App\Dao\Enums\MovementType;
+use App\Dao\Enums\WriteoffType;
 use App\Dao\Models\Core\SystemGroup;
 use App\Facades\Model\BrandModel;
 use App\Facades\Model\PenamaanModel;
@@ -270,6 +272,8 @@ return [
         'Template' => Template::class,
         'Views' => Views::class,
         'BooleanType' => BooleanType::class,
+        'WriteoffType' => WriteoffType::class,
+        'MovementType' => MovementType::class,
         'MenuType' => MenuType::class,
         'LevelType' => LevelType::class,
         'RoleType' => RoleType::class,

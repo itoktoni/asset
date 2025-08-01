@@ -1,5 +1,8 @@
 <?php
 
+use App\Dao\Enums\Core\LevelType;
+use App\Dao\Models\Asset;
+use App\Dao\Models\Core\User;
 use App\Dao\Models\Lokasi;
 use App\Dao\Models\Model;
 use App\Dao\Models\Penamaan;
@@ -8,6 +11,8 @@ use App\Http\Controllers\AssetController;
 use App\Http\Controllers\Core\GroupsController;
 use App\Http\Controllers\Core\UserController;
 use App\Http\Controllers\Core\WebhookController;
+use App\Http\Controllers\MovementController;
+use App\Http\Controllers\WriteoffController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +36,20 @@ Route::middleware(['auth:sanctum'])->group(function () {
         $merge = [];
 
         $status = Status::get()->map(function($item){
+            return [
+                'id' => $item->field_primary,
+                'nama' => $item->field_name
+            ];
+        });
+
+        $user = User::get()->map(function($item){
+            return [
+                'id' => $item->field_primary,
+                'nama' => $item->field_name
+            ];
+        });
+
+        $approval = User::where(User::field_level(), LevelType::Management)->get()->map(function($item){
             return [
                 'id' => $item->field_primary,
                 'nama' => $item->field_name
@@ -119,6 +138,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
         });
 
         $data = array_merge([
+            'approval' => $approval,
+            'user' => $user,
             'status' => $status,
             'model' => $model,
             'lokasi' => $lokasi,
@@ -130,6 +151,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     Route::post('asset', [AssetController::class, 'postRegister']);
+    Route::post('movement', [MovementController::class, 'postMovement']);
+    Route::post('writeoff', [WriteoffController::class, 'postWriteoff']);
 
     Route::get('groups', [GroupsController::class, 'getData']);
 });

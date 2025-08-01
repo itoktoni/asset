@@ -20,7 +20,7 @@ class LevelType extends Enum implements LocalizedEnum
 
     public const Admin = 30;
 
-    public const Owner = 40;
+    public const Management = 40;
 
     public const Developer = 100;
 }

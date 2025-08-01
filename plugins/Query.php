@@ -191,6 +191,13 @@ class Query
         return $newcode;
     }
 
+    public function getData()
+    {
+        $query = $this->model->dataRepository()->groupBy($this->model->field_primary());
+
+        return $query;
+    }
+
     public static function getUserByRole($role = false)
     {
         $data = [];
