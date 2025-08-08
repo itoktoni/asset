@@ -6,6 +6,7 @@ use App\Dao\Enums\Core\YesNoType;
 use App\Dao\Enums\KepemilikanType;
 use App\Dao\Enums\MaintenanceType;
 use App\Dao\Enums\PendanaanType;
+use App\Dao\Models\Asset;
 use App\Dao\Models\Department;
 use App\Dao\Models\Harta;
 use App\Dao\Models\Job;
@@ -26,6 +27,7 @@ use App\Services\Core\UpdateAssetService;
 use App\Services\CreateRegisterService;
 use App\Services\Master\CreateService;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Plugins\Query;
 use Plugins\Response;
 
@@ -112,8 +114,8 @@ class AssetController extends MasterController
         $this->beforeForm();
         $this->beforeUpdate($code);
 
-        $model = $this->get($code, ['has_penamaan']);
-        $is_kalibrasi = $model->has_penamaan->field_kalibrasi ?? YesNoType::No;
+        $model = $this->get($code, ['has_naming']);
+        $is_kalibrasi = $model->has_naming->field_kalibrasi ?? YesNoType::No;
 
         $tanggal_kunjungan = null;
         if(env('MAINTENANCE', false))
@@ -224,5 +226,44 @@ class AssetController extends MasterController
     {
         $data = $service->save($this->model, $request);
         return Response::redirectBack($data);
+    }
+
+    public function getAsset()
+    {
+        $asset = Asset::with(['has_naming', 'has_model'])->get()->map(function($item){
+
+            $name = $item->field_name;
+
+            // Sterilisator Suhu Rendah ~ ( Elitech ) ZTP80-ECO | 13030688
+
+            if(!empty($item->has_model))
+            {
+                $name = $name.' ~ '.$item->has_model->field_name;
+            }
+
+            $model = $item->has_model;
+            if(!empty($model))
+            {
+                if(!empty($model->has_brand))
+                {
+                    $name = $name.' ~ ( '.$model->has_brand->field_name.' ) '.$model->field_name;
+                }
+                else
+                {
+                    $name = $name.' ~ '.$model->field_name;
+                }
+            }
+
+            if(!empty($item->field_serial_number())){
+                $name = $name.' | '.$item->field_serial_number;
+            }
+
+            return [
+                'id' => $item->field_primary,
+                'nama' => $name
+            ];
+        });
+
+        return $asset;
     }
 }

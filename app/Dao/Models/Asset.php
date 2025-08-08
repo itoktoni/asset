@@ -140,11 +140,6 @@ class Asset extends SystemModel
         return $this->{$this->field_name()};
     }
 
-    public function has_penamaan()
-    {
-        return $this->hasOne(PenamaanModel::getModel(), PenamaanModel::field_primary(), $this->field_penamaan_id());
-    }
-
     public function has_status()
     {
         return $this->hasOne(StatusModel::getModel(), StatusModel::field_primary(), $this->field_status());

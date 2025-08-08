@@ -12,6 +12,7 @@ use App\Http\Controllers\Core\GroupsController;
 use App\Http\Controllers\Core\UserController;
 use App\Http\Controllers\Core\WebhookController;
 use App\Http\Controllers\MovementController;
+use App\Http\Controllers\OpnameController;
 use App\Http\Controllers\WriteoffController;
 use Illuminate\Support\Facades\Route;
 
@@ -103,40 +104,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
             $merge['department'] = $department;
         }
 
-        $asset = Asset::with(['has_penamaan', 'has_model'])->get()->map(function($item){
-
-            $name = $item->field_name;
-
-            // Sterilisator Suhu Rendah ~ ( Elitech ) ZTP80-ECO | 13030688
-
-            if(!empty($item->has_model))
-            {
-                $name = $name.' ~ '.$item->has_model->field_name;
-            }
-
-            $model = $item->has_model;
-            if(!empty($model))
-            {
-                if(!empty($model->has_brand))
-                {
-                    $name = $name.' ~ ( '.$model->has_brand->field_name.' ) '.$model->field_name;
-                }
-                else
-                {
-                    $name = $name.' ~ '.$model->field_name;
-                }
-            }
-
-            if(!empty($item->field_serial_number())){
-                $name = $name.' | '.$item->field_serial_number;
-            }
-
-            return [
-                'id' => $item->field_primary,
-                'nama' => $name
-            ];
-        });
-
         $data = array_merge([
             'approval' => $approval,
             'user' => $user,
@@ -144,15 +111,20 @@ Route::middleware(['auth:sanctum'])->group(function () {
             'model' => $model,
             'lokasi' => $lokasi,
             'penamaan' => $penamaan,
-            'asset' => $asset,
         ], $merge);
 
         return $data;
     });
 
+    Route::get('asset', [AssetController::class, 'getAsset']);
+
     Route::post('asset', [AssetController::class, 'postRegister']);
     Route::post('movement', [MovementController::class, 'postMovement']);
     Route::post('writeoff', [WriteoffController::class, 'postWriteoff']);
+
+    Route::get('opname', [OpnameController::class, 'getOpname']);
+    Route::get('opname/{opname}', [OpnameController::class, 'getAsset']);
+    Route::post('opname', [OpnameController::class, 'postOpname']);
 
     Route::get('groups', [GroupsController::class, 'getData']);
 });

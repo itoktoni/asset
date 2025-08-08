@@ -35,18 +35,7 @@ class ReportAssetController extends ReportController
 
     public function getData()
     {
-        $query = $this->model->rawQuery()
-        ->leftJoinRelationship('has_vendor')
-        ->leftJoinRelationship('has_naming')
-        ->leftJoinRelationship('has_model')
-        ->leftJoinRelationship('has_model.has_brand')
-        ->addSelect([
-            'penamaan.penamaan_nama',
-            'penamaan.penamaan_code_nomenklatur',
-            Brand::field_name(),
-            Model::field_name(),
-            Vendor::field_name(),
-        ]);
+        $query = $this->model->rawQuery();
 
         if ($start_date = request()->get('start_date')) {
             $query = $query->whereDate(Asset::field_tanggal_diakui(), '>=', $start_date);

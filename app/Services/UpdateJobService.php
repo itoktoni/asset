@@ -21,8 +21,6 @@ class UpdateJobService
             $tanggal_kalibrasi = $data->tanggal_kalibrasi;
             if(!empty($tanggal_kalibrasi))
             {
-
-
                 $next = Carbon::createFromDate($tanggal_kalibrasi)->addYear()->format('Y-m-d');
                 Asset::find($job->job_id_asset)->update([
                     Asset::field_tanggal_expired() => $tanggal_kalibrasi,

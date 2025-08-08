@@ -34,31 +34,36 @@
 		<thead>
 			<tr>
 				<th width="1">No. </th>
-				<th>NOMENKLATUR</th>
 				<th>SERIAL NUMBER</th>
 				<th>KODE ASSET</th>
+				@if(env('MAINTENANCE', false))
 				<th>KODE AKL / AKD</th>
+				@endif
 				<th>NAMA ASSET</th>
 				<th>BRAND</th>
-				<th>MODEL/TIPE</th>
+				<th>MODEL</th>
 				<th>{{ strtoupper(env('LOCATION_NAME')) }}</th>
 				<th>TANGGAL DIAKUI</th>
 				<th>STATUS</th>
 				<th>HARGA</th>
+				@if(env('MAINTENANCE', false))
 				<th>PENDANAAN</th>
+				<th>VENDOR</th>
 				<th>DISTRIBUTOR</th>
 				<th>STATUS KEPEMILIKAN</th>
 				<th>STATUS PEMELIHARAAN</th>
+				@endif
 			</tr>
 		</thead>
 		<tbody>
 			@forelse($data as $table)
 			<tr>
 				<td>{{ $loop->iteration }}</td>
-				<td>{{ $table->penamaan_code_nomenklatur ?? '' }}</td>
 				<td>{{ $table->field_serial_number }}</td>
 				<td>{{ $table->field_code }}</td>
+				@if(env('MAINTENANCE', false))
 				<td>{{ $table->field_akl_akd }}</td>
+				@endif
 				<td>{{ $table->penamaan_nama }}</td>
 				<td>{{ $table->brand_nama }}</td>
 				<td>{{ $table->model_nama }}</td>
@@ -75,13 +80,15 @@
 					@endif
 
 				</td>
-				<td>{{ formatDate($table->field_tanggal_kunjungan) }}</td>
+				<td>{{ formatDate($table->field_tanggal_diakui) }}</td>
 				<td>{{ $table->field_status ?? '' }}</td>
+				@if(env('MAINTENANCE', false))
 				<td>{{ $table->field_harga_perolehan ?? '' }}</td>
 				<td>{{ $table->field_pendanaan ?? '' }}</td>
 				<td>{{ $table->vendor_nama ?? '' }}</td>
 				<td>{{ $table->field_status_kepemilikan ?? '' }}</td>
 				<td>{{ $table->field_status_maintenance ?? '' }}</td>
+				@endif
 			</tr>
 			@empty
 			@endforelse
