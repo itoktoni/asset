@@ -194,7 +194,7 @@ function fileUrl($value, $folder)
 
     if(env('PATH_LINK', false))
     {
-        return file_exists(storage_path('app/public/files/'.$path.'/'.$value)) ? url('storage/files/'.$path.'/'.$value) : url('images/noimage.jpeg');
+        return file_exists(storage_path('app/public/files/'.$path.'/'.$value)) ? url(env('PATH_LINK', 'storage/').$path.'/'.$value) : url('images/noimage.jpeg');
     }
     else
     {
@@ -247,7 +247,7 @@ function imageUrl($value, $folder = null)
 
     if(env('PATH_LINK', false))
     {
-        return file_exists(storage_path('app/public/files/'.$path.'/'.$value)) ? url('storage/app/public/files/'.$path.'/'.$value) : url('images/noimage.jpeg');
+        return file_exists(storage_path('app/public/files/'.$path.'/'.$value)) ? url(env('PATH_LINK', 'storage/').'files/'.$path.'/'.$value) : url('images/noimage.jpeg');
     }
     else
     {
@@ -262,20 +262,20 @@ function imageUrl($value, $folder = null)
 
 function logoUrl($isLogo = true)
 {
-    $logo = env('APP_LOGO');
+    $image = env('APP_LOGO');
 
     if($isLogo == false)
     {
-        $logo = env('APP_BACKGROUND');
+        $image = env('APP_BACKGROUND');
     }
 
     if(env('PATH_LINK', false))
     {
-        return file_exists(storage_path('app/public/'.$logo)) && $logo ? url('storage/app/public/'.$logo) : url('images/noimage.jpeg');
+        return file_exists(storage_path('app/public/'.$image)) && $image ? url(env('PATH_LINK', 'storage/').$image) : url('images/noimage.jpeg');
     }
     else
     {
-        return file_exists(public_path($logo)) && $logo ? url($logo) : url('images/noimage.jpeg');
+        return file_exists(public_path($image)) && $image ? url($image) : url('images/noimage.jpeg');
     }
 }
 
