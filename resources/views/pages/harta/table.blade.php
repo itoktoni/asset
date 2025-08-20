@@ -48,7 +48,7 @@
 
 										<td >{{ $table->field_primary }}</td>
 										<td >{{ $table->field_name }}</td>
-										<td >{{ $table->harga_manfaat }} Tahun</td>
+										<td >{{ $table->harta_manfaat }} Tahun</td>
 										<td >{{ $table->harta_penyusutan }}%</td>
 
                                     </tr>

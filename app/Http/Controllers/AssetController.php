@@ -215,10 +215,17 @@ class AssetController extends MasterController
             $url = fileUrl($model->field_sertifikat, 'sertifikat');
         }
 
+        $penyusutan = [];
+        if(env('PENYUSUTAN', false))
+        {
+            $penyusutan = Penyusutan::where(Penyusutan::field_asset_id(), $code)->get();
+        }
+
         return moduleView(modulePathForm('detail', 'asset'), $this->share([
             'model' => $model,
             'job' => $job,
             'url' => $url,
+            'penyusutan' => $penyusutan,
         ]));
     }
 

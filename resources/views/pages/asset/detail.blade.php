@@ -112,4 +112,45 @@
         </x-card>
         @endif
 
+                @if(env('PENYUSUTAN', false))
+
+        <x-card label="Detail Penyusutan" style="margin-top: -2rem">
+
+            @bind($model)
+
+            <x-form-input col="3" type="date" label="Tgl Diakui" name="asset_tanggal_diakui" />
+            <x-form-select col="3" name="asset_id_penyusutan" :options="$harta" />
+
+            <x-form-input col="3" label="Harga Perolehan" name="asset_harga_perolehan" value="{{ ($model && $model->field_harga_perolehan) ? number_format($model->field_harga_perolehan, 0, ',', '.') : '' }}" />
+            <x-form-input col="3" readonly label="Nilai Buku" name="asset_harga_penyusutan" value="{{ ($model && $model->field_harga_penyusutan) ? number_format($model->field_harga_penyusutan, 0, ',', '.') : '' }}"/>
+
+            <hr>
+
+            @if($model && !empty($penyusutan))
+            <div class="container">
+                <table class="table table-responsive table-bordered">
+                    <thead>
+                        <th>No.</th>
+                        <th>Tanggal Penyusutan</th>
+                        <th>Nilai</th>
+                    </thead>
+                    <tbody>
+                        @forelse ($penyusutan as $table)
+                        <tr>
+                            <td style="width: 1%">{{ $loop->iteration }}</td>
+                            <td class="col-md-1">{{ formatDate($table->field_name) }}</td>
+                            <td class="col-md-1">{{ number_format($table->field_value, 0, ',', '.') }}</td>
+                        </tr>
+                        @empty
+
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+            @endif
+
+        </x-card>
+
+        @endif
+
 </x-layout>
