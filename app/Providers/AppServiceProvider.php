@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Contracts\NotificationInterface;
 use App\Services\Command\DefaultNotificationService;
+use App\Services\Command\EmailNotificationService;
 use App\Services\Command\WhatsappDefaultService;
 use Exception;
 use Illuminate\Pagination\Paginator;
@@ -61,6 +62,10 @@ class AppServiceProvider extends ServiceProvider
             if($provider == 'default')
             {
                 return new DefaultNotificationService();
+            }
+            elseif($provider == 'email')
+            {
+                return new EmailNotificationService();
             }
             else
             {

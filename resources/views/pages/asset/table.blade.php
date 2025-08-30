@@ -60,6 +60,11 @@
                                                 @endif
 
                                                 <a href="{{ route(moduleAction('getDetail'), ['id' => $table->field_primary]) }}"
+                                                    class="btn btn-primary btn btn-warning btn-sm mt-1">
+                                                    Lihat
+                                                </a>
+
+                                                <a href="{{ route(moduleAction('getNotifikasi'), ['code' => $table->field_primary]) }}"
                                                     class="btn btn-primary btn btn-info btn-sm mt-1">
                                                     Detail
                                                 </a>
@@ -88,11 +93,7 @@
                                         <td>
 
                                             <b>
-                                                <a class="text-primary"
-                                                    href="{{ route('penamaan.getUpdate', ['code' => $table->field_penamaan_id]) }}">
-
-                                                    {{ $table->{PenamaanModel::field_name()} ?? '' }}
-                                                </a>
+                                                {{ $table->{PenamaanModel::field_name()} ?? '' }}
                                             </b>
 
                                             <br>

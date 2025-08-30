@@ -140,6 +140,11 @@ class Asset extends SystemModel
         return $this->{$this->field_name()};
     }
 
+    public function has_detail()
+    {
+        return $this->hasMany(AssetDetail::class, AssetDetail::field_asset_id(), $this->field_primary());
+    }
+
     public function has_status()
     {
         return $this->hasOne(StatusModel::getModel(), StatusModel::field_primary(), $this->field_status());

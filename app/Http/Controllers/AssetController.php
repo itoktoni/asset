@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Dao\Enums\Core\YesNoType;
+use App\Dao\Enums\CycleType;
 use App\Dao\Enums\KepemilikanType;
 use App\Dao\Enums\MaintenanceType;
 use App\Dao\Enums\PendanaanType;
 use App\Dao\Models\Asset;
+use App\Dao\Models\AssetDetail;
 use App\Dao\Models\Department;
 use App\Dao\Models\Harta;
 use App\Dao\Models\Job;
@@ -22,12 +24,16 @@ use App\Facades\Model\GroupModel;
 use App\Facades\Model\StatusModel;
 use App\Facades\Model\VendorModel;
 use App\Http\Requests\AssetRequest;
+use App\Http\Requests\Core\GeneralRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Services\Core\UpdateAssetService;
 use App\Services\CreateRegisterService;
 use App\Services\Master\CreateService;
+use App\Services\Master\UpdateService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Plugins\Alert;
 use Plugins\Query;
 use Plugins\Response;
 
@@ -272,5 +278,62 @@ class AssetController extends MasterController
         });
 
         return $asset;
+    }
+
+    public function getNotifikasi($code)
+    {
+        $model = $this->get($code, ['has_naming']);
+        $cycle = CycleType::getOptions();
+
+        $detail = AssetDetail::where(AssetDetail::field_asset_id(), $code)->get();
+
+        return moduleView(modulePathForm('notifikasi'), $this->share([
+            'model' => $model,
+            'cycle' => $cycle,
+            'detail' => $detail,
+            'asset_detail_id' => $model->field_primary,
+            'asset_detail_id_asset' => null,
+        ]));
+    }
+
+    public function postNotifikasi(Request $request, CreateService $service, UpdateService $update)
+    {
+        if(empty($request->asset_detail_id))
+        {
+            $data = $service->save(new AssetDetail(), $request);
+        }
+        else
+        {
+            $data = $update->update(new AssetDetail(), $request, $request->asset_detail_id);
+        }
+
+        return Response::redirectBack($data);
+    }
+
+    public function getDeleteNotifikasi($code)
+    {
+        $detail = AssetDetail::findOrFail($code);
+        $check = $detail->delete();
+        if($check)
+        {
+            Alert::delete("Data behasil di delete !");
+        }
+
+        return redirect()->back();
+    }
+
+    public function getUpdateNotifikasi($code)
+    {
+        $model = AssetDetail::findOrFail($code);
+        $cycle = CycleType::getOptions();
+        $detail = AssetDetail::where(AssetDetail::field_asset_id(), $model->field_asset_id)->get();
+
+        return moduleView(modulePathForm('notifikasi'), $this->share([
+            'model' => $model,
+            'cycle' => $cycle,
+            'detail' => $detail,
+            'asset_detail_id' => $model->field_primary,
+            'asset_detail_id_asset' => $model->field_asset_id,
+        ]));
     }
 }
