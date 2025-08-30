@@ -1,6 +1,6 @@
 <x-layout>
 
-    <x-form :model="$model" :upload="true" action="{{ route('asset_master.postNotifikasi') }}">
+    <x-form :model="$model" :upload="true" action="{{  route(moduleAction('postNotifikasi')) }}">
 
         <x-card label="{{ $model ? $model->field_name : 'Asset' }}">
             <x-action form="form" />
