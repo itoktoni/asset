@@ -291,13 +291,18 @@ class AssetController extends MasterController
             'model' => $model,
             'cycle' => $cycle,
             'detail' => $detail,
-            'asset_detail_id' => $model->field_primary,
-            'asset_detail_id_asset' => null,
+            'asset_detail_id' => null,
+            'asset_detail_id_asset' => $model->field_primary,
         ]));
     }
 
     public function postNotifikasi(Request $request, CreateService $service, UpdateService $update)
     {
+        $request->validate([
+            'asset_detail_code' => 'required',
+            'asset_detail_nama' => 'required'
+        ]);
+
         if(empty($request->asset_detail_id))
         {
             $data = $service->save(new AssetDetail(), $request);
