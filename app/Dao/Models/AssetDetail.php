@@ -34,6 +34,12 @@ class AssetDetail extends SystemModel
         'asset_detail_setiap',
     ];
 
+    protected $casts = [
+        'asset_detail_start' => 'date',
+        'asset_detail_end' => 'date',
+        'asset_detail_waktu' => 'datetime',
+    ];
+
     public static function field_name()
     {
         return 'asset_detail_nama';

@@ -24,7 +24,6 @@ use App\Facades\Model\GroupModel;
 use App\Facades\Model\StatusModel;
 use App\Facades\Model\VendorModel;
 use App\Http\Requests\AssetRequest;
-use App\Http\Requests\Core\GeneralRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Services\Core\UpdateAssetService;
 use App\Services\CreateRegisterService;
@@ -32,8 +31,8 @@ use App\Services\Master\CreateService;
 use App\Services\Master\UpdateService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Plugins\Alert;
+use Plugins\Notes;
 use Plugins\Query;
 use Plugins\Response;
 
@@ -53,7 +52,7 @@ class AssetController extends MasterController
 
         $department = DepartmentModel::getOptions();
         $type = Query::getModelMap();
-        $teknisi = GroupModel::getOptions();
+        $group = GroupModel::getOptions();
         $location = Query::getLocationMap();
         $naming = Query::getPenamaanMap();
         $status = StatusModel::getOptions();
@@ -68,7 +67,6 @@ class AssetController extends MasterController
         {
             $maintenance = MaintenanceType::getOptions();
             $kepemilikan = KepemilikanType::getOptions();
-            $vendor = VendorModel::getOptions();
         }
 
         if(env('PENYUSUTAN', false))
@@ -84,7 +82,7 @@ class AssetController extends MasterController
             'status' => $status,
             'naming' => $naming,
             'location' => $location,
-            'teknisi' => $teknisi,
+            'group' => $group,
             'type' => $type,
             'department' => $department,
             'harta' => $harta,
@@ -147,6 +145,12 @@ class AssetController extends MasterController
             $penyusutan = Penyusutan::where(Penyusutan::field_asset_id(), $code)->get();
         }
 
+        $cycle = [];
+        if(env('NOTIFICATION', true))
+        {
+            $cycle = CycleType::getOptions();
+        }
+
         return moduleView(modulePathForm(path: self::$is_core), $this->share([
             'model' => $model,
             'status_expired' => $status_expired,
@@ -154,12 +158,37 @@ class AssetController extends MasterController
             'tanggal_kunjungan' => $tanggal_kunjungan,
             'penyusutan' => $penyusutan,
             'department' => $department,
+            'cycle' => $cycle,
         ]));
     }
 
     public function postUpdate($code, AssetRequest $request, UpdateAssetService $service)
     {
         $data = $service->update($this->model, $request, $code);
+
+        // Handle notification settings
+        if(env('NOTIFICATION', true) && !empty($request['asset_detail_banyak'])) {
+            $assetDetail = AssetDetail::where(AssetDetail::field_asset_id(), $code)->first();
+
+            if(!$assetDetail) {
+                $assetDetail = new AssetDetail();
+                $assetDetail->{AssetDetail::field_asset_id()} = $code;
+                $assetDetail->{AssetDetail::field_code()} = 'NOTIF-' . $code . '-' . time();
+                $assetDetail->{AssetDetail::field_name()} = 'Notification for Asset ' . $code;
+            }
+
+            $assetDetail->{AssetDetail::field_banyak()} = $request['asset_detail_banyak'];
+            $assetDetail->{AssetDetail::field_setiap()} = $request['asset_detail_setiap'];
+            $assetDetail->{AssetDetail::field_start()} = $request['asset_detail_start'];
+            $assetDetail->{AssetDetail::field_end()} = $request['asset_detail_end'];
+            $assetDetail->{AssetDetail::field_check()} = $request['asset_detail_start']; // Initialize check date to start
+
+            $assetDetail->save();
+        } else {
+            // If no notification data, delete existing
+            AssetDetail::where(AssetDetail::field_asset_id(), $code)->delete();
+        }
+
         return Response::redirectBack($data);
     }
 
@@ -235,6 +264,37 @@ class AssetController extends MasterController
         ]));
     }
 
+    public function postDetail()
+    {
+        $code = request()->get('code');
+        $data = Asset::with('has_detail')->whereIn(Asset::field_code(), $code)->get()->map(function($items){
+
+            $detail = [];
+            if($ext = $items->has_detail)
+            {
+                foreach($ext as $det)
+                {
+                    $detail[] = [
+                        'code' => $det->field_code,
+                        'nama' => $det->field_nama,
+                        'keterangan' => $det->field_description,
+                    ];
+                }
+            }
+
+            $item = [
+                'code' => $items->field_code,
+                'nama' => $items->field_name,
+                'status' => $items->field_status,
+                'detail' => $detail
+            ];
+
+            return $item;
+        });
+
+        return Notes::data($data);
+    }
+
     public function postRegister(RegisterRequest $request, CreateRegisterService $service)
     {
         $data = $service->save($this->model, $request);
@@ -302,6 +362,8 @@ class AssetController extends MasterController
             'asset_detail_code' => 'required',
             'asset_detail_nama' => 'required'
         ]);
+
+        $request['asset_detail_check'] = $request->asset_detail_check ?? now();
 
         if(empty($request->asset_detail_id))
         {

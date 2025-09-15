@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Doctrine\DBAL\Query\QueryException;
 use GuzzleHttp\Client;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -93,6 +94,14 @@ class Handler extends ExceptionHandler
         }
 
         if (request()->hasHeader('authorization')) {
+
+            if ($e instanceof AuthenticationException) {
+                return Notes::validation($e->getMessage());
+            }
+
+            if ($e instanceof AuthorizationException) {
+                return Notes::validation($e->getMessage());
+            }
 
             if ($e instanceof ValidationException) {
                 return Notes::validation($e->getMessage());

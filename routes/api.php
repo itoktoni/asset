@@ -117,8 +117,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     Route::get('asset', [AssetController::class, 'getAsset']);
-
     Route::post('asset', [AssetController::class, 'postRegister']);
+    Route::post('detail', [AssetController::class, 'postDetail']);
+
     Route::post('movement', [MovementController::class, 'postMovement']);
     Route::post('writeoff', [WriteoffController::class, 'postWriteoff']);
 

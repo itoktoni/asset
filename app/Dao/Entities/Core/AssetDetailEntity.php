@@ -85,4 +85,14 @@ trait AssetDetailEntity
     {
         return $this->{$this->field_check()};
     }
+
+    public static function field_description()
+    {
+        return 'asset_detail_keterangan';
+    }
+
+    public function getFieldDescriptionAttribute()
+    {
+        return $this->{$this->field_description()};
+    }
 }
