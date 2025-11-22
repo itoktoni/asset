@@ -33,18 +33,22 @@ class SendNotification extends Command
             ->limit(1)
             ->get();
 
-        foreach ($data as $item)
+        if($data->count() > 0)
         {
-            $check = $notification->send($item->notification_nama, $item->notification_alamat, $item->notification_pesan, $item->notification_gambar);
-            $item->notification_status = JobStatusType::Selesai;
-            $item->notification_tanggal = date('Y-m-d');
+            foreach ($data as $item)
+            {
+                $check = $notification->send($item->notification_nama, $item->notification_alamat, $item->notification_pesan, $item->notification_gambar);
+                $item->notification_status = JobStatusType::Selesai;
+                $item->notification_tanggal = date('Y-m-d');
 
-            $item->notification_response = $check;
+                $item->notification_response = $check;
 
-            $item->save();
+                $item->save();
 
-            sleep(5);
+                sleep(5);
+            }
         }
+
 
         $this->info("Notification Successfully Send");
     }
