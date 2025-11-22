@@ -30,7 +30,7 @@ class SendNotification extends Command
     public function handle(NotificationInterface $notification)
     {
         $data = ModelsNotification::whereNull(ModelsNotification::field_status())
-            ->limit(5)
+            ->limit(1)
             ->get();
 
         foreach ($data as $item)
