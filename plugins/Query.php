@@ -52,7 +52,7 @@ class Query
                 ->leftJoin('system_group_connection_role', 'system_group_connection_role.system_group_code', 'system_group.system_group_code')
                 ->orderBy('system_group_sort', 'DESC')
                 ->get();
-            Cache::put('groups', $groups);
+            //Cache::put('groups', $groups);
 
         } catch (\Throwable$th) {
             throw $th;
