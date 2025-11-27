@@ -37,7 +37,13 @@ class SendNotification extends Command
         {
             foreach ($data as $item)
             {
-                $check = $notification->send($item->notification_nama, $item->notification_alamat, $item->notification_pesan, $item->notification_gambar);
+                try {
+                    $check = $notification->send($item->notification_nama, $item->notification_alamat, $item->notification_pesan, $item->notification_gambar);
+                } catch (\Throwable $th) {
+                    //throw $th;
+                    $check = $th->getMessage();
+                }
+
                 $item->notification_status = JobStatusType::Selesai;
                 $item->notification_tanggal = date('Y-m-d');
 

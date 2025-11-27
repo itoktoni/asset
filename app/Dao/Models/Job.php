@@ -8,6 +8,7 @@ use App\Dao\Enums\JobStatusType;
 use App\Dao\Enums\JobType;
 use App\Dao\Models\Core\SystemModel;
 use App\Dao\Traits\DataTableTrait;
+use App\Events\FinishJobEvent;
 use App\Facades\Model\AssetModel;
 use App\Facades\Model\LokasiModel;
 use App\Facades\Model\SaranModel;
@@ -211,6 +212,11 @@ class Job extends SystemModel
                 if($model->{self::field_type()} != JobType::Kalibrasi)
                 {
                     $model->{self::field_status()} = JobStatusType::Proses;
+
+                    if($tiket = $model->has_tiket)
+                    {
+                        event(new FinishJobEvent($model));
+                    }
                 }
             }
 

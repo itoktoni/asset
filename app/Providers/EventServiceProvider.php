@@ -24,9 +24,6 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        CountingLinen::class => [
-            CountingCuci::class,
-        ],
         CreateTiketEvent::class => [
             CreateTiketListener::class,
         ],

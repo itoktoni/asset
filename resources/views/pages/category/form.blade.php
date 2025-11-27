@@ -8,8 +8,6 @@
 
                 <x-form-input col="6" name="category_nama" />
                 <x-form-select col="6" name="category_notification" :options="$notification" />
-                <x-form-select col="12" class="tag" multiple name="user[]" :default="$selected ?? []"
-                :options="$user" />
 
                 @endbind
             </div>
