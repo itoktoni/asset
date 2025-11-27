@@ -45,8 +45,6 @@ class FinishJobListener
             $message = 'APPROVAL PEKERJAAN'.PHP_EOL.PHP_EOL;
         }
 
-        dd($message);
-
         $message = $message.'Teknisi : '.$name.PHP_EOL;
         $message = $message.'Tiket : '.$tiket->field_code.PHP_EOL;
          // END NAMING TIKET
