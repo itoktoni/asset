@@ -122,6 +122,8 @@ class JobController extends MasterController
             $model->{Job::field_finished_at()} = date('Y-m-d H:i:s');
             $model->save();
 
+            event(new FinishJobEvent($model));
+
             Alert::update("Tiket di approve !");
         }
         else

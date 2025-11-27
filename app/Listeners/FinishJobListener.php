@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Dao\Enums\JobStatusType;
 use App\Dao\Models\Asset;
 use App\Dao\Models\Core\User;
 use App\Dao\Models\Notification;
@@ -35,7 +36,17 @@ class FinishJobListener
         $name = $teknisi->field_name;
         $link = route(Query::getTiketMenu(true).'.getCode', ['code' => $tiket->field_code]);
 
-        $message = 'PEKERJAAN SELESAI'.PHP_EOL.PHP_EOL;
+        if($data->field_status == JobStatusType::Selesai)
+        {
+            $message = 'PEKERJAAN SELESAI'.PHP_EOL.PHP_EOL;
+        }
+        else{
+
+            $message = 'APPROVAL PEKERJAAN'.PHP_EOL.PHP_EOL;
+        }
+
+        dd($message);
+
         $message = $message.'Teknisi : '.$name.PHP_EOL;
         $message = $message.'Tiket : '.$tiket->field_code.PHP_EOL;
          // END NAMING TIKET
@@ -62,11 +73,11 @@ class FinishJobListener
             // NOTIFICATION UNTUK PELAPOR
             if($creator)
             {
-                if(!empty($creator->field_phone))
+                if(!empty($creator->field_telegram))
                 {
                     Notification::create([
                         Notification::field_name() => $name,
-                        Notification::field_address() => $creator->field_phone,
+                        Notification::field_address() => $creator->field_telegram,
                         Notification::field_message() => $message,
                     ]);
                 }
@@ -74,11 +85,11 @@ class FinishJobListener
 
             if($teknisi)
             {
-                if(!empty($teknisi->field_phone))
+                if(!empty($teknisi->field_telegram))
                 {
                     Notification::create([
                         Notification::field_name() => $name,
-                        Notification::field_address() => $teknisi->field_phone,
+                        Notification::field_address() => $teknisi->field_telegram,
                         Notification::field_message() => $message,
                     ]);
                 }
