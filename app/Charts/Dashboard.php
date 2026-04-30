@@ -18,6 +18,10 @@ class Dashboard
 
     public function build()
     {
+        $month = [];
+        $target = [];
+        $pencapaian = [];
+
         for ($m=1; $m<=12; $m++) {
             $month[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
             $booking = Tiket::whereMonth(Tiket::field_tanggal(), $m)
@@ -32,9 +36,9 @@ class Dashboard
 
         $dashboard = $this->chart->barChart()
             ->setTitle('Total Tiket vs Tiket Selesai')
-            ->setGrid()
-            ->addData('Total Tiket', $target)
-            ->addData('Tiket Selesai', $pencapaian)
+            ->setGrid() //jika windows, ini di disable dulu, karena menyebakan error
+            ->addData($target, 'Total Tiket')
+            ->addData($pencapaian, 'Tiket Selesai')
             ->setXAxis($month);
 
         return $dashboard;
