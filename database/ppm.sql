@@ -11,7 +11,7 @@
  Target Server Version : 100527 (10.5.27-MariaDB-log)
  File Encoding         : 65001
 
- Date: 23/05/2026 08:53:31
+ Date: 23/05/2026 09:13:54
 */
 
 SET NAMES utf8mb4;
@@ -3129,7 +3129,6 @@ CREATE TABLE `telegraph_bots`  (
 -- ----------------------------
 -- Records of telegraph_bots
 -- ----------------------------
-INSERT INTO `telegraph_bots` VALUES (1, '8123614272:AAFVjWZ8FMalTu_hNRQkajIIBvKV9sQKNuY', 'Notification Assets', '2025-02-17 18:42:28', '2025-02-17 18:42:31');
 
 -- ----------------------------
 -- Table structure for telegraph_chats

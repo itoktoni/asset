@@ -1,21 +1,38 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Ryzen
+ Source Server         : ECM
  Source Server Type    : MariaDB
  Source Server Version : 100527 (10.5.27-MariaDB-log)
  Source Host           : localhost:3306
- Source Schema         : rmc
+ Source Schema         : rsambkt
 
  Target Server Type    : MariaDB
  Target Server Version : 100527 (10.5.27-MariaDB-log)
  File Encoding         : 65001
 
- Date: 23/05/2026 09:13:21
+ Date: 23/05/2026 09:12:45
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for absen
+-- ----------------------------
+DROP TABLE IF EXISTS `absen`;
+CREATE TABLE `absen`  (
+  `absen_id` int(11) NOT NULL AUTO_INCREMENT,
+  `absen_user` int(11) NULL DEFAULT NULL,
+  `absen_tanggal` date NULL DEFAULT NULL,
+  `absen_photo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `absen_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`absen_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of absen
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for activity_log
@@ -112,9 +129,9 @@ CREATE TABLE `asset`  (
 INSERT INTO `asset` VALUES (4, 'Bedside Monitor ~  ( Samsung ) Z-001 | 123', '123', '202502090000001', 'BAIK', 'Yes', 'Garansi', NULL, '1739073199.jpg', 3, 1, 1, 1, 1, 1, 6, 'keterangan', '2025-02-09 10:52:05', '2025-02-20 10:25:58', '2025-02-20 10:25:58', 1, 1, 1, 90000000, 2001, '2025-02-09', '2025-08-21', '2025-02-20', 'Inspeksi', 'APBN', 'AKD 10902110256', NULL, NULL, NULL);
 INSERT INTO `asset` VALUES (5, 'Coagulation Instrument ~  ( Samsung ) Z-001 | 1123', '1123', '202502130000001', NULL, NULL, NULL, NULL, NULL, 44, NULL, NULL, NULL, 1, 1, NULL, 'test', '2025-02-13 08:16:32', '2025-02-20 10:26:07', '2025-02-20 10:26:07', 1, 1, 1, NULL, NULL, NULL, NULL, NULL, 'Inventaris', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `asset` VALUES (6, 'CT-SCAN ~  ( Samsung ) Z-001 | 1234567', '1234567', '202502170000001', 'RUSAK RINGAN', 'Yes', NULL, NULL, '1739954110.jpg', 5, NULL, 1, 2, 1, 1, 6, NULL, '2025-02-17 10:14:40', '2025-02-20 19:57:07', '2025-02-20 19:57:07', 1, 1, 1, NULL, NULL, '2025-02-16', '2026-02-19', NULL, 'Inventaris', 'BLU', NULL, NULL, NULL, NULL);
-INSERT INTO `asset` VALUES (7, 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', '13030688', '2035286', 'BAIK', 'Yes', 'Internal', 'Internal', NULL, 1131, 2, NULL, NULL, 22, 5, 6, NULL, '2025-02-20 19:56:56', '2025-02-25 09:30:57', NULL, NULL, 502, 1, NULL, NULL, NULL, NULL, '2024-12-24', 'Inventaris', NULL, NULL, NULL, NULL, '2025-12-24');
+INSERT INTO `asset` VALUES (7, 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', '13030688', '2035286', 'BAIK', 'Yes', 'Internal', 'Internal', '1764384208.jpg', 1131, 2, NULL, NULL, 22, 5, 6, NULL, '2025-02-20 19:56:56', '2025-11-29 09:43:28', NULL, NULL, 3, 1, NULL, NULL, '2025-07-22', '2025-07-22', '2024-12-24', 'Inventaris', NULL, NULL, NULL, NULL, '2025-12-24');
 INSERT INTO `asset` VALUES (8, 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSNE3207', 'VGSNE3207', '2033998', 'BAIK', 'Yes', 'Internal', 'Internal', NULL, 893, 2, NULL, NULL, 15, 2, 6, NULL, '2025-02-20 20:06:26', '2025-02-25 12:12:56', NULL, NULL, 502, 1, NULL, NULL, NULL, NULL, '2024-12-05', 'Inventaris', NULL, NULL, NULL, NULL, '2025-12-05');
-INSERT INTO `asset` VALUES (9, 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSN3201', 'VGSN3201', '202502210000001', 'BAIK', 'Yes', 'Internal', 'Internal', NULL, 893, 2, NULL, NULL, 15, 2, 6, NULL, '2025-02-21 00:01:45', '2025-02-25 09:32:18', NULL, NULL, 502, 1, NULL, NULL, NULL, NULL, '2024-12-04', 'Inventaris', NULL, NULL, NULL, NULL, '2025-12-04');
+INSERT INTO `asset` VALUES (9, 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSN3201', 'VGSN3201', '202502210000001', 'BAIK', 'Yes', 'Internal', 'Internal', NULL, 893, 2, NULL, NULL, 15, 2, 6, NULL, '2025-02-21 00:01:45', '2025-11-24 11:26:28', NULL, NULL, 3, 1, NULL, NULL, NULL, '2026-05-26', '2024-12-04', 'Inspeksi', NULL, NULL, NULL, NULL, '2025-12-04');
 INSERT INTO `asset` VALUES (10, 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSNE4818', 'VGSNE4818', '2035422', 'BAIK', 'Yes', 'Internal', 'Internal', NULL, 893, 2, NULL, NULL, 15, 2, 6, NULL, '2025-02-21 00:04:25', '2025-02-25 15:53:52', NULL, NULL, 507, 1, NULL, NULL, NULL, NULL, '2024-12-05', 'Inventaris', NULL, NULL, NULL, NULL, '2025-12-05');
 INSERT INTO `asset` VALUES (11, 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VTSM0033', 'VTSM0033', '202502210000003', 'BAIK', 'Yes', 'Internal', 'Internal', NULL, 893, 2, NULL, NULL, 15, 2, 6, NULL, '2025-02-21 00:06:38', '2025-02-25 09:37:33', NULL, NULL, 502, 1, NULL, NULL, NULL, NULL, '2024-12-05', 'Inventaris', NULL, NULL, NULL, NULL, '2025-12-05');
 INSERT INTO `asset` VALUES (12, 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSNE3220', 'VGSNE3220', '202502210000004', 'BAIK', 'Yes', 'Internal', 'Internal', NULL, 893, 2, NULL, NULL, 15, 2, 6, NULL, '2025-02-21 00:08:41', '2025-02-25 09:38:15', NULL, NULL, 502, 1, NULL, NULL, NULL, NULL, '2024-12-05', 'Inventaris', NULL, NULL, NULL, NULL, '2025-12-05');
@@ -151,7 +168,7 @@ INSERT INTO `asset` VALUES (42, 'USG ~  ( ASun ) AS1211 | SNT4091', 'SNT4091', '
 INSERT INTO `asset` VALUES (43, 'Acupunture Therapy/Electro Acupuncture (EAT) | 456', '456', '202502220000003', NULL, NULL, NULL, NULL, NULL, 860, NULL, NULL, NULL, NULL, NULL, NULL, 'test', '2025-02-22 07:20:09', '2025-02-22 11:16:29', '2025-02-22 11:16:29', 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `asset` VALUES (44, 'Acupunture Therapy/Electro Acupuncture (EAT) ~  ( GE ) VVIDE95 | 123456', '123456', '202502220000004', 'BAIK', NULL, 'Internal', 'Internal', NULL, 860, NULL, NULL, NULL, 17, 14, NULL, NULL, '2025-02-22 11:29:20', '2025-02-22 12:45:02', '2025-02-22 12:45:02', 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `asset` VALUES (45, 'kursi roda ~  ( GE ) VVIDE95', NULL, '202502220000005', 'BAIK', 'Yes', 'Internal', 'Internal', NULL, 1197, NULL, NULL, NULL, 17, 14, NULL, NULL, '2025-02-22 11:51:57', '2025-02-22 12:44:56', '2025-02-22 12:44:56', 1, 3, 1, NULL, NULL, NULL, NULL, NULL, 'Inventaris', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `asset` VALUES (46, 'Dental Unit ~  ( Belmont ) Clesta | AD14J0176', 'AD14J0176', '2034134', 'BAIK', 'Yes', 'Internal', 'Internal', NULL, 944, NULL, NULL, NULL, 49, 10, NULL, NULL, '2025-02-25 12:06:08', '2025-02-25 15:55:37', NULL, NULL, 507, 502, NULL, NULL, '2025-01-02', '2025-07-04', '2024-12-10', 'Preventif', NULL, NULL, NULL, NULL, '2025-12-10');
+INSERT INTO `asset` VALUES (46, 'Dental Unit ~  ( Belmont ) Clesta | AD14J0176', 'AD14J0176', '2034134', 'BAIK', 'Yes', 'Internal', 'Internal', NULL, 944, NULL, NULL, NULL, 49, 10, NULL, NULL, '2025-02-25 12:06:08', '2025-07-03 06:00:01', NULL, NULL, 507, 502, NULL, NULL, '2025-01-02', '2025-07-04', '2024-12-10', 'Preventif', NULL, NULL, NULL, '2025-07-03', '2025-12-10');
 INSERT INTO `asset` VALUES (47, 'Automated Blood Culture System ~  ( Versatek ) 240 | 1169446001180710', '1169446001180710', '2033638', 'BAIK', 'Yes', 'Internal', 'Internal', NULL, 877, 2, NULL, NULL, 51, 46, 6, NULL, '2025-02-25 15:48:15', '2025-02-25 15:56:37', NULL, NULL, 507, 507, NULL, NULL, NULL, NULL, '2024-12-18', 'Inventaris', NULL, NULL, NULL, NULL, '2025-12-18');
 INSERT INTO `asset` VALUES (48, 'Endoscopy ~  ( FujiFilm ) 4400 | 15088A539', '15088A539', '2035147', 'BAIK', 'Yes', 'Internal', 'Internal', NULL, 959, 2, NULL, NULL, 52, 48, NULL, NULL, '2025-02-25 16:13:21', '2025-02-25 16:15:41', NULL, NULL, 507, 507, NULL, NULL, NULL, NULL, '2024-12-23', 'Inventaris', NULL, NULL, NULL, NULL, '2025-12-23');
 INSERT INTO `asset` VALUES (49, 'Centrifuge, Cyto Centrifuge ~  ( Eppendorf ) 5702 | 5702CQ734497', '5702CQ734497', '2033988', 'BAIK', 'Yes', 'Internal', 'Internal', NULL, 917, 2, NULL, NULL, 45, 40, 6, NULL, '2025-02-25 16:20:23', '2025-02-25 16:22:32', NULL, NULL, 507, 507, NULL, NULL, NULL, NULL, '2024-12-19', 'Inventaris', NULL, NULL, NULL, NULL, '2025-12-19');
@@ -495,7 +512,7 @@ CREATE TABLE `job`  (
   PRIMARY KEY (`job_id`) USING BTREE,
   INDEX `job_id_tiket`(`job_id_tiket`) USING BTREE,
   CONSTRAINT `job_ibfk_1` FOREIGN KEY (`job_id_tiket`) REFERENCES `tiket` (`tiket_id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 67 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of job
@@ -507,6 +524,26 @@ INSERT INTO `job` VALUES (43, '12868901-a0b9-4807-99be-259375dee4b1', 70, 6, 1, 
 INSERT INTO `job` VALUES (44, '3a12cce2-fbad-4692-af34-1ea52fa88747', 71, 4, 1, NULL, 1, NULL, NULL, 'keluhan', 'Ambil', '2025-02-19 15:09:44', '2025-02-21 00:16:33', '2025-02-21 00:16:33', 1, 1, 1, NULL, NULL, NULL, 'Korektif');
 INSERT INTO `job` VALUES (45, 'd7636e97-f1ea-4ff5-b667-37e480d0cf41', 72, 6, 1, NULL, 1, NULL, NULL, 'test', 'Ambil', '2025-02-19 15:36:10', '2025-02-21 00:16:30', '2025-02-21 00:16:30', 1, 1, 1, NULL, NULL, NULL, 'Korektif');
 INSERT INTO `job` VALUES (46, '0506ab78-44ac-4b7e-b01b-122aa617bca8', 75, 7, 5, 5, 504, 'Jati hati', 'Kabel putus', 'Matot', 'Proses', '2025-02-23 22:53:13', '2025-02-25 06:00:33', '2025-02-25 06:00:33', 504, 504, 1, '2025-02-23 22:55:02', NULL, '1740326102.jpg', 'Korektif');
+INSERT INTO `job` VALUES (47, 'c59b73dc-8a6b-4dc1-864e-67ac6fbf3d1f', 78, 9, 2, NULL, 3, NULL, NULL, 'ini keluhan', 'Ambil', '2025-11-22 18:09:28', '2025-11-27 20:07:47', '2025-11-27 20:07:47', 3, 3, 1, NULL, NULL, NULL, 'Korektif');
+INSERT INTO `job` VALUES (48, '893427f0-b5fe-4c57-8d01-7bc39814708f', 79, 10, 2, NULL, 3, NULL, NULL, 'test', 'Ambil', '2025-11-22 19:05:28', '2025-11-27 20:07:47', '2025-11-27 20:07:47', 3, 3, 1, NULL, NULL, NULL, 'Korektif');
+INSERT INTO `job` VALUES (49, 'df01b13f-f7dc-46f3-981f-ea0742ba8865', 80, 9, 2, NULL, 3, NULL, NULL, 'test', 'Ambil', '2025-11-22 19:18:17', '2025-11-27 20:07:47', '2025-11-27 20:07:47', 3, 3, 1, NULL, NULL, NULL, 'Korektif');
+INSERT INTO `job` VALUES (50, 'a6bfa2f5-e8ed-464e-a7e7-fc82dbc6e1b5', 85, 18, 5, NULL, 504, NULL, NULL, 'ada yang rusak', 'Ambil', '2025-11-24 10:48:56', '2025-11-27 20:07:47', '2025-11-27 20:07:47', 504, 504, 1, NULL, NULL, NULL, 'Korektif');
+INSERT INTO `job` VALUES (51, 'a89120b3-795f-47e6-8314-eea66ad0452e', 84, 9, 2, NULL, 504, NULL, NULL, 'tiket', 'Ambil', '2025-11-24 10:52:37', '2025-11-27 20:07:47', '2025-11-27 20:07:47', 504, 504, 1, NULL, NULL, NULL, 'Korektif');
+INSERT INTO `job` VALUES (52, 'c7bd8255-98bc-42cb-81f5-bfc0439bbae1', 86, 9, 2, 1, 504, 'menunggu suku cadang', 'kabel putuh', 'test buat tiket', 'Selesai', '2025-11-24 11:19:54', '2025-11-27 20:07:47', '2025-11-27 20:07:47', 504, 3, 1, '2025-11-24 11:23:02', '2025-11-24 11:26:28', '1763958182.jpg', 'Korektif');
+INSERT INTO `job` VALUES (53, '3d5be37c-746e-4415-a15f-66de633a4f35', 86, 9, 2, NULL, 3, NULL, NULL, 'test buat tiket', 'Ambil', '2025-11-24 11:26:24', '2025-11-27 20:07:47', '2025-11-27 20:07:47', 3, 3, 1, NULL, NULL, NULL, 'Korektif');
+INSERT INTO `job` VALUES (54, '8c3e8c33-e132-485f-b182-598997d733e3', 95, 7, 5, NULL, 508, NULL, NULL, 'test', 'Ambil', '2025-11-27 19:50:28', '2025-11-27 19:56:48', '2025-11-27 19:56:48', 508, 508, 508, NULL, NULL, NULL, 'Korektif');
+INSERT INTO `job` VALUES (55, '4577afd6-fbb0-4895-934f-197596dd8296', 91, 24, 5, NULL, 508, NULL, NULL, 'test 3', 'Ambil', '2025-11-27 19:53:29', '2025-11-27 19:56:48', '2025-11-27 19:56:48', 508, 508, 508, NULL, NULL, NULL, 'Korektif');
+INSERT INTO `job` VALUES (56, '686332be-b5af-4eb9-b50b-ee75f5648df6', 96, 7, 5, NULL, 508, NULL, NULL, 'test tiket', 'Ambil', '2025-11-27 19:56:35', '2025-11-27 19:56:48', '2025-11-27 19:56:48', 508, 508, 508, NULL, NULL, NULL, 'Korektif');
+INSERT INTO `job` VALUES (57, '06e128da-13a0-4915-a8cb-59dd99b9a6be', 96, 7, 5, 1, 508, 'menuggu sparepart', 'kabel putus', 'test tiket', 'Proses', '2025-11-27 19:56:53', '2025-11-27 20:07:47', '2025-11-27 20:07:47', 508, 508, 1, '2025-11-27 19:57:38', NULL, '1764248258.png', 'Korektif');
+INSERT INTO `job` VALUES (58, '24b98229-ff25-4a0a-bcbf-45c89b9042d4', 97, 7, 5, 1, 508, 'suku cadang', 'analisa', 'test', 'Selesai', '2025-11-27 19:59:10', '2025-11-27 20:07:47', '2025-11-27 20:07:47', 508, 505, 1, '2025-11-27 19:59:32', '2025-11-27 20:00:01', '1764248372.jpg', 'Korektif');
+INSERT INTO `job` VALUES (59, '515626b3-89cc-49a7-8a3c-638adf690706', 98, 7, 5, 1, 508, 'gerre', 'ana', '1', 'Selesai', '2025-11-27 20:01:17', '2025-11-27 20:07:47', '2025-11-27 20:07:47', 508, 505, 1, '2025-11-27 20:01:52', '2025-11-27 20:03:47', '1764248512.png', 'Korektif');
+INSERT INTO `job` VALUES (60, '7972fdc7-9d7e-4ec1-98f9-eeb6e8563e94', 99, 7, 5, 1, 508, 'kesimpulan', 'analsia', '1', 'Proses', '2025-11-27 20:08:31', '2025-11-27 20:18:13', '2025-11-27 20:18:13', 508, 508, 508, '2025-11-27 20:16:26', NULL, '1764249386.jpg', 'Korektif');
+INSERT INTO `job` VALUES (61, '6e5c601d-694b-4cb8-8898-163a0435729f', 99, 7, 5, 1, 508, 'kesimpulan', 'analsi', '1', 'Proses', '2025-11-27 20:18:15', '2025-11-27 20:20:43', '2025-11-27 20:20:43', 508, 508, 508, '2025-11-27 20:18:34', NULL, '1764249514.png', 'Korektif');
+INSERT INTO `job` VALUES (62, 'c91d1717-de70-499e-a084-e562fad8dd68', 99, 7, 5, 1, 508, 'kesimpulan', 'analis', '1', 'Proses', '2025-11-27 20:20:45', '2025-11-27 20:24:26', '2025-11-27 20:24:26', 508, 508, 508, '2025-11-27 20:21:07', NULL, '1764249667.jpg', 'Korektif');
+INSERT INTO `job` VALUES (63, '29746599-4a01-4c33-ac35-527f33c17740', 99, 7, 5, 1, 508, 'kesimpulan', 'analsia', '1', 'Proses', '2025-11-27 20:24:38', '2025-11-27 20:47:38', '2025-11-27 20:47:38', 508, 505, 508, '2025-11-27 20:28:57', '2025-11-27 20:31:28', NULL, 'Korektif');
+INSERT INTO `job` VALUES (64, '9aaf3d0a-6761-4610-8dca-83a15335e5f7', 99, 7, 5, 1, 508, 'kesimpulan', 'analisa', '1', 'Selesai', '2025-11-27 20:47:49', '2025-11-27 20:56:01', NULL, 508, 505, NULL, '2025-11-27 20:49:43', '2025-11-27 20:56:01', NULL, 'Korektif');
+INSERT INTO `job` VALUES (65, '105fd231-c335-4a38-bb04-34e148bc75cf', 99, 7, 5, NULL, 1, NULL, NULL, '1', 'Ambil', '2025-11-29 08:16:14', '2025-11-29 08:16:14', NULL, 1, 1, NULL, NULL, NULL, NULL, 'Korektif');
+INSERT INTO `job` VALUES (66, '3fdbfd93-9b03-44bc-987c-811decb34618', 100, 7, 5, 1, 508, 'menunggu suku cadang', 'kabel putus', 'testing keluhan', 'Selesai', '2025-11-29 09:57:06', '2025-11-29 09:59:31', NULL, 508, 505, NULL, '2025-11-29 09:58:20', '2025-11-29 09:59:31', NULL, 'Korektif');
 
 -- ----------------------------
 -- Table structure for job_batches
@@ -545,11 +582,14 @@ CREATE TABLE `jobs`  (
   `created_at` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `jobs_queue_index`(`queue`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 152 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 155 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of jobs
 -- ----------------------------
+INSERT INTO `jobs` VALUES (152, 'default', '{\"uuid\":\"7a5b60dd-0030-400c-8a10-e4f68ac02713\",\"displayName\":\"App\\\\Notifications\\\\VerifyUserQueue\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Notifications\\\\SendQueuedNotifications\",\"command\":\"O:48:\\\"Illuminate\\\\Notifications\\\\SendQueuedNotifications\\\":3:{s:11:\\\"notifiables\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":5:{s:5:\\\"class\\\";s:24:\\\"App\\\\Dao\\\\Models\\\\Core\\\\User\\\";s:2:\\\"id\\\";a:1:{i:0;i:510;}s:9:\\\"relations\\\";a:0:{}s:10:\\\"connection\\\";s:5:\\\"mysql\\\";s:15:\\\"collectionClass\\\";N;}s:12:\\\"notification\\\";O:33:\\\"App\\\\Notifications\\\\VerifyUserQueue\\\":1:{s:2:\\\"id\\\";s:36:\\\"5014c9e1-809c-46ac-8634-ca0fb17eb54a\\\";}s:8:\\\"channels\\\";a:1:{i:0;s:4:\\\"mail\\\";}}\"}}', 0, NULL, 1765641541, 1765641541);
+INSERT INTO `jobs` VALUES (153, 'default', '{\"uuid\":\"b2a2bf3d-e40c-4ac4-add2-e2b67b8ed24f\",\"displayName\":\"App\\\\Notifications\\\\VerifyUserQueue\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Notifications\\\\SendQueuedNotifications\",\"command\":\"O:48:\\\"Illuminate\\\\Notifications\\\\SendQueuedNotifications\\\":3:{s:11:\\\"notifiables\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":5:{s:5:\\\"class\\\";s:24:\\\"App\\\\Dao\\\\Models\\\\Core\\\\User\\\";s:2:\\\"id\\\";a:1:{i:0;i:511;}s:9:\\\"relations\\\";a:0:{}s:10:\\\"connection\\\";s:5:\\\"mysql\\\";s:15:\\\"collectionClass\\\";N;}s:12:\\\"notification\\\";O:33:\\\"App\\\\Notifications\\\\VerifyUserQueue\\\":1:{s:2:\\\"id\\\";s:36:\\\"32ae8286-4a8f-44cb-adc4-4a9192c3f94f\\\";}s:8:\\\"channels\\\";a:1:{i:0;s:4:\\\"mail\\\";}}\"}}', 0, NULL, 1766453663, 1766453663);
+INSERT INTO `jobs` VALUES (154, 'default', '{\"uuid\":\"6a7babdd-8cd8-40ed-8376-f88af326a935\",\"displayName\":\"App\\\\Notifications\\\\VerifyUserQueue\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Notifications\\\\SendQueuedNotifications\",\"command\":\"O:48:\\\"Illuminate\\\\Notifications\\\\SendQueuedNotifications\\\":3:{s:11:\\\"notifiables\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":5:{s:5:\\\"class\\\";s:24:\\\"App\\\\Dao\\\\Models\\\\Core\\\\User\\\";s:2:\\\"id\\\";a:1:{i:0;i:512;}s:9:\\\"relations\\\";a:0:{}s:10:\\\"connection\\\";s:5:\\\"mysql\\\";s:15:\\\"collectionClass\\\";N;}s:12:\\\"notification\\\";O:33:\\\"App\\\\Notifications\\\\VerifyUserQueue\\\":1:{s:2:\\\"id\\\";s:36:\\\"a72bf770-b4b2-4190-b3a4-2caa70e82aee\\\";}s:8:\\\"channels\\\";a:1:{i:0;s:4:\\\"mail\\\";}}\"}}', 0, NULL, 1768019270, 1768019270);
 
 -- ----------------------------
 -- Table structure for level1
@@ -1980,11 +2020,24 @@ CREATE TABLE `notification`  (
   `notification_response` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `notification_gambar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`notification_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 74 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 121 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of notification
 -- ----------------------------
+INSERT INTO `notification` VALUES (108, NULL, 'teknisi', '8271064825', 'PEKERJAAN SELESAI\r\n\r\nTeknisi : teknisi\r\nTiket : 6a0b40a4-dc78-4094-a088-e307509f07e6\r\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\r\nRuangan : Bangsal Anak\r\nSelesai : http://asset.test/admin/aplikasi/default/tiket_teknisi/code/6a0b40a4-dc78-4094-a088-e307509f07e6', '2025-11-27 20:28:58', 508, '2025-11-27 20:28:56', '508', '2025-11-27', 'Selesai', '{\"message_id\":79,\"from\":{\"id\":8398783819,\"is_bot\":true,\"first_name\":\"Asset Management ECM\",\"username\":\"ecm_asset_bot\"},\"chat\":{\"id\":8271064825,\"first_name\":\"toni\",\"username\":\"tonijambo\",\"type\":\"private\"},\"date\":1764250136,\"text\":\"PEKERJAAN SELESAI\\n\\nTeknisi : teknisi\\nTiket : 6a0b40a4-dc78-4094-a088-e307509f07e6\\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\\nRuangan : Bangsal Anak\\nSelesai : http:\\/\\/asset.test\\/admin\\/aplikasi\\/default\\/tiket_teknisi\\/code\\/6a0b40a4-dc78-4094-a088-e307509f07e6\",\"entities\":[{\"offset\":184,\"length\":96,\"type\":\"url\"}],\"link_preview_options\":{\"url\":\"http:\\/\\/asset.test\\/admin\\/aplikasi\\/default\\/tiket_teknisi\\/code\\/6a0b40a4-dc78-4094-a088-e307509f07e6\"}}', NULL);
+INSERT INTO `notification` VALUES (109, NULL, 'teknisi', '843133427', 'PEKERJAAN SELESAI\r\n\r\nTeknisi : teknisi\r\nTiket : 6a0b40a4-dc78-4094-a088-e307509f07e6\r\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\r\nRuangan : Bangsal Anak\r\nSelesai : http://asset.test/admin/aplikasi/default/tiket_teknisi/code/6a0b40a4-dc78-4094-a088-e307509f07e6', '2025-11-27 20:28:58', 508, '2025-11-27 20:29:01', '508', '2025-11-27', 'Selesai', '{\"message_id\":80,\"from\":{\"id\":8398783819,\"is_bot\":true,\"first_name\":\"Asset Management ECM\",\"username\":\"ecm_asset_bot\"},\"chat\":{\"id\":843133427,\"first_name\":\"Itok Toni\",\"last_name\":\"Laksono\",\"username\":\"itoktoni\",\"type\":\"private\"},\"date\":1764250141,\"text\":\"PEKERJAAN SELESAI\\n\\nTeknisi : teknisi\\nTiket : 6a0b40a4-dc78-4094-a088-e307509f07e6\\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\\nRuangan : Bangsal Anak\\nSelesai : http:\\/\\/asset.test\\/admin\\/aplikasi\\/default\\/tiket_teknisi\\/code\\/6a0b40a4-dc78-4094-a088-e307509f07e6\",\"entities\":[{\"offset\":184,\"length\":96,\"type\":\"url\"}]}', NULL);
+INSERT INTO `notification` VALUES (110, NULL, 'teknisi', '8271064825', 'APPROVAL PEKERJAAN\r\n\r\nTeknisi : teknisi\r\nTiket : 6a0b40a4-dc78-4094-a088-e307509f07e6\r\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\r\nRuangan : Bangsal Anak\r\nSelesai : http://asset.test/admin/aplikasi/default/tiket_teknisi/code/6a0b40a4-dc78-4094-a088-e307509f07e6', '2025-11-27 20:49:44', 508, '2025-11-27 20:49:42', '508', '2025-11-27', 'Selesai', '{\"message_id\":81,\"from\":{\"id\":8398783819,\"is_bot\":true,\"first_name\":\"Asset Management ECM\",\"username\":\"ecm_asset_bot\"},\"chat\":{\"id\":8271064825,\"first_name\":\"toni\",\"username\":\"tonijambo\",\"type\":\"private\"},\"date\":1764251382,\"text\":\"APPROVAL PEKERJAAN\\n\\nTeknisi : teknisi\\nTiket : 6a0b40a4-dc78-4094-a088-e307509f07e6\\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\\nRuangan : Bangsal Anak\\nSelesai : http:\\/\\/asset.test\\/admin\\/aplikasi\\/default\\/tiket_teknisi\\/code\\/6a0b40a4-dc78-4094-a088-e307509f07e6\",\"entities\":[{\"offset\":185,\"length\":96,\"type\":\"url\"}]}', NULL);
+INSERT INTO `notification` VALUES (111, NULL, 'teknisi', '843133427', 'APPROVAL PEKERJAAN\r\n\r\nTeknisi : teknisi\r\nTiket : 6a0b40a4-dc78-4094-a088-e307509f07e6\r\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\r\nRuangan : Bangsal Anak\r\nSelesai : http://asset.test/admin/aplikasi/default/tiket_teknisi/code/6a0b40a4-dc78-4094-a088-e307509f07e6', '2025-11-27 20:49:44', 508, '2025-11-27 20:49:47', '508', '2025-11-27', 'Selesai', '{\"message_id\":82,\"from\":{\"id\":8398783819,\"is_bot\":true,\"first_name\":\"Asset Management ECM\",\"username\":\"ecm_asset_bot\"},\"chat\":{\"id\":843133427,\"first_name\":\"Itok Toni\",\"last_name\":\"Laksono\",\"username\":\"itoktoni\",\"type\":\"private\"},\"date\":1764251387,\"text\":\"APPROVAL PEKERJAAN\\n\\nTeknisi : teknisi\\nTiket : 6a0b40a4-dc78-4094-a088-e307509f07e6\\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\\nRuangan : Bangsal Anak\\nSelesai : http:\\/\\/asset.test\\/admin\\/aplikasi\\/default\\/tiket_teknisi\\/code\\/6a0b40a4-dc78-4094-a088-e307509f07e6\",\"entities\":[{\"offset\":185,\"length\":96,\"type\":\"url\"}]}', NULL);
+INSERT INTO `notification` VALUES (112, 'Telegram', 'User', '8271064825', 'Tiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\nLokasi : Bangsal Anak\nKeterangan : testing keluhan\n\nLink : https://rsambkt.elsycalitech.co.id/admin/tiket/default/tiket_user/code/09398442-7aac-4841-bc8c-5c6581cbdf13', '2025-11-29 09:55:47', 505, '2025-11-29 09:55:52', '505', '2025-11-29', 'Selesai', '{\"message_id\":83,\"from\":{\"id\":8398783819,\"is_bot\":true,\"first_name\":\"Asset Management ECM\",\"username\":\"ecm_asset_bot\"},\"chat\":{\"id\":8271064825,\"first_name\":\"toni\",\"username\":\"tonijambo\",\"type\":\"private\"},\"date\":1764384952,\"photo\":[{\"file_id\":\"AgACAgUAAxkDAANTaSpgt4WRD04wNia8HX8v3tZ9uOQAAuYPaxvLtlFVL28pA2Tpp8ABAAMCAANzAAM2BA\",\"file_unique_id\":\"AQAD5g9rG8u2UVV4\",\"file_size\":1474,\"width\":90,\"height\":68},{\"file_id\":\"AgACAgUAAxkDAANTaSpgt4WRD04wNia8HX8v3tZ9uOQAAuYPaxvLtlFVL28pA2Tpp8ABAAMCAANtAAM2BA\",\"file_unique_id\":\"AQAD5g9rG8u2UVVy\",\"file_size\":9436,\"width\":300,\"height\":226}],\"caption\":\"Tiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\\nLokasi : Bangsal Anak\\nKeterangan : testing keluhan\\n\\nLink : https:\\/\\/rsambkt.elsycalitech.co.id\\/admin\\/tiket\\/default\\/tiket_user\\/code\\/09398442-7aac-4841-bc8c-5c6581cbdf13\",\"caption_entities\":[{\"offset\":173,\"length\":107,\"type\":\"url\"}]}', 'https://rsambkt.elsycalitech.co.id/storage/files/tiket/1764384947.jpg');
+INSERT INTO `notification` VALUES (113, 'Telegram', 'Itok toni laksono', '843133427', 'Tiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\nLokasi : Bangsal Anak\nKeterangan : testing keluhan\n\nLink : https://rsambkt.elsycalitech.co.id/admin/tiket/default/tiket_user/code/09398442-7aac-4841-bc8c-5c6581cbdf13', '2025-11-29 09:55:47', 3, '2025-11-29 09:55:54', '3', '2025-11-29', 'Selesai', '{\"message_id\":84,\"from\":{\"id\":8398783819,\"is_bot\":true,\"first_name\":\"Asset Management ECM\",\"username\":\"ecm_asset_bot\"},\"chat\":{\"id\":843133427,\"first_name\":\"Itok Toni\",\"last_name\":\"Laksono\",\"username\":\"itoktoni\",\"type\":\"private\"},\"date\":1764384954,\"photo\":[{\"file_id\":\"AgACAgUAAxkDAANTaSpgt4WRD04wNia8HX8v3tZ9uOQAAuYPaxvLtlFVL28pA2Tpp8ABAAMCAANzAAM2BA\",\"file_unique_id\":\"AQAD5g9rG8u2UVV4\",\"file_size\":1474,\"width\":90,\"height\":68},{\"file_id\":\"AgACAgUAAxkDAANTaSpgt4WRD04wNia8HX8v3tZ9uOQAAuYPaxvLtlFVL28pA2Tpp8ABAAMCAANtAAM2BA\",\"file_unique_id\":\"AQAD5g9rG8u2UVVy\",\"file_size\":9436,\"width\":300,\"height\":226}],\"caption\":\"Tiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\\nLokasi : Bangsal Anak\\nKeterangan : testing keluhan\\n\\nLink : https:\\/\\/rsambkt.elsycalitech.co.id\\/admin\\/tiket\\/default\\/tiket_user\\/code\\/09398442-7aac-4841-bc8c-5c6581cbdf13\",\"caption_entities\":[{\"offset\":173,\"length\":107,\"type\":\"url\"}]}', 'https://rsambkt.elsycalitech.co.id/storage/files/tiket/1764384947.jpg');
+INSERT INTO `notification` VALUES (114, 'Telegram', 'Ady Sunanto', '79417929', 'Tiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\nLokasi : Bangsal Anak\nKeterangan : testing keluhan\n\nLink : https://rsambkt.elsycalitech.co.id/admin/tiket/default/tiket_user/code/09398442-7aac-4841-bc8c-5c6581cbdf13', '2025-11-29 09:55:47', 502, '2025-11-29 09:55:58', '502', '2025-11-29', 'Selesai', 'Bad Request: chat not found', 'https://rsambkt.elsycalitech.co.id/storage/files/tiket/1764384947.jpg');
+INSERT INTO `notification` VALUES (115, 'Telegram', 'Farizal Elsyahfi', '6634742831', 'Tiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\nLokasi : Bangsal Anak\nKeterangan : testing keluhan\n\nLink : https://rsambkt.elsycalitech.co.id/admin/tiket/default/tiket_user/code/09398442-7aac-4841-bc8c-5c6581cbdf13', '2025-11-29 09:55:47', 507, '2025-11-29 09:56:01', '507', '2025-11-29', 'Selesai', 'Bad Request: chat not found', 'https://rsambkt.elsycalitech.co.id/storage/files/tiket/1764384947.jpg');
+INSERT INTO `notification` VALUES (116, 'Telegram', 'teknisi', '843133427', 'Tiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\nLokasi : Bangsal Anak\nKeterangan : testing keluhan\n\nLink : https://rsambkt.elsycalitech.co.id/admin/tiket/default/tiket_user/code/09398442-7aac-4841-bc8c-5c6581cbdf13', '2025-11-29 09:55:47', 508, '2025-11-29 09:56:03', '508', '2025-11-29', 'Selesai', '{\"message_id\":85,\"from\":{\"id\":8398783819,\"is_bot\":true,\"first_name\":\"Asset Management ECM\",\"username\":\"ecm_asset_bot\"},\"chat\":{\"id\":843133427,\"first_name\":\"Itok Toni\",\"last_name\":\"Laksono\",\"username\":\"itoktoni\",\"type\":\"private\"},\"date\":1764384963,\"photo\":[{\"file_id\":\"AgACAgUAAxkDAANTaSpgt4WRD04wNia8HX8v3tZ9uOQAAuYPaxvLtlFVL28pA2Tpp8ABAAMCAANzAAM2BA\",\"file_unique_id\":\"AQAD5g9rG8u2UVV4\",\"file_size\":1474,\"width\":90,\"height\":68},{\"file_id\":\"AgACAgUAAxkDAANTaSpgt4WRD04wNia8HX8v3tZ9uOQAAuYPaxvLtlFVL28pA2Tpp8ABAAMCAANtAAM2BA\",\"file_unique_id\":\"AQAD5g9rG8u2UVVy\",\"file_size\":9436,\"width\":300,\"height\":226}],\"caption\":\"Tiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\\nLokasi : Bangsal Anak\\nKeterangan : testing keluhan\\n\\nLink : https:\\/\\/rsambkt.elsycalitech.co.id\\/admin\\/tiket\\/default\\/tiket_user\\/code\\/09398442-7aac-4841-bc8c-5c6581cbdf13\",\"caption_entities\":[{\"offset\":173,\"length\":107,\"type\":\"url\"}]}', 'https://rsambkt.elsycalitech.co.id/storage/files/tiket/1764384947.jpg');
+INSERT INTO `notification` VALUES (117, NULL, 'teknisi', '8271064825', 'APPROVAL PEKERJAAN\n\nTeknisi : teknisi\nTiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\nRuangan : Bangsal Anak\nSelesai : https://rsambkt.elsycalitech.co.id/admin/aplikasi/default/tiket_teknisi/code/09398442-7aac-4841-bc8c-5c6581cbdf13', '2025-11-29 09:58:20', 508, '2025-11-29 09:58:21', '508', '2025-11-29', 'Selesai', '{\"message_id\":86,\"from\":{\"id\":8398783819,\"is_bot\":true,\"first_name\":\"Asset Management ECM\",\"username\":\"ecm_asset_bot\"},\"chat\":{\"id\":8271064825,\"first_name\":\"toni\",\"username\":\"tonijambo\",\"type\":\"private\"},\"date\":1764385101,\"text\":\"APPROVAL PEKERJAAN\\n\\nTeknisi : teknisi\\nTiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\\nRuangan : Bangsal Anak\\nSelesai : https:\\/\\/rsambkt.elsycalitech.co.id\\/admin\\/aplikasi\\/default\\/tiket_teknisi\\/code\\/09398442-7aac-4841-bc8c-5c6581cbdf13\",\"entities\":[{\"offset\":185,\"length\":113,\"type\":\"url\"}],\"link_preview_options\":{\"url\":\"https:\\/\\/rsambkt.elsycalitech.co.id\\/admin\\/aplikasi\\/default\\/tiket_teknisi\\/code\\/09398442-7aac-4841-bc8c-5c6581cbdf13\"}}', NULL);
+INSERT INTO `notification` VALUES (118, NULL, 'teknisi', '843133427', 'APPROVAL PEKERJAAN\n\nTeknisi : teknisi\nTiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\nRuangan : Bangsal Anak\nSelesai : https://rsambkt.elsycalitech.co.id/admin/aplikasi/default/tiket_teknisi/code/09398442-7aac-4841-bc8c-5c6581cbdf13', '2025-11-29 09:58:20', 508, '2025-11-29 09:58:24', '508', '2025-11-29', 'Selesai', '{\"message_id\":87,\"from\":{\"id\":8398783819,\"is_bot\":true,\"first_name\":\"Asset Management ECM\",\"username\":\"ecm_asset_bot\"},\"chat\":{\"id\":843133427,\"first_name\":\"Itok Toni\",\"last_name\":\"Laksono\",\"username\":\"itoktoni\",\"type\":\"private\"},\"date\":1764385104,\"text\":\"APPROVAL PEKERJAAN\\n\\nTeknisi : teknisi\\nTiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\\nRuangan : Bangsal Anak\\nSelesai : https:\\/\\/rsambkt.elsycalitech.co.id\\/admin\\/aplikasi\\/default\\/tiket_teknisi\\/code\\/09398442-7aac-4841-bc8c-5c6581cbdf13\",\"entities\":[{\"offset\":185,\"length\":113,\"type\":\"url\"}],\"link_preview_options\":{\"url\":\"https:\\/\\/rsambkt.elsycalitech.co.id\\/admin\\/aplikasi\\/default\\/tiket_teknisi\\/code\\/09398442-7aac-4841-bc8c-5c6581cbdf13\"}}', NULL);
+INSERT INTO `notification` VALUES (119, NULL, 'teknisi', '8271064825', 'PEKERJAAN SELESAI\n\nTeknisi : teknisi\nTiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\nRuangan : Bangsal Anak\nSelesai : https://rsambkt.elsycalitech.co.id/admin/tiket/default/tiket_user/code/09398442-7aac-4841-bc8c-5c6581cbdf13', '2025-11-29 09:59:31', 505, '2025-11-29 09:59:34', '505', '2025-11-29', 'Selesai', '{\"message_id\":88,\"from\":{\"id\":8398783819,\"is_bot\":true,\"first_name\":\"Asset Management ECM\",\"username\":\"ecm_asset_bot\"},\"chat\":{\"id\":8271064825,\"first_name\":\"toni\",\"username\":\"tonijambo\",\"type\":\"private\"},\"date\":1764385173,\"text\":\"PEKERJAAN SELESAI\\n\\nTeknisi : teknisi\\nTiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\\nRuangan : Bangsal Anak\\nSelesai : https:\\/\\/rsambkt.elsycalitech.co.id\\/admin\\/tiket\\/default\\/tiket_user\\/code\\/09398442-7aac-4841-bc8c-5c6581cbdf13\",\"entities\":[{\"offset\":184,\"length\":107,\"type\":\"url\"}],\"link_preview_options\":{\"url\":\"https:\\/\\/rsambkt.elsycalitech.co.id\\/admin\\/tiket\\/default\\/tiket_user\\/code\\/09398442-7aac-4841-bc8c-5c6581cbdf13\"}}', NULL);
+INSERT INTO `notification` VALUES (120, NULL, 'teknisi', '843133427', 'PEKERJAAN SELESAI\n\nTeknisi : teknisi\nTiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\nRuangan : Bangsal Anak\nSelesai : https://rsambkt.elsycalitech.co.id/admin/tiket/default/tiket_user/code/09398442-7aac-4841-bc8c-5c6581cbdf13', '2025-11-29 09:59:31', 505, '2025-11-29 09:59:37', '505', '2025-11-29', 'Selesai', '{\"message_id\":89,\"from\":{\"id\":8398783819,\"is_bot\":true,\"first_name\":\"Asset Management ECM\",\"username\":\"ecm_asset_bot\"},\"chat\":{\"id\":843133427,\"first_name\":\"Itok Toni\",\"last_name\":\"Laksono\",\"username\":\"itoktoni\",\"type\":\"private\"},\"date\":1764385176,\"text\":\"PEKERJAAN SELESAI\\n\\nTeknisi : teknisi\\nTiket : 09398442-7aac-4841-bc8c-5c6581cbdf13\\nAsset : Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688\\nRuangan : Bangsal Anak\\nSelesai : https:\\/\\/rsambkt.elsycalitech.co.id\\/admin\\/tiket\\/default\\/tiket_user\\/code\\/09398442-7aac-4841-bc8c-5c6581cbdf13\",\"entities\":[{\"offset\":184,\"length\":107,\"type\":\"url\"}],\"link_preview_options\":{\"url\":\"https:\\/\\/rsambkt.elsycalitech.co.id\\/admin\\/tiket\\/default\\/tiket_user\\/code\\/09398442-7aac-4841-bc8c-5c6581cbdf13\"}}', NULL);
 
 -- ----------------------------
 -- Table structure for notifications
@@ -2471,11 +2524,11 @@ CREATE TABLE `responsible_category`  (
 -- Records of responsible_category
 -- ----------------------------
 INSERT INTO `responsible_category` VALUES (21, 1);
-INSERT INTO `responsible_category` VALUES (1, 2);
 INSERT INTO `responsible_category` VALUES (17, 2);
 INSERT INTO `responsible_category` VALUES (21, 2);
 INSERT INTO `responsible_category` VALUES (1, 3);
 INSERT INTO `responsible_category` VALUES (17, 3);
+INSERT INTO `responsible_category` VALUES (1, 503);
 
 -- ----------------------------
 -- Table structure for responsible_department
@@ -2513,6 +2566,10 @@ INSERT INTO `responsible_group` VALUES (5, 2);
 INSERT INTO `responsible_group` VALUES (5, 3);
 INSERT INTO `responsible_group` VALUES (6, 1);
 INSERT INTO `responsible_group` VALUES (6, 3);
+INSERT INTO `responsible_group` VALUES (6, 502);
+INSERT INTO `responsible_group` VALUES (6, 503);
+INSERT INTO `responsible_group` VALUES (6, 507);
+INSERT INTO `responsible_group` VALUES (6, 508);
 INSERT INTO `responsible_group` VALUES (7, 3);
 INSERT INTO `responsible_group` VALUES (7, 503);
 INSERT INTO `responsible_group` VALUES (8, 3);
@@ -2560,6 +2617,23 @@ CREATE TABLE `satuan`  (
 INSERT INTO `satuan` VALUES ('PCS', 'pcs');
 INSERT INTO `satuan` VALUES ('SET', 'set');
 INSERT INTO `satuan` VALUES ('UNIT', 'unit');
+
+-- ----------------------------
+-- Table structure for status
+-- ----------------------------
+DROP TABLE IF EXISTS `status`;
+CREATE TABLE `status`  (
+  `status_code` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `status_nama` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`status_code`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of status
+-- ----------------------------
+INSERT INTO `status` VALUES ('BAIK', 'Baik');
+INSERT INTO `status` VALUES ('MAINTENANCE', 'Sedang di Maintenance');
+INSERT INTO `status` VALUES ('RUSAK', 'Rusak');
 
 -- ----------------------------
 -- Table structure for subscription_usage
@@ -2630,9 +2704,10 @@ CREATE TABLE `system_group`  (
 -- ----------------------------
 -- Records of system_group
 -- ----------------------------
-INSERT INTO `system_group` VALUES ('aplikasi', 'Aplikasi', 2, 1, NULL, 'window-sidebar', NULL);
-INSERT INTO `system_group` VALUES ('apps', 'Apps', NULL, 1, NULL, 'rocket-takeoff', NULL);
+INSERT INTO `system_group` VALUES ('aplikasi', 'Aplikasi', NULL, 1, NULL, 'rocket-takeoff', NULL);
+INSERT INTO `system_group` VALUES ('app_admin', 'Transaksi', 2, 1, NULL, 'window-sidebar', NULL);
 INSERT INTO `system_group` VALUES ('master', 'Master', 7, 1, NULL, 'database', NULL);
+INSERT INTO `system_group` VALUES ('printer', 'Printer', 0, 1, 'https://rsambkt.elsycalitech.co.id/rawbt.apk', 'bluetooth', NULL);
 INSERT INTO `system_group` VALUES ('report', 'Report', 1, 1, NULL, 'printer', NULL);
 INSERT INTO `system_group` VALUES ('report_enginer', 'Report Enginer', NULL, 1, NULL, 'printer-fill', NULL);
 INSERT INTO `system_group` VALUES ('setting', 'System', -1, 1, NULL, 'wrench-adjustable-circle', NULL);
@@ -2654,12 +2729,12 @@ CREATE TABLE `system_group_connection_menu`  (
 -- ----------------------------
 -- Records of system_group_connection_menu
 -- ----------------------------
-INSERT INTO `system_group_connection_menu` VALUES ('aplikasi', 'job');
-INSERT INTO `system_group_connection_menu` VALUES ('aplikasi', 'notification');
-INSERT INTO `system_group_connection_menu` VALUES ('aplikasi', 'tiket');
-INSERT INTO `system_group_connection_menu` VALUES ('apps', 'asset');
-INSERT INTO `system_group_connection_menu` VALUES ('apps', 'job');
-INSERT INTO `system_group_connection_menu` VALUES ('apps', 'tiket');
+INSERT INTO `system_group_connection_menu` VALUES ('aplikasi', 'asset_teknisi');
+INSERT INTO `system_group_connection_menu` VALUES ('aplikasi', 'job_teknisi');
+INSERT INTO `system_group_connection_menu` VALUES ('aplikasi', 'tiket_teknisi');
+INSERT INTO `system_group_connection_menu` VALUES ('app_admin', 'job');
+INSERT INTO `system_group_connection_menu` VALUES ('app_admin', 'notification');
+INSERT INTO `system_group_connection_menu` VALUES ('app_admin', 'tiket');
 INSERT INTO `system_group_connection_menu` VALUES ('master', 'area');
 INSERT INTO `system_group_connection_menu` VALUES ('master', 'asset');
 INSERT INTO `system_group_connection_menu` VALUES ('master', 'brand');
@@ -2680,11 +2755,11 @@ INSERT INTO `system_group_connection_menu` VALUES ('report', 'report_job');
 INSERT INTO `system_group_connection_menu` VALUES ('report', 'report_kalibrasi');
 INSERT INTO `system_group_connection_menu` VALUES ('report', 'report_tiket');
 INSERT INTO `system_group_connection_menu` VALUES ('report', 'report_user');
-INSERT INTO `system_group_connection_menu` VALUES ('report_enginer', 'report_asset');
-INSERT INTO `system_group_connection_menu` VALUES ('report_enginer', 'report_jadwal');
-INSERT INTO `system_group_connection_menu` VALUES ('report_enginer', 'report_job');
-INSERT INTO `system_group_connection_menu` VALUES ('report_enginer', 'report_kalibrasi');
-INSERT INTO `system_group_connection_menu` VALUES ('report_enginer', 'report_tiket');
+INSERT INTO `system_group_connection_menu` VALUES ('report_enginer', 'report_asset_teknisi');
+INSERT INTO `system_group_connection_menu` VALUES ('report_enginer', 'report_jadwal_teknisi');
+INSERT INTO `system_group_connection_menu` VALUES ('report_enginer', 'report_job_teknisi');
+INSERT INTO `system_group_connection_menu` VALUES ('report_enginer', 'report_kalibrasi_teknisi');
+INSERT INTO `system_group_connection_menu` VALUES ('report_enginer', 'report_tiket_teknisi');
 INSERT INTO `system_group_connection_menu` VALUES ('setting', 'groups');
 INSERT INTO `system_group_connection_menu` VALUES ('setting', 'link');
 INSERT INTO `system_group_connection_menu` VALUES ('setting', 'menu');
@@ -2692,9 +2767,9 @@ INSERT INTO `system_group_connection_menu` VALUES ('setting', 'permission');
 INSERT INTO `system_group_connection_menu` VALUES ('setting', 'roles');
 INSERT INTO `system_group_connection_menu` VALUES ('setting', 'setting');
 INSERT INTO `system_group_connection_menu` VALUES ('setting', 'user');
-INSERT INTO `system_group_connection_menu` VALUES ('tiket', 'asset');
-INSERT INTO `system_group_connection_menu` VALUES ('tiket', 'report_tiket');
-INSERT INTO `system_group_connection_menu` VALUES ('tiket', 'tiket');
+INSERT INTO `system_group_connection_menu` VALUES ('tiket', 'asset_user');
+INSERT INTO `system_group_connection_menu` VALUES ('tiket', 'report_asset_user');
+INSERT INTO `system_group_connection_menu` VALUES ('tiket', 'tiket_user');
 
 -- ----------------------------
 -- Table structure for system_group_connection_role
@@ -2712,12 +2787,15 @@ CREATE TABLE `system_group_connection_role`  (
 -- ----------------------------
 -- Records of system_group_connection_role
 -- ----------------------------
-INSERT INTO `system_group_connection_role` VALUES ('admin', 'aplikasi');
+INSERT INTO `system_group_connection_role` VALUES ('admin', 'app_admin');
 INSERT INTO `system_group_connection_role` VALUES ('admin', 'master');
+INSERT INTO `system_group_connection_role` VALUES ('admin', 'printer');
 INSERT INTO `system_group_connection_role` VALUES ('admin', 'report');
 INSERT INTO `system_group_connection_role` VALUES ('admin', 'setting');
 INSERT INTO `system_group_connection_role` VALUES ('management', 'report');
-INSERT INTO `system_group_connection_role` VALUES ('teknisi', 'apps');
+INSERT INTO `system_group_connection_role` VALUES ('management', 'tiket');
+INSERT INTO `system_group_connection_role` VALUES ('teknisi', 'aplikasi');
+INSERT INTO `system_group_connection_role` VALUES ('teknisi', 'printer');
 INSERT INTO `system_group_connection_role` VALUES ('teknisi', 'report_enginer');
 INSERT INTO `system_group_connection_role` VALUES ('user', 'tiket');
 
@@ -2778,8 +2856,8 @@ INSERT INTO `system_menu` VALUES ('lokasi', 'Ruangan', 'ruangan', 'App\\Http\\Co
 INSERT INTO `system_menu` VALUES ('satuan', 'Satuan', 'satuan', 'App\\Http\\Controllers\\SatuanController', 'satuan.getTable', 1, NULL, NULL, NULL, 1);
 INSERT INTO `system_menu` VALUES ('penamaan', 'Nomenklatur', 'penamaan', 'App\\Http\\Controllers\\PenamaanController', 'penamaan.getTable', 1, NULL, NULL, NULL, 1);
 INSERT INTO `system_menu` VALUES ('asset', 'Asset', 'asset', 'App\\Http\\Controllers\\AssetController', 'asset.getTable', 1, NULL, NULL, NULL, 1);
-INSERT INTO `system_menu` VALUES ('tiket', 'Tiket', 'tiket', 'App\\Http\\Controllers\\TiketController', 'tiket.getTable', 1, NULL, NULL, NULL, 1);
-INSERT INTO `system_menu` VALUES ('job', 'Pekerjaan', 'job', 'App\\Http\\Controllers\\JobController', 'job.getTable', 1, NULL, NULL, NULL, 1);
+INSERT INTO `system_menu` VALUES ('tiket', 'Tiket Admin', 'tiket', 'App\\Http\\Controllers\\TiketController', 'tiket.getTable', 1, NULL, NULL, NULL, 1);
+INSERT INTO `system_menu` VALUES ('job', 'Pekerjaan Teknisi', 'job', 'App\\Http\\Controllers\\JobController', 'job.getTable', 1, NULL, NULL, NULL, 1);
 INSERT INTO `system_menu` VALUES ('group', 'Pemeliharaan', 'pemeliharaan', 'App\\Http\\Controllers\\GroupController', 'group.getTable', 1, NULL, NULL, NULL, 1);
 INSERT INTO `system_menu` VALUES ('model', 'Model', 'model', 'App\\Http\\Controllers\\ModelController', 'model.getTable', 1, NULL, NULL, NULL, 1);
 INSERT INTO `system_menu` VALUES ('saran', 'Saran', 'saran', 'App\\Http\\Controllers\\SaranController', 'saran.getTable', 1, NULL, NULL, NULL, 1);
@@ -2794,7 +2872,17 @@ INSERT INTO `system_menu` VALUES ('report_jadwal', 'Report Jadwal', 'report_jadw
 INSERT INTO `system_menu` VALUES ('vendor', 'Vendor', 'vendor', 'App\\Http\\Controllers\\VendorController', 'vendor.getTable', 1, NULL, NULL, NULL, 1);
 INSERT INTO `system_menu` VALUES ('report_asset', 'Report Asset', 'report_asset', 'App\\Http\\Controllers\\ReportAssetController', 'report_asset.getCreate', 1, NULL, NULL, NULL, 1);
 INSERT INTO `system_menu` VALUES ('report_kalibrasi', 'Report Kalibrasi', 'report_kalibrasi', 'App\\Http\\Controllers\\ReportKalibrasiController', 'report_kalibrasi.getCreate', 1, NULL, NULL, NULL, 1);
-INSERT INTO `system_menu` VALUES ('tiket', 'Tiket App', 'tiket_app', 'App\\Http\\Controllers\\TiketController', 'tiket.getTable', 1, NULL, NULL, NULL, 1);
+INSERT INTO `system_menu` VALUES ('tiket_teknisi', 'Tiket Teknisi', 'tiket_teknisi', 'App\\Http\\Controllers\\TiketController', 'tiket_teknisi.getTable', 1, NULL, NULL, NULL, 1);
+INSERT INTO `system_menu` VALUES ('job_teknisi', 'Pekerjaan', 'job_teknisi', 'App\\Http\\Controllers\\JobController', 'job_teknisi.getTable', 1, NULL, NULL, NULL, 1);
+INSERT INTO `system_menu` VALUES ('tiket_user', 'Tiket User', 'tiket_user', 'App\\Http\\Controllers\\TiketController', 'tiket_user.getTable', 1, NULL, NULL, NULL, 1);
+INSERT INTO `system_menu` VALUES ('report_tiket_teknisi', 'Report Tiket', 'report_tiket_teknisi', 'App\\Http\\Controllers\\ReportTiketController', 'report_tiket_teknisi.getCreate', 1, NULL, NULL, NULL, 1);
+INSERT INTO `system_menu` VALUES ('report_job_teknisi', 'Report Pekerjaan', 'report_job_teknisi', 'App\\Http\\Controllers\\ReportJobController', 'report_job_teknisi.getCreate', 1, NULL, NULL, NULL, 1);
+INSERT INTO `system_menu` VALUES ('asset_teknisi', 'Data Peralatan', 'asset_teknisi', 'App\\Http\\Controllers\\AssetController', 'asset_teknisi.getTable', 1, NULL, NULL, NULL, 1);
+INSERT INTO `system_menu` VALUES ('report_kalibrasi_teknisi', 'Report Kalibrasi Teknisi', 'report_kalibrasi_teknisi', 'App\\Http\\Controllers\\ReportKalibrasiController', 'report_kalibrasi_teknisi.getCreate', 1, NULL, NULL, NULL, 1);
+INSERT INTO `system_menu` VALUES ('report_jadwal_teknisi', 'Report Jadwal Kunjungan', 'report_jadwal_teknisi', 'App\\Http\\Controllers\\ReportJadwalController', 'report_jadwal_teknisi.getCreate', 1, NULL, NULL, NULL, 1);
+INSERT INTO `system_menu` VALUES ('report_asset_teknisi', 'Report Asset', 'report_asset_teknisi', 'App\\Http\\Controllers\\ReportAssetController', 'report_asset_teknisi.getCreate', 1, NULL, NULL, NULL, 1);
+INSERT INTO `system_menu` VALUES ('asset_user', 'Asset', 'asset_user', 'App\\Http\\Controllers\\AssetController', 'asset_user.getTable', 1, NULL, NULL, NULL, 1);
+INSERT INTO `system_menu` VALUES ('report_asset_user', 'Report Asset', 'report_asset_user', 'App\\Http\\Controllers\\ReportAssetController', 'report_asset_user.getCreate', 1, NULL, NULL, NULL, 1);
 
 -- ----------------------------
 -- Table structure for system_menu_connection_link
@@ -2998,7 +3086,7 @@ CREATE TABLE `tiket`  (
   `tiket_deleted_by` bigint(20) NULL DEFAULT NULL,
   `tiket_taked_by` bigint(20) NULL DEFAULT NULL,
   PRIMARY KEY (`tiket_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tiket
@@ -3028,6 +3116,31 @@ INSERT INTO `tiket` VALUES (72, '68a19e75-7a44-4a9d-81cd-da4c473ca237', 'Korekti
 INSERT INTO `tiket` VALUES (73, 'c47e5654-12f1-4dd4-bc73-53ab3f8e7484', 'Korektif', 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', 'test', NULL, '2025-02-21', 'Admin', 2, 7, '2025-02-21 00:57:19', '2025-02-21 08:50:12', '2025-02-21 08:50:12', 1, 1, 1, NULL);
 INSERT INTO `tiket` VALUES (74, '81f1e6a9-23c6-47e7-9e5d-96ff2908fd25', 'Korektif', 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', 'nyoba apps', NULL, '2025-02-23', 'Admin', 5, 7, '2025-02-23 22:40:45', '2025-02-25 06:01:09', '2025-02-25 06:01:09', 1, 1, 1, NULL);
 INSERT INTO `tiket` VALUES (75, '8da3acc2-ad2d-4a49-b3e7-ff68f32f2129', 'Korektif', 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', 'Matot', NULL, '2025-02-23', 'Ady Sunanto', 5, 7, '2025-02-23 22:51:36', '2025-02-25 06:01:09', '2025-02-25 06:01:09', 502, 504, 1, 504);
+INSERT INTO `tiket` VALUES (76, 'c9f0e38f-9f8a-42ac-b53f-ead588728f0b', 'Preventif', 'Dental Unit ~  ( Belmont ) Clesta | AD14J0176', 'Penjadwalan otomatis untuk pekerjaan Preventif', NULL, '2025-07-03', 'System', 10, 46, '2025-07-03 06:00:01', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 1, NULL, 1, NULL);
+INSERT INTO `tiket` VALUES (77, '738f1896-2bca-424b-91ae-604b9a28fc4e', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSNE3207', 'Monitor Mati', NULL, '2025-07-17', 'Ady Sunanto', 2, 8, '2025-07-17 12:45:08', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 502, 502, 1, NULL);
+INSERT INTO `tiket` VALUES (78, '9ec2313e-c909-4b0b-a995-a2d73bb43fa9', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSN3201', 'ini keluhan', '1763810229.png', '2025-11-22', 'Itok toni laksono', 2, 9, '2025-11-22 18:09:04', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 3, 3, 1, 3);
+INSERT INTO `tiket` VALUES (79, 'e2ac2457-16fb-49a3-be42-1fd29b4bd5d0', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSNE4818', 'test', '1763813037.png', '2025-11-22', 'Itok toni laksono', 2, 10, '2025-11-22 19:03:57', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 3, 3, 1, 3);
+INSERT INTO `tiket` VALUES (80, 'f6b02eb3-090d-4335-9c1b-d331ce7cae2e', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSN3201', 'test', '1763813582.png', '2025-11-22', 'Itok toni laksono', 2, 9, '2025-11-22 19:13:03', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 3, 3, 1, 3);
+INSERT INTO `tiket` VALUES (81, '8a9a2a3c-d899-473c-abd8-5256a5a8e5ff', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSNE3207', 'test', '1763813927.png', '2025-11-22', 'Itok toni laksono', 2, 8, '2025-11-22 19:18:47', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 3, 3, 1, NULL);
+INSERT INTO `tiket` VALUES (82, '6a4d4c28-7e09-436f-a460-793fa54420e6', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VTSLC0170', 'test', '1763814253.png', '2025-11-22', 'User', 5, 24, '2025-11-22 19:24:14', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 505, 505, 1, NULL);
+INSERT INTO `tiket` VALUES (83, 'ac14cc37-0a05-4656-bfc7-fe8ef87d7b6a', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VTSLC0170', 'test tiket', '1763815528.jpg', '2025-11-22', 'User', 5, 24, '2025-11-22 19:45:28', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 505, 505, 1, NULL);
+INSERT INTO `tiket` VALUES (84, '970e4324-855b-4f56-9a07-3737d80e15d5', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSN3201', 'tiket', '1763815592.png', '2025-11-22', 'Itok toni laksono', 2, 9, '2025-11-22 19:46:32', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 3, 504, 1, 504);
+INSERT INTO `tiket` VALUES (85, 'd547d38d-5ebe-4a96-a8af-fa865d861ced', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSNE2952', 'ada yang rusak', '1763956053.png', '2025-11-24', 'User', 5, 18, '2025-11-24 10:47:33', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 505, 504, 1, 504);
+INSERT INTO `tiket` VALUES (86, 'c7dfdad5-a697-4209-86e3-7420fa25e02a', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSN3201', 'test buat tiket', '1763983513.png', '2025-11-24', 'Itok toni laksono', 2, 9, '2025-11-24 11:16:06', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 3, 3, 1, 3);
+INSERT INTO `tiket` VALUES (87, '082361ff-d084-4f64-92f0-04d8a550d585', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSNE2952', 'test tiket 1', '1764244898.png', '2025-11-27', 'User', 5, 18, '2025-11-27 19:01:38', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 505, 505, 1, NULL);
+INSERT INTO `tiket` VALUES (88, 'dba895e6-5baa-486f-bcc4-247cc464b92e', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSNE2952', 'test 2', '1764245621.png', '2025-11-27', 'User', 5, 18, '2025-11-27 19:13:41', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 505, 505, 1, NULL);
+INSERT INTO `tiket` VALUES (89, '5d6defd4-9d0a-4cfe-9a18-ac26b6f7c180', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSN3201', 'test', NULL, '2025-11-27', 'teknisi', 2, 9, '2025-11-27 19:19:30', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 508, 508, 1, NULL);
+INSERT INTO `tiket` VALUES (90, '8bec6178-44d4-422b-9df7-0a95499dfa88', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VGSN3201', 'test', NULL, '2025-11-27', 'teknisi', 2, 9, '2025-11-27 19:25:14', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 508, 508, 1, NULL);
+INSERT INTO `tiket` VALUES (91, 'babae47c-4742-44a0-b803-a5f62a4fad6b', 'Korektif', 'Bedside Monitor/Bed-Patient Monitor/Patient Monitor/Vitalsign Monitor ~  ( Drager ) Vista 120 | VTSLC0170', 'test 3', '1764246637.jpg', '2025-11-27', 'User', 5, 24, '2025-11-27 19:30:38', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 505, 508, 1, 508);
+INSERT INTO `tiket` VALUES (92, 'eeaaa168-0a4e-49c7-b6b2-68019b057f36', 'Korektif', 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', 'test', NULL, '2025-11-27', 'User', 5, 7, '2025-11-27 19:40:19', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 505, 505, 1, NULL);
+INSERT INTO `tiket` VALUES (93, 'e5579459-e7c3-4afc-9fa9-98686ab85c69', 'Korektif', 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', 'test', '1764247437.jpg', '2025-11-27', 'Admin', 5, 7, '2025-11-27 19:43:57', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 1, 1, 1, NULL);
+INSERT INTO `tiket` VALUES (94, 'beaf1205-f9a4-41b7-91df-f1bdd740ab85', 'Korektif', 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', 'test', '1764247529.jpg', '2025-11-27', 'Admin', 5, 7, '2025-11-27 19:45:29', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 1, 1, 1, NULL);
+INSERT INTO `tiket` VALUES (95, '244ceef2-773d-4886-bc6e-9067f9378a5a', 'Korektif', 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', 'test', '1764247565.jpg', '2025-11-27', 'User', 5, 7, '2025-11-27 19:46:05', '2025-11-27 19:55:18', '2025-11-27 19:55:18', 505, 508, 1, 508);
+INSERT INTO `tiket` VALUES (96, 'c5947332-7628-4545-8805-9f6abd7b3aa1', 'Korektif', 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', 'test tiket', '1764248138.jpg', '2025-11-27', 'Admin', 5, 7, '2025-11-27 19:55:38', '2025-11-27 20:07:55', '2025-11-27 20:07:55', 1, 508, 1, 508);
+INSERT INTO `tiket` VALUES (97, '29fe9622-89c7-4910-a674-1945bf7b0b6c', 'Korektif', 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', 'test', '1764248341.jpg', '2025-11-27', 'User', 5, 7, '2025-11-27 19:59:01', '2025-11-27 20:07:55', '2025-11-27 20:07:55', 505, 508, 1, 508);
+INSERT INTO `tiket` VALUES (98, 'aba01062-59cc-4cd1-89ea-2991c130235d', 'Korektif', 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', '1', '1764248468.jpg', '2025-11-27', 'User', 5, 7, '2025-11-27 20:01:08', '2025-11-27 20:07:55', '2025-11-27 20:07:55', 505, 508, 1, 508);
+INSERT INTO `tiket` VALUES (99, '6a0b40a4-dc78-4094-a088-e307509f07e6', 'Korektif', 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', '1', NULL, '2025-11-27', 'User', 5, 7, '2025-11-27 20:08:15', '2025-11-29 08:16:14', NULL, 505, 1, NULL, 1);
+INSERT INTO `tiket` VALUES (100, '09398442-7aac-4841-bc8c-5c6581cbdf13', 'Korektif', 'Sterilisator Suhu Rendah ~  ( Elitech ) ZTP80-ECO | 13030688', 'testing keluhan', '1764384947.jpg', '2025-11-29', 'User', 5, 7, '2025-11-29 09:55:47', '2025-11-29 09:57:06', NULL, 505, 508, NULL, 508);
 
 -- ----------------------------
 -- Table structure for users
@@ -3052,7 +3165,7 @@ CREATE TABLE `users`  (
   `lokasi` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 508 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 513 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
@@ -3060,11 +3173,15 @@ CREATE TABLE `users`  (
 INSERT INTO `users` VALUES (1, 'Admin', 'admin', '08111040159', 'admin@gmail.com', '2022-12-13 18:51:38', '$2y$10$5QfpNOOqhLMoP/kXmrxDa.CS5VIWq/cgESgOnWfvFfE71d3a1P0By', 'admin', 100, 1, NULL, NULL, '2024-11-07 22:59:34', NULL, NULL, NULL);
 INSERT INTO `users` VALUES (3, 'Itok toni laksono', 'itoktoni', '08111040159', 'itok.toni@gmail.com', '2024-10-13 16:43:38', '$2y$10$rxbaKdP5R3anQc3hJLRX4Otzwzgv/Cl0IQsZG0S4qku/gGKdn3vdC', 'admin', 100, 1, 'LRi91YjgVd', '2024-10-13 16:44:03', '2025-02-17 14:48:35', NULL, '843133427', NULL);
 INSERT INTO `users` VALUES (502, 'Ady Sunanto', 'asun', '08561117174', 'asun.movenshare@gmail.com', NULL, '$2y$10$PepyUhQAnHfUz3iFwqNslu5vcu2UWM57ghNB/zeMUm2UFs3iQgZiG', 'admin', 30, 1, NULL, '2025-02-22 14:10:43', '2025-02-25 08:47:52', NULL, '79417929', NULL);
-INSERT INTO `users` VALUES (503, 'Ari Firmansyah', 'Arie FirmanSyah', '081226421421', 'elsyahficalibratechmandiri@gmail.com', NULL, '$2y$10$kcpvar6LxNsP6RBUhKHi9OWln89bvtPQU3Eo8FJD8p11pTogGsJGG', 'admin', NULL, 1, NULL, '2025-02-22 14:52:18', '2025-02-25 12:33:18', NULL, NULL, NULL);
-INSERT INTO `users` VALUES (504, 'Teknisi', 'teknisi', NULL, 'teknisi@gmail.com', NULL, '$2y$10$x6fzDEI6qxOVmfsafUQ9tOxogBs6SJo0vlZQkvvUrMczd6CTAiree', 'teknisi', 10, 1, NULL, '2025-02-22 16:23:44', '2025-02-22 16:23:44', NULL, NULL, NULL);
-INSERT INTO `users` VALUES (505, 'User', 'user', NULL, 'user@gmail.com', NULL, '$2y$10$RiAZQPuCP5PnhKjgz5bLwOQ0Vsa1uGxvt6tZqvajujL9dX8ZJSbf2', 'user', 1, 1, NULL, '2025-02-22 16:29:52', '2025-02-22 16:30:03', NULL, NULL, 5);
+INSERT INTO `users` VALUES (503, 'Ari Firmansyah', 'Arie Firmansyah', '081226421421', 'elsyahficalibratechmandiri@gmail.com', NULL, '$2y$10$se.d7eDd31sNDxzqOgSaIOfj1bflRNzUbf4qS7G80yGqYhMC6gn1a', 'admin', NULL, 1, NULL, '2025-02-22 14:52:18', '2025-07-09 08:57:15', NULL, NULL, NULL);
+INSERT INTO `users` VALUES (504, 'Teknisi', 'bersedekahlah1000', NULL, 'teknisi@gmail.com', NULL, '$2y$10$FCC8OI/SYz7wUSWMeuU2h./J2vkfij6mmQbnkOd2Xhn3GhxjdEdRq', 'teknisi', 10, 1, NULL, '2025-02-22 16:23:44', '2025-11-24 11:15:39', NULL, '1925206875', NULL);
+INSERT INTO `users` VALUES (505, 'User', 'userecm123', NULL, 'user@gmail.com', NULL, '$2y$10$FCC8OI/SYz7wUSWMeuU2h./J2vkfij6mmQbnkOd2Xhn3GhxjdEdRq', 'user', 1, 1, NULL, '2025-02-22 16:29:52', '2025-11-27 18:39:45', NULL, '8271064825', 5);
 INSERT INTO `users` VALUES (506, 'Management', 'management', NULL, 'management@gmail.com', NULL, '$2y$10$tiMW.2dnm9iflaNBTKKpxue2Eef/dGiLC45LQ84Lvt7cO94FB8sEu', 'management', 40, 1, NULL, '2025-02-22 16:30:29', '2025-02-22 16:30:29', NULL, NULL, NULL);
 INSERT INTO `users` VALUES (507, 'Farizal Elsyahfi', 'Elsyahfi', '082172494107', 'farizaelsyahfi@gmail.com', NULL, '$2y$10$96F.L6sXcbYrChNITZikLuSs28h4MuQ9C.5L5iKRCux8kkzSkEW7W', 'admin', 30, 1, NULL, '2025-02-25 14:58:00', '2025-02-25 15:07:14', NULL, '6634742831', NULL);
+INSERT INTO `users` VALUES (508, 'teknisi', 'teknisi', '423432', 'teknisi@gmail.com.com', NULL, '$2y$10$GBh0wgtj1y0lqA8ElaPQ1.XbTJYrNaRBQ7bWm0sxQnJ4GLoAhsLN.', 'teknisi', 10, 1, NULL, '2025-11-27 17:33:32', '2025-11-27 17:33:32', NULL, '843133427', NULL);
+INSERT INTO `users` VALUES (510, 'Muhlis', NULL, NULL, 'muhlisluawo@gmail.com', NULL, '$2y$10$ma8nBj3P3YAx2rgi2cLBT.x5GhDHrhQvXvczi9KMg.mYNUBwAMYs6', NULL, NULL, 0, NULL, '2025-12-13 22:59:01', '2026-01-10 11:35:33', NULL, '1555841008', NULL);
+INSERT INTO `users` VALUES (511, 'ARI FIRMANSYAH', NULL, NULL, 'ptcalibratech@gmail.com', NULL, '$2y$10$bABzlcVBreA2zY98GaAoyOivfbgKM5kRf8BrEFCYlMuVk7pfvGswC', NULL, NULL, 0, NULL, '2025-12-23 08:34:23', '2025-12-23 08:34:23', NULL, NULL, NULL);
+INSERT INTO `users` VALUES (512, 'ari', NULL, NULL, 'masarifirmansyah@gmail.com', NULL, '$2y$10$FYS/dFFE5xzTNuGESmf3kurGWqJLSJkhAh7RJU2m2VeR8Ts.cBMpa', NULL, NULL, 0, NULL, '2026-01-10 11:27:50', '2026-01-10 11:27:50', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for vendor
@@ -3088,5 +3205,11 @@ CREATE TABLE `vendor`  (
 INSERT INTO `vendor` VALUES (2, 'PT. Elsyahfi Calibratech Mandiri', 'Ari Firmansyah, S.T.Tr.', '081226421421', 'elsyahficalibratechmandiri@gmail.com', 'Perumahan Nuansa Mandiri Permai No. B4 Cubadak Air Jl. Perkutut RT. 02/04 Kel, Tigo Koto Di ate, Kec. Payakumbuh Utara, Kota Payakumbuh, Sumatera Barat 26216', NULL);
 INSERT INTO `vendor` VALUES (5, 'ECM Software', 'Itok Toni Laksono', '08111040159', NULL, NULL, NULL);
 INSERT INTO `vendor` VALUES (6, 'ECM Medical Device Management', 'Ady Sunanto', '08561117174', NULL, NULL, NULL);
+
+-- ----------------------------
+-- View structure for view_role
+-- ----------------------------
+DROP VIEW IF EXISTS `view_role`;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `view_role` AS select `system_menu`.`system_menu_code` AS `system_menu_code`,`system_menu`.`system_menu_name` AS `system_menu_name`,`system_menu`.`system_menu_url` AS `system_menu_url`,`system_menu`.`system_menu_controller` AS `system_menu_controller`,`system_menu`.`system_menu_action` AS `system_menu_action`,`system_menu`.`system_menu_type` AS `system_menu_type`,`system_menu`.`system_menu_sort` AS `system_menu_sort`,`system_menu`.`system_menu_description` AS `system_menu_description`,`system_menu`.`system_menu_enable` AS `system_menu_enable`,`system_menu`.`system_menu_can_delete` AS `system_menu_can_delete`,`system_group_connection_role`.`system_role_code` AS `system_role_code` from (((`system_role` join `system_group_connection_role` on(`system_role`.`system_role_code` = `system_group_connection_role`.`system_role_code`)) join `system_group_connection_menu` on(`system_group_connection_menu`.`system_group_code` = `system_group_connection_role`.`system_group_code`)) join `system_menu` on(`system_menu`.`system_menu_code` = `system_group_connection_menu`.`system_menu_code`));
 
 SET FOREIGN_KEY_CHECKS = 1;
