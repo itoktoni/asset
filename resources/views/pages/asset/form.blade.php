@@ -2,7 +2,16 @@
 
     <x-form :model="$model" :upload="true">
         <x-card label="{{ $model ? $model->field_name : 'Asset' }}">
-            <x-action form="form" />
+            <x-action form="form">
+                @if($model)
+                <button type="button" class="btn btn-success" id="btn-sync-aspak" onclick="syncAspak({{ $model->field_primary }})">
+                    Sync ASPAK
+                </button>
+                <span id="sync-status" class="ms-2" style="display:none;">
+                    <span id="sync-status-text">Syncing...</span>
+                </span>
+                @endif
+            </x-action>
 
             @bind($model)
                 <x-form-select col="6" label="Penamaan Asset" class="search" name="asset_id_penamaan" :options="$naming" />
@@ -89,4 +98,52 @@
         @endif
 
     </x-form>
+
+    @if($model)
+    <script>
+        function syncAspak(assetId) {
+            var btn = document.getElementById('btn-sync-aspak');
+            var status = document.getElementById('sync-status');
+            var statusText = document.getElementById('sync-status-text');
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm"></i> Syncing...';
+            status.style.display = 'inline';
+            statusText.textContent = 'Mengirim data ke ASPAK...';
+
+            fetch('/asset/' + assetId + '/sync', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    'Accept': 'application/json',
+                },
+            })
+            .then(function(response) { return response.json(); })
+            .then(function(data) {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="bi bi-cloud-arrow-up"></i> Sync ASPAK';
+
+                if (data.status) {
+                    status.style.display = 'inline';
+                    status.innerHTML = '<i class="bi bi-check-circle text-success"></i> <span class="text-success">' + data.message + '</span>';
+                    new Notyf().success(data.message);
+                } else {
+                    status.style.display = 'inline';
+                    status.innerHTML = '<i class="bi bi-x-circle text-danger"></i> <span class="text-danger">' + data.message + '</span>';
+                    new Notyf().error(data.message);
+                }
+
+                setTimeout(function() { status.style.display = 'none'; }, 8000);
+            })
+            .catch(function(error) {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="bi bi-cloud-arrow-up"></i> Sync ASPAK';
+                status.style.display = 'inline';
+                status.innerHTML = '<i class="bi bi-x-circle text-danger"></i> <span class="text-danger">Error: ' + error.message + '</span>';
+                new Notyf().error('Sync gagal: ' + error.message);
+            });
+        }
+    </script>
+    @endif
 </x-layout>

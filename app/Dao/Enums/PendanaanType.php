@@ -12,6 +12,7 @@ class PendanaanType extends Enum implements LocalizedEnum
 
     public const Unknown = null;
     public const APBN = 'APBN';
+    public const APBD = 'APBD';
     public const BLU = 'BLU';
     public const Mandiri = 'Mandiri';
 

@@ -22,6 +22,8 @@ use App\Facades\Model\VendorModel;
 use App\Http\Requests\AssetRequest;
 use App\Services\Core\UpdateAssetService;
 use App\Services\Master\CreateService;
+use App\Console\Commands\SyncAspak;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
 use Plugins\Query;
 use Plugins\Response;
@@ -111,7 +113,37 @@ class AssetController extends MasterController
     public function postUpdate($code, AssetRequest $request, UpdateAssetService $service)
     {
         $data = $service->update($this->model, $request, $code);
+        if($request->has('type') && $request->get('type') == 'sync')
+        {
+            try {
+                $exitCode = Artisan::call('sync:aspak', ['asset_id' => $code]);
+                $output = Artisan::output();
+                if ($exitCode === 0) {
+                    flash()->success('Sync ASPAK berhasil: ' . trim($output));
+                } else {
+                    flash()->error('Sync ASPAK gagal: ' . trim($output));
+                }
+            } catch (\Throwable $e) {
+                flash()->error('Sync ASPAK error: ' . $e->getMessage());
+            }
+        }
         return Response::redirectBack($data);
+    }
+
+    public function postSync($code)
+    {
+        try {
+            $exitCode = Artisan::call('sync:aspak', ['asset_id' => $code]);
+            $output = trim(Artisan::output());
+
+            if ($exitCode === 0) {
+                return response()->json(['status' => true, 'message' => $output]);
+            }
+
+            return response()->json(['status' => false, 'message' => $output], 422);
+        } catch (\Throwable $e) {
+            return response()->json(['status' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     public function getPrint($code)
