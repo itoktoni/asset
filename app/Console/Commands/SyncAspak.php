@@ -112,7 +112,7 @@ class SyncAspak extends Command
                 'Cookie' => "PHPSESSID={$sessionId}",
             ])
             ->post(config('aspak.base_url') . '/nualatrs/add?if=' . config('aspak.id_rs'), [
-                'AspakRsAlatModel[id_alat]' => '6405',
+                'AspakRsAlatModel[id_alat]' => $asset->asset_code ?? null,
                 'AspakRsAlatModel[id_rs]' => config('aspak.id_rs'),
                 'AspakRsAlatModel[id_kategori]' => $idKategori,
                 'AspakRsAlatModel[id_ruangan]' => $lokasi->lokasi_id,
