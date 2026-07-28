@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Dao\Models\Asset;
+use App\Dao\Models\Brand;
 use App\Dao\Models\Lokasi;
+use App\Dao\Models\Model;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
@@ -75,6 +77,9 @@ class SyncAspak extends Command
         $idKategori = $lokasi->lokasi_code_level;
         $namaLokasi = $lokasi->lokasi_gabungan;
 
+        $tipe = Model::where('model_id', $asset->asset_id_model)->first();
+        $merek = Brand::where('brand_id', $tipe->model_id_brand)->first();
+
         if (empty($idKategori)) {
             $this->error("lokasi_code_level kosong untuk lokasi ID {$lokasi->lokasi_id} ({$namaLokasi}).");
             return 1;
@@ -112,8 +117,8 @@ class SyncAspak extends Command
                 'AspakRsAlatModel[id_kategori]' => $idKategori,
                 'AspakRsAlatModel[id_ruangan]' => config('aspak.id_ruangan'),
                 'AspakRsAlatModel[no_seri]' => $noSeri,
-                'AspakRsAlatModel[merk]' => 'IPAL',
-                'AspakRsAlatModel[tipe]' => '001',
+                'AspakRsAlatModel[merk]' => $merek ? $merek->brand_nama : null,
+                'AspakRsAlatModel[tipe]' => $tipe ? $tipe->model_nama : null,
                 'AspakRsAlatModel[berfungsi]' => $berfungsi,
                 'AspakRsAlatModel[produk]' => '1',
                 'AspakRsAlatModel[thn_pengadaan]' => $thnPengadaan,

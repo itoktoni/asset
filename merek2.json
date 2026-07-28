@@ -1,0 +1,1318 @@
+{
+    "results": [
+        {
+            "id": "HAAG STREIT",
+            "text": "HAAG STREIT",
+            "label": "HAAG STREIT",
+            "desc": "Nonimplanted electrical continence device.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG STREIT"
+                }
+            }
+        },
+        {
+            "id": "HAAG STREIT",
+            "text": "HAAG STREIT",
+            "label": "HAAG STREIT",
+            "desc": "Otoscope.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG STREIT"
+                }
+            }
+        },
+        {
+            "id": "HAAG STREIT",
+            "text": "HAAG STREIT",
+            "label": "HAAG STREIT",
+            "desc": "Liquid bandage.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG STREIT"
+                }
+            }
+        },
+        {
+            "id": "HAAG STREIT",
+            "text": "HAAG STREIT",
+            "label": "HAAG STREIT",
+            "desc": "Liquid bandage.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG STREIT"
+                }
+            }
+        },
+        {
+            "id": "HAAG STREIT",
+            "text": "HAAG STREIT",
+            "label": "HAAG STREIT",
+            "desc": "Liquid bandage.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG STREIT"
+                }
+            }
+        },
+        {
+            "id": "MERIVAARA MERILUX Surgery and examination Lamp",
+            "text": " MERIVAARA MERILUX Surgery and examination.. ",
+            "label": "MERIVAARA MERILUX Surgery and examination Lamp",
+            "desc": "Surgical lamp.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "MERIVAARA MERILUX Surgery and examination Lamp"
+                }
+            }
+        },
+        {
+            "id": "AAA™",
+            "text": "AAA™",
+            "label": "AAA™",
+            "desc": "Apnea monitor.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "AAA™"
+                }
+            }
+        },
+        {
+            "id": "VIVAAQUA Absorbent Transparent PU Dressing",
+            "text": " VIVAAQUA Absorbent Transparent PU Dressing.. ",
+            "label": "VIVAAQUA Absorbent Transparent PU Dressing",
+            "desc": "Occlusive wound dressing.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "VIVAAQUA Absorbent Transparent PU Dressing"
+                }
+            }
+        },
+        {
+            "id": "IMMULITE Systems PAA Control PAPP-A ",
+            "text": " IMMULITE Systems PAA Control PAPP-A.. ",
+            "label": "IMMULITE Systems PAA Control PAPP-A ",
+            "desc": "Quality control material (assayed and unassayed) (",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "IMMULITE Systems PAA Control PAPP-A "
+                }
+            }
+        },
+        {
+            "id": "JMS Hemosealer HS-21 AA",
+            "text": "JMS Hemosealer HS-21 AA",
+            "label": "JMS Hemosealer HS-21 AA",
+            "desc": "Heat-sealing device.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "JMS Hemosealer HS-21 AA"
+                }
+            }
+        },
+        {
+            "id": "AAGP2 Tina-quant [a] a1-Acid Glycoprotein Gen.2",
+            "text": " AAGP2 Tina-quant [a] a1-Acid Glycoprotein.. ",
+            "label": "AAGP2 Tina-quant [a] a1-Acid Glycoprotein Gen.2",
+            "desc": "Alpha -1-glycoproteins immunological test system.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "AAGP2 Tina-quant [a] a1-Acid Glycoprotein Gen.2"
+                }
+            }
+        },
+        {
+            "id": "COBAS AAGP2 Tina-quant a1-Acid Glycoprotein Gen.2 ",
+            "text": " COBAS AAGP2 Tina-quant a1-Acid Glycoprotein.. ",
+            "label": "COBAS AAGP2 Tina-quant a1-Acid Glycoprotein Gen.2 ",
+            "desc": "Alpha -globulin immunological test system.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "COBAS AAGP2 Tina-quant a1-Acid Glycoprotein Gen.2 "
+                }
+            }
+        },
+        {
+            "id": "SAADAT SAHAND Central Monitoring System",
+            "text": " SAADAT SAHAND Central Monitoring System.. ",
+            "label": "SAADAT SAHAND Central Monitoring System",
+            "desc": "Paper chart recorder.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "SAADAT SAHAND Central Monitoring System"
+                }
+            }
+        },
+        {
+            "id": "KARL STORZ Easygo System Gaab / Oertel Recomended Set",
+            "text": " KARL STORZ Easygo System Gaab / Oertel.. ",
+            "label": "KARL STORZ Easygo System Gaab / Oertel Recomended Set",
+            "desc": "Manual gastroenterology-urology surgical instrumen",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "KARL STORZ Easygo System Gaab / Oertel Recomended Set"
+                }
+            }
+        },
+        {
+            "id": "CHANG GUNG (CMAA) Manual Hospital Bed-Tuck Away",
+            "text": " CHANG GUNG (CMAA) Manual Hospital Bed-Tuck.. ",
+            "label": "CHANG GUNG (CMAA) Manual Hospital Bed-Tuck Away",
+            "desc": "Manual adjustable hospital bed.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "CHANG GUNG (CMAA) Manual Hospital Bed-Tuck Away"
+                }
+            }
+        },
+        {
+            "id": "MERIVAARA Emergo Multipurpose Trolley",
+            "text": " MERIVAARA Emergo Multipurpose Trolley.. ",
+            "label": "MERIVAARA Emergo Multipurpose Trolley",
+            "desc": "Manual patient transfer device.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "MERIVAARA Emergo Multipurpose Trolley"
+                }
+            }
+        },
+        {
+            "id": "HAAG STREIT Perimeter",
+            "text": "HAAG STREIT Perimeter",
+            "label": "HAAG STREIT Perimeter",
+            "desc": "Perimeter.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG STREIT Perimeter"
+                }
+            }
+        },
+        {
+            "id": "HAAG STREIT",
+            "text": "HAAG STREIT",
+            "label": "HAAG STREIT",
+            "desc": "Otoscope.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG STREIT"
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Perimetry",
+            "text": "HAAG-STREIT Perimetry",
+            "label": "HAAG-STREIT Perimetry",
+            "desc": "Perimeter.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Perimetry"
+                }
+            }
+        },
+        {
+            "id": "PAARAMOUNT BED Wheel Chair",
+            "text": "PAARAMOUNT BED Wheel Chair",
+            "label": "PAARAMOUNT BED Wheel Chair",
+            "desc": "Mechanical wheelchair.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "PAARAMOUNT BED Wheel Chair"
+                }
+            }
+        },
+        {
+            "id": "MERIVAARA PRACTICO Operating Tables",
+            "text": "MERIVAARA PRACTICO Operating Tables",
+            "label": "MERIVAARA PRACTICO Operating Tables",
+            "desc": "Operating tables and accessories and operating cha",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "MERIVAARA PRACTICO Operating Tables"
+                }
+            }
+        },
+        {
+            "id": "MERIVAARA PROMERIX Operating Tables",
+            "text": "MERIVAARA PROMERIX Operating Tables",
+            "label": "MERIVAARA PROMERIX Operating Tables",
+            "desc": "Operating tables and accessories and operating cha",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "MERIVAARA PROMERIX Operating Tables"
+                }
+            }
+        },
+        {
+            "id": "MERIVAARA PROMERIX Operating Table",
+            "text": "MERIVAARA PROMERIX Operating Table",
+            "label": "MERIVAARA PROMERIX Operating Table",
+            "desc": "Operating tables and accessories and operating cha",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "MERIVAARA PROMERIX Operating Table"
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Operating Microscope ",
+            "text": "HAAG-STREIT Operating Microscope ",
+            "label": "HAAG-STREIT Operating Microscope ",
+            "desc": "Surgical microscope and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Operating Microscope "
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Operating Microscope ",
+            "text": "HAAG-STREIT Operating Microscope ",
+            "label": "HAAG-STREIT Operating Microscope ",
+            "desc": "Surgical microscope and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Operating Microscope "
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Operating Microscope ",
+            "text": "HAAG-STREIT Operating Microscope ",
+            "label": "HAAG-STREIT Operating Microscope ",
+            "desc": "Surgical microscope and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Operating Microscope "
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Operating Microscope ",
+            "text": "HAAG-STREIT Operating Microscope ",
+            "label": "HAAG-STREIT Operating Microscope ",
+            "desc": "Surgical microscope and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Operating Microscope "
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Operating Microscope ",
+            "text": "HAAG-STREIT Operating Microscope ",
+            "label": "HAAG-STREIT Operating Microscope ",
+            "desc": "Surgical microscope and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Operating Microscope "
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Operating Microscope ",
+            "text": "HAAG-STREIT Operating Microscope ",
+            "label": "HAAG-STREIT Operating Microscope ",
+            "desc": "Surgical microscope and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Operating Microscope "
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Operating Microscope ",
+            "text": "HAAG-STREIT Operating Microscope ",
+            "label": "HAAG-STREIT Operating Microscope ",
+            "desc": "Surgical microscope and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Operating Microscope "
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Operating Microscope ",
+            "text": "HAAG-STREIT Operating Microscope ",
+            "label": "HAAG-STREIT Operating Microscope ",
+            "desc": "Surgical microscope and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Operating Microscope "
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Operating Microscope ",
+            "text": "HAAG-STREIT Operating Microscope ",
+            "label": "HAAG-STREIT Operating Microscope ",
+            "desc": "Surgical microscope and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Operating Microscope "
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Operating Microscope ",
+            "text": "HAAG-STREIT Operating Microscope ",
+            "label": "HAAG-STREIT Operating Microscope ",
+            "desc": "Surgical microscope and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Operating Microscope "
+                }
+            }
+        },
+        {
+            "id": "IMMULITE 2000 Systems PAA PAPP-A",
+            "text": "IMMULITE 2000 Systems PAA PAPP-A",
+            "label": "IMMULITE 2000 Systems PAA PAPP-A",
+            "desc": "Pregnanetriol test system (kit & cair)",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "IMMULITE 2000 Systems PAA PAPP-A"
+                }
+            }
+        },
+        {
+            "id": "MERIVAARA MERILED Surgical Light Dual",
+            "text": " MERIVAARA MERILED Surgical Light Dual.. ",
+            "label": "MERIVAARA MERILED Surgical Light Dual",
+            "desc": "Surgical lamp.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "MERIVAARA MERILED Surgical Light Dual"
+                }
+            }
+        },
+        {
+            "id": "SD BIOLINE Hantaan Virus",
+            "text": "SD BIOLINE Hantaan Virus",
+            "label": "SD BIOLINE Hantaan Virus",
+            "desc": "",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "SD BIOLINE Hantaan Virus"
+                }
+            }
+        },
+        {
+            "id": "HEPANOSTIKA HBaAg Ultra Microelisa System",
+            "text": " HEPANOSTIKA HBaAg Ultra Microelisa.. ",
+            "label": "HEPANOSTIKA HBaAg Ultra Microelisa System",
+            "desc": "Antimitochondrial antibody immunological test syst",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HEPANOSTIKA HBaAg Ultra Microelisa System"
+                }
+            }
+        },
+        {
+            "id": "COBAS AAT2 Tina-quant [a] cobas c systems",
+            "text": " COBAS AAT2 Tina-quant [a] cobas c systems.. ",
+            "label": "COBAS AAT2 Tina-quant [a] cobas c systems",
+            "desc": "Alpha -1-antitrypsin immunological test system.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "COBAS AAT2 Tina-quant [a] cobas c systems"
+                }
+            }
+        },
+        {
+            "id": "AAT2 Tina-quant [a] a1-Antitrypsin ver.2 Cobas Integra cobas c systems",
+            "text": " AAT2 Tina-quant [a] a1-Antitrypsin.. ",
+            "label": "AAT2 Tina-quant [a] a1-Antitrypsin ver.2 Cobas Integra cobas c systems",
+            "desc": "Alpha -1-antitrypsin immunological test system.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "AAT2 Tina-quant [a] a1-Antitrypsin ver.2 Cobas Integra cobas c systems"
+                }
+            }
+        },
+        {
+            "id": "SAADAT Patient Monitor",
+            "text": "SAADAT Patient Monitor",
+            "label": "SAADAT Patient Monitor",
+            "desc": "Cardiac monitor (including cardiotachometer and ra",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "SAADAT Patient Monitor"
+                }
+            }
+        },
+        {
+            "id": "SAADAT ARIA Patient Monitor",
+            "text": "SAADAT ARIA Patient Monitor",
+            "label": "SAADAT ARIA Patient Monitor",
+            "desc": "Cardiac monitor (including cardiotachometer and ra",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "SAADAT ARIA Patient Monitor"
+                }
+            }
+        },
+        {
+            "id": "EDWARDS Perfusion Cannulaae",
+            "text": "EDWARDS Perfusion Cannulaae",
+            "label": "EDWARDS Perfusion Cannulaae",
+            "desc": "Cardiopulmonary bypass vascular catheter, cannula,",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "EDWARDS Perfusion Cannulaae"
+                }
+            }
+        },
+        {
+            "id": "MERIVAARA ADATTO Hospital Bed",
+            "text": "MERIVAARA ADATTO Hospital Bed",
+            "label": "MERIVAARA ADATTO Hospital Bed",
+            "desc": "AC-powered adjustable hospital bed.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "MERIVAARA ADATTO Hospital Bed"
+                }
+            }
+        },
+        {
+            "id": "MERIVAARA OPTIMA Delivery Bed",
+            "text": "MERIVAARA OPTIMA Delivery Bed",
+            "label": "MERIVAARA OPTIMA Delivery Bed",
+            "desc": "Obstetric table and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "MERIVAARA OPTIMA Delivery Bed"
+                }
+            }
+        },
+        {
+            "id": "KARL STORZ Neuro-Endoscopy-Intracranial Surgery GAAB Recommended Set",
+            "text": " KARL STORZ Neuro-Endoscopy-Intracranial.. ",
+            "label": "KARL STORZ Neuro-Endoscopy-Intracranial Surgery GAAB Recommended Set",
+            "desc": "Neurological endoscope.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "KARL STORZ Neuro-Endoscopy-Intracranial Surgery GAAB Recommended Set"
+                }
+            }
+        },
+        {
+            "id": "MERIVAARA PROMERIX Operating Tables",
+            "text": "MERIVAARA PROMERIX Operating Tables",
+            "label": "MERIVAARA PROMERIX Operating Tables",
+            "desc": "Obstetric table and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "MERIVAARA PROMERIX Operating Tables"
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Slit Lamp",
+            "text": "HAAG-STREIT Slit Lamp",
+            "label": "HAAG-STREIT Slit Lamp",
+            "desc": "AC-powered slitlamp biomicroscope.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Slit Lamp"
+                }
+            }
+        },
+        {
+            "id": "HAAG STREIT Slit Lamp",
+            "text": "HAAG STREIT Slit Lamp",
+            "label": "HAAG STREIT Slit Lamp",
+            "desc": "AC-powered slitlamp biomicroscope.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG STREIT Slit Lamp"
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Slit Lamp",
+            "text": "HAAG-STREIT Slit Lamp",
+            "label": "HAAG-STREIT Slit Lamp",
+            "desc": "AC-powered slitlamp biomicroscope.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Slit Lamp"
+                }
+            }
+        },
+        {
+            "id": "HAAG STREIT Goldmann Applanation Tonometer",
+            "text": " HAAG STREIT Goldmann Applanation Tonometer.. ",
+            "label": "HAAG STREIT Goldmann Applanation Tonometer",
+            "desc": "Tonometer and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG STREIT Goldmann Applanation Tonometer"
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Goldmann Applanation Tonometer",
+            "text": " HAAG-STREIT Goldmann Applanation Tonometer.. ",
+            "label": "HAAG-STREIT Goldmann Applanation Tonometer",
+            "desc": "Tonometer and accessories.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Goldmann Applanation Tonometer"
+                }
+            }
+        },
+        {
+            "id": "HAAG STREIT SLIT Lamp BP 900",
+            "text": "HAAG STREIT SLIT Lamp BP 900",
+            "label": "HAAG STREIT SLIT Lamp BP 900",
+            "desc": "AC-powered slitlamp biomicroscope.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG STREIT SLIT Lamp BP 900"
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Slit Lamp",
+            "text": "HAAG-STREIT Slit Lamp",
+            "label": "HAAG-STREIT Slit Lamp",
+            "desc": "AC-powered slitlamp biomicroscope.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Slit Lamp"
+                }
+            }
+        },
+        {
+            "id": "HAAG STREIT Original Slit BQ 900",
+            "text": "HAAG STREIT Original Slit BQ 900",
+            "label": "HAAG STREIT Original Slit BQ 900",
+            "desc": "AC-powered slitlamp biomicroscope.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG STREIT Original Slit BQ 900"
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Original Slit Lamp",
+            "text": "HAAG-STREIT Original Slit Lamp",
+            "label": "HAAG-STREIT Original Slit Lamp",
+            "desc": "AC-powered slitlamp biomicroscope.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Original Slit Lamp"
+                }
+            }
+        },
+        {
+            "id": "HAAG STREIT Original Slit Lamp BM 900",
+            "text": " HAAG STREIT Original Slit Lamp BM 900.. ",
+            "label": "HAAG STREIT Original Slit Lamp BM 900",
+            "desc": "AC-powered slitlamp biomicroscope.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG STREIT Original Slit Lamp BM 900"
+                }
+            }
+        },
+        {
+            "id": "HAAG-STREIT Original Slit Lamp",
+            "text": "HAAG-STREIT Original Slit Lamp",
+            "label": "HAAG-STREIT Original Slit Lamp",
+            "desc": "AC-powered slitlamp biomicroscope.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "HAAG-STREIT Original Slit Lamp"
+                }
+            }
+        },
+        {
+            "id": "MERIVAARA MERILUX Surgery and Examination Lamp",
+            "text": " MERIVAARA MERILUX Surgery and Examination.. ",
+            "label": "MERIVAARA MERILUX Surgery and Examination Lamp",
+            "desc": "Surgical lamp.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "MERIVAARA MERILUX Surgery and Examination Lamp"
+                }
+            }
+        },
+        {
+            "id": "MERIVAARA MERILED Surgeon and Examination Lamp",
+            "text": " MERIVAARA MERILED Surgeon and Examination.. ",
+            "label": "MERIVAARA MERILED Surgeon and Examination Lamp",
+            "desc": "Surgical lamp.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "MERIVAARA MERILED Surgeon and Examination Lamp"
+                }
+            }
+        },
+        {
+            "id": "MEYER HAAKE RADIOSURG 2200 HF Surgical Device",
+            "text": " MEYER HAAKE RADIOSURG 2200 HF Surgical.. ",
+            "label": "MEYER HAAKE RADIOSURG 2200 HF Surgical Device",
+            "desc": "Electrosurgical cutting and coagulation device and",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "MEYER HAAKE RADIOSURG 2200 HF Surgical Device"
+                }
+            }
+        },
+        {
+            "id": "BOVIE Aaron 950 Electrosurgical Generator and Accessories",
+            "text": " BOVIE Aaron 950 Electrosurgical Generator.. ",
+            "label": "BOVIE Aaron 950 Electrosurgical Generator and Accessories",
+            "desc": "Electrosurgical cutting and coagulation device and",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "BOVIE Aaron 950 Electrosurgical Generator and Accessories"
+                }
+            }
+        },
+        {
+            "id": "BOVIE Aaron 950 Electrosurgical Generator and Accessories",
+            "text": " BOVIE Aaron 950 Electrosurgical Generator.. ",
+            "label": "BOVIE Aaron 950 Electrosurgical Generator and Accessories",
+            "desc": "Electrosurgical cutting and coagulation device and",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "BOVIE Aaron 950 Electrosurgical Generator and Accessories"
+                }
+            }
+        },
+        {
+            "id": "DAAVLIN Phototherapy Unit",
+            "text": "DAAVLIN Phototherapy Unit",
+            "label": "DAAVLIN Phototherapy Unit",
+            "desc": "Ultraviolet lamp for dermatologic disorders.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "DAAVLIN Phototherapy Unit"
+                }
+            }
+        },
+        {
+            "id": "DAAVLIN UV Photoherapy Unit",
+            "text": "DAAVLIN UV Photoherapy Unit",
+            "label": "DAAVLIN UV Photoherapy Unit",
+            "desc": "Ultraviolet lamp for dermatologic disorders.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "DAAVLIN UV Photoherapy Unit"
+                }
+            }
+        },
+        {
+            "id": "MERIVAARA MERILED Surgical Light",
+            "text": "MERIVAARA MERILED Surgical Light",
+            "label": "MERIVAARA MERILED Surgical Light",
+            "desc": "Surgical lamp.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "MERIVAARA MERILED Surgical Light"
+                }
+            }
+        },
+        {
+            "id": "DAAVLIN UV Phototherapy Unit",
+            "text": "DAAVLIN UV Phototherapy Unit",
+            "label": "DAAVLIN UV Phototherapy Unit",
+            "desc": "Ultraviolet lamp for dermatologic disorders.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "DAAVLIN UV Phototherapy Unit"
+                }
+            }
+        },
+        {
+            "id": "DAAVLIN UV Phototherapy",
+            "text": "DAAVLIN UV Phototherapy",
+            "label": "DAAVLIN UV Phototherapy",
+            "desc": "Ultraviolet lamp for dermatologic disorders.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "DAAVLIN UV Phototherapy"
+                }
+            }
+        },
+        {
+            "id": "DAAVLIN UV Phototherapy",
+            "text": "DAAVLIN UV Phototherapy",
+            "label": "DAAVLIN UV Phototherapy",
+            "desc": "Ultraviolet lamp for dermatologic disorders.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "DAAVLIN UV Phototherapy"
+                }
+            }
+        },
+        {
+            "id": "DAAVLIN UV Phototherapy",
+            "text": "DAAVLIN UV Phototherapy",
+            "label": "DAAVLIN UV Phototherapy",
+            "desc": "Ultraviolet lamp for dermatologic disorders.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "DAAVLIN UV Phototherapy"
+                }
+            }
+        },
+        {
+            "id": "DAAVLIN UV Phototherapy",
+            "text": "DAAVLIN UV Phototherapy",
+            "label": "DAAVLIN UV Phototherapy",
+            "desc": "Ultraviolet lamp for dermatologic disorders.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "DAAVLIN UV Phototherapy"
+                }
+            }
+        },
+        {
+            "id": "DAAVLIN UV Phototherapy",
+            "text": "DAAVLIN UV Phototherapy",
+            "label": "DAAVLIN UV Phototherapy",
+            "desc": "Ultraviolet lamp for dermatologic disorders.",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "DAAVLIN UV Phototherapy"
+                }
+            }
+        },
+        {
+            "id": "ANKURA TAA Stent Graft System",
+            "text": "ANKURA TAA Stent Graft System",
+            "label": "ANKURA TAA Stent Graft System",
+            "desc": "Coronary stent",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unregister)",
+                ".j-tipe-unregister": "Tipe (Unregister)",
+                ".j-input-tipe-alat": ""
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": "ANKURA TAA Stent Graft System"
+                }
+            }
+        },
+        {
+            "id": "-unknown-",
+            "text": "-unknown-",
+            "label": "-unknown-",
+            "desc": "-unknown-",
+            "actions": {
+                ".j-distributor": "",
+                ".j-akl-akd": "",
+                ".j-merk-unregister": "Merk (Unknown)",
+                ".j-tipe-unregister": "Tipe (Unknown)",
+                ".j-input-tipe-alat": "-unknown-"
+            },
+            "attributes": {
+                ".j-input-tipe-alat": {
+                    "data-add": ""
+                }
+            }
+        }
+    ]
+}
