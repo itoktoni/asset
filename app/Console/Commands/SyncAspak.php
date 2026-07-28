@@ -115,7 +115,7 @@ class SyncAspak extends Command
                 'AspakRsAlatModel[id_alat]' => '6405',
                 'AspakRsAlatModel[id_rs]' => config('aspak.id_rs'),
                 'AspakRsAlatModel[id_kategori]' => $idKategori,
-                'AspakRsAlatModel[id_ruangan]' => config('aspak.id_ruangan'),
+                'AspakRsAlatModel[id_ruangan]' => $lokasi->lokasi_id,
                 'AspakRsAlatModel[no_seri]' => $noSeri,
                 'AspakRsAlatModel[merk]' => $merek ? $merek->brand_nama : null,
                 'AspakRsAlatModel[tipe]' => $tipe ? $tipe->model_nama : null,
